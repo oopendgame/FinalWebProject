@@ -44,7 +44,7 @@
   Quiz Name: <input type="text" name="quiz_name"> <br>
   
   <div class="gap-10"></div>
-  Description: <input type="text" name="description"> <br>
+  Description: <textarea rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
   
   <div class="gap-10"></div>
   Subject: 
@@ -63,20 +63,23 @@
   <br>
   
   <div class="gap-10"></div>
-  Randomize questions:
-  <input type="checkbox" name="check1" value="rand"><br>
-  
-  <div class="gap-10"></div>
   One page<input type="radio" name="rad" value="one"> 
   Multiple Pages <input type="radio" name="rad" value="mult"><br>
   
   <div class="gap-10"></div>
-  Immediate Correction:
-  <input type="checkbox" name="check2" value="corr"><br>
+  <input type="checkbox" name="check1" value="rand">
+  Randomize questions
+  <br>
   
   <div class="gap-10"></div>
-  Practice Mode Option:
-  <input type="checkbox" name="check3" value="practice"><br>
+  <input type="checkbox" name="check2" value="corr">
+  Immediate Correction
+  <br>
+  
+  <div class="gap-10"></div>
+  <input type="checkbox" name="check3" value="practice">
+  Practice Mode Option
+  <br>
   
   <div class="gap-10"></div>
   <i style="font-size:24px" class="fa">&#xf059;</i>
