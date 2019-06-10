@@ -27,6 +27,10 @@
 	    background-color: #313FE4;
 	}
 	
+	a {
+     text-decoration: none;
+    }
+	
 </style>
 
 
@@ -38,14 +42,19 @@
 <body  bgcolor="#0AF8D2">
 <h1> <i><font color="blue"> Create New Questions </font></i></h1>
 
-<div class="gap-10"></div>
-  Choose question type: 
-  <select name="subject">
-    <option value="Question-Response">Question-Response</option>
-    <option value="Fill in the Blank">Fill in the Blank</option>
-    <option value="Multiple Choice" selected>Multiple Choice</option>
-    <option value="Picture-Response Questions">Picture-Response Questions</option>
-  </select>
-  <br>
+
+  
+ <div class="gap-10"></div>
+ Choose question type: <br>
+ <div class="gap-10"></div>
+ 
+ &#9658; <a href="QuestionResponse.jsp">Question-Response</a><br>
+ &#9658; <a href="FillBlank.jsp">Fill in the Blank</a><br>
+ &#9658; <a href="MultipleChoice.jsp">Multiple Choice</a><br>
+ &#9658; <a href="PictureResponseQuestions.jsp">Picture-Response Questions</a><br>
+
+ <div class="gap-10"></div>
+ <a href="AllQuestions.jsp">View or Edit Already Created Questions</a><br>
+  
 </body>
 </html>
