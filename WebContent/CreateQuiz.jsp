@@ -49,11 +49,16 @@
   <div class="gap-10"></div>
   Subject: 
   <select name="subject">
-    <option value="volvo">History</option>
-    <option value="saab">Geography</option>
-    <option value="fiat" selected>Math</option>
-    <option value="audi">Biology</option>
-    <option value="audi">Other</option>
+    <option value="history">History</option>
+    <option value="geography">Geography</option>
+    <option value="math" selected>Math</option>
+    <option value="biology">Biology</option>
+    <option value="english">English</option>
+    <option value="art">Art</option>
+    <option value="georgian">Georgian</option>
+    <option value="chemistry">Chemistry</option>
+    <option value="physics">Physics</option>
+    <option value="other">Other</option>
   </select>
   <br>
   
