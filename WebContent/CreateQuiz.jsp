@@ -63,8 +63,8 @@
   <br>
   
   <div class="gap-10"></div>
-  One page<input type="radio" name="rad" value="one"> 
-  Multiple Pages <input type="radio" name="rad" value="mult"><br>
+  One page<input type="radio" name="1" value="one"> 
+  Multiple Pages <input type="radio" name="1" value="mult"><br>  
   
   <div class="gap-10"></div>
   <input type="checkbox" name="check1" value="rand">
@@ -83,7 +83,7 @@
   
   <div class="gap-10"></div>
   <i style="font-size:24px" class="fa">&#xf059;</i>
-  <a href="questions" style="text-decoration: none">Add Questions</a>
+  <a href="CreateQuestions.jsp" style="text-decoration: none">Add Questions</a>
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
