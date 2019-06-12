@@ -8,7 +8,7 @@
 <style>
 	.gap-10 {
 		width:100%;
-		height:10px;
+		height:10px; 
 	}
 	
 	.content {
