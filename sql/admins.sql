@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS admins;
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
     admin_name varchar(50) not null unique,
+    
     primary key(admin_id)
 );
 

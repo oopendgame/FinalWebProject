@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS quizzes (
     practice_mode varchar(10) default "yes",
     
     primary key(quiz_id),
-    CONSTRAINT FK_Author FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
+	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
 );
 
 

@@ -8,7 +8,10 @@ CREATE TABLE IF NOT EXISTS friends (
     user1_id integer not null,
     user2_id integer not null,
     friends_satus varchar(15) default "requested",
-    primary key(friends_id)
+    
+    primary key(friends_id),
+    FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
+    FOREIGN KEY (user2_id) REFERENCES userInfo(user_id)
 );
 
 
@@ -16,5 +19,5 @@ CREATE TABLE IF NOT EXISTS friends (
 
 INSERT INTO friends(user1_id, user2_id, friends_satus) VALUES
 (1, 2, "requested"),
-(2, 3, "friends");
+(2, 2, "friends");
     

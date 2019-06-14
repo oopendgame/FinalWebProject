@@ -8,7 +8,10 @@ CREATE TABLE IF NOT EXISTS challenges (
     user1_id integer not null,
     user2_id integer not null,
     link varchar(500),
-    primary key(challenge_id)
+    
+    primary key(challenge_id),
+    FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
+    FOREIGN KEY (user2_id) REFERENCES userInfo(user_id)
 );
 
 
@@ -16,5 +19,5 @@ CREATE TABLE IF NOT EXISTS challenges (
 
 INSERT INTO challenges(user1_id, user2_id, link) VALUES
 (1, 2, "bla.com"),
-(1, 3, "blu.com");
+(1, 2, "blu.com");
     
