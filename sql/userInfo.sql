@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS userInfo (
     gender varchar(10) not null,
     img varchar(50),
     rank varchar(20) default 'begginer',
+    
     primary key(user_id)
 );
 

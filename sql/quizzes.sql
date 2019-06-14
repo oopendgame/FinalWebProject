@@ -13,12 +13,14 @@ CREATE TABLE IF NOT EXISTS quizzes (
     subj varchar(100) not null,
     description varchar(500),
     practice_mode varchar(10) default "yes",
-    primary key(quiz_id)
+    
+    primary key(quiz_id),
+    CONSTRAINT FK_Author FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
 );
 
 
 
 
 INSERT INTO quizzes (author_id, quiz_type, page_num, correction_type, creation_date, subj, description, practice_mode) VALUES
-    (3, "fillBlank", 2, "imm", sysdate(), "Math", "dkjsgks", "no"),
-    (3, "fillBlank", 1, "later", sysdate(), "History", "djksnksjbgvshdgbsig", "yes");
+    (1, "fillBlank", 2, "imm", sysdate(), "Math", "dkjsgks", "no"),
+    (2, "fillBlank", 1, "later", sysdate(), "History", "djksnksjbgvshdgbsig", "yes");
