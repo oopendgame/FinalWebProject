@@ -1,14 +1,15 @@
 USE finalProject;
 
-DROP TABLE IF EXISTS score;
+DROP TABLE IF EXISTS quizScore;
  -- remove table if it already exists and start from scratch
 
-CREATE TABLE IF NOT EXISTS score (
+CREATE TABLE IF NOT EXISTS quizScore (
 	score_id int not null auto_increment,
     quiz_id int not null,
     user_id int not null,
     score int default 0,
-    written_time DATETIME,
+    start_time DATETIME,
+    duration int,
     
 	primary key(score_id),
     FOREIGN KEY (user_id) REFERENCES userInfo(user_id),
@@ -18,6 +19,6 @@ CREATE TABLE IF NOT EXISTS score (
 
 
 
-INSERT INTO score(quiz_id, user_id, score, written_time) VALUES
-    (1, 1, 15, sysdate()),
-    (2, 2, 50, sysdate());
+INSERT INTO quizScore(quiz_id, user_id, score, start_time, duration) VALUES
+    (1, 1, 15, sysdate(), 10),
+    (2, 2, 50, sysdate(), 40);
