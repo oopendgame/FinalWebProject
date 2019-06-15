@@ -1,4 +1,4 @@
-package WebPackage;
+package WebPackage.user;
 
 public class userInfo {
 	private int myId;

@@ -1,4 +1,5 @@
-package WebPackage;
+package WebPackage.user;
+
 
 import java.sql.Connection;
 import java.sql.*;
@@ -6,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import WebPackage.database.DBConnection;
 
 public class findUserInfo {	
 	static String account = "root"; // replace with your account
