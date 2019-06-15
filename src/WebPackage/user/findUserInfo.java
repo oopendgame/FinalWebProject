@@ -16,20 +16,8 @@ public class findUserInfo {
 	private Statement stmt;
 	
 	public findUserInfo(){
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection
-						( "jdbc:mysql://" + server, account ,password);
-			stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DBConnection dbc = new DBConnection();
+		con = dbc.getConnection();
 		
 	}
 	public ResultSet ProductsList() {
