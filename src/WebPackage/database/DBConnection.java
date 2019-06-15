@@ -1,4 +1,4 @@
-package WebPackage;
+package WebPackage.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
