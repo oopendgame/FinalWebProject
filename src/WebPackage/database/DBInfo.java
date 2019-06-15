@@ -1,4 +1,4 @@
-package WebPackage;
+package WebPackage.database;
 
 public class DBInfo {
 	public static final String MYSQL_USERNAME = "root";
