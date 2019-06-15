@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 
 input[type=text], select {
@@ -38,6 +39,7 @@ input[type=submit]:hover {
 }
 
 </style>
+</head>
 <body style="background-color:lavender;">
 <center>
 <h3 style="font-size:200%; color:#330066;">Create New Acoount</h3>
@@ -54,7 +56,9 @@ input[type=submit]:hover {
     <input type="text" id="pass" name="password" placeholder="Password"><br><br>
 
 	<label for="bday" style="font-size:130%;">Birthday:</label><br>
+	<form action="/action_page.php">
     <input type="date" name="bday"><br><br>
+    </form>
     <label for="gender" style="font-size:130%;">Gender:</label><br>
     
     <input type="radio" name="gender" value="male" checked> Male
