@@ -22,7 +22,7 @@ public class findUserInfo {
 	public ResultSet UsersList() {
 		ResultSet res = null;
 		try {
-			res = stmt.executeQuery("SELECT * from products");
+			res = stmt.executeQuery("SELECT * from users");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class findUserInfo {
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from products where productid = \"" + id + "\";");
+			res = stmt.executeQuery("SELECT * from users where user_id = \"" + id + "\";");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
 				String userName = res.getString("user_name");
