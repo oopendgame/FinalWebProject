@@ -9,10 +9,22 @@ public class userInfo {
 	private String myEmail;
 	private String myBirthday;
 	private String myGender;
+	private String myRank;
 	
-	public userInfo(String username) {
-		myUserName = username;
-		
+	public userInfo(int id, String userName, String name, String lastName, String img, 
+			String email, String birthday, String gender, String rank) {
+		myId = id;
+		myUserName = userName;
+		myName = name;
+		myLastName = lastName;
+		myImg = img;
+		myEmail = email;
+		myBirthday = birthday;
+		myGender = gender;
+		myRank = rank;
+	}
+	public int getId() {
+		return myId;
 	}
 	public String getUserName() {
 		return myUserName;
@@ -23,6 +35,9 @@ public class userInfo {
 	public String getLastName() {
 		return myLastName;
 	}
+	public String getMyImg() {
+		return myImg;
+	}
 	public String getMyEmail() {
 		return myEmail;
 	}
@@ -31,6 +46,9 @@ public class userInfo {
 	}
 	public String getMyGender() {
 		return myGender;
+	}
+	public String getRank() {
+		return myRank;
 	}
 	
 	
