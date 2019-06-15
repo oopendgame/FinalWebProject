@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS userInfo (
     gender varchar(10) not null,
     img varchar(50),
     rank varchar(20) default 'begginer',
+    
     primary key(user_id)
 );
 
@@ -21,4 +22,5 @@ CREATE TABLE IF NOT EXISTS userInfo (
 
 INSERT INTO userInfo (user_name, first_name, last_name, email, date_of_birth, gender, img, rank) VALUES
     ('achkh17', 'anamaria', 'chkhaidze', 'achkh17@freeuni.edu.ge', sysdate(), 'female', 'bla.jpg', 'beginner'),
+    ('nchanfd17', 'nindo', 'chantudria', 'nchan17@fdreeuni.edu.ge', sysdate(), 'femdale', 'blura.jpg', 'beginner'),
     ('nchan17', 'nino', 'chanturia', 'nchan17@freeuni.edu.ge', sysdate(), 'female', 'blura.jpg', 'beginner');

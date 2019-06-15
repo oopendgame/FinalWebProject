@@ -9,12 +9,14 @@ CREATE TABLE IF NOT EXISTS announcement (
     announcement varchar(500) not null,
     announce_date datetime,
     admin_id int not null,
-    primary key(ann_id)
+    
+    primary key(ann_id),
+    FOREIGN KEY (admin_id) REFERENCES admins(admin_id)
 );
 
 
 
 
 INSERT INTO announcement(title, announcement, announce_date, admin_id) VALUES
-("sfjgkfsj", "sdkjghshfudhsgibdskgbdkghkdregbkdf", sysdate(), 5);
+("sfjgkfsj", "sdkjghshfudhsgibdskgbdkghkdregbkdf", sysdate(), 1);
     
