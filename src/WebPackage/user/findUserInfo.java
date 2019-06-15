@@ -14,10 +14,6 @@ import java.sql.Statement;
 import WebPackage.database.DBConnection;
 
 public class findUserInfo {	
-	static String account = "root"; // replace with your account
-	static String  password = "sudopllp"; // replace with your password
-	static String  server = "localhost";
-	static String database = "mydb"; // replace with your db
 	private Connection con;
 	private Statement stmt;
 	
@@ -26,7 +22,7 @@ public class findUserInfo {
 		con = dbc.getConnection();
 		
 	}
-	public ResultSet ProductsList() {
+	public ResultSet UsersList() {
 		ResultSet res = null;
 		try {
 			res = stmt.executeQuery("SELECT * from products");
