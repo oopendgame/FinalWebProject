@@ -19,7 +19,7 @@ public class findUserInfo {
 		con = dbc.getConnection();
 		
 	}
-	public ResultSet ProductsList() {
+	public ResultSet UsersList() {
 		ResultSet res = null;
 		try {
 			res = stmt.executeQuery("SELECT * from products");
