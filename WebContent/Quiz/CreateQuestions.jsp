@@ -58,8 +58,15 @@
 <br>
  <div class="gap-10"></div>
  
-<button id="Add">add question textbox</button> 
-<button id="Remove">remove question textbox</button>  
+ Add Question:  <br>
+ <textarea name="question" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
+ 
+ Enter Correct Answer: <br>
+ <input type='text' name = "correctAns" size=45 /> <br>
+ 
+ <div class="gap-10"></div>
+<button id="Add">add answer textbox</button> 
+<button id="Remove">remove answer textbox</button>  
     <div id="textboxDiv"></div>  
     <script>  
         $(document).ready(function() {  
