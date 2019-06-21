@@ -37,6 +37,7 @@ public class findQuizInfo {
 		return arr;
 	}
 	
+	
 	public QuizInfo getNewQuiz(ResultSet res) {
 		QuizInfo quiz  = null;
 		try {
@@ -79,10 +80,10 @@ public class findQuizInfo {
 	
 	private void addQuestions(ResultSet rs, QuizInfo quiz) {
 		findQuestionInfo quest = new findQuestionInfo();
-		ArrayList<QuestionInfo> questions = quiz.getQuestions();
-		for (int i = 0; i < questions.size(); i++) {
+		ArrayList<QuestionInfo> arr = quiz.getQuestions();
+		for (int i = 0; i < arr.size(); i++) {
 			try {
-				quest.addQuestion((int)rs.getLong(1), questions.get(i));
+				quest.addQuestion((int)rs.getLong(1), arr.get(i));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
