@@ -1,14 +1,18 @@
 package WebPackage.quiz;
 
-public class QuetionInfo {
+import java.util.ArrayList;
+
+public class QuestionInfo {
 	private int question_id;
 	private String question_type;
 	private String question;
+	private ArrayList<AnswerInfo> ans;
 	
-	public QuetionInfo(int id, String type, String quest) {
+	public QuestionInfo(int id, String type, String quest, ArrayList<AnswerInfo> arr) {
 		question_id = id;
 		question_type = type;
 		question = quest;
+		ans = arr;
 	}
 	
 	public int getQuestionId() {
@@ -33,5 +37,13 @@ public class QuetionInfo {
 
 	public void setQuestion(String quest) {
 		question = quest;
+	}
+	
+	public ArrayList<AnswerInfo> getAnswers() {
+		return ans;
+	}
+
+	public void setAnswers(ArrayList<AnswerInfo> answers) {
+		ans = answers;
 	}
 }

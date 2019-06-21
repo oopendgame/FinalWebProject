@@ -1,6 +1,7 @@
 package WebPackage.quiz;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class QuizInfo {
 	
@@ -14,8 +15,9 @@ public class QuizInfo {
 	public String subj;
 	public String description;
 	public boolean practice_mode;
+	private ArrayList<QuestionInfo> questions;
 	
-	public QuizInfo(int quizId, int authorId, boolean pageNum, boolean random, String name, boolean corr, Date date, String subject, String desc, boolean pract) {
+	public QuizInfo(int quizId, int authorId, boolean pageNum, boolean random, String name, boolean corr, Date date, String subject, String desc, boolean pract, ArrayList<QuestionInfo> arr) {
 		quiz_id = quizId;
 		author_id = authorId;
 		page_num = pageNum;
@@ -26,6 +28,7 @@ public class QuizInfo {
 		subj = subject;
 		description = desc;
 		practice_mode = pract;
+		questions = arr;
 	}
 	
 	public int getQuizId() {
@@ -82,6 +85,14 @@ public class QuizInfo {
 	
 	public void setCorrectionType(boolean corr) {
 		correction_type = corr;
+	}
+	
+	public ArrayList<QuestionInfo> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(ArrayList<QuestionInfo> arr) {
+		questions = arr;
 	}
 	
 	public String getSubject() {

@@ -76,7 +76,7 @@ public class findQuizInfo {
 	}
 	
 	
-	public QuizInfo createQuiz(QuizInfo quiz) {
+	public QuizInfo addQuiz(QuizInfo quiz) {
 		String st = "INSERT INTO quizzes"
 										+ "(author_id, "
 										+ "page_num, "

@@ -19,8 +19,9 @@ public class findAnswerInfo {
 	
 	
 	public void addAnswer(int id, AnswerInfo ans) {
+		String st = "INSERT INTO answers (question_id, answer, correct_ans) VALUES(?, ?, ?)";
 		try {
-			PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO answers (question_id, answer, correct_ans) VALUES(?,?,?)");
+			PreparedStatement preparedStatement = con.prepareStatement(st);
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, ans.getAnswer());
 			preparedStatement.setBoolean(3, ans.getCorrectAns());
@@ -32,22 +33,24 @@ public class findAnswerInfo {
 	
 	
 	public boolean isAnswerCorrect(int id) {
+		String st = "SELECT correct_ans FROM answers where answer_id = " + id;
 		try {
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select correct_ans FROM answers where answer_id = " + id);
+			ResultSet rs = stmt.executeQuery(st);
 			if(rs.next()) return rs.getBoolean("correct_ans");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
-	}
+	} 
 	
 	public ArrayList<AnswerInfo> getAnswers(int id) {
 		ArrayList<AnswerInfo> arr = new ArrayList<AnswerInfo>();
+		String st = "SELECT * FROM answers WHERE qestion_id = " + id;
 		ResultSet rs;
 		try {
 			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery("select * from answers where qestion_id = " + id);
+			rs = stmt.executeQuery(st);
 			while(rs.next()) {
 				int quiz_id = rs.getInt("answer_id");
 				String ans = rs.getString("answer");
