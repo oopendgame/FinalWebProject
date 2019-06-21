@@ -36,15 +36,15 @@ CREATE TABLE IF NOT EXISTS userInfo (
 
 CREATE TABLE IF NOT EXISTS quizzes (
     quiz_id int not null auto_increment,
-    quiz_name varchar(100) not null,
     author_id int not null,
     page_num int default 1,
+    random int default 0,
+    quiz_name varchar(100) not null,
     correction_type varchar(50) default "later",
     creation_date datetime,
     subj varchar(100) not null,
     description varchar(500),
     practice_mode varchar(10) default "yes",
-    random int default 0,
     
     primary key(quiz_id),
 	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
