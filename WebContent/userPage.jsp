@@ -1,5 +1,9 @@
+<%@ page import="WebPackage.user.findUserInfo"%>
+<%@ page import="WebPackage.user.userInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% findUserInfo info = new findUserInfo();
+    userInfo currUser =  info.getMyUser(request.getParameter("userName"));%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +13,7 @@
 	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
 	crossorigin='anonymous'>
 
-<title>Insert title here</title>
+<title>userPage</title>
 </head>
 <style>
     a {
@@ -20,23 +24,27 @@
 </style>
 <body
 	
-	style="background-color:beige;">
+	style="background-color:lavender;">
 	<div style = "width:screen.width;border:1px solid #000;"> 
     <!-- photo frame -->
+    <div class="title-photo">
+      <div style="float:right;border:1px solid #B9B9B9;width:300px;min-height:150px;padding:12.5px;position: relative;margin-bottom: 2em;">
+      <div>
+          <div style="min-height:200px;line-height:200px;text-align:center;">
+  <img style="margin:auto;vertical-align:middle;display:inline; width:300px;height:200px;"src='https://picsum.photos/id/1025/4951/3301'/>        </div>
+          <div class="smaller" style="text-align:center;margin-top: 1em;">
+              <a id="change-title-photo" href="changePhoto.html">Change photo</a>
+          </div>
+      </div>
+  </div>
+  
     
-    <div style="float:right;border:1px solid #B9B9B9;width:280px;min-height:180px;height: 
-    screen.height;padding:12.5px;position: relative;margin-bottom: 2em;">
-        <!-- icon -->
-        <div>
-            <div style="min-height:180px;line-height:100px;text-align:center;">
-            <i style='font-size:200px; margin:auto;vertical-align:middle;display:inline;' class='fas'>&#xf007;</i>   </div>
-        </div>
-        <div class="smaller" style="text-align:center;margin-top: 1em;">
-            <a id="change-title-photo" href="changePhoto.html">Change photo</a>
-        </div>
     </div>
-	<h2> User Name</h2>
-    <font size="6"> <p> Full name  </p> Email: <p> Birthday: </p> Gender: <br> </font>
+	<h2>  <%=currUser.getUserName()%> </h2>
+    <font size="5"> <p>  Full Name: <%=currUser.getName()%>   <%=currUser.getLastName()%></p> 
+    				Email: <%=currUser.getEmail()%>
+    				<p> Birthday: <%=currUser.getBirthday()%></p> Gender: <%=currUser.getGender()%>
+    				<p> Rank : <%=currUser.getRank() %> </font>
     <!-- <p><a href="editInfo.html">edit info</a> </p> -->
     </div>
     <p><a href="messages.jsp" style= a><i class='fas fa-envelope-open-text'> Messages </i></a></p>
