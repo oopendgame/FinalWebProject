@@ -22,36 +22,36 @@ public class QuizInfo {
 		practice_mode = pract;
 	}
 	
-	public int getQuizId(QuizInfo q) {
-		return q.quiz_id;
+	public int getQuizId() {
+		return quiz_id;
 	}
 	
-	public int getAuthorId(QuizInfo q) {
-		return q.author_id;
+	public int getAuthorId() {
+		return author_id;
 	}
 	
-	public int getPageNum(QuizInfo q) {
-		return q.page_num;
+	public int getPageNum() {
+		return page_num;
 	}
 	
-	public String getCreationDate(QuizInfo q) {
-		return q.creation_date;
+	public String getCreationDate() {
+		return creation_date;
 	}
 	
-	public String getCorrectionType(QuizInfo q) {
-		return q.correction_type;
+	public String getCorrectionType() {
+		return correction_type;
 	}
 	
-	public String getSubject(QuizInfo q) {
-		return q.subj;
+	public String getSubject() {
+		return subj;
 	}
 	
-	public String getDecription(QuizInfo q) {
-		return q.description;
+	public String getDecription() {
+		return description;
 	}
 	
-	public String getPractiseMode(QuizInfo q) {
-		return q.practice_mode;
+	public String getPractiseMode() {
+		return practice_mode;
 	}
 	
 }
