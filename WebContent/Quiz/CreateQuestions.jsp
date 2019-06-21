@@ -36,6 +36,7 @@
 
 <meta charset="UTF-8">
 <title>Create New Questions</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 
@@ -46,15 +47,30 @@
   
  <div class="gap-10"></div>
  Choose question type: <br>
+ <select name="QuestionType" onchange='addField(this)'>
  <div class="gap-10"></div>
  
- &#9658; <a href="QuestionResponse.jsp">Question-Response</a><br>
- &#9658; <a href="FillBlank.jsp">Fill in the Blank</a><br>
- &#9658; <a href="MultipleChoice.jsp">Multiple Choice</a><br>
- &#9658; <a href="PictureResponseQuestions.jsp">Picture-Response Questions</a><br>
-
+<option value="0">Fill In The Blank</option>
+<option value="1">Multiple Choice</option>
+<option value="2">Picture Response</option>
+<option value="3">Question Response</option>
+</select>
+<br>
  <div class="gap-10"></div>
- <a href="AllQuestions.jsp">View or Edit Already Created Questions</a><br>
+ 
+<button id="Add">add question textbox</button> 
+<button id="Remove">remove question textbox</button>  
+    <div id="textboxDiv"></div>  
+    <script>  
+        $(document).ready(function() {  
+            $("#Add").on("click", function() {  
+                $("#textboxDiv").append("<div><br><input type='text' size=45 /><br></div>");  
+            });  
+            $("#Remove").on("click", function() {  
+                $("#textboxDiv").children().last().remove();  
+            });  
+        });  
+    </script>
   
 </body>
 </html>
