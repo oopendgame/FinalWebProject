@@ -60,9 +60,11 @@
  
  Add Question:  <br>
  <textarea name="question" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
+ <div class="gap-10"></div>
  
  Enter Correct Answer: <br>
  <input type='text' name = "correctAns" size=45 /> <br>
+ <div class="gap-10"></div>
  
  <div class="gap-10"></div>
 <button id="Add">add answer textbox</button> 
@@ -72,7 +74,7 @@
     	var i = 0;
         $(document).ready(function() {  
             $("#Add").on("click", function() {  
-                $("#textboxDiv").append("<div><br><input type='text' name = 'questions' + i size=45 /><br></div>");  
+                $("#textboxDiv").append("<div><br><input type='text' name = 'questions' size=45 /><br></div>");  
                 i++;
             });  
             $("#Remove").on("click", function() {  
@@ -82,9 +84,8 @@
         });  
     </script>
     
-<br>
-<input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
-
+<br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
+<br><input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
 
 <div class="gap-10"></div>
   <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
