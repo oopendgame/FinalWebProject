@@ -6,16 +6,16 @@ public class QuizInfo {
 	
 	public int quiz_id;
 	public int author_id;
-	public int page_num;
-	public int rand;
+	public boolean page_num;
+	public boolean rand;
 	public String quiz_name;
-	public String correction_type;
+	public boolean correction_type;
 	public Date creation_date;
 	public String subj;
 	public String description;
-	public String practice_mode;
+	public boolean practice_mode;
 	
-	public QuizInfo(int quizId, int authorId, int pageNum, int random, String name, String corr, Date date, String subject, String desc, String pract) {
+	public QuizInfo(int quizId, int authorId, boolean pageNum, boolean random, String name, boolean corr, Date date, String subject, String desc, boolean pract) {
 		quiz_id = quizId;
 		author_id = authorId;
 		page_num = pageNum;
@@ -44,19 +44,19 @@ public class QuizInfo {
 		author_id = authorId;;
 	}
 	
-	public int getPageNum() {
+	public boolean getPageNum() {
 		return page_num;
 	}
 	
-	public void setPageNum(int pages) {
+	public void setPageNum(boolean pages) {
 		page_num = pages;;
 	}
 		
-	public int getRandom() {
+	public boolean getRandom() {
 		return rand;
 	}
 	
-	public void setRandom(int random) {
+	public void setRandom(boolean random) {
 		rand = random;
 	}
 	
@@ -76,11 +76,11 @@ public class QuizInfo {
 		creation_date = date;
 	}
 	
-	public String getCorrectionType() {
+	public boolean getCorrectionType() {
 		return correction_type;
 	}
 	
-	public void setCorrectionType(String corr) {
+	public void setCorrectionType(boolean corr) {
 		correction_type = corr;
 	}
 	
@@ -100,11 +100,11 @@ public class QuizInfo {
 		description = desc;
 	}
 	
-	public String getPractiseMode() {
+	public boolean getPractiseMode() {
 		return practice_mode;
 	}
 	
-	public void setPractiseMode(String prac) {
+	public void setPractiseMode(boolean prac) {
 		practice_mode = prac;
 	}
 	
