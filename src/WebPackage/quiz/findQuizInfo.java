@@ -50,4 +50,9 @@ public class findQuizInfo {
 		}
 		return myQuiz;		
 	}
+	
+	
+	public void addQuiz(Quiz quiz) {
+		
+	}
 }
