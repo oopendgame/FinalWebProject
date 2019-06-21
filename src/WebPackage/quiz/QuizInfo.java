@@ -1,5 +1,7 @@
 package WebPackage.quiz;
 
+import java.sql.Date;
+
 public class QuizInfo {
 	
 	public int quiz_id;
@@ -8,12 +10,12 @@ public class QuizInfo {
 	public int rand;
 	public String quiz_name;
 	public String correction_type;
-	public String creation_date;
+	public Date creation_date;
 	public String subj;
 	public String description;
 	public String practice_mode;
 	
-	public QuizInfo(int quizId, int authorId, int pageNum, int random, String name, String corr, String date, String subject, String desc, String pract) {
+	public QuizInfo(int quizId, int authorId, int pageNum, int random, String name, String corr, Date date, String subject, String desc, String pract) {
 		quiz_id = quizId;
 		author_id = authorId;
 		page_num = pageNum;
@@ -66,11 +68,11 @@ public class QuizInfo {
 		quiz_name = name;
 	}
 	
-	public String getCreationDate() {
+	public Date getCreationDate() {
 		return creation_date;
 	}
 	
-	public void setCreationDate(String date) {
+	public void setCreationDate(Date date) {
 		creation_date = date;
 	}
 	

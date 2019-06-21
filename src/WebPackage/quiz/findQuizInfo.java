@@ -1,6 +1,7 @@
 package WebPackage.quiz;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class findQuizInfo {
 				int rand = res.getInt("random");
 				String name = res.getString("quiz_name");
 				String correction_type = res.getString("correction_type");
-				String creation_date = res.getString("creation_date");
+				Date creation_date = res.getDate("creation_date");
 				String subj = res.getString("subj");
 				String description = res.getString("description");
 				String practice_mode = res.getString("practice_mode");
