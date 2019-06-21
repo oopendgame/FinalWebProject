@@ -51,7 +51,8 @@ public class findQuizInfo {
 				String subj = res.getString("subj");
 				String description = res.getString("description");
 				boolean practice_mode = res.getBoolean("practice_mode");
-				quiz = new QuizInfo(quiz_id, author_id, page_num, rand, name, correction_type, creation_date, subj, description, practice_mode);
+				ArrayList<QuestionInfo> arr = new findQuestionInfo().getQuizQuestions(quiz_id);
+				quiz = new QuizInfo(quiz_id, author_id, page_num, rand, name, correction_type, creation_date, subj, description, practice_mode, arr);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -67,7 +68,7 @@ public class findQuizInfo {
 			stm = con.prepareStatement("SELECT * FROM quizzes WHERE quiz_id = ?;\";");
 			stm.setInt(1, quizId);
 	        ResultSet rs = stm.executeQuery();
-	        if (rs.next()) return getNewQuiz(rs);
+	        return getNewQuiz(rs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +77,21 @@ public class findQuizInfo {
 	}
 	
 	
-	public QuizInfo addQuiz(QuizInfo quiz) {
+	private void addQuestions(ResultSet rs, QuizInfo quiz) {
+		findQuestionInfo quest = new findQuestionInfo();
+		ArrayList<QuestionInfo> questions = quiz.getQuestions();
+		for (int i = 0; i < questions.size(); i++) {
+			try {
+				quest.addQuestion((int)rs.getLong(1), questions.get(i));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public void addQuiz(QuizInfo quiz, int author_id) {
 		String st = "INSERT INTO quizzes"
 										+ "(author_id, "
 										+ "page_num, "
@@ -89,8 +104,8 @@ public class findQuizInfo {
 										+ "practice_mode)"
 										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			PreparedStatement preparedStatement = con.prepareStatement(st);
-			preparedStatement.setInt(1, quiz.getAuthorId());
+			PreparedStatement preparedStatement = con.prepareStatement(st, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, author_id);
 			preparedStatement.setBoolean(2, quiz.getPageNum());
 			preparedStatement.setBoolean(3, quiz.getRandom());
 			preparedStatement.setString(4, quiz.getQuizName());
@@ -101,14 +116,12 @@ public class findQuizInfo {
 			preparedStatement.setBoolean(9, quiz.getPractiseMode());
 			
 			preparedStatement.executeUpdate();
-			ResultSet rs = con.createStatement().executeQuery("SELECT * FROM quizzes ORDER BY quiz_id DESC LIMIT 1;");
-			if(!rs.next()) return null;
-			else return getNewQuiz(rs);			
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if(!rs.next()) addQuestions(rs, quiz);		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	}
 	
 }

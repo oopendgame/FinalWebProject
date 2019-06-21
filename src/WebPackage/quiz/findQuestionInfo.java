@@ -18,11 +18,16 @@ public class findQuestionInfo {
 	}
 	
 	
-	private void addAnswers(QuestionInfo question, int c) {
+	private void addAnswers(QuestionInfo question, ResultSet rs) {
 		findAnswerInfo ans = new findAnswerInfo();
 		ArrayList<AnswerInfo> arr = question.getAnswers();
 		for (int i = 0; i < arr.size(); i++) {
-			ans.addAnswer(c, arr.get(i));
+			try {
+				ans.addAnswer((int)rs.getLong(1), arr.get(i));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -33,15 +38,37 @@ public class findQuestionInfo {
 										+ "question)"
 										+ " VALUES(?, ?, ?)";
 		try {
-			PreparedStatement preparedStatement = con.prepareStatement(st);
+			PreparedStatement preparedStatement = con.prepareStatement(st, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, quiz_id);
 			preparedStatement.setString(2, question.getType());
 			preparedStatement.setString(3, question.getQuestion());
 			preparedStatement.executeUpdate();			
-			ResultSet rs = con.createStatement().executeQuery("SELECT * FROM questions ORDER BY quiz_id DESC LIMIT 1;");     
-	        addAnswers(question, (int)rs.getLong(1));
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+			if(rs.next()) addAnswers(question, rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public ArrayList<QuestionInfo> getQuizQuestions(int id) {
+		String st = "SELECT * FROM questions where quiz_id = " + id;
+		ArrayList<QuestionInfo> questions = new ArrayList<QuestionInfo>();
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(st);
+			while(rs.next()) {
+				findAnswerInfo ans = new findAnswerInfo();
+				int quest_id = rs.getInt("question_id");
+				String type = rs.getString("question_type");
+				String question = rs.getString("question");
+				ArrayList<AnswerInfo> arr = ans.getAnswers(quest_id);
+				QuestionInfo q = new QuestionInfo(quest_id, type, question, arr);
+				questions.add(q);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return questions;
 	}
 }
