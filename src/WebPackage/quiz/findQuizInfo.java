@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
 
@@ -13,23 +14,30 @@ public class findQuizInfo {
 	
 	private Connection con;
 	
-	public findQuizInfo(){
+	public findQuizInfo() {
 		DBConnection dbc = new DBConnection();
 		con = dbc.getConnection();
 	}
 	
-	public ResultSet QuizList() {
+	public ArrayList<QuizInfo> getQuizList() {
+		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
+		Statement statement;
 		try {
-			PreparedStatement stm = con.prepareStatement("SELECT * from quizzes");
-            ResultSet res = stm.executeQuery();
-            return res;
+			String st = "SELECT * FROM quizzes;";
+			statement = con.createStatement();
+			ResultSet res = statement.executeQuery(st);
+			while(res.next()) {
+				QuizInfo cur = getNewQuiz(res);
+				arr.add(cur);
+			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return arr;
 	}
 	
-	public QuizInfo addNewQuiz(ResultSet res) {
+	public QuizInfo getNewQuiz(ResultSet res) {
 		QuizInfo quiz  = null;
 		try {
 			if(res.next()) {
@@ -53,7 +61,22 @@ public class findQuizInfo {
 	}
 	
 	
-	public QuizInfo addQuiz(QuizInfo quiz) {
+	public QuizInfo getQuiz(int quizId) {
+		PreparedStatement stm;
+		try {
+			stm = con.prepareStatement("SELECT * FROM quizzes WHERE quiz_id = ?;\";");
+			stm.setInt(1, quizId);
+	        ResultSet rs = stm.executeQuery();
+	        if (rs.next()) return getNewQuiz(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public QuizInfo createQuiz(QuizInfo quiz) {
 		String st = "INSERT INTO quizzes"
 										+ "(author_id, "
 										+ "page_num, "
@@ -80,25 +103,12 @@ public class findQuizInfo {
 			preparedStatement.executeUpdate();
 			ResultSet rs = con.createStatement().executeQuery("SELECT * FROM quizzes ORDER BY quiz_id DESC LIMIT 1;");
 			if(!rs.next()) return null;
-			else return addNewQuiz(rs);			
+			else return getNewQuiz(rs);			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
