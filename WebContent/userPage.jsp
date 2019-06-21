@@ -31,7 +31,7 @@
       <div style="float:right;border:1px solid #B9B9B9;width:300px;min-height:150px;padding:12.5px;position: relative;margin-bottom: 2em;">
       <div>
           <div style="min-height:200px;line-height:200px;text-align:center;">
-  <img style="margin:auto;vertical-align:middle;display:inline; width:300px;height:200px;"src='https://picsum.photos/id/1025/4951/3301'/>        </div>
+  <img style="margin:auto;vertical-align:middle;display:inline; width:300px;height:200px;"src=<%=currUser.getImg()%>/>        </div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
               <a id="change-title-photo" href="changePhoto.html">Change photo</a>
           </div>
