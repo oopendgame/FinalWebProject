@@ -69,15 +69,25 @@
 <button id="Remove">remove answer textbox</button>  
     <div id="textboxDiv"></div>  
     <script>  
+    	var i = 0;
         $(document).ready(function() {  
             $("#Add").on("click", function() {  
-                $("#textboxDiv").append("<div><br><input type='text' size=45 /><br></div>");  
+                $("#textboxDiv").append("<div><br><input type='text' name = 'questions' + i size=45 /><br></div>");  
+                i++;
             });  
             $("#Remove").on("click", function() {  
                 $("#textboxDiv").children().last().remove();  
+                i--;
             });  
         });  
     </script>
-  
+    
+<br>
+<input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
+
+
+<div class="gap-10"></div>
+  <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
+		
 </body>
 </html>
