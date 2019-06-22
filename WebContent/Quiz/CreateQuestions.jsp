@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ include file="createQuestionsFunc.jsp"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,13 +42,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
-
-<script type="text/javascript">
-
-
-</script>
-
-
 <body  bgcolor="#0AF8D2">
 <h1> <i><font color="blue"> Create New Questions </font></i></h1>
 
@@ -77,7 +73,7 @@
 <button id="Remove">remove answer textbox</button>  
     <div id="textboxDiv"></div>  
     <script>  
-    	var i = 0;
+    	int i = 0;
         $(document).ready(function() {  
             $("#Add").on("click", function() {  
                 $("#textboxDiv").append("<div><br><input type='text' name = 'questions' size=45 /><br></div>");  
