@@ -73,7 +73,6 @@
 <textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 <div class="gap-10"></div>
 </div>
-  
 
 Enter Answers:
 <br>
@@ -87,8 +86,7 @@ Enter Answers:
 <div class="gap-10"></div>
   <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
   
-  
-    <!--
+  <!--
  <div class="gap-10"></div>
 <button id="Add">add answer textbox</button> 
 <button id="Remove">remove answer textbox</button>  
