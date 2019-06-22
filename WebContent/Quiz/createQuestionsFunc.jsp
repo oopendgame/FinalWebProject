@@ -7,23 +7,38 @@
 <script type="text/javascript">
 int counter = 0, questions = 1, answers = 1;
 
-
-function createQuestion() {
-	var newDiv = document.createElement('div');
-	newDiv.innerHTML="Stuff";
-	newDiv.setAttribute('src', 'newDiv');
+function addtextField() {
 	
 }
 
-function addQuestion() {
-	questions++;
-	answers = 1;
-	createQuestion();
+function addAnswer() {
+	answers++;
+	var newQuest = document.createElement('newQuest');
+	newDiv.innerHTML = "newAns";
+	newDiv.setAttribute('src', 'newQuest');
+	document.getElementById('Questions').appendChild(newDiv);
 }
 
+function createQuestion() {
+	var newQuest = document.createElement('newQuest');
+	newDiv.innerHTML = "newQuest";
+	newDiv.setAttribute('src', 'newQuest');
+	document.getElementById('Questions').appendChild(newDiv);
+}
+
+function addQuestion() {
+	createQuestion();
+	questions++;
+	answers = 1;
+}
 
 function removeQuestion(div) {
 	questions--;
+	document.getElementById('Questions').removeChild(div.parentNode);
+}
+
+
+function removeAnswer(div) {
 	document.getElementById('Questions').removeChild(div.parentNode);
 }
 
