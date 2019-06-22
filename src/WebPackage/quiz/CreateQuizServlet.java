@@ -45,7 +45,7 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
-		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + quest + "ans")));
+		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question_" + quest + "ans")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
 		String corrAns = request.getParameter("corrAns");
@@ -63,17 +63,13 @@ public class CreateQuizServlet extends HttpServlet {
 	private ArrayList<QuestionInfo> getQuestions(HttpServletRequest request) {
 		int counter = 0;
 		ArrayList<QuestionInfo> questions = new ArrayList<QuestionInfo>();
-		String type = request.getParameter("type" + (++counter));
+		String type = request.getParameter("type_" + (++counter));
 		while(type != null) {
-			String quest = request.getParameter("question" + counter);
-			if(type.equals("1")) {
-				String blank = request.getParameter("fillBlank" + counter);
-				quest += blank;
-			}
+			String quest = request.getParameter("question_" + counter);
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
 			QuestionInfo cur = new QuestionInfo(0, type, quest, answers); //need to change id
 			questions.add(cur);			
-			type = request.getParameter("type" + (++counter));
+			type = request.getParameter("type_" + (++counter));
 		}		
 		return questions;
 	}
@@ -100,6 +96,6 @@ public class CreateQuizServlet extends HttpServlet {
 		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, pract, questions);
 		findQuizInfo newQuiz = new findQuizInfo();
 		newQuiz.addQuiz(quiz, author_id);			
-		request.getRequestDispatcher("quizDone.jsp").forward(request, response);
+		request.getRequestDispatcher("QuizDone.jsp").forward(request, response);
 	}
 }
