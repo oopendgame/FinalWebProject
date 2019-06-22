@@ -109,7 +109,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
             <div class="form-popup" id="myForm">
-              <form action="/action_page.php" class="form-container">
+              <form action="userPage.jsp" class="form-container">
 
                 <label for="pho"><b>Photo URL</b><p></label>
 
@@ -130,6 +130,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
               }
               function submitForm(){
             	  var dataoriginale = document.getElementById("myForm").value;
+            	  var preparedStatement;
+          			preparedStatement = con.prepareStatement("update userInfo set img =" + dataoriginale + ""  + 
+          					"where userID = " + currUser.getId());
+          			preparedStatement.setString(1, dataoriginale);
+          			preparedStatement.execute();
+          	
               }
             </script>
         </div>
