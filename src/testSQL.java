@@ -3,7 +3,7 @@ import java.sql.*;
 public class testSQL {  
  
 static String account = "root"; // replace with your account
-static String  password = "Archili_archili"; // replace with your password
+static String  password = "sudopllp"; // replace with your password
 static String  server = "localhost";
 static String database = "finalProject"; // replace with your db
 

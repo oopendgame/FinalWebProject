@@ -27,7 +27,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
   right: 9px;
   margin-bottom:10px;
   width: 300px;
@@ -36,7 +35,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  position: fixed;
   right: 9px;
   border: 3px solid #f1f1f1;
   z-index: 9;
@@ -113,7 +111,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <div class="form-popup" id="myForm">
               <form action="/action_page.php" class="form-container">
 
-                <label for="psw"><b>Photo URL</b><p></label>
+                <label for="pho"><b>Photo URL</b><p></label>
 
                 <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
 
@@ -148,7 +146,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' > Your Achievements</i></a></p>
     <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
-    <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
+    <p><a href="./Quiz/CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
     
 </body>
 </html>

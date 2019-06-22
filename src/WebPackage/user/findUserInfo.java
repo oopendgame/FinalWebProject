@@ -1,4 +1,6 @@
 package WebPackage.user;
+
+import WebPackage.database.DBInfo;
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;
@@ -11,9 +13,9 @@ import WebPackage.database.DBConnection;
 public class findUserInfo {	
 	private Connection con;
 	private Statement stmt;
-	
+
 	static String account = "root"; // replace with your account
-	static String  password = "Archili_archili"; // replace with your password
+	static String  password = "sudopllp"; // replace with your password
 	static String  server = "localhost";
 	static String database = "finalProject"; // replace with your db
 	
@@ -51,7 +53,7 @@ public class findUserInfo {
 				String birthday = res.getString("date_of_birth");
 				String gender = res.getString("gender");
 				String img = res.getString("img");
-				String rank = res.getString("ranking");
+				String rank = res.getString("rank");
 				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
 				
 			}
