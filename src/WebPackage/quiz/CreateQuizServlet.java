@@ -45,18 +45,15 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
-		int counter = 0;
 		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + quest + "ans")));
-		ArrayList<String> corrAns = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + quest + "corrAns")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
+		String corrAns = request.getParameter("corrAns");
+		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id
+		answers.add(corr);
+		
 		for(int i = 0; i < ans.size(); i++) {
-			String st = "quest" + quest + "ans" + i;
-			AnswerInfo cur = new AnswerInfo(0, ans.get(i), false);
-			if(corrAns != null && corrAns.get(counter).equals(st)) {
-				counter++;
-				cur = new AnswerInfo(0, ans.get(i), true); //need to change id
-			}
+			AnswerInfo cur = new AnswerInfo(0, ans.get(i), false); //need to change id
 			answers.add(cur);
 		}		
 		return answers;
