@@ -61,9 +61,9 @@ input[type=submit]:hover {
     placeholder="First Name">
     
     <input type="text" id="lname" name="lastname" placeholder="Last Name">
+    <input type="text" id="email" name="email" placeholder="Email"><br>
     
-    <input type="text" id="uname" name="username"
-    placeholder="Username or Email">
+    <input type="text" id="uname" name="username" placeholder="Username">
     
     <input type="password" id="pass" name="password" placeholder="Password"><br>
     <input type="checkbox" onclick="myFunction()">Show Password<br><br><br>
@@ -78,6 +78,7 @@ input[type=submit]:hover {
 	  }
 	}
 	</script>
+	
 
 	<label for="bday" style="font-size:130%;">Birthday:</label><br>
 	

@@ -14,10 +14,10 @@ public class findUserInfo {
 	private Connection con;
 	private Statement stmt;
 
-	static String account = "root"; // replace with your account
-	static String  password = "sudopllp"; // replace with your password
-	static String  server = "localhost";
-	static String database = "finalProject"; // replace with your db
+	String account = DBInfo.MYSQL_USERNAME;
+	String password = DBInfo.MYSQL_PASSWORD;
+	String server = DBInfo.MYSQL_DATABASE_SERVER;
+	String database = DBInfo.MYSQL_DATABASE_NAME;
 	
 	public findUserInfo(){
 		
@@ -53,7 +53,7 @@ public class findUserInfo {
 				String birthday = res.getString("date_of_birth");
 				String gender = res.getString("gender");
 				String img = res.getString("img");
-				String rank = res.getString("rank");
+				String rank = res.getString("ranking");
 				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
 				
 			}
