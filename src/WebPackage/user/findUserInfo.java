@@ -1,5 +1,5 @@
 package WebPackage.user;
-
+import WebPackage.database.DBInfo;
 
 import java.sql.Connection;
 import java.sql.*;
@@ -15,10 +15,10 @@ public class findUserInfo {
 	private Statement stmt;
 	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
 	
-	static String account = "root"; // replace with your account
-	static String  password = "W)jmz~5%fLW?T86C"; // replace with your password
-	static String  server = "localhost";
-	static String database = "finalProject"; // replace with your db
+	static String account = DBInfo.MYSQL_USERNAME; // replace with your account
+	static String  password = DBInfo.MYSQL_PASSWORD; // replace with your password
+	static String  server = DBInfo.MYSQL_DATABASE_SERVER;
+	static String database = DBInfo.MYSQL_DATABASE_NAME ; // replace with your db
 	
 	public findUserInfo(){
 		
