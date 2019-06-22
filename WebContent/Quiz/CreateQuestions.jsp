@@ -74,7 +74,21 @@
 <div class="gap-10"></div>
 </div>
   
-  <!--
+
+Enter Answers:
+<br>
+<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
+</div>
+
+
+<br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
+<br><input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
+
+<div class="gap-10"></div>
+  <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
+  
+  
+    <!--
  <div class="gap-10"></div>
 <button id="Add">add answer textbox</button> 
 <button id="Remove">remove answer textbox</button>  
@@ -98,18 +112,6 @@
     </script>
     
 </div> -->
-
-Enter Answers:
-<br>
-<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
-</div>
-
-
-<br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
-<br><input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
-
-<div class="gap-10"></div>
-  <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
 		
 </body>
 </html>

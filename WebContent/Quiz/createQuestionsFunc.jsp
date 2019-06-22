@@ -4,21 +4,8 @@
 <!DOCTYPE html>
 <html>
 
-
-
-<!--  
 <script type="text/javascript">
 var counter = 0, questions = 1, answers = 1;
-
-
-
-
-
-function addtextField(x) {
-	e.preventDefault();
-    counter++; //text box increment
-    $(wrapper).append('<div class="clonedInput"><input id="data_item_'+ itemIndex++ +'"  type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-}	
 
 function addAnswer() {
 	answers++;
@@ -53,7 +40,7 @@ function removeAnswer(x) {
 
 </script>
 
--->
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
