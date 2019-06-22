@@ -40,6 +40,12 @@
 </head>
 
 
+<script type="text/javascript">
+
+
+</script>
+
+
 <body  bgcolor="#0AF8D2">
 <h1> <i><font color="blue"> Create New Questions </font></i></h1>
 
