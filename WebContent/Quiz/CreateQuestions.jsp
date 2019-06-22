@@ -46,11 +46,11 @@
 <h1> <i><font color="blue"> Create New Questions </font></i></h1>
 
 
-  
  <div class="gap-10"></div>
+ 
+ <div id = "Questions">
  Choose question type: <br>
- <select name="QuestionType" onchange='addField(this)'>
- <div class="gap-10"></div>
+ <select name="QuestionType" onchange='addTextField(this)'>
  
 <option value="0">Fill In The Blank</option>
 <option value="1">Multiple Choice</option>
@@ -73,7 +73,7 @@
 <button id="Remove">remove answer textbox</button>  
     <div id="textboxDiv"></div>  
     <script>  
-    	int i = 0;
+    	var i = 0;
         $(document).ready(function() {  
             $("#Add").on("click", function() {  
                 $("#textboxDiv").append("<div><br><input type='text' name = 'questions' size=45 /><br></div>");  
@@ -86,6 +86,9 @@
         });  
     </script>
     
+</div>
+
+
 <br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
 <br><input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
 

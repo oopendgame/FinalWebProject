@@ -7,9 +7,10 @@
 <script type="text/javascript">
 int counter = 0, questions = 1, answers = 1;
 
-function addtextField() {
+function addtextField(x) {
+	var newFiled = document.getElementById(x.parentNode.id);
 	
-}
+}	
 
 function addAnswer() {
 	answers++;
@@ -32,14 +33,14 @@ function addQuestion() {
 	answers = 1;
 }
 
-function removeQuestion(div) {
+function removeQuestion(x) {
 	questions--;
-	document.getElementById('Questions').removeChild(div.parentNode);
+	document.getElementById('Questions').removeChild(x.parentNode);
 }
 
 
-function removeAnswer(div) {
-	document.getElementById('Questions').removeChild(div.parentNode);
+function removeAnswer(x) {
+	document.getElementById('Questions').removeChild(x.parentNode);
 }
 
 </script>
