@@ -11,10 +11,10 @@ public class checkPassword {
 	
 	private Connection con;
 	private Statement stmt;
-	String account = DBInfo.MYSQL_USERNAME;
-	String password = DBInfo.MYSQL_PASSWORD;
-	String server = DBInfo.MYSQL_DATABASE_SERVER;
-	String database = DBInfo.MYSQL_DATABASE_NAME;
+	String account = "root";
+	String password = "Archili_archili";
+	String server = "localhost";
+	String database = "finalProject";
 	
 	public checkPassword(){
 		
@@ -46,8 +46,6 @@ public class checkPassword {
 				if(pass.next()) {
 					passw = pass.getString("pass");
 				}
-			}else {
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

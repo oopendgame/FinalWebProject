@@ -56,7 +56,7 @@ input[type=submit]:hover {
 <body style="background-color:lavender;">
 <h3 style="font-size:200%; color:#330066; text-align:center">Create New Account</h3>
 
-  <form action="" style="text-align:center">
+  <form action="accountServlet" method="post" style="text-align:center">
     <input type="text" id="fname" name="firstname"
     placeholder="First Name">
     

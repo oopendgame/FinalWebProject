@@ -14,10 +14,10 @@ public class findUserInfo {
 	private Connection con;
 	private Statement stmt;
 
-	String account = DBInfo.MYSQL_USERNAME;
-	String password = DBInfo.MYSQL_PASSWORD;
-	String server = DBInfo.MYSQL_DATABASE_SERVER;
-	String database = DBInfo.MYSQL_DATABASE_NAME;
+	String account = "root";
+	String password = "Archili_archili";
+	String server = "localhost";
+	String database = "finalProject";
 	
 	public findUserInfo(){
 		
@@ -43,7 +43,7 @@ public class findUserInfo {
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from userInfo;");
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \""+ userName + "\";");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
 				String myUserName = res.getString("user_name");
