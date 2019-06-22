@@ -63,7 +63,7 @@ function addAnswer() {
 
 
 function removeQuestion(cur) {
-	questions--;
+	questions--; 
 	document.getElementById('Questions').removeChild(cur.parentNode);
 }
 
