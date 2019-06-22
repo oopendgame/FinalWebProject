@@ -113,7 +113,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <div class="form-popup" id="myForm">
               <form action="/action_page.php" class="form-container">
 
-                <label for="psw"><b>Photo URL</b><p></label>
+                <label for="pho"><b>Photo URL</b><p></label>
 
                 <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
 
