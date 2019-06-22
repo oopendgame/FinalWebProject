@@ -1,14 +1,18 @@
 package WebPackage.quiz;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import WebPackage.database.DBConnection;
 
 /**
  * Servlet implementation class CreateQuizServlet
@@ -40,10 +44,21 @@ public class CreateQuizServlet extends HttpServlet {
 	}
 	
 	
-	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request) {
+	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
 		int counter = 0;
+		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + k + "ans")));
+		ArrayList<String> corrAns = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + k + "corrAns")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
+		for(int i = 0; i < ans.size(); i++) {
+			String st = "quest" + quest + "ans" + i;
+			AnswerInfo cur = new AnswerInfo(0, ans.get(i), false);
+			if(corrAns != null && corrAns.get(counter).equals(st)) {
+				counter++;
+				cur = new AnswerInfo(-1, ans.get(i), true); //need to change id
+			}
+			answers.add(cur);
+		}		
 		return answers;
 	}
 	
@@ -60,9 +75,9 @@ public class CreateQuizServlet extends HttpServlet {
 				st += blank;
 				quest += st;
 			}
-			ArrayList<AnswerInfo> answers = getAnswers(request);
-			
-			
+			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
+			QuestionInfo cur = new QuestionInfo(0, type, quest, answers);
+			questions.add(cur);			
 			type = request.getParameter("type" + (++counter));
 		}		
 		return questions;
@@ -78,7 +93,7 @@ public class CreateQuizServlet extends HttpServlet {
 		int quiz_id = 0; //need to change 
 		String quiz_name = request.getParameter("quiz_name");
 		int author_id = getUserId();
-		Date createDate = new Date((new java.util.Date()).getTime());
+		Date crDate = new Date((new java.util.Date()).getTime());
 		String desc = request.getParameter("description");
 		String subj = request.getParameter("subject");
 		boolean pageNum = request.getParameter("pageNum") != null && request.getParameter("pageNum").equals("one");
@@ -86,8 +101,10 @@ public class CreateQuizServlet extends HttpServlet {
 		boolean corr = request.getParameter("corr")!=null && request.getParameter("corr").equals("imm");
 		boolean pract = request.getParameter("pract")!=null && request.getParameter("pract").equals("true");
 		ArrayList<QuestionInfo> questions = getQuestions(request);
+		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, pract, questions);
+		findQuizInfo newQuiz = new findQuizInfo();
+		newQuiz.addQuiz(quiz, author_id);	
 		
-		
+		request.getRequestDispatcher("quizDone.jsp").forward(request, response);
 	}
-
 }
