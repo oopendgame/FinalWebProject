@@ -1,57 +1,122 @@
 package WebPackage.quiz;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class QuizInfo {
 	
 	public int quiz_id;
 	public int author_id;
-	public int page_num;
-	public String correction_type;
-	public String creation_date;
+	public boolean page_num;
+	public boolean rand;
+	public String quiz_name;
+	public boolean correction_type;
+	public Date creation_date;
 	public String subj;
 	public String description;
-	public String practice_mode;
+	public boolean practice_mode;
+	private ArrayList<QuestionInfo> questions;
 	
-	public QuizInfo(int quizId, int authorId, int pageNum, String corr, String date, String subject, String desc, String pract) {
+	public QuizInfo(int quizId, int authorId, boolean pageNum, boolean random, String name, boolean corr, Date date, String subject, String desc, boolean pract, ArrayList<QuestionInfo> arr) {
 		quiz_id = quizId;
 		author_id = authorId;
 		page_num = pageNum;
+		rand = random;
+		quiz_name = name;
 		correction_type = corr;
 		creation_date = date;
 		subj = subject;
 		description = desc;
 		practice_mode = pract;
+		questions = arr;
 	}
 	
-	public int getQuizId(QuizInfo q) {
-		return q.quiz_id;
+	public int getQuizId() {
+		return quiz_id;
 	}
 	
-	public int getAuthorId(QuizInfo q) {
-		return q.author_id;
+	public void setQuizId(int quizId) {
+		quiz_id = quizId;
 	}
 	
-	public int getPageNum(QuizInfo q) {
-		return q.page_num;
+	public int getAuthorId() {
+		return author_id;
 	}
 	
-	public String getCreationDate(QuizInfo q) {
-		return q.creation_date;
+	public void setAuthorId(int authorId) {
+		author_id = authorId;;
 	}
 	
-	public String getCorrectionType(QuizInfo q) {
-		return q.correction_type;
+	public boolean getPageNum() {
+		return page_num;
 	}
 	
-	public String getSubject(QuizInfo q) {
-		return q.subj;
+	public void setPageNum(boolean pages) {
+		page_num = pages;;
+	}
+		
+	public boolean getRandom() {
+		return rand;
 	}
 	
-	public String getDecription(QuizInfo q) {
-		return q.description;
+	public void setRandom(boolean random) {
+		rand = random;
 	}
 	
-	public String getPractiseMode(QuizInfo q) {
-		return q.practice_mode;
+	public String getQuizName() {
+		return quiz_name;
+	}
+	
+	public void serQuizName(String name) {
+		quiz_name = name;
+	}
+	
+	public Date getCreationDate() {
+		return creation_date;
+	}
+	
+	public void setCreationDate(Date date) {
+		creation_date = date;
+	}
+	
+	public boolean getCorrectionType() {
+		return correction_type;
+	}
+	
+	public void setCorrectionType(boolean corr) {
+		correction_type = corr;
+	}
+	
+	public ArrayList<QuestionInfo> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(ArrayList<QuestionInfo> arr) {
+		questions = arr;
+	}
+	
+	public String getSubject() {
+		return subj;
+	}
+	
+	public void setSubject(String subject) {
+		subj = subject;
+	}
+	
+	public String getDecription() {
+		return description;
+	}
+	
+	public void setDecription(String desc) {
+		description = desc;
+	}
+	
+	public boolean getPractiseMode() {
+		return practice_mode;
+	}
+	
+	public void setPractiseMode(boolean prac) {
+		practice_mode = prac;
 	}
 	
 }

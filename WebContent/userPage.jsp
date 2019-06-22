@@ -1,5 +1,9 @@
+<%@ page import="WebPackage.user.findUserInfo"%>
+<%@ page import="WebPackage.user.userInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% findUserInfo info = new findUserInfo();
+    userInfo currUser =  info.getMyUser(request.getParameter("userName"));%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,34 +13,132 @@
 	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
 	crossorigin='anonymous'>
 
-<title>Insert title here</title>
+<title>userPage</title>
 </head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  right: 9px;
+  margin-bottom:10px;
+  width: 300px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  right: 9px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  width: 300px;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=url] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
 <style>
     a {
      text-decoration: none;
      font-size:30px
     }
+    .info{
+    	font size: "5";
+    	left : 20px;
+    }
     
 </style>
 <body
 	
-	style="background-color:beige;">
+	style="background-color:lavender;">
 	<div style = "width:screen.width;border:1px solid #000;"> 
     <!-- photo frame -->
-    
-    <div style="float:right;border:1px solid #B9B9B9;width:280px;min-height:180px;height: 
-    screen.height;padding:12.5px;position: relative;margin-bottom: 2em;">
-        <!-- icon -->
-        <div>
-            <div style="min-height:180px;line-height:100px;text-align:center;">
-            <i style='font-size:200px; margin:auto;vertical-align:middle;display:inline;' class='fas'>&#xf007;</i>   </div>
+    <div class="title-photo">
+      <div style="float:right;border:1px solid #B9B9B9;width:300px;min-height:150px;padding:12.5px;position: relative;margin-bottom: 2em;">
+      <div>
+          <div style="min-height:200px;line-height:200px;text-align:center;">
+  <img style="margin:auto;vertical-align:middle;display:inline; width:300px;height:200px;"src=<%=currUser.getImg()%>/>        </div>
+          <div class="smaller" style="text-align:center;margin-top: 1em;">
+            <button class="open-button" onclick="openForm()">Change Photo</button>
+            <div class="form-popup" id="myForm">
+              <form action="/action_page.php" class="form-container">
+
+                <label for="psw"><b>Photo URL</b><p></label>
+
+                <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
+
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              </form>
+            </div>
+            <script>
+              function openForm() {
+                document.getElementById("myForm").style.display = "block";
+              }
+
+              function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+              }
+            </script>
         </div>
-        <div class="smaller" style="text-align:center;margin-top: 1em;">
-            <a id="change-title-photo" href="changePhoto.html">Change photo</a>
-        </div>
+      </div>
+  </div>
     </div>
-	<h2> User Name</h2>
-    <font size="6"> <p> Full name  </p> Email: <p> Birthday: </p> Gender: <br> </font>
+	<h2>  <%=currUser.getUserName()%> </h2>
+    <font size="5"; left = 20px> <p>  Full Name: <%=currUser.getName()%>   <%=currUser.getLastName()%></p> 
+    				Email: <%=currUser.getEmail()%>
+    				<p> Birthday: <%=currUser.getBirthday()%></p> Gender: <%=currUser.getGender()%>
+    				<p> Rank : <%=currUser.getRank() %> </font>
     <!-- <p><a href="editInfo.html">edit info</a> </p> -->
     </div>
     <p><a href="messages.jsp" style= a><i class='fas fa-envelope-open-text'> Messages </i></a></p>

@@ -11,31 +11,44 @@ import WebPackage.database.DBConnection;
 public class findUserInfo {	
 	private Connection con;
 	private Statement stmt;
+	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
+	
+	static String account = "root"; // replace with your account
+	static String  password = "sudopllp"; // replace with your password
+	static String  server = "localhost";
+	static String database = "finalProject"; // replace with your db
 	
 	public findUserInfo(){
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
 		
-	}
-	public ResultSet UsersList() {
-		ResultSet res = null;
 		try {
-			res = stmt.executeQuery("SELECT * from products");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection
+						( "jdbc:mysql://" + server, account ,password);
+			stmt = con.createStatement();
+			stmt.executeQuery("USE " + database);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return res;
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
-	public userInfo getMyUser(String id) {
+	public userInfo getMyUser(String userName) {
+		// რადგან login თან არ დამიკავშირებია სატესტოდ nchan17ს გავუტოლე
+		// mysqlში რაღაც მონაცემები შევცვალე ცალკე ჩემს ბაზაში
+		// ბაზაში რამე დეფოლტ სურათი ჩავამატოთ 
+		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from products where productid = \"" + id + "\";");
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
-				String userName = res.getString("user_name");
+				String myUserName = res.getString("user_name");
 				String name = res.getString("first_name");
 				String lastName = res.getString("last_name");
 				String email = res.getString("email");
@@ -43,7 +56,7 @@ public class findUserInfo {
 				String gender = res.getString("gender");
 				String img = res.getString("img");
 				String rank = res.getString("rank");
-				myUser = new userInfo(myId, userName, name, lastName, img, email, birthday, gender, rank);
+				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
 				
 			}
 		} catch (SQLException e) {

@@ -35,16 +35,16 @@ public class userInfo {
 	public String getLastName() {
 		return myLastName;
 	}
-	public String getMyImg() {
+	public String getImg() {
 		return myImg;
 	}
-	public String getMyEmail() {
+	public String getEmail() {
 		return myEmail;
 	}
-	public String getMyBirthday() {
+	public String getBirthday() {
 		return myBirthday;
 	}
-	public String getMyGender() {
+	public String getGender() {
 		return myGender;
 	}
 	public String getRank() {
