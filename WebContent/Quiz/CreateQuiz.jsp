@@ -40,7 +40,7 @@
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
 
-<form action="QuizServlet" method="post"> 
+<form action="CreateQuizServet" method="post"> 
   Quiz Name: <input type="text" name="quiz_name"> <br>
   
   <div class="gap-10"></div>
@@ -64,21 +64,21 @@
   <br>
   
   <div class="gap-10"></div>
-  One page<input type="radio" name="1" value="one"> 
-  Multiple Pages <input type="radio" name="1" value="mult"><br>  
+  One page<input type="radio" name="pageNum" value="one"> 
+  Multiple Pages <input type="radio" name="pageNum" value="mult"><br>  
   
   <div class="gap-10"></div>
-  <input type="checkbox" name="check1" value="rand">
+  <input type="checkbox" name="rand" value="true">
   Randomize questions
   <br>
   
   <div class="gap-10"></div>
-  <input type="checkbox" name="check2" value="corr">
+  <input type="checkbox" name="corr" value="imm">
   Immediate Correction
   <br>
   
   <div class="gap-10"></div>
-  <input type="checkbox" name="check3" value="practice">
+  <input type="checkbox" name="pract" value="true">
   Practice Mode Option
   <br>
   

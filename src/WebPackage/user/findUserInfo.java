@@ -15,7 +15,7 @@ public class findUserInfo {
 	private Statement stmt;
 
 	String account = "root";
-	String password = "Archili_archili";
+	String password = "sudopllp";
 	String server = "localhost";
 	String database = "finalProject";
 	
@@ -43,7 +43,7 @@ public class findUserInfo {
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from userInfo where user_name = \""+ userName + "\";");
+			res = stmt.executeQuery("SELECT * from userInfo;");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
 				String myUserName = res.getString("user_name");
@@ -53,7 +53,7 @@ public class findUserInfo {
 				String birthday = res.getString("date_of_birth");
 				String gender = res.getString("gender");
 				String img = res.getString("img");
-				String rank = res.getString("ranking");
+				String rank = res.getString("rank");
 				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
 				
 			}
