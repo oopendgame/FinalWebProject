@@ -129,7 +129,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 document.getElementById("myForm").style.display = "none";
               }
               function submitForm(){
-            	  String str = request.getParameter("photoUrl");
+            	  var dataoriginale = document.getElementById("myForm").value;
               }
             </script>
         </div>
