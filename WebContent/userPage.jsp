@@ -115,17 +115,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
                 <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
 
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn" onclick="submitForm()">Submit</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
               </form>
             </div>
             <script>
+              
               function openForm() {
                 document.getElementById("myForm").style.display = "block";
               }
 
               function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+              }
+              function submitForm(){
+            	  String str = request.getParameter("photoUrl");
               }
             </script>
         </div>
