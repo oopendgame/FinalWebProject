@@ -16,7 +16,7 @@ public class findUserInfo {
 	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
 	
 	static String account = "root"; // replace with your account
-	static String  password = "sudopllp"; // replace with your password
+	static String  password = "W)jmz~5%fLW?T86C"; // replace with your password
 	static String  server = "localhost";
 	static String database = "finalProject"; // replace with your db
 	

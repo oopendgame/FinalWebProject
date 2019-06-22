@@ -48,32 +48,41 @@
 
  <div class="gap-10"></div>
  
- <div id = "Questions">
- Choose question type: <br>
- <select name="QuestionType" onchange='addTextField(this)'>
  
+ <div id = "Questions">
+ <div id = "QuestionType">
+ Choose question type: <br>
+ 
+ 
+ <select name="QuestionType" onchange='addTextField(this)'> 
 <option value="0">Fill In The Blank</option>
 <option value="1">Multiple Choice</option>
 <option value="2">Picture Response</option>
 <option value="3">Question Response</option>
 </select>
+
+
 <br>
- <div class="gap-10"></div>
+<div class="gap-10"></div>
  
  Add Question:  <br>
  <textarea name="question" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
  <div class="gap-10"></div>
  
  Enter Correct Answer: <br>
- <input type='text' name = "correctAns" size=45 /> <br>
- <div class="gap-10"></div>
- 
+<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
+<div class="gap-10"></div>
+</div>
+  
+  <!--
  <div class="gap-10"></div>
 <button id="Add">add answer textbox</button> 
 <button id="Remove">remove answer textbox</button>  
     <div id="textboxDiv"></div>  
     <script>  
-    	var i = 0;
+    
+    
+   	var i = 0;
         $(document).ready(function() {  
             $("#Add").on("click", function() {  
                 $("#textboxDiv").append("<div><br><input type='text' name = 'questions' size=45 /><br></div>");  
@@ -84,8 +93,15 @@
                 i--;
             });  
         });  
+        
+        
     </script>
     
+</div> -->
+
+Enter Answers:
+<br>
+<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 </div>
 
 
