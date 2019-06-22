@@ -40,11 +40,12 @@
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
 
-<form action="QuizServlet" method="post">  <!--need to create QuizServlet   -->
+<form action="QuizServlet" method="post"> 
   Quiz Name: <input type="text" name="quiz_name"> <br>
   
   <div class="gap-10"></div>
-  Description: <textarea rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
+  Description: <textarea name="description" rows="3" cols="50" placeholder="Enter Text Here" required 
+  							style="overflow-y:scroll"> </textarea> <br>
   
   <div class="gap-10"></div>
   Subject: 
