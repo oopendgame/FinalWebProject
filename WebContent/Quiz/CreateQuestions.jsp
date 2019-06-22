@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<!--
+
 <%@ include file="createQuestionsFunc.jsp"%> 
-  -->
+ 
 
 <!DOCTYPE html>
 <html>
@@ -46,39 +46,34 @@
 
 <body  bgcolor="#0AF8D2">
 <h1> <i><font color="blue"> Create New Questions </font></i></h1>
-
-
  <div class="gap-10"></div>
  
  
- <div id = "Questions">
- <div id = "QuestionType">
- Choose question type: <br>
+ <div id = "Questions"> 
+ <div style="text-align:center;border:1px solid red"> Question1 </div> 
+ <div id = "QuestionNum_1">
  
- 
- <select name="type" onchange='addTextField(this)'> 
-<option value="0">Fill In The Blank</option>
+Choose question type: <br> 
+<select name = "type_1" onchange = 'addBlank(this)'> 
 <option value="1">Multiple Choice</option>
+<option value="0">Fill In The Blank</option>
 <option value="2">Picture Response</option>
 <option value="3">Question Response</option>
 </select>
-
 
 <br>
 <div class="gap-10"></div>
  
  Add Question:  <br>
- <textarea name="question" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
+ <textarea name="question_1" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
  <div class="gap-10"></div>
  
  Enter Correct Answer: <br>
-<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
-<div class="gap-10"></div>
+<textarea name="corrAns_1" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 </div>
 
-Enter Answers:
-<br>
-<textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
+Enter Answer:<br>
+<textarea name="quest_1ans" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 </div>
 
 <input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
