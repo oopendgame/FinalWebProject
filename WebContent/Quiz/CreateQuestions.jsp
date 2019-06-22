@@ -54,7 +54,7 @@
  Choose question type: <br>
  
  
- <select name="QuestionType" onchange='addTextField(this)'> 
+ <select name="type" onchange='addTextField(this)'> 
 <option value="0">Fill In The Blank</option>
 <option value="1">Multiple Choice</option>
 <option value="2">Picture Response</option>
