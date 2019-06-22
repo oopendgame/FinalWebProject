@@ -43,7 +43,7 @@ public class loginServlet extends HttpServlet {
 		if(pass.isCorrect(username, password))
             request.getRequestDispatcher("userPage.jsp").forward(request,response);
 		else
-            request.getRequestDispatcher("userPage.jsp").forward(request,response);
+            request.getRequestDispatcher("signUp.jsp").forward(request,response);
 	}
 
 }

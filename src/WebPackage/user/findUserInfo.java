@@ -11,10 +11,9 @@ import WebPackage.database.DBConnection;
 public class findUserInfo {	
 	private Connection con;
 	private Statement stmt;
-	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
 	
 	static String account = "root"; // replace with your account
-	static String  password = "sudopllp"; // replace with your password
+	static String  password = "Archili_archili"; // replace with your password
 	static String  server = "localhost";
 	static String database = "finalProject"; // replace with your db
 	
@@ -38,14 +37,11 @@ public class findUserInfo {
 	}
 
 	public userInfo getMyUser(String userName) {
-		// რადგან login თან არ დამიკავშირებია სატესტოდ nchan17ს გავუტოლე
-		// mysqlში რაღაც მონაცემები შევცვალე ცალკე ჩემს ბაზაში
-		// ბაზაში რამე დეფოლტ სურათი ჩავამატოთ 
 		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			res = stmt.executeQuery("SELECT * from userInfo;");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
 				String myUserName = res.getString("user_name");
@@ -55,7 +51,7 @@ public class findUserInfo {
 				String birthday = res.getString("date_of_birth");
 				String gender = res.getString("gender");
 				String img = res.getString("img");
-				String rank = res.getString("rank");
+				String rank = res.getString("ranking");
 				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
 				
 			}
