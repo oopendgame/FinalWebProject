@@ -42,6 +42,7 @@ public class findUserInfo {
 	public userInfo getMyUser(String userName) {
 		// რადგან login თან არ დამიკავშირებია სატესტოდ nchan17ს გავუტოლე
 		// mysqlში რაღაც მონაცემები შევცვალე ცალკე ჩემს ბაზაში
+		// ბაზაში რამე დეფოლტ სურათი ჩავამატოთ 
 		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
