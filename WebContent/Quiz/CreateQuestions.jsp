@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file="createQuestionsFunc.jsp"%>
+<!--
+<%@ include file="createQuestionsFunc.jsp"%> 
+  -->
 
 <!DOCTYPE html>
 <html>
@@ -79,9 +81,9 @@ Enter Answers:
 <textarea name="corrAns" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 </div>
 
+<input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
 
 <br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
-<br><input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
 
 <div class="gap-10"></div>
   <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>

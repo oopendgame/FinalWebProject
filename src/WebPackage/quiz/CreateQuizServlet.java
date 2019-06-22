@@ -67,10 +67,8 @@ public class CreateQuizServlet extends HttpServlet {
 		while(type != null) {
 			String quest = request.getParameter("question" + counter);
 			if(type.equals("1")) {
-				String st = "#$%$#";
 				String blank = request.getParameter("fillBlank" + counter);
-				st += blank;
-				quest += st;
+				quest += blank;
 			}
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
 			QuestionInfo cur = new QuestionInfo(0, type, quest, answers); //need to change id
