@@ -46,8 +46,8 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
 		int counter = 0;
-		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + k + "ans")));
-		ArrayList<String> corrAns = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + k + "corrAns")));
+		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + quest + "ans")));
+		ArrayList<String> corrAns = new ArrayList<String>(Arrays.asList(request.getParameterValues("question" + quest + "corrAns")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
 		for(int i = 0; i < ans.size(); i++) {
@@ -55,7 +55,7 @@ public class CreateQuizServlet extends HttpServlet {
 			AnswerInfo cur = new AnswerInfo(0, ans.get(i), false);
 			if(corrAns != null && corrAns.get(counter).equals(st)) {
 				counter++;
-				cur = new AnswerInfo(-1, ans.get(i), true); //need to change id
+				cur = new AnswerInfo(0, ans.get(i), true); //need to change id
 			}
 			answers.add(cur);
 		}		
@@ -76,7 +76,7 @@ public class CreateQuizServlet extends HttpServlet {
 				quest += st;
 			}
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
-			QuestionInfo cur = new QuestionInfo(0, type, quest, answers);
+			QuestionInfo cur = new QuestionInfo(0, type, quest, answers); //need to change id
 			questions.add(cur);			
 			type = request.getParameter("type" + (++counter));
 		}		
@@ -97,14 +97,14 @@ public class CreateQuizServlet extends HttpServlet {
 		String desc = request.getParameter("description");
 		String subj = request.getParameter("subject");
 		boolean pageNum = request.getParameter("pageNum") != null && request.getParameter("pageNum").equals("one");
-		boolean rand = request.getParameter("rand")!=null && request.getParameter("rand").equals("true");
-		boolean corr = request.getParameter("corr")!=null && request.getParameter("corr").equals("imm");
-		boolean pract = request.getParameter("pract")!=null && request.getParameter("pract").equals("true");
+		boolean rand = request.getParameter("rand") != null && request.getParameter("rand").equals("true");
+		boolean corr = request.getParameter("corr") != null && request.getParameter("corr").equals("imm");
+		boolean pract = request.getParameter("pract") != null && request.getParameter("pract").equals("true");
 		ArrayList<QuestionInfo> questions = getQuestions(request);
+		
 		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, pract, questions);
 		findQuizInfo newQuiz = new findQuizInfo();
-		newQuiz.addQuiz(quiz, author_id);	
-		
+		newQuiz.addQuiz(quiz, author_id);			
 		request.getRequestDispatcher("quizDone.jsp").forward(request, response);
 	}
 }
