@@ -99,7 +99,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <body
 	
 	style="background-color:lavender;">
-	<div style = "width:screen.width;border:1px solid #000;"> 
+	<div style = "padding:50px;swidth:screen.width;border:1px solid #000;"> 
     <!-- photo frame -->
     <div class="title-photo">
       <div style="float:right;border:1px solid #B9B9B9;width:300px;min-height:150px;padding:12.5px;position: relative;margin-bottom: 2em;">
