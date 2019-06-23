@@ -65,7 +65,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #41ba3a;
+  background-color: #116466;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -107,13 +107,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
 </style>
-<body style="background-color:lavender;padding:50px;">
+<body style="background-color:lavender; 
+							padding-top: 50px; padding-right: 80px; 
+							padding-bottom: 50px; padding-left: 80px;">
 
-	<div style = "padding:50px;swidth:screen.width;border:1px solid #000;"> 
+	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
+							padding-bottom: 50px; padding-left: 100px;
+							swidth:screen.width;border:2px solid #000;"> 
     <!-- photo frame -->
     <div class="title-photo">
-      <div style="float:right;border:1px solid #B9B9B9;min-width:400px;
-      			min-height:200px;padding:12.5px;position: relative;margin-bottom: 2em;">
+      <div style="float:right;border:2px solid #B9B9B9;min-width:400px;
+      			min-height:200px;padding:20px;position: relative;margin-bottom: 2em;">
       <div>
           <div style="min-height:200px;line-height:200px;text-align:center;">
   <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"src=<%=currUser.getImg()%>/>        </div>
@@ -150,7 +154,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </div>
     </div>
 	<h2 style="font-size:28px; color: black">  <%=currUser.getUserName()%> </h2>
-    <p style="font-size:25px; color: #116466; font-weight: bolder"> 
+    <p style="font-size:25px; color: #1f2833; font-weight: bolder"> 
     		Full Name: <%=currUser.getName()%>  <%=currUser.getLastName()%><br><br>
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
