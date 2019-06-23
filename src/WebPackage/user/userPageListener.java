@@ -1,5 +1,6 @@
 package WebPackage.user;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -30,6 +31,9 @@ public class userPageListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
          // TODO Auto-generated method stub
+    	ServletContext sc  = arg0.getServletContext();
+    	findUserInfo us = new findUserInfo();
+    	sc.setAttribute("findUserInfo", us);
     }
 	
 }
