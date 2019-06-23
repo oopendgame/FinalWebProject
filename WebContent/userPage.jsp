@@ -129,8 +129,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 document.getElementById("myForm").style.display = "none";
               }
               function callServlet() {
-                  document.forms[0].action = "userPageServlet";
-                  document.forms[0].submit();
+            	  document.location.action = "userPageServlet"; 
               }
             </script>
         </div>

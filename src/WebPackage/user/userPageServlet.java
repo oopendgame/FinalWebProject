@@ -29,6 +29,12 @@ public class userPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		findUserInfo us = new findUserInfo();
+		String newUrl = request.getParameter("photoUrl");
+		String name = request.getParameter("userName");
+		us.insertUrl(name, newUrl);
+		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
+		dis.forward(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -37,7 +43,6 @@ public class userPageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("1");
 		findUserInfo us = new findUserInfo();
 		String newUrl = request.getParameter("photoUrl");
 		String name = request.getParameter("userName");

@@ -71,8 +71,8 @@ public class findUserInfo {
 	public void insertUrl(String userName, String setUrl) {
 		userName = "nchan17";
 		try {
-			stmt.executeUpdate("update userInfo set img =\"" + setUrl + 
-									" where user_name=\"" + userName + "\";");
+			stmt.executeUpdate("update userInfo set img = '" + setUrl + 
+									"' where user_name='" + userName + "';");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
