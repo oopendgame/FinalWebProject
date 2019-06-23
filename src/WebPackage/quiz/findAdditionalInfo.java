@@ -17,7 +17,27 @@ public class findAdditionalInfo {
 		con = dbc.getConnection();
 	}
 	
-	public ArrayList<QuizInfo> userCreatedQuizes(int id) {
+	public ArrayList<QuizInfo> getUserWrittenQuizzes(int id) {
+		String st = "SELECT quiz_id FROM quizScores where user_id = " + id;
+		ResultSet rs;
+		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
+		findQuizInfo q = new findQuizInfo();
+		try {
+			Statement stmt = con.createStatement();
+			rs = stmt.executeQuery(st);
+			while (rs.next()) {
+				int quiz_id = rs.getInt("quiz_id");
+				QuizInfo qz = q.getQuiz(quiz_id);
+				arr.add(qz);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	
+	
+	public ArrayList<QuizInfo> getUserCreatedQuizzes(int id) {
 		String st = "SELECT quiz_id FROM quizzes WHERE author_id = " + id;
 		ResultSet rs;
 		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
