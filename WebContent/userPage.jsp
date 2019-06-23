@@ -96,16 +96,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
 </style>
-<body
-	
-	style="background-color:lavender;">
+<body style="background-color:lavender;padding:50px;">
+
 	<div style = "padding:50px;swidth:screen.width;border:1px solid #000;"> 
     <!-- photo frame -->
     <div class="title-photo">
-      <div style="float:right;border:1px solid #B9B9B9;width:300px;min-height:150px;padding:12.5px;position: relative;margin-bottom: 2em;">
+      <div style="float:right;border:1px solid #B9B9B9;min-width:400px;
+      			min-height:200px;padding:12.5px;position: relative;margin-bottom: 2em;">
       <div>
           <div style="min-height:200px;line-height:200px;text-align:center;">
-  <img style="margin:auto;vertical-align:middle;display:inline; width:300px;height:200px;"src=<%=currUser.getImg()%>/>        </div>
+  <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"src=<%=currUser.getImg()%>/>        </div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
             <div class="form-popup" id="myForm">
