@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
+import WebPackage.database.DBInfo;
 
 public class findAdditionalInfo {
 	
@@ -73,6 +74,27 @@ public class findAdditionalInfo {
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		}
+		return arr;
+	}
+	
+	
+	public ArrayList<QuizInfo> getPopularQuizzes() {
+		String st = "SELECT quiz_id FROM quizScores GROUP BY quiz_id DESC limit 5";
+		ResultSet rs;
+		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
+		findQuizInfo q = new findQuizInfo();
+		
+		try {
+			Statement stmt = con.createStatement();
+			rs = stmt.executeQuery(st);
+			while (rs.next()) {
+				int quiz_id = rs.getInt("quiz_id");
+				QuizInfo qz = q.getQuiz(quiz_id);
+				arr.add(qz);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return arr;
 	}
