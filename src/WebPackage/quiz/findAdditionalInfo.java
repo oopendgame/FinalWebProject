@@ -75,8 +75,13 @@ public class findAdditionalInfo {
 		return getList(st);
 	}
 	
-	public ArrayList<QuizInfo> getRexentQuizzes() {
+	public ArrayList<QuizInfo> getRecentlyTakenQuizzes() {
 		String st = "SELECT quiz_id FROM quizScores ORDER BY start_time DESC limit 5";
+		return getList(st);
+	}
+	
+	public ArrayList<QuizInfo> getRecentlyCreatedQuizzes() {
+		String st = "SELECT quiz_id FROM quizzes ORDER BY creation_date DESC limit 5";
 		return getList(st);
 	}
 
