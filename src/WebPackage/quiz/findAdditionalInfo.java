@@ -1,6 +1,8 @@
 package WebPackage.quiz;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +17,24 @@ public class findAdditionalInfo {
 	public findAdditionalInfo() {
 		DBConnection dbc = new DBConnection();
 		con = dbc.getConnection();
+	}
+	
+	
+	public void addUserWrittenQuiz(int quiz_id, int user_id, int score, Date start_time, int duration) {
+		String st = "INSERT INTO quizScores (quiz_id, user_id, score, start_time, duration) VALUES(?, ?, ?, ?, ?)";
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = con.prepareStatement(st);
+			preparedStatement.setInt(1, quiz_id);
+			preparedStatement.setInt(2, user_id);
+			preparedStatement.setInt(2, score);
+			preparedStatement.setDate(3, start_time);
+			preparedStatement.setInt(5, duration);
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public ArrayList<QuizInfo> getUserWrittenQuizzes(int id) {
