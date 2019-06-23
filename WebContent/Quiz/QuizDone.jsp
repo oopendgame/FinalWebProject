@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Quiz Created</title>
 </head>
 <body>
 
+<p align="center"><i>Quiz Created</i></p>
 </body>
 </html>

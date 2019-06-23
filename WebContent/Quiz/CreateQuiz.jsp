@@ -88,7 +88,7 @@
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
-  <button class="button onclick="window.location.href = 'QuizDone.jsp';"><i class="fa fa-plus"></i>  Add Quiz</button>
+  <a href="QuizDone.jsp" class="button"><i class="fa fa-plus"></i>Add Quiz</a>
   
 </form>
 
