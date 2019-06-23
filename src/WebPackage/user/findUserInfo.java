@@ -13,7 +13,6 @@ import WebPackage.database.DBConnection;
 public class findUserInfo {	
 	private Connection con;
 	private Statement stmt;
-	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
 	
 	static String account = DBInfo.MYSQL_USERNAME; // replace with your account
 	static String  password = DBInfo.MYSQL_PASSWORD; // replace with your password
@@ -40,9 +39,9 @@ public class findUserInfo {
 	}
 
 	public userInfo getMyUser(String userName) {
-		// რადგან login თან არ დამიკავშირებია სატესტოდ nchan17ს გავუტოლე
-		// mysqlში რაღაც მონაცემები შევცვალე ცალკე ჩემს ბაზაში
-		// ბაზაში რამე დეფოლტ სურათი ჩავამატოთ 
+		// nchan17s gavutole
+		// mysqlში ragac monacemebi shevcvale
+		// bazashi default surati chavamatot
 		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
