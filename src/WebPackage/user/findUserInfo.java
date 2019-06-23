@@ -1,6 +1,6 @@
 package WebPackage.user;
-import WebPackage.database.DBInfo;
 
+import WebPackage.database.DBInfo;
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;
@@ -13,12 +13,11 @@ import WebPackage.database.DBConnection;
 public class findUserInfo {	
 	private Connection con;
 	private Statement stmt;
-	//თავიდან დავაქონექთე და მარტო მაშინ ამოიღო ინფორმაცია. შესაცვლელია...
-	
-	static String account = DBInfo.MYSQL_USERNAME; // replace with your account
-	static String  password = DBInfo.MYSQL_PASSWORD; // replace with your password
-	static String  server = DBInfo.MYSQL_DATABASE_SERVER;
-	static String database = DBInfo.MYSQL_DATABASE_NAME ; // replace with your db
+
+	String account = "root";
+	String password = "sudopllp";
+	String server = "localhost";
+	String database = "finalProject";
 	
 	public findUserInfo(){
 		
@@ -40,14 +39,11 @@ public class findUserInfo {
 	}
 
 	public userInfo getMyUser(String userName) {
-		// რადგან login თან არ დამიკავშირებია სატესტოდ nchan17ს გავუტოლე
-		// mysqlში რაღაც მონაცემები შევცვალე ცალკე ჩემს ბაზაში
-		// ბაზაში რამე დეფოლტ სურათი ჩავამატოთ 
 		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {
-			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			res = stmt.executeQuery("SELECT * from userInfo;");
 			if(res.next()) {
 				int myId = res.getInt("user_id");
 				String myUserName = res.getString("user_name");
