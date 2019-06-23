@@ -38,8 +38,8 @@ public class findAdditionalInfo {
 		}
 	}
 	
-	public ArrayList<QuizInfo> getUserWrittenQuizzes(int id) {
-		String st = "SELECT quiz_id FROM quizScores where user_id = " + id;
+	
+	private ArrayList<QuizInfo> getList(String st) {
 		ResultSet rs;
 		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
 		findQuizInfo q = new findQuizInfo();
@@ -48,55 +48,36 @@ public class findAdditionalInfo {
 			rs = stmt.executeQuery(st);
 			while (rs.next()) {
 				int quiz_id = rs.getInt("quiz_id");
-				QuizInfo qz = q.getQuiz(quiz_id);
-				arr.add(qz);
+				QuizInfo quiz = q.getQuiz(quiz_id);
+				arr.add(quiz);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return arr;
+	}
+	
+	
+	public ArrayList<QuizInfo> getUserWrittenQuizzes(int id) {
+		String st = "SELECT quiz_id FROM quizScores where user_id = " + id;
+		return getList(st);
 	}
 	
 	
 	public ArrayList<QuizInfo> getUserCreatedQuizzes(int id) {
 		String st = "SELECT quiz_id FROM quizzes WHERE author_id = " + id;
-		ResultSet rs;
-		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
-		findQuizInfo q = new findQuizInfo();
-		try {
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(st);
-			while (rs.next()) {
-				int quiz_id = rs.getInt("quiz_id");
-				QuizInfo qz = q.getQuiz(quiz_id);
-				arr.add(qz);
-			}
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		return arr;
+		return getList(st);
 	}
 	
 	
 	public ArrayList<QuizInfo> getPopularQuizzes() {
 		String st = "SELECT quiz_id FROM quizScores GROUP BY quiz_id DESC limit 5";
-		ResultSet rs;
-		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
-		findQuizInfo q = new findQuizInfo();
-		
-		try {
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(st);
-			while (rs.next()) {
-				int quiz_id = rs.getInt("quiz_id");
-				QuizInfo qz = q.getQuiz(quiz_id);
-				arr.add(qz);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return arr;
+		return getList(st);
+	}
+	
+	public ArrayList<QuizInfo> getRexentQuizzes() {
+		String st = "SELECT quiz_id FROM quizScores ORDER BY start_time DESC limit 5";
+		return getList(st);
 	}
 
 }
