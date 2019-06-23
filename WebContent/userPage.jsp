@@ -119,6 +119,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"src=<%=currUser.getImg()%>/>        </div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
+            <center>
             <div class="form-popup" id="myForm">
               <form action="userPageServlet" class="form-container">
 
@@ -129,6 +130,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <button type="submit" class="btn" onclick="callServlet()">Submit</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
               </form>
+              
             </div>
             <script>
               
