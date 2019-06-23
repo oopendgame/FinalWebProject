@@ -84,5 +84,17 @@ public class findAdditionalInfo {
 		String st = "SELECT quiz_id FROM quizzes ORDER BY creation_date DESC limit 5";
 		return getList(st);
 	}
+	
+	public ArrayList<QuizInfo> getMaxScoreInQuiz(int user_id, int quiz_id) {
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " and user_id = " + user_id + " ORDER BY score DESC limit 1";
+		return getList(st);
+	}
+	
+	public ArrayList<QuizInfo> getUserAttempts(int user_id, int quiz_id) {
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " and user_id = " + user_id;
+		return getList(st);
+	}
+	
+	
 
 }
