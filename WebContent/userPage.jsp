@@ -65,7 +65,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: #41ba3a;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -75,9 +75,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
+/* Add a  background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+  background-color: #e27d60;
 }
 
 /* Add some hover effects to buttons */
@@ -87,12 +87,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <style>
     a {
+     padding:60px;
      text-decoration: none;
      font-size:30px
     }
     .info{
     	font size: "5";
     	left : 20px;
+    }
+    .infoDef{
+    	style="font-size:25px; 
+    	color: black; 
+    	font-weight: bolder
+    }
+    infoUser{
+    	style="font-size:25px; 
+    	color: #116466; 
+    	font-weight: bolder
     }
     
 </style>
@@ -111,7 +122,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <div class="form-popup" id="myForm">
               <form action="userPageServlet" class="form-container">
 
-                <label for="pho"><b>Photo URL</b><p></label>
+                <label for="pho"><b>Photo URL</b></label>
 
                 <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
 
@@ -136,14 +147,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
       </div>
   </div>
     </div>
-	<h2>  <%=currUser.getUserName()%> </h2>
-    <font size="5"; left = 20px> <p>  Full Name: <%=currUser.getName()%>   <%=currUser.getLastName()%></p> 
-    				Email: <%=currUser.getEmail()%>
-    				<p> Birthday: <%=currUser.getBirthday()%></p> Gender: <%=currUser.getGender()%>
-    				<p> Rank : <%=currUser.getRank() %> </font>
-    <!-- <p><a href="editInfo.html">edit info</a> </p> -->
+	<h2 style="font-size:28px; color: black">  <%=currUser.getUserName()%> </h2>
+    <p style="font-size:25px; color: #116466; font-weight: bolder"> 
+    		Full Name: <%=currUser.getName()%>  <%=currUser.getLastName()%><br><br>
+    		Email: <%=currUser.getEmail()%><br><br>
+   			Birthday: <%=currUser.getBirthday()%><br><br>
+    		Gender: <%=currUser.getGender()%><br><br>
+   			Rank : <%=currUser.getRank() %> 
+    </p> 
     </div>
-    <p><a href="messages.jsp" style= a><i class='fas fa-envelope-open-text'> Messages </i></a></p>
+    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text'> Messages </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad'>  Challenges </i></a></p>
     <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' > Friend Requests</i></a></p>
     <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam'> Your Friends</i></a></p>
