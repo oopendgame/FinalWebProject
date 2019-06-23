@@ -109,13 +109,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
             <div class="form-popup" id="myForm">
-              <form action="userPage.jsp" class="form-container">
+              <form action="userPageServlet" class="form-container">
 
                 <label for="pho"><b>Photo URL</b><p></label>
 
                 <input type="url" placeholder="Enter Photo URL" name="photoUrl" required>
 
-                <button type="submit" class="btn" onclick="submitForm()">Submit</button>
+                <button type="submit" class="btn" onclick="callServlet()">Submit</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
               </form>
             </div>
@@ -128,14 +128,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
               function closeForm() {
                 document.getElementById("myForm").style.display = "none";
               }
-              function submitForm(){
-            	  var dataoriginale = document.getElementById("myForm").value;
-            	  var preparedStatement;
-          			preparedStatement = con.prepareStatement("update userInfo set img =" + dataoriginale + ""  + 
-          					"where userID = " + currUser.getId());
-          			preparedStatement.setString(1, dataoriginale);
-          			preparedStatement.execute();
-          	
+              function callServlet() {
+                  document.forms[0].action = "userPageServlet";
+                  document.forms[0].submit();
               }
             </script>
         </div>

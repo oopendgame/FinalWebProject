@@ -1,6 +1,8 @@
 package WebPackage.user;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +37,13 @@ public class userPageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("1");
+		findUserInfo us = new findUserInfo();
+		String newUrl = request.getParameter("photoUrl");
+		String name = request.getParameter("userName");
+		us.insertUrl(name, newUrl);
+		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
+		dis.forward(request, response);
 	}
 
 }
