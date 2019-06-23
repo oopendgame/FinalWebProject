@@ -100,7 +100,5 @@ public class findAdditionalInfo {
 		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC limit 1";
 		return getList(st);
 	}
-	
-	
 
 }
