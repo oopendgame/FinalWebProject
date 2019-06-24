@@ -44,15 +44,16 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
-		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question_" + quest + "ans")));
+		String[] ans = request.getParameterValues("question_" + quest + "ans");
+		//ArrayList<String> ans = new ArrayList<String>(Arrays.asList());
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
 		String corrAns = request.getParameter("corrAns");
 		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id
 		answers.add(corr);
 		
-		for(int i = 0; i < ans.size(); i++) {
-			AnswerInfo cur = new AnswerInfo(0, ans.get(i), false); //need to change id
+		for(int i = 0; i < ans.length; i++) {
+			AnswerInfo cur = new AnswerInfo(0, ans[i], false); //need to change id
 			answers.add(cur);
 		}		
 		return answers;
@@ -63,7 +64,6 @@ public class CreateQuizServlet extends HttpServlet {
 		int counter = 0;
 		ArrayList<QuestionInfo> questions = new ArrayList<QuestionInfo>();
 		String type = request.getParameter("type_" + (++counter));
-		findQuestionInfo q = new findQuestionInfo();
 		while(type != null) {
 			String quest = request.getParameter("question_" + counter);
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
