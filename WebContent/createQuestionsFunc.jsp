@@ -14,7 +14,7 @@ function newQuestion() {
 					 '<div style="text-align:center;border:1px solid red"> Question ' + questions + '</div>'+
 					 
 					 '<div id = "QuestionNum_' + questions + '">'+					 
-					'Choose question type: <br>'+
+					'Choose question type: <br>'+ 
 					'<select name = "type_' + questions +
 					'"><option value="1">Multiple Choice</option>'+
 					'<option value="0">Fill In The Blank</option>'+
