@@ -53,8 +53,8 @@ public class findUserInfo {
 				String birthday = res.getString("date_of_birth");
 				String gender = res.getString("gender");
 				String img = res.getString("img");
-				String rank = res.getString("rank");
-				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, rank);
+				String ranking = res.getString("ranking");
+				myUser = new userInfo(myId, myUserName, name, lastName, img, email, birthday, gender, ranking);
 				
 			}
 		} catch (SQLException e) {

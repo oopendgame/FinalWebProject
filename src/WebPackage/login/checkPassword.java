@@ -12,7 +12,7 @@ public class checkPassword {
 	private Connection con;
 	private Statement stmt;
 	String account = "root";
-	String password = "Archili_archili";
+	String password = "sudopllp";
 	String server = "localhost";
 	String database = "finalProject";
 	
