@@ -82,7 +82,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <style>
     a {
-     padding:60px;
      text-decoration: none;
      font-size:30px
     }
@@ -115,7 +114,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
       			min-height:200px;padding:20px;position: relative;margin-bottom: 2em;">
       <div>
           <div style="min-height:200px;line-height:200px;text-align:center;">
-  <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"src=<%=currUser.getImg()%>/>        </div>
+  <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"
+  src=<%=currUser.getImg()%>/>
+  			</div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
             <center>
@@ -156,14 +157,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
    			Rank : <%=currUser.getRank() %> 
     </p> 
     </div>
-    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text'> Messages </i></a></p>
-    <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad'>  Challenges </i></a></p>
-    <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' > Friend Requests</i></a></p>
-    <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam'> Your Friends</i></a></p>
-    <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' > Your Achievements</i></a></p>
+    <div>
+    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Messages </i></a></p>
+    <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
+    <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> Friend Requests</i></a></p>
+    <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends</i></a></p>
+    <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
     <p><a href="./Quiz/CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
-    
+    </div>
 </body>
 </html>
