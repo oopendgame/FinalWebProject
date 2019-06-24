@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS quizzes (
 	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
 );
 
+INSERT INTO quizzes (author_id, page_num, random, quiz_name, correction_type, creation_date, subj, description, practice_mode) VALUES
+    (1, 2, 0, "fdgdf", 0, sysdate(), "ffgd", "dsgsdkj", 1);
 
 CREATE TABLE IF NOT EXISTS announcements (
 	ann_id int not null auto_increment,

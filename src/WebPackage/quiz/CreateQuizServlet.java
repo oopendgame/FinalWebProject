@@ -82,7 +82,7 @@ public class CreateQuizServlet extends HttpServlet {
 		
 		int quiz_id = 0; //need to change 
 		String quiz_name = request.getParameter("quiz_name");
-		int author_id = 0;//getUserId();
+		int author_id = 1;//getUserId();
 		Date crDate = new Date((new java.util.Date()).getTime());
 		String desc = request.getParameter("description");
 		String subj = request.getParameter("subject");
