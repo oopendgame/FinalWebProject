@@ -15,7 +15,7 @@ function newQuestion() {
 					 
 					 '<div id = "Question_' + questions + '">'+					 
 					'Choose question type: <br>'+
-					'<select name = "type_' + questions + '" onchange =\'addBlank(this)\'>'+
+					'<select name = "type_' + questions +
 					'<option value="1">Multiple Choice</option>'+
 					'<option value="0">Fill In The Blank</option>'+
 					'<option value="2">Picture Response</option>'+

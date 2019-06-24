@@ -39,9 +39,6 @@ public class findUserInfo {
 	}
 
 	public userInfo getMyUser(String userName) {
-		// nchan17s gavutole
-		// mysqlში ragac monacemebi shevcvale
-		// bazashi default surati chavamatot
 		userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
