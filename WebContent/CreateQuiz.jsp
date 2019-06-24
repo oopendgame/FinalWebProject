@@ -31,12 +31,13 @@
 		
 <meta charset="UTF-8">
 <title>Create New Quiz</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
+
 <body  bgcolor="#0AF8D2">
+
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
 
@@ -45,9 +46,9 @@
   
   <div class="gap-10"></div>
   Description: <textarea name="description" rows="3" cols="50" placeholder="Enter Text Here" required 
-  							style="overflow-y:scroll"> </textarea> <br>
-  
+  							style="overflow-y:scroll"> </textarea> <br>  
   <div class="gap-10"></div>
+  
   Subject: 
   <select name="subject">
     <option value="history">History</option>
@@ -88,10 +89,12 @@
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
-  <a href="QuizDone.jsp" class="button"><i class="fa fa-plus"></i>Add Quiz</a>
-  
+  <input type="submit" name="submit" value="submit" action = "QuizDone.jsp"/>
+  <a href="QuizDone.jsp" class="button" type="submit" name="submit" value="submit"><i class="fa fa-plus"></i>Add Quiz</a>
+
 </form>
 
-</div>
+ </div> 
+ 
 </body>
 </html>

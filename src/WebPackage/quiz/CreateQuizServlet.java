@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import WebPackage.database.DBConnection;
 
 /**
  * Servlet implementation class CreateQuizServlet
@@ -79,7 +78,7 @@ public class CreateQuizServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("here\n");
+		System.out.println("hereeeeeeeeeeeee");
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
