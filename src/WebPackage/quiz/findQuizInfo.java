@@ -17,12 +17,11 @@ public class findQuizInfo {
 	private Connection con;
 	
 	public findQuizInfo() {
-		con = DBConnection.getConnection();
+		//con = DBConnection.getConnection();
 		//DBConnection dbc = new DBConnection();
 		//con = dbc.getConnection();
-	}
-	
-	public ArrayList<QuizInfo> getQuizList() {
+		
+		System.out.println("creting\n");
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection( "jdbc:mysql://" + DBInfo.MYSQL_DATABASE_SERVER,
@@ -33,7 +32,9 @@ public class findQuizInfo {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-        
+	}
+	
+	public ArrayList<QuizInfo> getQuizList() {        
 		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
 		Statement statement;
 		try {
@@ -107,6 +108,7 @@ public class findQuizInfo {
 	
 	
 	public void addQuiz(QuizInfo quiz, int author_id) {
+		System.out.println("adding\n");
 		String st = "INSERT INTO quizzes"
 										+ "(author_id, "
 										+ "page_num, "

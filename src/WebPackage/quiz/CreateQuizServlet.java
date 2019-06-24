@@ -33,7 +33,6 @@ public class CreateQuizServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("ksjdfgnfskj\n");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
@@ -78,13 +77,12 @@ public class CreateQuizServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("hereeeeeeeeeeeee");
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
 		int quiz_id = 0; //need to change 
 		String quiz_name = request.getParameter("quiz_name");
-		int author_id = getUserId();
+		int author_id = 0;//getUserId();
 		Date crDate = new Date((new java.util.Date()).getTime());
 		String desc = request.getParameter("description");
 		String subj = request.getParameter("subject");
