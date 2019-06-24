@@ -65,7 +65,7 @@ public class findUserInfo {
 		
 	}
 	public void insertUrl(String userName, String setUrl) {
-		userName = "nchan17";
+		//userName = "nchan17";
 		try {
 			stmt.executeUpdate("update userInfo set img = '" + setUrl + 
 									"' where user_name='" + userName + "';");

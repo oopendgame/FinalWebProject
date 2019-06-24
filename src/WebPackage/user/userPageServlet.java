@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
+
 /**
  * Servlet implementation class userPageServlet
  */
@@ -31,7 +34,8 @@ public class userPageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		findUserInfo us = new findUserInfo();
 		String newUrl = request.getParameter("photoUrl");
-		String name = request.getParameter("userName");
+		LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		String name = currInfo.getUserName();
 		us.insertUrl(name, newUrl);
 		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
 		dis.forward(request, response);
@@ -45,7 +49,8 @@ public class userPageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		findUserInfo us = new findUserInfo();
 		String newUrl = request.getParameter("photoUrl");
-		String name = request.getParameter("userName");
+		LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		String name = currInfo.getUserName();
 		us.insertUrl(name, newUrl);
 		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
 		dis.forward(request, response);
