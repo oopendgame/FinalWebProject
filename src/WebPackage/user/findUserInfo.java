@@ -39,7 +39,7 @@ public class findUserInfo {
 	}
 
 	public userInfo getMyUser(String userName) {
-		userName = "nchan17";
+		//userName = "nchan17";
 		ResultSet res = null;
 		userInfo myUser  = null;
 		try {

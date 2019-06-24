@@ -1,7 +1,6 @@
 package WebPackage.login;
 
 import java.io.IOException;
-import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -50,7 +49,9 @@ public class accountServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String uname = request.getParameter("username");
 		String passw = request.getParameter("password");
-		String bday = request.getParameter("bday");
+		String bday = "0000-00-00";
+		String date = request.getParameter("bday");
+		if(!date.isEmpty()) bday = date;
 		String gender = request.getParameter("gender");
 		
 		Connection con;
@@ -60,20 +61,32 @@ public class accountServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection
-					( "jdbc:mysql://localhost:3306/finalProject", account ,password);
+					( "jdbc:mysql://localhost:3306/finalProject", account, password);
 			stmt = con.createStatement();
-			stmt.executeUpdate("insert into userInfo (user_name, first_name, last_name, email, date_of_birth, gender, img) "
-					+ "values ('"+uname+"', '"+fname+"', '"+lname+"',"
-					+ " '"+email+"', '"+bday+"', '"+gender+"', null)");
 			
 			ResultSet user = null;
 			user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + uname + "\";");
-			if(user.next()) {
-				id = user.getInt("user_id");
+			if(user.next()) request.getRequestDispatcher("nameTaken.jsp").forward(request,response);
+			else {	
+				stmt.executeUpdate("insert into userInfo (user_name, first_name, last_name, email, date_of_birth, gender, img) "
+						+ "values ('"+uname+"', '"+fname+"', '"+lname+"',"
+						+ " '"+email+"', '"+bday+"', '"+gender+"', null)");
+				
+				user = null;
+				user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + uname + "\";");
+				if(user.next()) {
+					id = user.getInt("user_id");
+				}
+				
+				stmt.executeUpdate("insert into passwords (user_id, pass) "
+						+ "values ('"+id+"', '"+passw+"')");
+				
+				LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+				log.setUserName(uname);
+				log.setId(id);
+				
+				request.getRequestDispatcher("userPage.jsp").forward(request,response);
 			}
-			
-			stmt.executeUpdate("insert into passwords (user_id, pass) "
-					+ "values ('"+id+"', '"+passw+"')");
 		} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -81,12 +94,5 @@ public class accountServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
-		
-		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-		log.setUserName(uname);
-		log.setId(id);
-		
-		request.getRequestDispatcher("userPage.jsp").forward(request,response);
-			
 	}
 }
