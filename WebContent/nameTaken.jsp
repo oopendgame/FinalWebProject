@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Sign Up</title>
+<title>Try Again</title>
 <style>
 
 input[type=text], select {
@@ -71,6 +71,7 @@ input[type=submit]:hover {
     <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
     <input type="email" id="email" name="email" placeholder="Email" required><br>
     
+    <h3 style="font-size:100%; color:#cc0000; text-align:center;">Username Already Exists</h3>
     <input type="text" id="uname" name="username" placeholder="Username" required>
     
     <input type="password" id="pass" name="password" placeholder="Password" required><br>

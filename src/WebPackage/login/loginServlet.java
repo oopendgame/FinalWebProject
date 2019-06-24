@@ -49,6 +49,7 @@ public class loginServlet extends HttpServlet {
 		
 		if(checker.isCorrect(username, pass)) {
 			int id = 0;
+			String name = "";
 			Connection con;
 			Statement stmt;
 			String account = DBInfo.MYSQL_USERNAME;
@@ -62,9 +63,10 @@ public class loginServlet extends HttpServlet {
 				stmt = con.createStatement();
 				stmt.executeQuery("USE " + database);
 				ResultSet user = null;
-				user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\";");
+				user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\" || email = \"" + username + "\";");
 				if(user.next()) {
 					id = user.getInt("user_id");
+					name = user.getString("user_name");
 				}
 			} catch (SQLException e) {
 					e.printStackTrace();
@@ -73,7 +75,7 @@ public class loginServlet extends HttpServlet {
 			}
 			
 			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-			log.setUserName(username);
+			log.setUserName(name);
 			log.setId(id);
 			
             request.getRequestDispatcher("userPage.jsp").forward(request,response);
