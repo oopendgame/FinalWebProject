@@ -15,8 +15,9 @@ public class findQuizInfo {
 	private Connection con;
 	
 	public findQuizInfo() {
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
+		con = DBConnection.getConnection();
+		//DBConnection dbc = new DBConnection();
+		//con = dbc.getConnection();
 	}
 	
 	public ArrayList<QuizInfo> getQuizList() {

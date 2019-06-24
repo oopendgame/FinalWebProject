@@ -40,7 +40,7 @@
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
 
-<form action="CreateQuizServet" method="post"> 
+<form action="CreateQuizServlet" method="post"> 
   Quiz Name: <input type="text" name="quiz_name"> <br>
   
   <div class="gap-10"></div>

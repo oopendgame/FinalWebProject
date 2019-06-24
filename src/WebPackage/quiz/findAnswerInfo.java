@@ -13,8 +13,9 @@ public class findAnswerInfo {
 	private Connection con;
 	
 	public findAnswerInfo(){
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
+		con = DBConnection.getConnection();
+		//DBConnection dbc = new DBConnection();
+		//con = dbc.getConnection();
 	}
 	
 	
