@@ -11,10 +11,10 @@ public class checkPassword {
 	
 	private Connection con;
 	private Statement stmt;
-	String account = "root";
-	String password = "sudopllp";
-	String server = "localhost";
-	String database = "finalProject";
+	private String account = DBInfo.MYSQL_USERNAME;
+	private String password = DBInfo.MYSQL_PASSWORD;
+	private String server = DBInfo.MYSQL_DATABASE_SERVER;
+	private String database = DBInfo.MYSQL_DATABASE_NAME;
 	
 	public checkPassword(){
 		
