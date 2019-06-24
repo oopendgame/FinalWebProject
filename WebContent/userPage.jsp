@@ -1,9 +1,12 @@
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
+<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.login.LogInInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% findUserInfo info = new findUserInfo();
-    userInfo currUser =  info.getMyUser(request.getParameter("userName"));%>
+    LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+    userInfo currUser =  info.getMyUser(currInfo.getUserName());%>
 <!DOCTYPE html>
 <html>
 <head>
