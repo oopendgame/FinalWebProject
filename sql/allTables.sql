@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS userInfo (
     email varchar(50) not null,
     date_of_birth date,
     gender varchar(10) not null,
-    img varchar(50),
-    rank varchar(20) default 'begginer',
+    img varchar(500),
+    ranking varchar(20) default 'begginer',
     
     primary key(user_id)
 );
