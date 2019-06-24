@@ -89,8 +89,7 @@
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
-  <input type="submit" name="submit" value="submit" action = "QuizDone.jsp"/>
-  <a href="QuizDone.jsp" class="button" type="submit" name="submit" value="submit"><i class="fa fa-plus"></i>Add Quiz</a>
+  <input type="submit" name="Add Quiz" value="Add Quiz"/>
 
 </form>
 
