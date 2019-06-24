@@ -47,7 +47,7 @@ public class CreateQuizServlet extends HttpServlet {
 		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("quest_" + quest + "ans")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
-		String corrAns = request.getParameter("corrAns");
+		String corrAns = request.getParameter("corrAns_" + quest);
 		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id
 		answers.add(corr);
 		

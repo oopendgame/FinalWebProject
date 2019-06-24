@@ -95,6 +95,7 @@ public class findQuizInfo {
 	private void addQuestions(ResultSet rs, QuizInfo quiz) {
 		findQuestionInfo quest = new findQuestionInfo();
 		ArrayList<QuestionInfo> arr = quiz.getQuestions();
+		System.out.println(arr.size());
 		for (int i = 0; i < arr.size(); i++) {
 			try {
 				quest.addQuestion((int)rs.getLong(1), arr.get(i));
@@ -132,7 +133,7 @@ public class findQuizInfo {
 			
 			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
-			if(!rs.next()) addQuestions(rs, quiz);		
+			if(rs.next()) addQuestions(rs, quiz);		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

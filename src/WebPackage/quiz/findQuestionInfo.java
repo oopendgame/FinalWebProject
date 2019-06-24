@@ -45,7 +45,6 @@ public class findQuestionInfo {
 	}
 	
 	public void addQuestion(int quiz_id, QuestionInfo question) {
-		System.out.println("tttt");
 		String st = "INSERT INTO questions "
 										+ "(quiz_id, "
 										+ "question_type, "
