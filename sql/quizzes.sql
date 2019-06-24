@@ -17,9 +17,5 @@ CREATE TABLE IF NOT EXISTS quizzes (
 	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
 );
 
-
-
-
-INSERT INTO quizzes (author_id, page_num, correction_type, creation_date, subj, description, practice_mode) VALUES
-    (1, 2, "imm", sysdate(), "Math", "dkjsgks", "no"),
-    (2, 1, "later", sysdate(), "History", "djksnksjbgvshdgbsig", "yes");
+INSERT INTO quizzes (author_id, page_num, random, quiz_name, correction_type, creation_date, subj, description, practice_mode) VALUES
+    (1, 0, 0, "fdgdf", 0, sysdate(), "ffgd", "dsgsdkj", 1);

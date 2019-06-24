@@ -63,11 +63,12 @@ public class CreateQuizServlet extends HttpServlet {
 		int counter = 0;
 		ArrayList<QuestionInfo> questions = new ArrayList<QuestionInfo>();
 		String type = request.getParameter("type_" + (++counter));
+		findQuestionInfo q = new findQuestionInfo();
 		while(type != null) {
 			String quest = request.getParameter("question_" + counter);
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
 			QuestionInfo cur = new QuestionInfo(0, type, quest, answers); //need to change id
-			questions.add(cur);			
+			questions.add(cur);		
 			type = request.getParameter("type_" + (++counter));
 		}		
 		return questions;

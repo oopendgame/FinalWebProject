@@ -1,6 +1,7 @@
 package WebPackage.quiz;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,14 +9,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
+import WebPackage.database.DBInfo;
 
 public class findQuestionInfo {
 	private Connection con;
 	
 	public findQuestionInfo(){
-		con = DBConnection.getConnection();
+		//con = DBConnection.getConnection();
 		//DBConnection dbc = new DBConnection();
 		//con = dbc.getConnection();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection( "jdbc:mysql://" + DBInfo.MYSQL_DATABASE_SERVER,
+							DBInfo.MYSQL_USERNAME, DBInfo.MYSQL_PASSWORD);
+			Statement stmt = con.createStatement();
+			stmt.executeQuery("USE " + DBInfo.MYSQL_DATABASE_NAME);
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	

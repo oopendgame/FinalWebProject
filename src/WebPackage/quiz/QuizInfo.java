@@ -37,7 +37,7 @@ public class QuizInfo {
 	
 	public void setQuizId(int quizId) {
 		quiz_id = quizId;
-	}
+	} 
 	
 	public int getAuthorId() {
 		return author_id;
