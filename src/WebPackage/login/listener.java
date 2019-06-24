@@ -5,6 +5,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import WebPackage.database.DBInfo;
+
 /**
  * Application Lifecycle Listener implementation class listener
  *
@@ -31,9 +33,9 @@ public class listener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0) {
-    	checkPassword check = new checkPassword();
+    	LogInInfo log = new LogInInfo();
     	ServletContext context = arg0.getServletContext();
-    	context.setAttribute("pass", check);
+    	context.setAttribute(DBInfo.Attribute_Name, log);
     }
 	
 }

@@ -1,6 +1,7 @@
 package WebPackage.login;
 
 import java.io.IOException;
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -43,17 +44,19 @@ public class accountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int id = 0;
 		String fname = request.getParameter("firstname");
 		String lname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String uname = request.getParameter("username");
 		String passw = request.getParameter("password");
-		String bday = "1999-01-01";
+		String bday = request.getParameter("bday");
 		String gender = request.getParameter("gender");
+		
 		Connection con;
 		Statement stmt;
-		String account = "root";
-		String password = "Archili_archili";
+		String account = DBInfo.MYSQL_USERNAME;
+		String password = DBInfo.MYSQL_PASSWORD;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection
@@ -64,10 +67,9 @@ public class accountServlet extends HttpServlet {
 					+ " '"+email+"', '"+bday+"', '"+gender+"', null)");
 			
 			ResultSet user = null;
-			String id = "";
 			user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + uname + "\";");
 			if(user.next()) {
-				id = user.getString("user_id");
+				id = user.getInt("user_id");
 			}
 			
 			stmt.executeUpdate("insert into passwords (user_id, pass) "
@@ -79,6 +81,11 @@ public class accountServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
+		
+		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		log.setUserName(uname);
+		log.setId(id);
+		
 		request.getRequestDispatcher("userPage.jsp").forward(request,response);
 			
 	}

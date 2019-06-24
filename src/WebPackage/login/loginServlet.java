@@ -36,7 +36,7 @@ public class loginServlet extends HttpServlet {
 	 */
 //	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		checkPassword pass = (checkPassword)getServletContext().getAttribute("pass");
+		checkPassword pass = new checkPassword();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
