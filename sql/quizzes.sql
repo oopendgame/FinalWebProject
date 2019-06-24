@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS quizzes;
 
 CREATE TABLE IF NOT EXISTS quizzes (
     quiz_id int not null auto_increment,
-    author_id int not null,
+    author_id int not null, 
     page_num int default 1,
     correction_type varchar(50) default "later",
     creation_date datetime,
