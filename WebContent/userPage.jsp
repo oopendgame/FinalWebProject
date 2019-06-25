@@ -106,7 +106,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 							padding-bottom: 50px; padding-left: 80px;">
 
 	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
-							padding-bottom: 50px; padding-left: 100px;
+							padding-bottom: 100px; padding-left: 100px;
 							swidth:screen.width;border:2px solid #000;"> 
     <!-- photo frame -->
     <div class="title-photo">
@@ -114,7 +114,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
       			min-height:200px;padding:20px;position: relative;margin-bottom: 2em;">
       <div>
           <div style="min-height:200px;line-height:200px;text-align:center;">
-  <img style="margin:auto;vertical-align:middle;display:inline; width:350px;height:220px;"
+  <img style="margin:auto;vertical-align:middle;display:inline; width:320px;height:300px;"
   src=<%=currUser.getImg()%>/>
   			</div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
