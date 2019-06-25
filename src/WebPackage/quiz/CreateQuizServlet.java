@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
+
 
 /**
  * Servlet implementation class CreateQuizServlet
@@ -38,8 +41,8 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private int getUserId() {
-		int id = (int) getServletContext().getAttribute("...");
-		return id;
+		LogInInfo ragaca = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		return ragaca.getId();
 	}
 	
 	
