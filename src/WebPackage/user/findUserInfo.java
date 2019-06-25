@@ -76,11 +76,11 @@ public class findUserInfo {
 		}
 		
 	}
-	public String friendStatus(String userName1, String userName2) {
+	public String getFriendStatus(String userName1, String userName2) {
 		ResultSet res = null;
 		int userId1 = 0;
 		int userId2 = 0;
-		String status;
+		String status = "";
 		try {
 			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName1 + "\";");
 			if(res.next()) {
@@ -107,7 +107,7 @@ public class findUserInfo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		return status;
 		
 	}
 	
