@@ -16,7 +16,7 @@
 	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
 	crossorigin='anonymous'>
 
-<title>userPage</title>
+<title><%=currUser.getUserName()%></title>
 </head>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
