@@ -116,7 +116,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <div style="min-height:200px;line-height:200px;text-align:center;">
   <img style="margin:auto;vertical-align:middle;display:inline; 
   				width:300px;height:300px; object-fit: cover;"
-  src=<%=currUser.getImg()%>/>
+  src=<%=currUser.getImg()%> />
   			</div>
           <div class="smaller" style="text-align:center;margin-top: 1em;">
             <button class="open-button" onclick="openForm()">Change Photo</button>
