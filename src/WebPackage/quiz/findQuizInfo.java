@@ -95,7 +95,6 @@ public class findQuizInfo {
 	private void addQuestions(ResultSet rs, QuizInfo quiz) {
 		findQuestionInfo quest = new findQuestionInfo();
 		ArrayList<QuestionInfo> arr = quiz.getQuestions();
-		System.out.println(arr.size());
 		for (int i = 0; i < arr.size(); i++) {
 			try {
 				quest.addQuestion((int)rs.getLong(1), arr.get(i));

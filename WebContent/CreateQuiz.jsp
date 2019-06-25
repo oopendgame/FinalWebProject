@@ -87,57 +87,13 @@
   Practice Mode Option
   <br>
   
-<!--   <div class="gap-10"></div>
-  <i style="font-size:24px" class="fa">&#xf059;</i>
-  <a href="CreateQuestions.jsp" style="text-decoration: none">Add Questions</a> -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
   <div class="gap-10"></div>
   
-  <h1> <i><font color="blue"> Create New Questions </font></i></h1>
- <div class="gap-10"></div>
- 
- 
- <div id = "Questions"> 
- <div style="text-align:center;border:1px solid red"> Question1 </div> 
- <div id = "QuestionNum_1">
- 
-Choose question type: <br> 
-<select name = "type_1"> 
-<option value="1">Multiple Choice</option>
-<option value="0">Fill In The Blank</option>
-<option value="2">Picture Response</option>
-<option value="3">Question Response</option>
-</select>
 
-<br>
-<div class="gap-10"></div>
- 
- Add Question:  <br>
- <textarea name="question_1" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br>
- <div class="gap-10"></div>
- 
- Enter Correct Answer: <br>
-<textarea name="corrAns_1" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
-</div>
-
-Enter Answer:<br>
-<textarea name="quest_1ans" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
-</div>
-
-<input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
-
-<br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
+<%@ include file="CreateQuestions.jsp"%>
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
