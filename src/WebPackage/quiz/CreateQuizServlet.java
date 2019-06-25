@@ -41,8 +41,8 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private int getUserId() {
-		LogInInfo ragaca = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-		return ragaca.getId();
+		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		return log.getId();
 	}
 	
 	

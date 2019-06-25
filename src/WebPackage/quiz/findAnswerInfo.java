@@ -15,19 +15,7 @@ public class findAnswerInfo {
 	private Connection con;
 	
 	public findAnswerInfo(){
-		//con = DBConnection.getConnection();
-				//DBConnection dbc = new DBConnection();
-				//con = dbc.getConnection();
-				try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					con = DriverManager.getConnection( "jdbc:mysql://" + DBInfo.MYSQL_DATABASE_SERVER,
-									DBInfo.MYSQL_USERNAME, DBInfo.MYSQL_PASSWORD);
-					Statement stmt = con.createStatement();
-					stmt.executeQuery("USE " + DBInfo.MYSQL_DATABASE_NAME);
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+		con = DBConnection.getConnection();
 	}
 	
 	
