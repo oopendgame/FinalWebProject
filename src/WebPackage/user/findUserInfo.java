@@ -76,6 +76,40 @@ public class findUserInfo {
 		}
 		
 	}
+	public String friendStatus(String userName1, String userName2) {
+		ResultSet res = null;
+		int userId1 = 0;
+		int userId2 = 0;
+		String status;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName1 + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName2 + "\";");
+			if(res.next()) {
+				userId2 = res.getInt("user_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user1_id = \"" + userId1 
+					+ "\" and user2_id = \"" + userId2 + "\";");
+			if(res == null || userId1 == 0 || userId2 == 0) {
+				return "not friends";
+			}
+			if(res.next()) {
+				status = res.getString("friends_satus");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+		
+	}
 	
 	
 }
