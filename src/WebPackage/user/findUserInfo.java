@@ -95,14 +95,12 @@ public class findUserInfo {
 			e.printStackTrace();
 		}
 		try {
-			res = stmt.executeQuery("SELECT * from userInfo where user1_id = \"" + userId1 
-					+ "\" and user2_id = \"" + userId2 + "\";");
-			if(res == null || userId1 == 0 || userId2 == 0) {
+			res = stmt.executeQuery("SELECT * from friends where user1_id = \'" + userId1 
+					+ "\' and user2_id = \'" + userId2 + "\';");
+			if(!res.first()|| userId1 == 0 || userId2 == 0) {
 				return "not friends";
 			}
-			if(res.next()) {
-				status = res.getString("friends_satus");
-			}
+			status = res.getString("friends_status");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
