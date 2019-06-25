@@ -118,6 +118,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   				width:300px;height:300px; object-fit: cover;"
   src=<%=currUser.getImg()%> />
         </div>
+        <div class="smaller" style="text-align:center;margin-top: 1em;">
+            <button class="open-button" onclick="openForm()">Add Friend</button>
+          </div>
       </div>
   </div>
     </div>
@@ -134,7 +137,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div>
     <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Send Message </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> Send Challenge </i></a></p>
-    <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> Send Friend Request</i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Achievements</i></a></p>
     <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Created Quizzes</i></a></p>
     </div>
