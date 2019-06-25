@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ include file="createQuestionsFunc.jsp"%> 
+    
+    
 <!DOCTYPE html>
 <html>
 
@@ -31,23 +35,24 @@
 		
 <meta charset="UTF-8">
 <title>Create New Quiz</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
+
 <body  bgcolor="#0AF8D2">
+
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
 
-<form action="CreateQuizServet" method="post"> 
+<form action="CreateQuizServlet" method="post"> 
   Quiz Name: <input type="text" name="quiz_name"> <br>
   
   <div class="gap-10"></div>
   Description: <textarea name="description" rows="3" cols="50" placeholder="Enter Text Here" required 
-  							style="overflow-y:scroll"> </textarea> <br>
-  
+  							style="overflow-y:scroll"> </textarea> <br>  
   <div class="gap-10"></div>
+  
   Subject: 
   <select name="subject">
     <option value="history">History</option>
@@ -82,16 +87,21 @@
   Practice Mode Option
   <br>
   
-  <div class="gap-10"></div>
-  <i style="font-size:24px" class="fa">&#xf059;</i>
-  <a href="CreateQuestions.jsp" style="text-decoration: none">Add Questions</a>
   
   <div class="gap-10"></div>
   <div class="gap-10"></div>
-  <a href="QuizDone.jsp" class="button"><i class="fa fa-plus"></i>Add Quiz</a>
+  <div class="gap-10"></div>
   
+
+<%@ include file="CreateQuestions.jsp"%>
+  
+  <div class="gap-10"></div>
+  <div class="gap-10"></div>
+  <input type="submit" name="Add Quiz" value="Add Quiz"/>
+
 </form>
 
-</div>
+ </div> 
+ 
 </body>
 </html>

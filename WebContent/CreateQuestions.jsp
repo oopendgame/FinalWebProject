@@ -80,8 +80,6 @@ Enter Answer:<br>
 
 <br><input type="button" id="addQuest" onClick="addQuestion()" value="Add Question" />
 
-<div class="gap-10"></div>
-  <a href="CreateQuiz.jsp" style="text-decoration: none">Finish Quiz</a>
   
   <!--
  <div class="gap-10"></div>

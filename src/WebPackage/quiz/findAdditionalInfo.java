@@ -16,8 +16,7 @@ public class findAdditionalInfo {
 	private Connection con;
 	
 	public findAdditionalInfo() {
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
+		con = DBConnection.getConnection();
 	}
 	
 	

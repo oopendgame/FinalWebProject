@@ -1,6 +1,7 @@
 package WebPackage.quiz;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,13 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
+import WebPackage.database.DBInfo;
 
 public class findQuestionInfo {
 	private Connection con;
 	
 	public findQuestionInfo(){
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
+		con = DBConnection.getConnection();
 	}
 	
 	

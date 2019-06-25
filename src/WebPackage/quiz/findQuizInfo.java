@@ -2,6 +2,7 @@ package WebPackage.quiz;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,17 +10,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
+import WebPackage.database.DBInfo;
 
 public class findQuizInfo {
 	
 	private Connection con;
 	
 	public findQuizInfo() {
-		DBConnection dbc = new DBConnection();
-		con = dbc.getConnection();
+		con = DBConnection.getConnection();
 	}
 	
-	public ArrayList<QuizInfo> getQuizList() {
+	public ArrayList<QuizInfo> getQuizList() {        
 		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
 		Statement statement;
 		try {
@@ -118,7 +119,7 @@ public class findQuizInfo {
 			
 			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
-			if(!rs.next()) addQuestions(rs, quiz);		
+			if(rs.next()) addQuestions(rs, quiz);		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

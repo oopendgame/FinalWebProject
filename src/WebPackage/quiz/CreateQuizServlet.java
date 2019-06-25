@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import WebPackage.database.DBConnection;
+import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
+
 
 /**
  * Servlet implementation class CreateQuizServlet
@@ -39,16 +41,16 @@ public class CreateQuizServlet extends HttpServlet {
 	
 	
 	private int getUserId() {
-		int id = (int) getServletContext().getAttribute("...");
-		return id;
+		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		return log.getId();
 	}
 	
 	
 	private ArrayList<AnswerInfo> getAnswers(HttpServletRequest request, int quest) {
-		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("question_" + quest + "ans")));
+		ArrayList<String> ans = new ArrayList<String>(Arrays.asList(request.getParameterValues("quest_" + quest + "ans")));
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
-		String corrAns = request.getParameter("corrAns");
+		String corrAns = request.getParameter("corrAns_" + quest);
 		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id
 		answers.add(corr);
 		
@@ -68,9 +70,9 @@ public class CreateQuizServlet extends HttpServlet {
 			String quest = request.getParameter("question_" + counter);
 			ArrayList<AnswerInfo> answers = getAnswers(request, counter);
 			QuestionInfo cur = new QuestionInfo(0, type, quest, answers); //need to change id
-			questions.add(cur);			
+			questions.add(cur);		
 			type = request.getParameter("type_" + (++counter));
-		}		
+		}	
 		return questions;
 	}
 
@@ -83,7 +85,7 @@ public class CreateQuizServlet extends HttpServlet {
 		
 		int quiz_id = 0; //need to change 
 		String quiz_name = request.getParameter("quiz_name");
-		int author_id = getUserId();
+		int author_id = 1;//getUserId();
 		Date crDate = new Date((new java.util.Date()).getTime());
 		String desc = request.getParameter("description");
 		String subj = request.getParameter("subject");

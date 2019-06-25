@@ -5,7 +5,7 @@
 <html>
 
 <script type="text/javascript">
-var questions = 1, answers = 1, counter = 0;
+var questions = 1, answers = 1;
 
 function newQuestion() {
 	var cur = document.createElement('div');
@@ -13,10 +13,10 @@ function newQuestion() {
 	cur.innerHTML = '<div class="gap-10"></div><br>'+
 					 '<div style="text-align:center;border:1px solid red"> Question ' + questions + '</div>'+
 					 
-					 '<div id = "Question_' + questions + '">'+					 
-					'Choose question type: <br>'+
+					 '<div id = "QuestionNum_' + questions + '">'+					 
+					'Choose question type: <br>'+ 
 					'<select name = "type_' + questions +
-					'<option value="1">Multiple Choice</option>'+
+					'"><option value="1">Multiple Choice</option>'+
 					'<option value="0">Fill In The Blank</option>'+
 					'<option value="2">Picture Response</option>'+
 					'<option value="3">Question Response</option>'+
@@ -45,7 +45,6 @@ function newQuestion() {
 function addQuestion() {
 	questions++;
 	answers = 1;
-	counter = 0;
 	newQuestion();
 }
 

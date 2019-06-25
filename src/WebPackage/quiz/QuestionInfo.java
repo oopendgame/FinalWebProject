@@ -21,7 +21,7 @@ public class QuestionInfo {
 
 	public void setQuestionId(int id) {
 		question_id = id;
-	}
+	} 
 	
 	public String getType() {
 		return question_type;

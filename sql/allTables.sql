@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS quizzes (
 	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)
 );
 
-
 CREATE TABLE IF NOT EXISTS announcements (
 	ann_id int not null auto_increment,
     title varchar(250),
