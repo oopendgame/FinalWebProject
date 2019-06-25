@@ -106,7 +106,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 							padding-bottom: 50px; padding-left: 80px;">
 
 	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
-							padding-bottom: 100px; padding-left: 100px;
+							padding-bottom: 50px; padding-left: 100px;
 							swidth:screen.width;border:2px solid #000;"> 
     <!-- photo frame -->
     <div class="title-photo">
@@ -155,14 +155,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
     		Gender: <%=currUser.getGender()%><br><br>
-   			Rank : <%=currUser.getRank() %> 
+   			Rank : <%=currUser.getRank() %> <br><br>
+   			Friend of <%=info.getNumFriends(currUser.getUserName())%> users
     </p> 
     </div>
     <div>
     <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Messages </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
     <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> Friend Requests</i></a></p>
-    <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends</i></a></p>
+    <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
