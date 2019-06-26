@@ -162,7 +162,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div>
     <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Messages </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
-    <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> Friend Requests</i></a></p>
+    <p><a href="friendRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
+    <%=info.getNumFriendRequests(currUser.getUserName())%> Friend Requests</i></a></p>
     <p><a href="yourFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>

@@ -128,6 +128,26 @@ public class findUserInfo {
 		}
 		return num;
 	}
+	public int getNumFriendRequests(String userName) {
+		ResultSet res = null;
+		int num = 0;
+		int userId = 0;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT count(*) from friends where user2_id = \"" 
+		+ userId + "\" and friends_status = \"requested\";");
+			if(res.next()) {
+				num = res.getInt("count(*)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
 	
 	
 }
