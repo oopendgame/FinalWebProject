@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS friends (
 	friends_id int not null auto_increment,
     user1_id integer not null,
     user2_id integer not null,
-    friends_satus boolean default 0,
+    friends_status boolean default 0,
     sending_date DateTime,
 
     
