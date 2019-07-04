@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Vector;
@@ -41,6 +42,30 @@ public class findMessageInfo {
 		}
 		
 	}
+	//SELECT * from sms where (user2_id = 3 and user1_id = 1) or (user1_id = 3 and user2_id = 1)
+	//order by  sent_time desc;
+	public ArrayList<messageInfo> getAllMessagesBetween(String userName, int userId2) {
+		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
+		ResultSet res = null;
+		int userId1 = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from sms where (user1_id = \"" 
+		+ userId1 + " and user2_id = \"" + userId2 + ") or (user2_id = \""
+		+ userId1 + " and user1_id = \"" + userId2
+					+ ") order by  sent_time desc;");
+			while(res.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ls;
+	}
 	
 	public String getLatestMessage(String userName, int userId2) {
 		ResultSet res = null;
@@ -50,7 +75,7 @@ public class findMessageInfo {
 			if(res.next()) {
 				userId1 = res.getInt("user_id");
 			}
-			res = stmt.executeQuery("SELECT user1_id from sms where user2_id = \"" 
+			res = stmt.executeQuery("SELECT user1_id from sms where user1_id = \"" 
 		+ userId1 + " and user2_id = \"" + userId2 + " order by  sent_time desc;");
 			if(res.next()) {
 				String message = res.getString("sms");
