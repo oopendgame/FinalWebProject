@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 import WebPackage.database.DBConnection;
 
@@ -39,7 +40,27 @@ public class findMessageInfo {
 		
 	}
 	
-	public void getAllMessages() {
+	public HashMap<Integer, String> getAllMessages(String userName) {
+		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+		ResultSet res = null;
+		int userId = 0;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			//SELECT * from sms where user2_id = 3 order by  sent_time desc;
+			res = stmt.executeQuery("SELECT * from sms where user2_id = \"" 
+		+ userId + "\" and friends_status = \"0\";");
+			if(res.next()) {
+				int user1Id = res.getInt("user1_id");
+				String message = res.getString("sms");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mp;
 	
 	}
 }
