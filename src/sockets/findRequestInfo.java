@@ -38,12 +38,39 @@ public class findRequestInfo {
 	}
 	
 	
+	public ArrayList<requestInfo> getUserFriends(int id) {
+		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
+		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
+					+ "FROM friends "
+					+ "WHERE user2_id = " + id 
+					+ " AND friends_satus = true";
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(st);			
+			int req_id = res.getInt("friends_id");
+			int user1_id = res.getInt("user1_id");
+			int user2_id = res.getInt("user2_id");
+			Date date = res.getDate("sending_date"); 
+			
+			while(res.next()) {
+				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, true, date);
+				req.add(cur);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return req;
+	}
+	
+	
 	public ArrayList<requestInfo> getUserRequests(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
 		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
 					+ "FROM friends "
 					+ "WHERE user2_id = " + id 
-					+ " AND friends_satus = " + 0;
+					+ " AND friends_satus = false";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);			

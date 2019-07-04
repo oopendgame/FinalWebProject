@@ -33,6 +33,10 @@ public class requestInfo {
 		return status;
 	}
 	
+	public void setStatus(boolean fr) {
+		status = fr;
+	}
+	
 	public Date getSentDate() {
 		return sent_date;
 	}
