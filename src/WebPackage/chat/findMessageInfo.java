@@ -58,7 +58,15 @@ public class findMessageInfo {
 		+ userId1 + " and user1_id = \"" + userId2
 					+ ") order by  sent_time desc;");
 			while(res.next()) {
-				
+				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
+				int id = res.getInt("sms_id");
+				int user1 = res.getInt("user1Id");
+				int user2 = res.getInt("user2Id");
+				String sms = res.getString("sms");
+				String condition = res.getString("sms_condition");
+				String time = res.getString("sent_time");
+				messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
+				ls.add(currInfo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
