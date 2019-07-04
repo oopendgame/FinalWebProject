@@ -8,8 +8,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Vector;
 
 import WebPackage.database.DBConnection;
 
@@ -40,9 +42,64 @@ public class findMessageInfo {
 		}
 		
 	}
+	//SELECT * from sms where (user2_id = 3 and user1_id = 1) or (user1_id = 3 and user2_id = 1)
+	//order by  sent_time desc;
+	public ArrayList<messageInfo> getAllMessagesBetween(String userName, int userId2) {
+		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
+		ResultSet res = null;
+		int userId1 = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from sms where (user1_id = \"" 
+		+ userId1 + " and user2_id = \"" + userId2 + ") or (user2_id = \""
+		+ userId1 + " and user1_id = \"" + userId2
+					+ ") order by  sent_time desc;");
+			while(res.next()) {
+				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
+				int id = res.getInt("sms_id");
+				int user1 = res.getInt("user1Id");
+				int user2 = res.getInt("user2Id");
+				String sms = res.getString("sms");
+				String condition = res.getString("sms_condition");
+				String time = res.getString("sent_time");
+				messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
+				ls.add(currInfo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ls;
+	}
 	
-	public HashMap<Integer, String> getAllMessages(String userName) {
-		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+	public String getLatestMessage(String userName, int userId2) {
+		ResultSet res = null;
+		int userId1 = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT user1_id from sms where user1_id = \"" 
+		+ userId1 + " and user2_id = \"" + userId2 + " order by  sent_time desc;");
+			if(res.next()) {
+				String message = res.getString("sms");
+				return message;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	
+	
+	public ArrayList<messageInfo> getMessageUsers(String userName) {
+		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
 		HashSet<Integer> st = new HashSet<Integer>();
 		ResultSet res = null;
 		int userId = 0;
@@ -51,14 +108,20 @@ public class findMessageInfo {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			//SELECT * from sms where user2_id = 3 order by  sent_time desc;
-			res = stmt.executeQuery("SELECT * from sms where user2_id = \"" 
-		+ userId + "\" and friends_status = \"0\";");
+			//SELECT user1_id from sms where user2_id = 3 order by  sent_time desc;
+			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" 
+					+ userId + " or user2_id = \"" + userId + " order by  sent_time desc;");
 			while(res.next()) {
 				int user1Id = res.getInt("user1_id");
 				if(!st.contains(user1Id)) {
-					String message = res.getString("sms");
-					mp.put(user1Id, message);
+					int id = res.getInt("sms_id");
+					int user1 = res.getInt("user1Id");
+					int user2 = res.getInt("user2Id");
+					String sms = res.getString("sms");
+					String condition = res.getString("sms_condition");
+					String time = res.getString("sent_time");
+					messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
+					ls.add(currInfo);
 					st.add(user1Id);
 				}
 				
@@ -67,7 +130,7 @@ public class findMessageInfo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return mp;
+		return ls;
 	
 	}
 }
