@@ -98,8 +98,8 @@ public class findMessageInfo {
 	
 	
 	
-	public Vector<Integer> getMessageUsers(String userName) {
-		Vector<Integer> vc = new Vector<Integer>();
+	public ArrayList<messageInfo> getMessageUsers(String userName) {
+		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
 		HashSet<Integer> st = new HashSet<Integer>();
 		ResultSet res = null;
 		int userId = 0;
@@ -109,12 +109,19 @@ public class findMessageInfo {
 				userId = res.getInt("user_id");
 			}
 			//SELECT user1_id from sms where user2_id = 3 order by  sent_time desc;
-			res = stmt.executeQuery("SELECT user1_id from sms where user2_id = \"" 
-		+ userId + " order by  sent_time desc;");
+			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" 
+					+ userId + " or user2_id = \"" + userId + " order by  sent_time desc;");
 			while(res.next()) {
 				int user1Id = res.getInt("user1_id");
 				if(!st.contains(user1Id)) {
-					vc.addElement(user1Id);
+					int id = res.getInt("sms_id");
+					int user1 = res.getInt("user1Id");
+					int user2 = res.getInt("user2Id");
+					String sms = res.getString("sms");
+					String condition = res.getString("sms_condition");
+					String time = res.getString("sent_time");
+					messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
+					ls.add(currInfo);
 					st.add(user1Id);
 				}
 				
@@ -123,7 +130,7 @@ public class findMessageInfo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return vc;
+		return ls;
 	
 	}
 }
