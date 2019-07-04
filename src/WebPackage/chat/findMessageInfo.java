@@ -108,7 +108,7 @@ public class findMessageInfo {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			//SELECT user1_id from sms where user2_id = 3 order by  sent_time desc;
+			//SELECT * from sms where user2_id = 3 or user1_id = 3 order by  sent_time desc;
 			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" 
 					+ userId + " or user2_id = \"" + userId + " order by  sent_time desc;");
 			while(res.next()) {
