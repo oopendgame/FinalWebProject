@@ -118,7 +118,7 @@ public class findUserInfo {
 				userId = res.getInt("user_id");
 			}
 			res = stmt.executeQuery("SELECT count(*) from friends where user1_id = \"" 
-		+ userId + "\" and friends_status = \"friends\";");
+		+ userId + "\" and friends_status = \"1\";");
 			if(res.next()) {
 				num = res.getInt("count(*)");
 			}
@@ -138,7 +138,7 @@ public class findUserInfo {
 				userId = res.getInt("user_id");
 			}
 			res = stmt.executeQuery("SELECT count(*) from friends where user2_id = \"" 
-		+ userId + "\" and friends_status = \"requested\";");
+		+ userId + "\" and friends_status = \"0\";");
 			if(res.next()) {
 				num = res.getInt("count(*)");
 			}
