@@ -1,16 +1,6 @@
-DROP TABLE IF EXISTS announcements;
-DROP TABLE IF EXISTS admins;
-DROP TABLE IF EXISTS answers;
-DROP TABLE IF EXISTS challenges;
-DROP TABLE IF EXISTS friends;
-DROP TABLE IF EXISTS passwords;
-DROP TABLE IF EXISTS popularity;
-DROP TABLE IF EXISTS questions;
-DROP TABLE IF EXISTS quizScores;
-DROP TABLE IF EXISTS sms;
-DROP TABLE IF EXISTS quizzes;
-DROP TABLE IF EXISTS userInfo;
-
+Drop DATABASE IF  EXISTS finalProject;
+CREATE DATABASE IF NOT EXISTS finalProject;
+USE finalProject;
 
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
