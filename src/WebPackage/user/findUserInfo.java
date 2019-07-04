@@ -76,6 +76,78 @@ public class findUserInfo {
 		}
 		
 	}
+	public String getFriendStatus(String userName1, String userName2) {
+		ResultSet res = null;
+		int userId1 = 0;
+		int userId2 = 0;
+		String status = "";
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName1 + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName2 + "\";");
+			if(res.next()) {
+				userId2 = res.getInt("user_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			res = stmt.executeQuery("SELECT * from friends where user1_id = \'" + userId1 
+					+ "\' and user2_id = \'" + userId2 + "\';");
+			if(!res.first()|| userId1 == 0 || userId2 == 0) {
+				return "not friends";
+			}
+			status = res.getString("friends_status");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return status;
+		
+	}
+	public int getNumFriends(String userName) {
+		ResultSet res = null;
+		int num = 0;
+		int userId = 0;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT count(*) from friends where user1_id = \"" 
+		+ userId + "\" and friends_status = \"friends\";");
+			if(res.next()) {
+				num = res.getInt("count(*)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
+	public int getNumFriendRequests(String userName) {
+		ResultSet res = null;
+		int num = 0;
+		int userId = 0;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT count(*) from friends where user2_id = \"" 
+		+ userId + "\" and friends_status = \"requested\";");
+			if(res.next()) {
+				num = res.getInt("count(*)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
 	
 	
 }
