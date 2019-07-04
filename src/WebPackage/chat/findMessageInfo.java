@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Vector;
 
 import WebPackage.database.DBConnection;
 
@@ -41,8 +42,10 @@ public class findMessageInfo {
 		
 	}
 	
-	public HashMap<Integer, String> getAllMessages(String userName) {
-		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+	
+	
+	public Vector<Integer> getMessageUsers(String userName) {
+		Vector<Integer> vc = new Vector<Integer>();
 		HashSet<Integer> st = new HashSet<Integer>();
 		ResultSet res = null;
 		int userId = 0;
@@ -51,14 +54,13 @@ public class findMessageInfo {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			//SELECT * from sms where user2_id = 3 order by  sent_time desc;
-			res = stmt.executeQuery("SELECT * from sms where user2_id = \"" 
-		+ userId + "\" and friends_status = \"0\";");
+			//SELECT user1_id from sms where user2_id = 3 order by  sent_time desc;
+			res = stmt.executeQuery("SELECT user1_id from sms where user2_id = \"" 
+		+ userId + " order by  sent_time desc;");
 			while(res.next()) {
 				int user1Id = res.getInt("user1_id");
 				if(!st.contains(user1Id)) {
-					String message = res.getString("sms");
-					mp.put(user1Id, message);
+					vc.addElement(user1Id);
 					st.add(user1Id);
 				}
 				
@@ -67,7 +69,7 @@ public class findMessageInfo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return mp;
+		return vc;
 	
 	}
 }
