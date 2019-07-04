@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,36 +53,38 @@ body {
   float: left;
   color: #999;
 }
+
 </style>
 </head>
-<body>
+<body  style="background-color:lavender;">
 
-<center><h2> Messages </h2></center>
+<center><h2> Messages </h2> </center>
 
 
 <div class="container">
-  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">
   <p>Hello. How are you today?</p>
   <span class="time-right">11:00</span>
 </div>
 
 <div class="container darker">
-  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <img src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Avatar" class="right" style="width:100%;">
   <p>Hey! I'm fine. Thanks for asking!</p>
   <span class="time-left">11:01</span>
 </div>
 
 <div class="container">
-  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">
   <p>Sweet! So, what do you wanna do today?</p>
   <span class="time-right">11:02</span>
 </div>
 
 <div class="container darker">
-  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <img src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Avatar" class="right" style="width:100%;">
   <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
   <span class="time-left">11:05</span>
 </div>
+
 
 </body>
 </html>
