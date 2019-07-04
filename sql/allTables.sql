@@ -101,7 +101,6 @@ CREATE TABLE IF NOT EXISTS friends (
     user2_id integer not null,
     friends_status boolean default 0,
     sending_date DateTime,
-
     
     primary key(friends_id),
     FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
