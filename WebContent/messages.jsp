@@ -3,14 +3,14 @@
 <%@ page import="WebPackage.chat.findMessageInfo"%>
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
-<%@ page import="WebPackage.database.DBInfo"%>
-<%@ page import="WebPackage.login.LogInInfo"%>
+<%@ page import="WebPackage.database.DBInfo" import="WebPackage.chat.messageInfo"%>
+<%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
 
  <% findMessageInfo info = new findMessageInfo();
  	findUserInfo userInfo = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  userInfo.getMyUser(currInfo.getUserName());
-   %>
+    ArrayList<messageInfo> latestMessageInfo = new ArrayList<messageInfo>();%>
 <!DOCTYPE html>
 <html>
 <head>
