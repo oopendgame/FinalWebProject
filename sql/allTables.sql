@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS userInfo (
     email varchar(50) not null,
     date_of_birth date,
     gender varchar(10) not null,
-    img varchar(500),
+    img varchar(500) default "https://wallpaperplay.com/walls/full/e/3/6/138503.jpg",
     ranking varchar(20) default 'begginer',
     
     primary key(user_id)

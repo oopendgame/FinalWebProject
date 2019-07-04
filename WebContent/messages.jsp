@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="WebPackage.chat.findMessageInfo"%>
+<%@ page import="WebPackage.user.findUserInfo"%>
+<%@ page import="WebPackage.user.userInfo"%>
+<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.login.LogInInfo"%>
+
+ <% findMessageInfo info = new findMessageInfo();
+ 	findUserInfo userInfo = new findUserInfo();
+    LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+    userInfo currUser =  userInfo.getMyUser(currInfo.getUserName());
+   %>
 <!DOCTYPE html>
 <html>
 <head>

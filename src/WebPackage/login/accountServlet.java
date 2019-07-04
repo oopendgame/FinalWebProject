@@ -68,9 +68,9 @@ public class accountServlet extends HttpServlet {
 			user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + uname + "\";");
 			if(user.next()) request.getRequestDispatcher("nameTaken.jsp").forward(request,response);
 			else {	
-				stmt.executeUpdate("insert into userInfo (user_name, first_name, last_name, email, date_of_birth, gender, img) "
+				stmt.executeUpdate("insert into userInfo (user_name, first_name, last_name, email, date_of_birth, gender) "
 						+ "values ('"+uname+"', '"+fname+"', '"+lname+"',"
-						+ " '"+email+"', '"+bday+"', '"+gender+"', null)");
+						+ " '"+email+"', '"+bday+"', '"+gender+"')");
 				
 				user = null;
 				user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + uname + "\";");
