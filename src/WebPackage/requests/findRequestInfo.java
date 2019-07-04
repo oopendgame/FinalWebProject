@@ -1,4 +1,4 @@
-package sockets;
+package WebPackage.requests;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -38,11 +38,26 @@ public class findRequestInfo {
 	}
 	
 	
+	public void addFriend(int user1_id, int user2_id) {
+		String st = "UPDATE friends SET friends_status = true "
+				+ "WHERE user1_id = " + user1_id
+				+ " AND user2_id = " + user2_id + ";";
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(st);
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public ArrayList<requestInfo> getUserFriends(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
 		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
 					+ "FROM friends "
 					+ "WHERE user2_id = " + id 
+					+ " OR user1_id = " + id
 					+ " AND friends_satus = true";
 		try {
 			Statement stmt = con.createStatement();
