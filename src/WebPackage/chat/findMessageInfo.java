@@ -39,7 +39,7 @@ public class findMessageInfo {
 		
 	}
 	
-	public void getMessage() {
+	public void getAllMessages() {
 	
 	}
 }
