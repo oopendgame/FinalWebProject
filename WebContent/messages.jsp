@@ -10,7 +10,7 @@
  	findUserInfo userInfo = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  userInfo.getMyUser(currInfo.getUserName());
-    ArrayList<messageInfo> latestMessageInfo = new ArrayList<messageInfo>();%>
+    ArrayList<messageInfo> latestMessageInfo = info.getMessageUsers(currUser.getUserName());%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +70,17 @@ body {
 <body  style="background-color:lavender;">
 
 <center><h2> Messages </h2> </center>
-
+<p id="demo"></p>
+<script>
+  var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+  var text = "<div class=\"container\"> <img src=\"https://ptetutorials.com/images/user-profile.png\" alt=\"Avatar\" style=\"width:100%;\"><p> ";
+  var i;
+  for (i = 0; i < cars.length; i++) {
+    text += latestMessageInfo.get(i).getSms() + "<br>";
+  }
+  text += "</p>  <span class=\"time-right\">11:00</span></div>";
+  document.getElementById("demo").innerHTML = text;
+</script>
 
 <div class="container">
   <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">

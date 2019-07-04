@@ -54,9 +54,9 @@ public class findMessageInfo {
 				userId1 = res.getInt("user_id");
 			}
 			res = stmt.executeQuery("SELECT * from sms where (user1_id = \"" 
-		+ userId1 + " and user2_id = \"" + userId2 + ") or (user2_id = \""
-		+ userId1 + " and user1_id = \"" + userId2
-					+ ") order by  sent_time desc;");
+		+ userId1 + "\" and user2_id = \"" + userId2 + "\") or (user2_id = \""
+		+ userId1 + "\" and user1_id = \"" + userId2
+					+ "\") order by  sent_time desc;");
 			while(res.next()) {
 				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
 				int id = res.getInt("sms_id");
@@ -84,7 +84,7 @@ public class findMessageInfo {
 				userId1 = res.getInt("user_id");
 			}
 			res = stmt.executeQuery("SELECT user1_id from sms where user1_id = \"" 
-		+ userId1 + " and user2_id = \"" + userId2 + " order by  sent_time desc;");
+		+ userId1 + "\" and user2_id = \"" + userId2 + "\" order by  sent_time desc;");
 			if(res.next()) {
 				String message = res.getString("sms");
 				return message;
@@ -109,14 +109,14 @@ public class findMessageInfo {
 				userId = res.getInt("user_id");
 			}
 			//SELECT * from sms where user2_id = 3 or user1_id = 3 order by  sent_time desc;
-			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" 
-					+ userId + " or user2_id = \"" + userId + " order by  sent_time desc;");
+			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" + userId + "\" or user2_id = \"" + userId 
+					+ "\" order by  sent_time desc;");
 			while(res.next()) {
 				int user1Id = res.getInt("user1_id");
 				if(!st.contains(user1Id)) {
 					int id = res.getInt("sms_id");
-					int user1 = res.getInt("user1Id");
-					int user2 = res.getInt("user2Id");
+					int user1 = res.getInt("user1_Id");
+					int user2 = res.getInt("user2_Id");
 					String sms = res.getString("sms");
 					String condition = res.getString("sms_condition");
 					String time = res.getString("sent_time");
