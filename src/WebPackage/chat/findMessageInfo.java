@@ -42,6 +42,27 @@ public class findMessageInfo {
 		
 	}
 	
+	public String getLatestMessage(String userName, int userId2) {
+		ResultSet res = null;
+		int userId1 = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT user1_id from sms where user2_id = \"" 
+		+ userId1 + " and user2_id = \"" + userId2 + " order by  sent_time desc;");
+			if(res.next()) {
+				String message = res.getString("sms");
+				return message;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	
 	
 	public Vector<Integer> getMessageUsers(String userName) {
