@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS challenges (
     FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
     FOREIGN KEY (user2_id) REFERENCES userInfo(user_id)
 );
-
+ 
 
 CREATE TABLE IF NOT EXISTS friends (
 	friends_id int not null auto_increment,
