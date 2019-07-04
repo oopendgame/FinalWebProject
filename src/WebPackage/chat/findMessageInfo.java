@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import WebPackage.database.DBConnection;
 
@@ -42,6 +43,7 @@ public class findMessageInfo {
 	
 	public HashMap<Integer, String> getAllMessages(String userName) {
 		HashMap<Integer, String> mp = new HashMap<Integer, String>();
+		HashSet<Integer> st = new HashSet<Integer>();
 		ResultSet res = null;
 		int userId = 0;
 		try {
@@ -52,9 +54,14 @@ public class findMessageInfo {
 			//SELECT * from sms where user2_id = 3 order by  sent_time desc;
 			res = stmt.executeQuery("SELECT * from sms where user2_id = \"" 
 		+ userId + "\" and friends_status = \"0\";");
-			if(res.next()) {
+			while(res.next()) {
 				int user1Id = res.getInt("user1_id");
-				String message = res.getString("sms");
+				if(!st.contains(user1Id)) {
+					String message = res.getString("sms");
+					mp.put(user1Id, message);
+					st.add(user1Id);
+				}
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
