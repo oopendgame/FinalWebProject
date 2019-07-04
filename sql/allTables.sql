@@ -99,7 +99,8 @@ CREATE TABLE IF NOT EXISTS friends (
 	friends_id int not null auto_increment,
     user1_id integer not null,
     user2_id integer not null,
-    friends_satus varchar(15) default "requested",
+    friends_satus boolean default 0,
+    sending_date DateTime,
     
     primary key(friends_id),
     FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
