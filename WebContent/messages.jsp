@@ -7,10 +7,11 @@
 <%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
 
  <% findMessageInfo info = new findMessageInfo();
- 	findUserInfo userInfo = new findUserInfo();
-    LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-    userInfo currUser =  userInfo.getMyUser(currInfo.getUserName());
-    ArrayList<messageInfo> latestMessageInfo = info.getMessageUsers(currUser.getUserName());%>
+ 	findUserInfo fuserInfo = new findUserInfo();
+    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+    userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
+    ArrayList<messageInfo> latestMessageInfo = info.getMessageByUsers(currUser.getUserName());
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,17 +72,32 @@ body {
 
 <center><h2> Messages </h2> </center>
 <p id="demo"></p>
-<script>
-  var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
-  var text = "<div class=\"container\"> <img src=\"https://ptetutorials.com/images/user-profile.png\" alt=\"Avatar\" style=\"width:100%;\"><p> ";
-  var i;
-  for (i = 0; i < cars.length; i++) {
-    text += latestMessageInfo.get(i).getSms() + "<br>";
-  }
-  text += "</p>  <span class=\"time-right\">11:00</span></div>";
-  document.getElementById("demo").innerHTML = text;
-</script>
-
+<div class="messagesDisp">
+	<%
+		for (int i = 0; i < latestMessageInfo.size(); i++) {
+			String sms = latestMessageInfo.get(i).getSms();
+			String time = latestMessageInfo.get(i).getTime();
+			String img = "";
+			userInfo getter = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser2Id());
+			userInfo sender = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser1Id());
+			if(sender.getUserName() == currUser.getUserName()){
+				img = getter.getImg();
+			}else{
+				img = sender.getImg();
+			}
+			
+	%>
+	<div class="container">
+  <img src=<%=img%> alt="Avatar" style="width:100%;">
+  <p>
+		 <% out.println(sms); %>
+		 &nbsp;&nbsp;&nbsp;&nbsp;
+	</p>
+  <span class="time-right"><%=time%></span>
+</div>
+<%
+		}
+	%>
 <div class="container">
   <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">
   <p>Hello. How are you today?</p>

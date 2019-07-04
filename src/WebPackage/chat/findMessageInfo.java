@@ -98,7 +98,7 @@ public class findMessageInfo {
 	
 	
 	
-	public ArrayList<messageInfo> getMessageUsers(String userName) {
+	public ArrayList<messageInfo> getMessageByUsers(String userName) {
 		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
 		HashSet<Integer> st = new HashSet<Integer>();
 		ResultSet res = null;
@@ -122,10 +122,13 @@ public class findMessageInfo {
 					String time = res.getString("sent_time");
 					messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
 					ls.add(currInfo);
-					st.add(user1Id);
+					st.add(user1);
+					st.add(user2);
+					System.out.println(sms);
 				}
 				
 			}
+			System.out.println(ls.get(0).getUser1Id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
