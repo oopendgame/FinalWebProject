@@ -1,4 +1,4 @@
-package sockets;
+package WebPackage.requests;
 
 import java.sql.Date;
 
