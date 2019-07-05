@@ -66,6 +66,22 @@ body {
   float: left;
   color: #999;
 }
+	
+.oleo {
+  font:'Berkshire Swash', Helvetica, sans-serif;
+  color:blue;
+  text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+}
+button {
+     background:none;
+     color:blue;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     border-bottom:1px solid #444; 
+     cursor: pointer;
+     
+}
 
 </style>
 </head>
@@ -74,29 +90,49 @@ body {
 
 <center><h2> Messages </h2> </center>
 <p id="demo"></p>
-<div class="messagesDisp">
 	<%
 		for (int i = 0; i < latestMessageInfo.size(); i++) {
-			String sms = latestMessageInfo.get(i).getSms();
-			String time = latestMessageInfo.get(i).getTime();
+			messageInfo  msgInf = latestMessageInfo.get(i);
+			String sms = msgInf.getSms();
+			String time = msgInf.getTime();
 			String img = "";
-			userInfo getter = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser2Id());
-			userInfo sender = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser1Id());
-			if(sender.getUserName() == currUser.getUserName()){
+			String whoTexted = "";
+			String user = "";
+			userInfo getter = fuserInfo.getMyUser(msgInf.getUser2Id());
+			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
+			if(sender.getUserName().equals(currUser.getUserName())){
+				whoTexted = "You: ";
+				user = getter.getUserName();
 				img = getter.getImg();
 			}else{
 				img = sender.getImg();
+				user = sender.getUserName();
+				whoTexted = sender.getUserName() + ": ";
 			}
 			
+			
 	%>
-	<div class="container">
-  <img src=<%=img%> alt="Avatar" style="width:100%;">
-  <p>
-		 <% out.println(sms); %>
-		 &nbsp;&nbsp;&nbsp;&nbsp;
-	</p>
-  <span class="time-right"><%=time%></span>
-</div>
+	
+	<p class = "oleo"><% out.println(user); %> </p>
+	<div class="container" id="myForm">
+  		<img src=<%=img%> alt="Avatar" style="width:100%;">
+  		<p class = "oleo" ><% out.println(whoTexted); %> </p>
+  		<p>  <% out.println(sms); %> </p>
+  
+  	<span class="time-right"><%=time%></span>
+	</div>
+	<form name="readForm" action="chatServlet" method="GET">
+		<input type="hidden" id="message" name="message"
+			value="<%=msgInf.getSms()%>"> <input type="hidden" id="sender"
+			name="sender" value="<%=sender.getUserName()%>"> <input type="hidden" 
+			id="receiver" name="receiver" value="<%=getter.getUserName()%>">
+			<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
+			    <div align="right">
+					<input type="submit"  value=" see more ">
+				</div>
+	</form>
+	<hr>
+	
 	<%
 		}
 		if(latestMessageInfo.size() == 0){
@@ -105,6 +141,7 @@ body {
 		 <% out.println("MailBox empty"); %>
 		 &nbsp;&nbsp;&nbsp;&nbsp;
 	</p>
+	
 	<%
 		}
 	%>
