@@ -72,6 +72,16 @@ body {
   color:blue;
   text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
 }
+button {
+     background:none;
+     color:blue;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     border-bottom:1px solid #444; 
+     cursor: pointer;
+     
+}
 
 </style>
 </head>
@@ -83,13 +93,14 @@ body {
 <div class="messagesDisp">
 	<%
 		for (int i = 0; i < latestMessageInfo.size(); i++) {
-			String sms = latestMessageInfo.get(i).getSms();
-			String time = latestMessageInfo.get(i).getTime();
+			messageInfo  msgInf = latestMessageInfo.get(i);
+			String sms = msgInf.getSms();
+			String time = msgInf.getTime();
 			String img = "";
 			String whoTexted = "";
 			String user = "";
-			userInfo getter = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser2Id());
-			userInfo sender = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser1Id());
+			userInfo getter = fuserInfo.getMyUser(msgInf.getUser2Id());
+			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
 			if(sender.getUserName().equals(currUser.getUserName())){
 				whoTexted = "You: ";
 				user = getter.getUserName();
@@ -102,14 +113,23 @@ body {
 			
 			
 	%>
-	<p class = "oleo" ><% out.println(user); %> </p>
-	<div class="container" onclick="location.href='google.com';" style="cursor: pointer;">
+	
+	<p class = "oleo"><% out.println(user); %> <button onclick="callServlet()"> see more </button></p>
+	<div class="container" id="myForm" onclick="document.location.action = 'chatServlet'; " style="cursor: pointer;">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
   		<p>  <% out.println(sms); %> </p>
   
   	<span class="time-right"><%=time%></span>
 	</div>
+	<form name="readForm" action="chatServlet" method="GET">
+		<input type="hidden" id="message" name="message"
+			value="<%=msgInf.getSms()%>"> <input type="hidden" id="sender"
+			name="sender" value="<%=sender.getUserName()%>"> <input type="hidden" 
+			id="receiver" name="receiver" value="<%=getter.getUserName()%>">
+			<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
+			<input type="submit" value="Read">
+	</form>
 	<%
 		}
 		if(latestMessageInfo.size() == 0){
@@ -118,11 +138,13 @@ body {
 		 <% out.println("MailBox empty"); %>
 		 &nbsp;&nbsp;&nbsp;&nbsp;
 	</p>
+	
 	<%
 		}
 	%>
 	<script>
 		function callServlet() {
+			//document.getElementById("myForm").style.display = "none";
         	document.location.action = "chatServlet"; 
         }
     </script>

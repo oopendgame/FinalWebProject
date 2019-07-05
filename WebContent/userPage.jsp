@@ -122,7 +122,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <button class="open-button" onclick="openForm()">Change Photo</button>
             <center>
             <div class="form-popup" id="myForm">
-              <form action="userPageServlet" class="form-container">
+              <form action="userPageServlet" class="form-container" method="POST">
 
                 <label for="pho"><b>Photo URL</b></label>
 
