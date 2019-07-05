@@ -18,6 +18,19 @@ public class findRequestInfo {
 		con = DBConnection.getConnection();
 	}
 	
+	private String getUserName(int id) {
+		String name = "";
+		try {
+			Statement nameStm = con.createStatement();
+			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + id);
+			name = set.getString("user_name");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return name;
+	}
+	
 	public void addRequest(requestInfo req) {
 		String st = "INSERT INTO friends (user1_id, "
 										+ "user2_id, "
@@ -80,10 +93,7 @@ public class findRequestInfo {
 			int user1_id = res.getInt("user1_id");
 			int user2_id = res.getInt("user2_id");
 			Date date = res.getDate("sending_date"); 
-			
-			Statement nameStm = con.createStatement();
-			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + user1_id);
-			String name = set.getString("user_name");
+			String name = getUserName(user2_id);
 			
 			while(res.next()) {
 				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date, name);
@@ -111,10 +121,7 @@ public class findRequestInfo {
 			int user1_id = res.getInt("user1_id"); 
 			int user2_id = res.getInt("user2_id");
 			Date date = res.getDate("sending_date"); 
-			
-			Statement nameStm = con.createStatement();
-			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + user1_id);
-			String name = set.getString("user_name");
+			String name = getUserName(user2_id);
 			
 			while(res.next()) {
 				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 0, date, name);
