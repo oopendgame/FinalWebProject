@@ -90,7 +90,7 @@ public class findRequestInfo {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);			
 			int req_id = res.getInt("friends_id");
-			int user1_id = res.getInt("user1_id");
+			int user1_id = res.getInt("user1_id"); 
 			int user2_id = res.getInt("user2_id");
 			Date date = res.getDate("sending_date"); 
 			
