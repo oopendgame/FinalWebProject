@@ -81,8 +81,12 @@ public class findRequestInfo {
 			int user2_id = res.getInt("user2_id");
 			Date date = res.getDate("sending_date"); 
 			
+			Statement nameStm = con.createStatement();
+			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + user1_id);
+			String name = set.getString("user_name");
+			
 			while(res.next()) {
-				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date);
+				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date, name);
 				req.add(cur);
 			}
 		} catch (SQLException e) {
@@ -108,8 +112,12 @@ public class findRequestInfo {
 			int user2_id = res.getInt("user2_id");
 			Date date = res.getDate("sending_date"); 
 			
+			Statement nameStm = con.createStatement();
+			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + user1_id);
+			String name = set.getString("user_name");
+			
 			while(res.next()) {
-				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 0, date);
+				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 0, date, name);
 				req.add(cur);
 			}
 		} catch (SQLException e) {
