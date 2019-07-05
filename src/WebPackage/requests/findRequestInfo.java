@@ -34,7 +34,7 @@ public class findRequestInfo {
 	public void addRequest(requestInfo req) {
 		String st = "INSERT INTO friends (user1_id, "
 										+ "user2_id, "
-										+ "friends_satus "
+										+ "friends_status, "
 										+ "sending_date) "
 										+ "VALUES(?, ?, ?, ?);";
 		try {
@@ -110,7 +110,7 @@ public class findRequestInfo {
 	
 	public ArrayList<requestInfo> getUserRequests(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
-		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
+		String st = "SELECT user1_id, user2_id, friends_status, sending_date "
 					+ "FROM friends "
 					+ "WHERE user2_id = " + id 
 					+ " AND friends_satus = 0";

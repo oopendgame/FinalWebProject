@@ -37,7 +37,7 @@ public class sendRequestServlet extends HttpServlet {
 		
 		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 		int user1 = log.getId();
-		int user2 = Integer.parseInt(request.getParameter("user2_id"));
+		int user2 = 6;//Integer.parseInt(request.getParameter("user2_id"));
 		Date date = new Date((new java.util.Date()).getTime());
 		requestInfo req = new requestInfo(0, user1, user2, 0, date, "");
 		
