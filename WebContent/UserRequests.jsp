@@ -18,32 +18,30 @@
 	findRequestInfo req = new findRequestInfo();
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	ArrayList<requestInfo> arr = req.getUserRequests(log.getId());
-	for(int i = 0; i < arr.size(); i++) {
-		requestInfo cur = arr.get(i);
+	if(arr.size() == 0) out.println("No requests");
+	else {
+		for(int i = 0; i < arr.size(); i++) {
+			requestInfo cur = arr.get(i);
 %>		
-	<ul> <% out.println(cur.getUserName() + "sent you friend request"); %> </ul>
-		<%	if(arr != null) { %>
+		<ul> <% out.println(cur.getUserName() + "sent you friend request"); %> </ul>
+			<%	if(arr != null) { %>
+		
+					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
+					<input type = "hidden" id = "requestID" name = "requestID"
+						   value = "<%= cur.getRequestId() %>">
+					<input type = "hidden" id = "sender" name = "sender"
+						   value = "<%= cur.getSenderID() %>">
+					<input type = "hidden" id = "receiver" name = "receiver"
+						   value = "<%= cur.getReceiverID() %>">
+					<input type = "submit" value = "accept">
+					</form>
 	
-				<form name="acceptForm" action="acceptRequestServlet" method="get">
-				<input type = "hidden" id = "requestID" name = "requestID"
-					   value = " <%= cur.getRequestId() %>">  
-				<input type = "hidden" id = "sender" name = "sender"
-					   value =" <%= cur.getSenderID() %>">
-				<input type = "hidden" id = "receiver" name = "receiver"
-					   value =" <%= cur.getReceiverID() %>">
-				<input type = "submit" value = "accept">		
-				</form>
-				
-				<form name="rejectForm" action="rejectRequestServlet" method="get">
-				<input type = "hidden" id = "requestID" name = "requestID"
-					   value = " <%= cur.getRequestId() %>">  
-				<input type = "hidden" id = "sender" name = "sender"
-					   value =" <%= cur.getSenderID() %>">
-				<input type = "hidden" id = "receiver" name = "receiver"
-					   value =" <%= cur.getReceiverID() %>">
-				<input type = "submit" value = "reject">		
-				</form>
-		<% } } %>
+					<form name = "rejectForm" action = "rejectRequestServlet" method="get">
+					<input type = "hidden" id = "requestID" name = "requestID"
+						   value = "<%= cur.getRequestId() %>">
+					<input type = "submit" value = "reject">
+					</form>
+			<% } } } %>
 
 
  
