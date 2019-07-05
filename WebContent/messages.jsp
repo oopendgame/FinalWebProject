@@ -103,13 +103,13 @@ body {
 			
 	%>
 	<p class = "oleo" ><% out.println(user); %> </p>
-	<div class="container">
-  <img src=<%=img%> alt="Avatar" style="width:100%;">
-  <p class = "oleo"><% out.println(whoTexted); %> </p>
-  <p>  <% out.println(sms); %> </p>
+	<div class="container" onclick="location.href='google.com';" style="cursor: pointer;">
+  		<img src=<%=img%> alt="Avatar" style="width:100%;">
+  		<p class = "oleo" ><% out.println(whoTexted); %> </p>
+  		<p>  <% out.println(sms); %> </p>
   
-  <span class="time-right"><%=time%></span>
-</div>
+  	<span class="time-right"><%=time%></span>
+	</div>
 	<%
 		}
 		if(latestMessageInfo.size() == 0){
@@ -121,6 +121,11 @@ body {
 	<%
 		}
 	%>
+	<script>
+		function callServlet() {
+        	document.location.action = "chatServlet"; 
+        }
+    </script>
 
 
 </body>
