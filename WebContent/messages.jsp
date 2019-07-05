@@ -45,7 +45,8 @@ body {
 .container img {
   float: left;
   max-width: 60px;
-  width: 100%;
+  width: 60px;
+  height: 60px;
   margin-right: 20px;
   border-radius: 50%;
 }
@@ -68,6 +69,7 @@ body {
 
 </style>
 </head>
+<title>Your Messages</title>
 <body  style="background-color:lavender;">
 
 <center><h2> Messages </h2> </center>
@@ -95,32 +97,17 @@ body {
 	</p>
   <span class="time-right"><%=time%></span>
 </div>
-<%
+	<%
+		}
+		if(latestMessageInfo.size() == 0){
+	%>
+	<p>
+		 <% out.println("MailBox empty"); %>
+		 &nbsp;&nbsp;&nbsp;&nbsp;
+	</p>
+	<%
 		}
 	%>
-<div class="container">
-  <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">
-  <p>Hello. How are you today?</p>
-  <span class="time-right">11:00</span>
-</div>
-
-<div class="container darker">
-  <img src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Avatar" class="right" style="width:100%;">
-  <p>Hey! I'm fine. Thanks for asking!</p>
-  <span class="time-left">11:01</span>
-</div>
-
-<div class="container">
-  <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:100%;">
-  <p>Sweet! So, what do you wanna do today?</p>
-  <span class="time-right">11:02</span>
-</div>
-
-<div class="container darker">
-  <img src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Avatar" class="right" style="width:100%;">
-  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-  <span class="time-left">11:05</span>
-</div>
 
 
 </body>

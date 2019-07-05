@@ -124,11 +124,9 @@ public class findMessageInfo {
 					ls.add(currInfo);
 					st.add(user1);
 					st.add(user2);
-					System.out.println(sms);
 				}
 				
 			}
-			System.out.println(ls.get(0).getUser1Id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
