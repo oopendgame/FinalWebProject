@@ -82,7 +82,7 @@ body {
 			String img = "";
 			userInfo getter = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser2Id());
 			userInfo sender = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser1Id());
-			if(sender.getUserName() == currUser.getUserName()){
+			if(sender.getUserName().equals(currUser.getUserName())){
 				img = getter.getImg();
 			}else{
 				img = sender.getImg();
@@ -93,7 +93,6 @@ body {
   <img src=<%=img%> alt="Avatar" style="width:100%;">
   <p>
 		 <% out.println(sms); %>
-		 &nbsp;&nbsp;&nbsp;&nbsp;
 	</p>
   <span class="time-right"><%=time%></span>
 </div>
