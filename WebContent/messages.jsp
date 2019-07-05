@@ -66,6 +66,12 @@ body {
   float: left;
   color: #999;
 }
+	
+.oleo {
+  font:'Berkshire Swash', Helvetica, sans-serif;
+  color:blue;
+  text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+}
 
 </style>
 </head>
@@ -80,20 +86,28 @@ body {
 			String sms = latestMessageInfo.get(i).getSms();
 			String time = latestMessageInfo.get(i).getTime();
 			String img = "";
+			String whoTexted = "";
+			String user = "";
 			userInfo getter = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser2Id());
 			userInfo sender = fuserInfo.getMyUser(latestMessageInfo.get(i).getUser1Id());
 			if(sender.getUserName().equals(currUser.getUserName())){
+				whoTexted = "You: ";
+				user = getter.getUserName();
 				img = getter.getImg();
 			}else{
 				img = sender.getImg();
+				user = sender.getUserName();
+				whoTexted = sender.getUserName() + ": ";
 			}
 			
+			
 	%>
+	<p class = "oleo" ><% out.println(user); %> </p>
 	<div class="container">
   <img src=<%=img%> alt="Avatar" style="width:100%;">
-  <p>
-		 <% out.println(sms); %>
-	</p>
+  <p class = "oleo"><% out.println(whoTexted); %> </p>
+  <p>  <% out.println(sms); %> </p>
+  
   <span class="time-right"><%=time%></span>
 </div>
 	<%
