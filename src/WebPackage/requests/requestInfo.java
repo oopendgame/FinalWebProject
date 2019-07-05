@@ -6,10 +6,10 @@ public class requestInfo {
 	private int req_id;
 	private int user1;
 	private int user2;
-	private boolean status;
+	private int status;
 	private Date sent_date;
 	
-	public requestInfo(int req, int user1_id, int user2_id, boolean stat, Date date) {
+	public requestInfo(int req, int user1_id, int user2_id, int stat, Date date) {
 		req_id = req;
 		user1 = user1_id;
 		user2 = user2_id;
@@ -37,11 +37,11 @@ public class requestInfo {
 		user2 = id;
 	}
 	
-	public boolean getSatus() {
+	public int getSatus() {
 		return status;
 	}
 	
-	public void setStatus(boolean fr) {
+	public void setStatus(int fr) {
 		status = fr;
 	}
 	

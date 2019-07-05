@@ -28,7 +28,7 @@ public class findRequestInfo {
 			PreparedStatement stm = con.prepareStatement(st);
 			stm.setInt(1, req.getSenderID());
 			stm.setInt(2, req.getReceiverID());
-			stm.setBoolean(3, req.getSatus());
+			stm.setInt(3, req.getSatus());
 			stm.setDate(4, req.getSentDate());
 			stm.execute();
 		} catch (SQLException e) {
@@ -39,7 +39,7 @@ public class findRequestInfo {
 	
 	
 	public void addFriend(int user1_id, int user2_id) {
-		String st = "UPDATE friends SET friends_status = true "
+		String st = "UPDATE friends SET friends_status = 1 "
 				+ "WHERE user1_id = " + user1_id
 				+ " AND user2_id = " + user2_id + ";";
 		try {
@@ -68,7 +68,7 @@ public class findRequestInfo {
 			Date date = res.getDate("sending_date"); 
 			
 			while(res.next()) {
-				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, true, date);
+				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date);
 				req.add(cur);
 			}
 		} catch (SQLException e) {
@@ -85,7 +85,7 @@ public class findRequestInfo {
 		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
 					+ "FROM friends "
 					+ "WHERE user2_id = " + id 
-					+ " AND friends_satus = false";
+					+ " AND friends_satus = 0";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);			
@@ -95,7 +95,7 @@ public class findRequestInfo {
 			Date date = res.getDate("sending_date"); 
 			
 			while(res.next()) {
-				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, false, date);
+				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 0, date);
 				req.add(cur);
 			}
 		} catch (SQLException e) {

@@ -39,7 +39,7 @@ public class sendRequestServlet extends HttpServlet {
 		int user1 = log.getId();
 		int user2 = Integer.parseInt(request.getParameter("user2_id"));
 		Date date = new Date((new java.util.Date()).getTime());
-		requestInfo req = new requestInfo(0, user1, user2, false, date);
+		requestInfo req = new requestInfo(0, user1, user2, 0, date);
 		
 		findRequestInfo findReq = new findRequestInfo();
 		findReq.addRequest(req);
