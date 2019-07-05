@@ -24,7 +24,7 @@
 			requestInfo cur = arr.get(i);
 %>		
 		<ul> <% out.println(cur.getUserName() + "sent you friend request"); %> </ul>
-			<%	if(arr != null) { %>
+			<%	if(arr != null) { %> 
 		
 					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
 					<input type = "hidden" id = "requestID" name = "requestID"
