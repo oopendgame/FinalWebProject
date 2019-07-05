@@ -90,7 +90,6 @@ button {
 
 <center><h2> Messages </h2> </center>
 <p id="demo"></p>
-<div class="messagesDisp">
 	<%
 		for (int i = 0; i < latestMessageInfo.size(); i++) {
 			messageInfo  msgInf = latestMessageInfo.get(i);
@@ -114,8 +113,8 @@ button {
 			
 	%>
 	
-	<p class = "oleo"><% out.println(user); %> <button onclick="callServlet()"> see more </button></p>
-	<div class="container" id="myForm" onclick="document.location.action = 'chatServlet'; " style="cursor: pointer;">
+	<p class = "oleo"><% out.println(user); %> </p>
+	<div class="container" id="myForm">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
   		<p>  <% out.println(sms); %> </p>
@@ -128,8 +127,12 @@ button {
 			name="sender" value="<%=sender.getUserName()%>"> <input type="hidden" 
 			id="receiver" name="receiver" value="<%=getter.getUserName()%>">
 			<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
-			<input type="submit" value="Read">
+			    <div align="right">
+					<input type="submit"  value=" see more ">
+				</div>
 	</form>
+	<hr>
+	
 	<%
 		}
 		if(latestMessageInfo.size() == 0){
@@ -142,12 +145,6 @@ button {
 	<%
 		}
 	%>
-	<script>
-		function callServlet() {
-			//document.getElementById("myForm").style.display = "none";
-        	document.location.action = "chatServlet"; 
-        }
-    </script>
 
 
 </body>
