@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,8 +55,8 @@
 <script>
 function myFunction() {
   var x = document.getElementById("myDIV");
-  if (x.style.display === "block") {
-    x.style.display = "none";
+  if (x.style.display === "none") {
+    
   } else {
     x.style.display = "block";
   }

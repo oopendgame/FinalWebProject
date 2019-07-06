@@ -108,11 +108,36 @@ public class findRequestInfo {
 	}
 	
 	
-	public int alreadySent(int user1_id, int user2_id) {
+	public boolean areFriends(int user1_id, int user2_id) {
 		String st = "SELECT friends_status FROM friends "
-				+ "WHERE (user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
-						+ "(user2_id = " + user2_id + "AND user1_id = " + user1_id + ");";
-		return -2;
+				+ "WHERE ((user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
+						+ "(user2_id = " + user1_id + "AND user1_id = " + user2_id + ")) AND "
+								+ "friends_status = 1;";
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(st);				
+			if(res.next()) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+	public boolean requestAlreadySent(int user1_id, int user2_id) {
+		String st = "SELECT * FROM friends "
+				+ "WHERE (user1_id = " + user1_id + " AND user2_id = " + user2_id + ") OR "
+						+ "(user2_id = " + user1_id + " AND user1_id = " + user2_id + ");";
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(st);				
+			if(res.next()) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	
