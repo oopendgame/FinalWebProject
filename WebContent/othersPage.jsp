@@ -6,7 +6,8 @@
     pageEncoding="UTF-8"%>
     <% findUserInfo info = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-    userInfo currUser =  info.getMyUser(currInfo.getSearchId());%>
+    int id = currInfo.getSearchId();
+    userInfo currUser =  info.getMyUser(id);%>
 <!DOCTYPE html>
 <html>
 <head>
