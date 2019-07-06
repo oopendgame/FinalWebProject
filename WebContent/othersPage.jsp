@@ -119,7 +119,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   src=<%=currUser.getImg()%> />
         </div>
         <div class="smaller" style="text-align:center;margin-top: 1em;">
-            <button class="open-button" onclick="openForm()">Add Friend</button>
+        
+        <form name = "addFriend" action = "sendRequestServlet" method="get">
+        	<input type="hidden" name="user2" value=""/>
+            <input type="submit" name="Add Friend" value="Add Friend"/>
+        </form>
+            
           </div>
       </div>
   </div>

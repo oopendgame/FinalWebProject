@@ -23,7 +23,7 @@ public class findRequestInfo {
 		try {
 			Statement nameStm = con.createStatement();
 			ResultSet set = nameStm.executeQuery("Select user_name from userInfo where user_id = " + id);
-			name = set.getString("user_name");
+			if(set.next()) name = set.getString("user_name");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class findRequestInfo {
 	public void addRequest(requestInfo req) {
 		String st = "INSERT INTO friends (user1_id, "
 										+ "user2_id, "
-										+ "friends_satus "
+										+ "friends_status, "
 										+ "sending_date) "
 										+ "VALUES(?, ?, ?, ?);";
 		try {
@@ -81,21 +81,21 @@ public class findRequestInfo {
 	
 	public ArrayList<requestInfo> getUserFriends(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
-		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
+		String st = "SELECT friends_id, user1_id, user2_id, friends_status, sending_date "
 					+ "FROM friends "
-					+ "WHERE user2_id = " + id 
+					+ "WHERE (user2_id = " + id 
 					+ " OR user1_id = " + id
-					+ " AND friends_satus = true";
+					+ ") AND friends_status = true;";
 		try {
 			Statement stmt = con.createStatement();
-			ResultSet res = stmt.executeQuery(st);			
-			int req_id = res.getInt("friends_id");
-			int user1_id = res.getInt("user1_id");
-			int user2_id = res.getInt("user2_id");
-			Date date = res.getDate("sending_date"); 
-			String name = getUserName(user2_id);
+			ResultSet res = stmt.executeQuery(st);	
 			
 			while(res.next()) {
+				int req_id = res.getInt("friends_id");
+				int user1_id = res.getInt("user1_id");
+				int user2_id = res.getInt("user2_id");
+				Date date = res.getDate("sending_date"); 
+				String name = getUserName(user1_id);			
 				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date, name);
 				req.add(cur);
 			}
@@ -110,20 +110,20 @@ public class findRequestInfo {
 	
 	public ArrayList<requestInfo> getUserRequests(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
-		String st = "SELECT user1_id, user2_id, friends_satus, sending_date "
+		String st = "SELECT friends_id, user1_id, user2_id, friends_status, sending_date "
 					+ "FROM friends "
 					+ "WHERE user2_id = " + id 
-					+ " AND friends_satus = 0";
+					+ " AND friends_status = 0;";
 		try {
 			Statement stmt = con.createStatement();
-			ResultSet res = stmt.executeQuery(st);			
-			int req_id = res.getInt("friends_id");
-			int user1_id = res.getInt("user1_id"); 
-			int user2_id = res.getInt("user2_id");
-			Date date = res.getDate("sending_date"); 
-			String name = getUserName(user2_id);
+			ResultSet res = stmt.executeQuery(st);	
 			
 			while(res.next()) {
+				int user1_id = res.getInt("user1_id"); 
+				int user2_id = res.getInt("user2_id");
+				int req_id = res.getInt("friends_id");
+				Date date = res.getDate("sending_date"); 
+				String name = getUserName(user1_id);
 				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 0, date, name);
 				req.add(cur);
 			}
