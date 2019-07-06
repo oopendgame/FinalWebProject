@@ -1,4 +1,5 @@
 <%@ page import="WebPackage.user.findUserInfo"%>
+<%@ page import="WebPackage.requests.findRequestInfo"%> 
 <%@ page import="WebPackage.user.userInfo"%>
 <%@ page import="WebPackage.database.DBInfo"%>
 <%@ page import="WebPackage.login.LogInInfo"%>
@@ -123,13 +124,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
         
         
         
-        
+        <% int user1_id = currInfo.getId(); 
+        	findRequestInfo req = new findRequestInfo();
+           if(req.requestAlreadySent(user1_id, id)) {
+         
+        %> 
         <form name = "addFriend" action = "sendRequestServlet" method="get">
         	<input type="hidden" name="user2" value=""/>
             <input type="submit" name="Add Friend" value="Add Friend"/>
         </form>
         
-        
+        <% } %>
         
             
           </div>
