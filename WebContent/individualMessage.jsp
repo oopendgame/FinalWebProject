@@ -12,6 +12,7 @@
     userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
     String chatterName = request.getParameter("user");
 	ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
+	int userId = -1;
     %>
 <!DOCTYPE html>
 <html>
@@ -145,6 +146,7 @@ button {
 			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
 			if(sender.getUserName().equals(currUser.getUserName())){
 				whoTexted = "You: ";
+				userId = getter.getId();
 				user = getter.getUserName();
 				img = getter.getImg();
 	%>
@@ -156,6 +158,7 @@ button {
 	</div>
 	<% 
 			}else{
+				userId = sender.getId();
 				img = sender.getImg();
 				user = sender.getUserName();
 				whoTexted = sender.getUserName() + ": ";
@@ -183,12 +186,17 @@ button {
 		}
 	%>
 	<br><br></body></body>
-	<div class="type_msg">
+	
+    <form name="readForm" action="sendMessageServlet" method="GET">
+		<input type="hidden" id="message" name="message" value="document.getElementById('sms').value"> 
+		<input type="hidden" id="user" name="user" value="<%=userId%>"> 
+		<div class="type_msg">
         <div class="input_msg_write">
-           <input type="text" class="write_msg" placeholder="Type a message" />
-           <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+           <input type="text" class="write_msg" id = "sms" placeholder="Type a message" />
+           <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
         </div>
     </div>
+	</form>
      <p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
 
 
