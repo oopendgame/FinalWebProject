@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class searchUserServlet
- */
+ */ 
 @WebServlet("/searchUserServlet")
 public class searchUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
