@@ -122,6 +122,7 @@ button {
   	<span class="time-right"><%=time%></span>
 	</div>
 	<form name="readForm" action="chatServlet" method="GET">
+	
 		<input type="hidden" id="message" name="message" value="<%=msgInf.getSms()%>"> 
 		<input type="hidden" id="user" name="user" value="<%=user%>"> 
 		<input type="hidden" id="receiver" name="receiver" value="<%=getter.getUserName()%>">

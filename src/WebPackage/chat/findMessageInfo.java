@@ -42,6 +42,18 @@ public class findMessageInfo {
 		}
 		
 	}
+//	INSERT INTO sms(user1_id, user2_id, sms,  sent_time) VALUES
+//	(2, 3, "geniosi xar!",  sysdate());
+	public void putSms(int senderId, int getterId, String sms) {
+		try {
+			stmt.executeUpdate("INSERT INTO sms(user1_id, user2_id, sms, sent_time) VALUES (" 
+								+ senderId + ", " + getterId + "," + "\"" + sms + "\"," + "sysdate());");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	//SELECT * from sms where (user2_id = 3 and user1_id = 1) or (user1_id = 3 and user2_id = 1)
 	//order by  sent_time desc;
