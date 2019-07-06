@@ -28,7 +28,6 @@
 %>		
 		 <i class='fas fa-user-friends' style='font-size:24px'> </i>
 		 <% out.println(cur.getUserName() + " sent you friend request"); %> 
-			<%	if(arr != null) { %> 
 		
 					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
 					<input type = "hidden" id = "friends_id" name = "friends_id"
@@ -49,7 +48,7 @@
 						   value = "<%= cur.getReceiverID() %>">
 					<input type = "submit" value = "reject">
 					</form>
-			<% } } } %>
+			<% } } %>
 
 
   
