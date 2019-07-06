@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBConnection;
+import WebPackage.login.LogInInfo;
 import WebPackage.user.findUserInfo;
 import WebPackage.user.userInfo;
 
@@ -53,6 +54,9 @@ public class searchUserServlet extends HttpServlet {
 		findUserInfo cur = new findUserInfo();
 		userInfo user = cur.getMyUser(name);
 		if(user != null) id = user.getId();
+		
+		LogInInfo log = new LogInInfo();
+		log.setSearchId(id);
 		
 		String st = "UserNotFound.jsp";
 		if(id != 0) st = "othersPage.jsp";
