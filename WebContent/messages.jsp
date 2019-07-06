@@ -87,8 +87,8 @@ button {
 </head>
 <title>Your Messages</title>
 <body  style="background-color:lavender;">
-
-<center><h2> Messages </h2> </center>
+<br>
+<center><h1> Messages </h1> </center>
 <p id="demo"></p>
 	<%
 		for (int i = 0; i < latestMessageInfo.size(); i++) {
@@ -122,14 +122,13 @@ button {
   	<span class="time-right"><%=time%></span>
 	</div>
 	<form name="readForm" action="chatServlet" method="GET">
-		<input type="hidden" id="message" name="message"
-			value="<%=msgInf.getSms()%>"> <input type="hidden" id="sender"
-			name="sender" value="<%=sender.getUserName()%>"> <input type="hidden" 
-			id="receiver" name="receiver" value="<%=getter.getUserName()%>">
-			<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
-			    <div align="right">
-					<input type="submit"  value=" see more ">
-				</div>
+		<input type="hidden" id="message" name="message" value="<%=msgInf.getSms()%>"> 
+		<input type="hidden" id="user" name="user" value="<%=user%>"> 
+		<input type="hidden" id="receiver" name="receiver" value="<%=getter.getUserName()%>">
+		<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
+		<div align="right">
+			<input type="submit"  value=" see more ">
+		</div>
 	</form>
 	<hr>
 	
