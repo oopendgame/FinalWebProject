@@ -17,13 +17,14 @@
 <%
 	findRequestInfo req = new findRequestInfo();
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-	ArrayList<requestInfo> arr = req.getUserRequests(log.getId());
+	int id = log.getId();
+	ArrayList<requestInfo> arr = req.getUserRequests(id);
 	if(arr.size() == 0) out.println("No requests");
 	else {
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);
 %>		
-		<ul> <% out.println(cur.getUserName() + "sent you friend request"); %> </ul>
+		<ul> <% out.println(cur.getUserName() + " sent you friend request"); %> </ul>
 			<%	if(arr != null) { %> 
 		
 					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
