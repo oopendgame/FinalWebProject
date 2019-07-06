@@ -61,8 +61,8 @@ public class findMessageInfo {
 			while(res.next()) {
 				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
 				int id = res.getInt("sms_id");
-				int user1 = res.getInt("user1Id");
-				int user2 = res.getInt("user2Id");
+				int user1 = res.getInt("user1_Id");
+				int user2 = res.getInt("user2_Id");
 				String sms = res.getString("sms");
 				String condition = res.getString("sms_condition");
 				String time = res.getString("sent_time");
@@ -96,8 +96,8 @@ public class findMessageInfo {
 			while(res.next()) {
 				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
 				int id = res.getInt("sms_id");
-				int user1 = res.getInt("user1Id");
-				int user2 = res.getInt("user2Id");
+				int user1 = res.getInt("user1_Id");
+				int user2 = res.getInt("user2_Id");
 				String sms = res.getString("sms");
 				String condition = res.getString("sms_condition");
 				String time = res.getString("sent_time");

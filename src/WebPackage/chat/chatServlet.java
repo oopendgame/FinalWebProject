@@ -43,6 +43,9 @@ public class chatServlet extends HttpServlet {
 		int messageID = Integer.parseInt(request.getParameter("messageID"));
 		String chatterName = request.getParameter("user");
 		ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
+		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
+		rd.forward(request, response);
+
 
 	}
 
