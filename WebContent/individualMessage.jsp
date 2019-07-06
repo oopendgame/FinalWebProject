@@ -110,7 +110,7 @@ button {
 	<div class="container darker" align="right">
 	  <img src=<%=sender.getImg()%> alt="Avatar" class="right" style="width:100%;">
 	  <p>  <% out.println(sms); %> </p>	  
-	  <span class="time-right"><%=time%></span>
+	  <span class="time-left"><%=time%></span>
 	</div>
 	<% 
 			}else{
@@ -125,7 +125,7 @@ button {
 	<div class="container">
 		<img src=<%=sender.getImg()%> alt="Avatar"  style="width:100%;">
 	  	 <p>  <% out.println(sms); %> </p>	  
-	  	<span class="time-left"><%=time%></span>
+	  	<span class="time-right"><%=time%></span>
 	</div>
 	<%
 			}
