@@ -111,7 +111,7 @@ public class findRequestInfo {
 	public boolean areFriends(int user1_id, int user2_id) {
 		String st = "SELECT friends_status FROM friends "
 				+ "WHERE ((user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
-						+ "(user2_id = " + user2_id + "AND user1_id = " + user1_id + ")) AND "
+						+ "(user2_id = " + user1_id + "AND user1_id = " + user2_id + ")) AND "
 								+ "friends_status = 1;";
 		try {
 			Statement stmt = con.createStatement();
@@ -127,8 +127,8 @@ public class findRequestInfo {
 	
 	public boolean requestAlreadySent(int user1_id, int user2_id) {
 		String st = "SELECT * FROM friends "
-				+ "WHERE ((user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
-						+ "(user2_id = " + user2_id + "AND user1_id = " + user1_id + "));";
+				+ "WHERE (user1_id = " + user1_id + " AND user2_id = " + user2_id + ") OR "
+						+ "(user2_id = " + user1_id + " AND user1_id = " + user2_id + ");";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);				

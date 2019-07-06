@@ -5,10 +5,12 @@
 <%@ page import="WebPackage.login.LogInInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
     <% findUserInfo info = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     int id = currInfo.getSearchId();
     userInfo currUser =  info.getMyUser(id);%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,8 +127,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
         
         
         <% int user1_id = currInfo.getId(); 
-        	findRequestInfo req = new findRequestInfo();
-           if(req.requestAlreadySent(user1_id, id)) {
+           findRequestInfo req = new findRequestInfo();
+           if(!req.requestAlreadySent(user1_id, id)) {
          
         %> 
         <form name = "addFriend" action = "sendRequestServlet" method="get">
@@ -155,7 +157,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Send Message </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> Send Challenge </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Achievements</i></a></p>
-    <p><a href="yourCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Created Quizzes</i></a></p>
+    <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Created Quizzes</i></a></p>
     </div>
 </body>
 </html>
