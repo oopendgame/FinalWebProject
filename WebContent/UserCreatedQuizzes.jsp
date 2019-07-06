@@ -25,7 +25,7 @@
 	else { 
 %>
 	<p> <center>YOUR QUIZZES</center></p>
-<%
+<% 
 		for(int i = 0; i < arr.size(); i++) {
 			QuizInfo cur = arr.get(i);
 %>		
