@@ -59,9 +59,12 @@ public class chatServlet extends HttpServlet {
 	 	findUserInfo fuserInfo = new findUserInfo();
 	    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	    userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
-		int userId = Integer.parseInt(request.getParameter("user"));
+	    int messageID = Integer.parseInt(request.getParameter("messageID"));
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String chatterName = request.getParameter("user");
 		String sms = request.getParameter("sms");
 		info.putSms(currUser.getId(), userId, sms);
+		ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
 		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
 		rd.forward(request, response);
 	}

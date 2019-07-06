@@ -6,13 +6,19 @@
 <%@ page import="WebPackage.database.DBInfo" import="WebPackage.chat.messageInfo"%>
 <%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
 
- <% findMessageInfo info = new findMessageInfo();
+ <% 
+ 	findMessageInfo info = new findMessageInfo();
  	findUserInfo fuserInfo = new findUserInfo();
     LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
     String chatterName = request.getParameter("user");
+   	ArrayList<messageInfo> latestMessageInfo = info.getMessageByUsers(currUser.getUserName());
 	ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
 	int userId = -1;
+	userInfo getter = null;
+	userInfo sender;
+	String user = "";
+	messageInfo msgInf = null;
     %>
 <!DOCTYPE html>
 <html>
@@ -136,14 +142,14 @@ button {
 	<%
 	
 		for (int i = allChat.size() - 1; i >= 0; i--) {
-			messageInfo  msgInf = allChat.get(i);
+			msgInf = allChat.get(i);
 			String sms = msgInf.getSms();
 			String time = msgInf.getTime();
 			String img = "";
 			String whoTexted = "";
-			String user = "";
-			userInfo getter = fuserInfo.getMyUser(msgInf.getUser2Id());
-			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
+			
+			 getter = fuserInfo.getMyUser(msgInf.getUser2Id());
+			 sender = fuserInfo.getMyUser(msgInf.getUser1Id());
 			if(sender.getUserName().equals(currUser.getUserName())){
 				whoTexted = "You: ";
 				userId = getter.getId();
@@ -185,12 +191,17 @@ button {
 	<%
 		}
 	%>
+	<% msgInf = allChat.get(0); %>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
 	
     <form name="readForm" action="chatServlet" method="POST">
-		<input type="hidden" id="user" name="user" value="<%=userId%>"> 
+		<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
 		<div class="type_msg">
         <div class="input_msg_write">
+        <input type="hidden" id="message" name="message" value="<%=msgInf.getSms()%>"> 
+		<input type="hidden" id="user" name="user" value="<%=user%>"> 
+		<input type="hidden" id="receiver" name="receiver" value="<%=getter.getUserName()%>">
+		<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
            <input type="text" class="write_msg" name = "sms" id = "sms" placeholder="Type a message" />
            <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
         	<p id="demo"></p>
