@@ -17,7 +17,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
 body {
   margin: 0 auto;
   max-width: 800px;
@@ -83,6 +86,43 @@ button {
      cursor: pointer;
      
 }
+.sent_msg p {
+  background: #05728f none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0; color:#fff;
+  padding: 5px 10px 5px 12px;
+  width:100%;
+}
+.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+.sent_msg {
+  float: right;
+  width: 46%;
+}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}
+
+.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.messaging { padding: 0 0 50px 0;}
 
 </style>
 </head>
@@ -91,7 +131,9 @@ button {
 <br>
 <center><h1> Your Chat With <br><%=chatterName%></h1> </center>
 <p id="demo"></p>
+<body onLoad="window.scroll(0, document.body.scrollHeight)">
 	<%
+	
 		for (int i = allChat.size() - 1; i >= 0; i--) {
 			messageInfo  msgInf = allChat.get(i);
 			String sms = msgInf.getSms();
@@ -134,12 +176,20 @@ button {
 	%>
 	<p>
 		 <% out.println("MailBox empty"); %>
-		 &nbsp;&nbsp;&nbsp;&nbsp;
+		
 	</p>
 	
 	<%
 		}
 	%>
+	<br><br></body></body>
+	<div class="type_msg">
+        <div class="input_msg_write">
+           <input type="text" class="write_msg" placeholder="Type a message" />
+           <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+     <p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
 
 
 </body>
