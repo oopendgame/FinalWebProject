@@ -31,21 +31,21 @@
 			<%	if(arr != null) { %> 
 		
 					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
-					<input type = "hidden" id = "requestID" name = "requestID"
+					<input type = "hidden" id = "friends_id" name = "friends_id"
 						   value = "<%= cur.getRequestId() %>">
-					<input type = "hidden" id = "sender" name = "sender"
+					<input type = "hidden" id = "user1_id" name = "user1_id"
 						   value = "<%= cur.getSenderID() %>">
-					<input type = "hidden" id = "receiver" name = "receiver"
+					<input type = "hidden" id = "user2_id" name = "user2_id"
 						   value = "<%= cur.getReceiverID() %>">
 					<input type = "submit" value = "accept">
 					</form>
 	
 					<form name = "rejectForm" action = "rejectRequestServlet" method="get">
-					<input type = "hidden" id = "requestID" name = "requestID"
+					<input type = "hidden" id = "friends_id" name = "friends_id"
 						   value = "<%= cur.getRequestId() %>">
-					<input type = "hidden" id = "sender" name = "sender"
+					<input type = "hidden" id = "user1_id" name = "user1_id"
 						   value = "<%= cur.getSenderID() %>">
-					<input type = "hidden" id = "receiver" name = "receiver"
+					<input type = "hidden" id = "user2_id" name = "user2_id"
 						   value = "<%= cur.getReceiverID() %>">
 					<input type = "submit" value = "reject">
 					</form>
