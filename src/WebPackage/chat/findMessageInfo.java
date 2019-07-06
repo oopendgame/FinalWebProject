@@ -42,6 +42,7 @@ public class findMessageInfo {
 		}
 		
 	}
+	
 	//SELECT * from sms where (user2_id = 3 and user1_id = 1) or (user1_id = 3 and user2_id = 1)
 	//order by  sent_time desc;
 	public ArrayList<messageInfo> getAllMessagesBetween(String userName, int userId2) {
@@ -60,8 +61,43 @@ public class findMessageInfo {
 			while(res.next()) {
 				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
 				int id = res.getInt("sms_id");
-				int user1 = res.getInt("user1Id");
-				int user2 = res.getInt("user2Id");
+				int user1 = res.getInt("user1_Id");
+				int user2 = res.getInt("user2_Id");
+				String sms = res.getString("sms");
+				String condition = res.getString("sms_condition");
+				String time = res.getString("sent_time");
+				messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
+				ls.add(currInfo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ls;
+	}
+	public ArrayList<messageInfo> getAllMessages(String userName, String userName2) {
+		ArrayList<messageInfo> ls = new ArrayList<messageInfo>();
+		ResultSet res = null;
+		int userId1 = -1;
+		int userId2 = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				userId1 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName2 + "\";");
+			if(res.next()) {
+				userId2 = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT * from sms where (user1_id = \"" 
+		+ userId1 + "\" and user2_id = \"" + userId2 + "\") or (user2_id = \""
+		+ userId1 + "\" and user1_id = \"" + userId2
+					+ "\") order by  sent_time desc;");
+			while(res.next()) {
+				 //messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time)
+				int id = res.getInt("sms_id");
+				int user1 = res.getInt("user1_Id");
+				int user2 = res.getInt("user2_Id");
 				String sms = res.getString("sms");
 				String condition = res.getString("sms_condition");
 				String time = res.getString("sent_time");

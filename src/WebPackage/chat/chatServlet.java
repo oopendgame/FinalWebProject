@@ -1,6 +1,7 @@
 package WebPackage.chat;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
+import WebPackage.user.findUserInfo;
+import WebPackage.user.userInfo;
 
 /**
  * Servlet implementation class chatServlet
@@ -29,9 +35,18 @@ public class chatServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dis = request.getRequestDispatcher("individualMessage.jsp");
-		dis.forward(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		findMessageInfo info = new findMessageInfo();
+	 	findUserInfo fuserInfo = new findUserInfo();
+	    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	    userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
+		int messageID = Integer.parseInt(request.getParameter("messageID"));
+		String chatterName = request.getParameter("user");
+		ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
+		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
+		rd.forward(request, response);
+
+
 	}
 
 	/**
