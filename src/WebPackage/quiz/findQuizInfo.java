@@ -67,8 +67,7 @@ public class findQuizInfo {
 	public QuizInfo getQuiz(int quizId) {
 		PreparedStatement stm;
 		try {
-			stm = con.prepareStatement("SELECT * FROM quizzes WHERE quiz_id = ?;\";");
-			stm.setInt(1, quizId);
+			stm = con.prepareStatement("SELECT * FROM quizzes WHERE quiz_id = " + quizId + ";");
 	        ResultSet rs = stm.executeQuery();
 	        return getNewQuiz(rs);
 		} catch (SQLException e) {

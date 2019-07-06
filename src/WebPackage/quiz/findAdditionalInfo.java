@@ -47,7 +47,6 @@ public class findAdditionalInfo {
 			rs = stmt.executeQuery(st);
 			while (rs.next()) {
 				int quiz_id = rs.getInt("quiz_id");
-				System.out.println(quiz_id + "\n");
 				QuizInfo quiz = q.getQuiz(quiz_id);
 				arr.add(quiz);
 			}
@@ -60,6 +59,7 @@ public class findAdditionalInfo {
 	
 	public ArrayList<QuizInfo> getUserWrittenQuizzes(int id) {
 		String st = "SELECT quiz_id FROM quizScores where user_id = " + id + ";";
+		
 		return getList(st);
 	}
 	
