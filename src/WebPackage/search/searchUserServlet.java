@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBConnection;
+import WebPackage.user.findUserInfo;
+import WebPackage.user.userInfo;
 
 /**
  * Servlet implementation class searchUserServlet
@@ -45,20 +47,15 @@ public class searchUserServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String name = request.getParameter("user_name");
 		
 		int id = 0;
-		try {
-			Connection con = DBConnection.getConnection();
-			Statement stm = con.createStatement();
-			ResultSet res = stm.executeQuery("Select user_id from userInfo where user_name = " + name);
-			if(res.next()) id = Integer.parseInt(res.getString("user_id"));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		String name = request.getParameter("user_name");
+		findUserInfo cur = new findUserInfo();
+		userInfo user = cur.getMyUser(name);
+		if(user != null) id = user.getId();
+		
 		String st = "UserNotFound.jsp";
-		if(id != 0) st = "";
+		if(id != 0) st = "othersPage.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(st); 
 		rd.forward(request, response); 
 	}
