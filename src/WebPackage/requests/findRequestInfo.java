@@ -108,6 +108,11 @@ public class findRequestInfo {
 	}
 	
 	
+	public boolean alreadySent(int user1_id, int user2_id) {
+		return false;
+	}
+	
+	
 	public ArrayList<requestInfo> getUserRequests(int id) {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
 		String st = "SELECT friends_id, user1_id, user2_id, friends_status, sending_date "
