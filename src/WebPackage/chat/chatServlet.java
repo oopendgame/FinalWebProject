@@ -54,8 +54,16 @@ public class chatServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		doGet(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		findMessageInfo info = new findMessageInfo();
+	 	findUserInfo fuserInfo = new findUserInfo();
+	    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	    userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
+		int userId = Integer.parseInt(request.getParameter("user"));
+		String sms = request.getParameter("sms");
+		info.putSms(currUser.getId(), userId, sms);
+		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
+		rd.forward(request, response);
 	}
 
 }
