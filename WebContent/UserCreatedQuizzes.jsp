@@ -29,7 +29,7 @@
 		for(int i = 0; i < arr.size(); i++) {
 			QuizInfo cur = arr.get(i);
 %>		
-		 <i class='fas fa-smile-wink' style='font-size:24px'></i>
+		 <i class='fas fa-sticky-note' style='font-size:24px'></i>
 		 <% out.println(cur.getQuizName()); %> 
 		 <br>
 			<% } } %>
