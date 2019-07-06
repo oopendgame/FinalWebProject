@@ -3,6 +3,7 @@ package WebPackage.login;
 public class LogInInfo {
 	private int id;
 	private String userName;
+	private int search_id;
 	
 	public LogInInfo() {
 		
@@ -22,6 +23,14 @@ public class LogInInfo {
 	
 	public String getUserName() {
 		return userName;
+	}
+	
+	public void setSearchId(int search) {
+		search_id = search;
+	}
+	
+	public int getSearchId() {
+		return search_id;
 	}
 
 }

@@ -7,6 +7,8 @@
     <% findUserInfo info = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  info.getMyUser(currInfo.getUserName());%>
+    
+    <%@ include file="searchUser.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

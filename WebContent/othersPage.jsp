@@ -6,7 +6,8 @@
     pageEncoding="UTF-8"%>
     <% findUserInfo info = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-    userInfo currUser =  info.getMyUser(currInfo.getUserName());%>
+    int id = currInfo.getSearchId();
+    userInfo currUser =  info.getMyUser(id);%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,10 +121,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
         </div>
         <div class="smaller" style="text-align:center;margin-top: 1em;">
         
+        
+        
+        
         <form name = "addFriend" action = "sendRequestServlet" method="get">
         	<input type="hidden" name="user2" value=""/>
             <input type="submit" name="Add Friend" value="Add Friend"/>
         </form>
+        
+        
+        
             
           </div>
       </div>
