@@ -108,8 +108,11 @@ public class findRequestInfo {
 	}
 	
 	
-	public boolean alreadySent(int user1_id, int user2_id) {
-		return false;
+	public int alreadySent(int user1_id, int user2_id) {
+		String st = "SELECT friends_status FROM friends "
+				+ "WHERE (user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
+						+ "(user2_id = " + user2_id + "AND user1_id = " + user1_id + ");";
+		return -2;
 	}
 	
 	
