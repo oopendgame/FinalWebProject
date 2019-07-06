@@ -89,10 +89,10 @@ button {
 <title><%=chatterName%> Chat</title>
 <body  style="background-color:lavender;">
 <br>
-<center><h1> Messages </h1> </center>
+<center><h1> Your Chat With <br><%=chatterName%></h1> </center>
 <p id="demo"></p>
 	<%
-		for (int i = 0; i < allChat.size(); i++) {
+		for (int i = allChat.size() - 1; i >= 0; i--) {
 			messageInfo  msgInf = allChat.get(i);
 			String sms = msgInf.getSms();
 			String time = msgInf.getTime();
@@ -106,11 +106,11 @@ button {
 				user = getter.getUserName();
 				img = getter.getImg();
 	%>
-	<p class = "oleo"><% out.println(sender.getUserName()); %> </p>
-	<div class="container darker">
-	  <img src=<%=img%> alt="Avatar" style="width:100%;">
+	<p class = "oleo" align="right"><% out.println("You"); %> </p>
+	<div class="container darker" align="right">
+	  <img src=<%=sender.getImg()%> alt="Avatar" class="right" style="width:100%;">
 	  <p>  <% out.println(sms); %> </p>	  
-	  <span class="time-left"><%=time%></span>
+	  <span class="time-right"><%=time%></span>
 	</div>
 	<% 
 			}else{
@@ -123,7 +123,7 @@ button {
 	%>
   	<p class = "oleo"><% out.println(sender.getUserName()); %> </p>
 	<div class="container">
-		<img src=<%=img%> alt="Avatar" class="right" style="width:100%;">
+		<img src=<%=sender.getImg()%> alt="Avatar"  style="width:100%;">
 	  	 <p>  <% out.println(sms); %> </p>	  
 	  	<span class="time-left"><%=time%></span>
 	</div>
