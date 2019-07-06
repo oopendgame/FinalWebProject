@@ -83,9 +83,9 @@ public class findRequestInfo {
 		ArrayList<requestInfo> req = new ArrayList<requestInfo>();
 		String st = "SELECT friends_id, user1_id, user2_id, friends_status, sending_date "
 					+ "FROM friends "
-					+ "WHERE user2_id = " + id 
+					+ "WHERE (user2_id = " + id 
 					+ " OR user1_id = " + id
-					+ " AND friends_status = true;";
+					+ ") AND friends_status = true;";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);	

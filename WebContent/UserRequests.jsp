@@ -23,6 +23,9 @@
 	ArrayList<requestInfo> arr = req.getUserRequests(id);
 	if(arr.size() == 0) out.println("No requests");
 	else {
+%>
+		<p> <center>YOUR REQUESTS</center></p>
+<%
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);
 %>		
