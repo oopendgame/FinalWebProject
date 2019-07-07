@@ -115,54 +115,41 @@
     
         </div>
 
-
-
-
-
-
         <div>
                 <h4>Your Submissions</h4>
-                <table>
+                <table border = "2">
                         <tr>
                           <th>Date</th>
                           <th>Time</th> 
                           <th>Score</th>
                         </tr>
-                        <tr>
-                          <td>Jill</td>
-                          <td>Smith</td> 
-                          <td>50</td>
-                        </tr>
-                        <tr>
-                          <td>Eve</td>
-                          <td>Jackson</td> 
-                          <td>94</td>
-                        </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                        </tr>
-        
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                        </tr>
-        
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td> 
-                            <td>94</td>
-                        </tr>
-                      </table> 
+                        
+         	<%
+           		arr = addInf.getUserAttempts(curUser.getId(), id);
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(curQuiz.getStartingDate().toString());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getDuration());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		}         
+           %>             
+              </table> 
         
             </div>
-
-
-
-
-
 
 
             <div>

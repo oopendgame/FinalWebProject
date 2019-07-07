@@ -86,7 +86,7 @@ public class findQuizScoreInfo {
 	}
 	
 	public ArrayList<QuizScoreInfo> getUserAttempts(int user_id, int quiz_id) {
-		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " and user_id = " + user_id + ";";
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " and user_id = " + user_id + " ORDER BY start_time DESC;";
 		return getList(st);
 	}
 	
