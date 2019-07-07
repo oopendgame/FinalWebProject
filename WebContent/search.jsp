@@ -15,7 +15,7 @@ Search User:
 </form>
 
 
-<form action = "searchQUizServlet" method = "post"> 
+<form action = "searchQuizServlet" method = "post"> 
 Search Quiz: 
 <input type = "text" name = "quiz_name" placeholder = "enter quiz name">
 
