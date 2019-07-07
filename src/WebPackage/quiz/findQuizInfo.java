@@ -28,12 +28,12 @@ public class findQuizInfo {
 		String st = "SELECT * FROM quizzes";		
 		boolean nameEntered = false;
 		if(!name.equals("")) {
-			st += " WHERE quiz_name = " + name;
+			st += " WHERE quiz_name = \"" + name + "\"";
 			nameEntered = true;
 		}
 		if(!cat.equals("choose category")) {
-			if(nameEntered) st += " AND subj = " + cat;
-			else st += " WHERE subj = " + cat;
+			if(nameEntered) st += " AND subj = \"" + cat + "\"";
+			else st += " WHERE subj = \"" + cat + "\"";
 		}			
 		st += ";";
 		
