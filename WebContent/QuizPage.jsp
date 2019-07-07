@@ -154,90 +154,80 @@
 
             <div>
                     <h4>Friends' Submissions</h4>
-                    <table>
-                            <tr>
-                              <th>Dates</th>
-                              <th>Time</th> 
-                              <th>Score</th>
-                            </tr>
-                            <tr>
-                              <td>Jill</td>
-                              <td>Smith</td> 
-                              <td>50</td>
-                            </tr>
-                            <tr>
-                              <td>Eve</td>
-                              <td>Jackson</td> 
-                              <td>94</td>
-                            </tr>
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td> 
-                                <td>94</td>
-                            </tr>
-            
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td> 
-                                <td>94</td>
-                            </tr>
-            
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td> 
-                                <td>94</td>
-                            </tr>
-                          </table> 
+                   <table border = "2">
+                        <tr>
+                          <th>Date</th>
+                          <th>Time</th> 
+                          <th>Score</th>
+                        </tr>
+                         
+         	<%
+           		arr = addInf.getFriendsSubmission(curUser.getId(), id);
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(curQuiz.getStartingDate().toString());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getDuration());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		}         
+           %>             
+              </table>
             
                 </div>
 
 
 
-
-
-
                 <div>
                         <h4>Last Submissions</h4>
-                        <table>
-                                <tr>
-                                  <th>Dates</th>
-                                  <th>Time</th> 
-                                  <th>Score</th>
-                                </tr>
-                                <tr>
-                                  <td>Jill</td>
-                                  <td>Smith</td> 
-                                  <td>50</td>
-                                </tr>
-                                <tr>
-                                  <td>Eve</td>
-                                  <td>Jackson</td> 
-                                  <td>94</td>
-                                </tr>
-                                <tr>
-                                    <td>Eve</td>
-                                    <td>Jackson</td> 
-                                    <td>94</td>
-                                </tr>
-                
-                                <tr>
-                                    <td>Eve</td>
-                                    <td>Jackson</td> 
-                                    <td>94</td>
-                                </tr> 
-                
-                                <tr>
-                                    <td>Eve</td>
-                                    <td>Jackson</td> 
-                                    <td>94</td>
-                                </tr>
-                              </table> 
+                        <table border = "2">
+                        <tr>
+                          <th>Date</th>
+                          <th>Time</th> 
+                          <th>Score</th>
+                        </tr>
+                        
+         	<%
+           		arr = addInf.getLastSubmissions(id);
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(curQuiz.getStartingDate().toString());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getDuration());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		}         
+           %>             
+              </table>
                 
                     </div>
                     
-	<form name = "addFriend" action = "writeQuizServlet" method = "get">
-        	<input type="hidden" name="user2" value=""/>
-            <input type="submit" name="Add Friend" value="Start Quiz"/>
+	<form name = "startQuiz" action = "writeQuizServlet" method = "get">
+            <input type="submit" name="StartQuiz" value="Start Quiz"/>
     </form>
 
 </body>

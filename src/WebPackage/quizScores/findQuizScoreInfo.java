@@ -12,6 +12,8 @@ import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
 import WebPackage.quiz.QuizInfo;
 import WebPackage.quiz.findQuizInfo;
+import WebPackage.requests.findRequestInfo;
+import WebPackage.requests.requestInfo;
 
 public class findQuizScoreInfo {	
 	private Connection con;
@@ -98,6 +100,26 @@ public class findQuizScoreInfo {
 	
 	public ArrayList<QuizScoreInfo> getTodaysMaxScoreInQuiz(int quiz_id) {
 		String st = "SELECT * FROM quizScores WHERE (quiz_id = " + quiz_id + " AND start_time >= curdate() - INTERVAL 1 DAY) ORDER BY score DESC limit 5;";
+		return getList(st);
+	}
+	
+	public ArrayList<QuizScoreInfo> getLastSubmissions(int quiz_id) {
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY start_time DESC limit 5;";
+		return getList(st);
+	} 
+	 
+	public ArrayList<QuizScoreInfo> getFriendsSubmission(int user_id, int quiz_id) {
+		findRequestInfo req = new findRequestInfo();
+		ArrayList<requestInfo> arr = req.getUserFriends(user_id);
+		String ids = "";
+		for(int i = 0; i < arr.size(); i++) {
+			requestInfo cur = arr.get(i);
+			if(cur.getSenderID() == user_id) ids += cur.getReceiverID();
+			else ids += cur.getSenderID();
+			if(i != arr.size() - 1) ids += ", ";
+		}
+		
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " AND user_id in (" + ids + ") ORDER BY score DESC limit 10;";
 		return getList(st);
 	}
 
