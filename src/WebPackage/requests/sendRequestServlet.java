@@ -26,7 +26,7 @@ public class sendRequestServlet extends HttpServlet {
     public sendRequestServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
+    } 
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

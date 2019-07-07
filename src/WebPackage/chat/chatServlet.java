@@ -14,7 +14,7 @@ import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
 import WebPackage.user.findUserInfo;
 import WebPackage.user.userInfo;
-
+ 
 /**
  * Servlet implementation class chatServlet
  */

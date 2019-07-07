@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBInfo;
 
-/**
+/** 
  * Servlet implementation class accountServlet
  */
 @WebServlet("/accountServlet")

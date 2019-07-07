@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
-
+ 
 /**
  * Servlet implementation class challengeServlet
  */

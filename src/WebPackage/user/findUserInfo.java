@@ -18,7 +18,7 @@ public class findUserInfo {
 	static String  password = DBInfo.MYSQL_PASSWORD; // replace with your password
 	static String  server = DBInfo.MYSQL_DATABASE_SERVER;
 	static String database = DBInfo.MYSQL_DATABASE_NAME ; // replace with your db
-	
+	 
 	public findUserInfo(){
 		
 		try {
