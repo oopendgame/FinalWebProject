@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Quiz List</title>
 </head>
+
 <body>
+<p> Quizzes Found: </p>
+
+<%
+	ArrayList<QuizInfo> arr = request.getAttribute("quizzes");
+
+%>
 
 </body>
 </html>
