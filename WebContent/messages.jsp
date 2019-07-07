@@ -72,6 +72,10 @@ body {
   color:blue;
   text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
 }
+.new_msg {
+  font:'Berkshire Swash', Helvetica, sans-serif;
+  color:red;
+}
 button {
      background:none;
      color:blue;
@@ -98,12 +102,17 @@ button {
 			String img = "";
 			String whoTexted = "";
 			String user = "";
+			String seen = "";
 			userInfo getter = fuserInfo.getMyUser(msgInf.getUser2Id());
 			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
+			if(msgInf.getCondition().equals("sent")){
+				seen = "NEW";
+			}
 			if(sender.getUserName().equals(currUser.getUserName())){
 				whoTexted = "You: ";
 				user = getter.getUserName();
 				img = getter.getImg();
+				seen = "";
 			}else{
 				img = sender.getImg();
 				user = sender.getUserName();
@@ -113,8 +122,7 @@ button {
 			
 	%>
 	
-	<p class = "oleo"><% out.println(user); %> </p>
-	<div class="container" id="myForm">
+<span class = "oleo"><% out.println(user); %></span>  <span  class = "new_msg"><% out.println(seen); %> </span>	<div class="container" id="myForm">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
   		<p>  <% out.println(sms); %> </p>

@@ -42,6 +42,18 @@ public class findMessageInfo {
 		}
 		
 	}
+	//update sms set sms_condition = 'read' where user1_id = 1 and user2_id = 3;
+
+	public void setSmsSeen(int senderId, int getterId) {
+		try {
+			stmt.executeUpdate("update sms set sms_condition = 'read' where user1_id = " 
+								+ senderId + " and user2_id = " + getterId + ";");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 //	INSERT INTO sms(user1_id, user2_id, sms,  sent_time) VALUES
 //	(2, 3, "geniosi xar!",  sysdate());
 	public void putSms(int senderId, int getterId, String sms) {
