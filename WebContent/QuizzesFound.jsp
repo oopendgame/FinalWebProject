@@ -6,6 +6,14 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html> 
+
+<style>
+body {
+  font-size: 10;
+}
+</style>
+
+
 <head>
 <meta charset="UTF-8">
 <title>Quiz List</title>
@@ -22,15 +30,17 @@
 		
 %>
 
-<form name = "quiz_id<%=i%>" action = "challengeServlet" method = "get" >
-<input type = "hidden" name = "quiz_id" value = "<%=id%>">
-</form>
-
-<form name = "quizId<%=i%>" action="QuizPageServlet" method="post">
-<a href="#" onclick="document.forms['quizId<%=i%>'].submit()"> Take </a> or
-<a href='#' onclick="document.forms['quiz_id<%=i%>'].submit()"> Challenge </a>
+<span style='font-size:20px;'>&#9673;</span>
 <%=cur.getQuizName()%>
-<input type = "hidden" name = "quizID" value="<%=id%>">
+
+<form name = "startForm" action = "WriteQuizServlet" method="get">
+<input type = "hidden" id = "write_id" name = "quiz_id" value = "<%=id%>">
+<input type = "submit" value = "start">
+</form>
+	
+<form name = "challengeForm" action = "challengeServlet" method="get">
+<input type = "hidden" id = "challenge_id" name = "quiz_id" value = "<%=id%>">
+<input type = "submit" value = "challenge">
 </form>
 		
 <% } %>

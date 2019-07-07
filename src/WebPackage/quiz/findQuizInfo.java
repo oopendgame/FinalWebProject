@@ -42,7 +42,8 @@ public class findQuizInfo {
 			PreparedStatement stm = con.prepareStatement(st);
 			ResultSet res = stm.executeQuery();
 			while(res.next()) {
-				QuizInfo cur = getNewQuiz(res);
+				int id = res.getInt("quiz_id");
+				QuizInfo cur = getQuiz(id);
 				arr.add(cur);
 			}
 		} catch (SQLException e) {
