@@ -44,8 +44,8 @@
     <form action="challengeServlet" method="post">
 	  	<div class="vertical-menu" id = "myDIV">
 	    <input type="submit" value="achkh17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 2" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 3" class = "friend" name = "friend"><br>
+	    <input type="submit" value="nchan17" class = "friend" name = "friend"><br>
+	    <input type="submit" value="nchanfd17" class = "friend" name = "friend"><br>
 	    <input type="submit" value="Friend 4" class = "friend" name = "friend"><br>
 	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
 		</div>
