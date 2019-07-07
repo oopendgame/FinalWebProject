@@ -1,3 +1,6 @@
+<%@ page import="WebPackage.quiz.findQuizInfo"%> 
+<%@ page import="WebPackage.quiz.QuizInfo"%> 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,26 +13,18 @@
 
 <%
 	int id = (int)request.getAttribute("quiz_id");
-
+	findQuizInfo q = new findQuizInfo();
+	QuizInfo cur = q.getQuiz(id);
 %>
 
 <body>
 
-    <h1>Quiz Name</h1>
+    <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 
-    <h3>Subject: </h3>
-    <h3>Description: </h3>
+    <h3>Subject: <% out.println(cur.getSubject()); %> </h3>
+    <h3>Description: <% out.println(cur.getDecription()); %> </h3>
 
-    <br>
-    <br>
-    <br>
-
-     <div>
-        <button type="button">Start</button>
-        <button type="button">Practice Mode</button>
-    </div>
-
-    <h3>Created By: </h3>
+    <h3>Created By: <% out.println(cur.getAuthorId()); %></h3>
 
 
 
@@ -252,6 +247,11 @@
                               </table> 
                 
                     </div>
+                    
+	<form name = "addFriend" action = "writeQuizServlet" method = "get">
+        	<input type="hidden" name="user2" value=""/>
+            <input type="submit" name="Add Friend" value="Start Quiz"/>
+    </form>
 
 </body>
 </html>
