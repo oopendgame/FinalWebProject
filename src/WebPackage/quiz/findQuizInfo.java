@@ -23,14 +23,15 @@ public class findQuizInfo {
 	
 	public ArrayList<QuizInfo> searchQuiz(String name, String cat) {
 		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
-	
+		if(!name.equals("") && !cat.equals("choose category")) return arr;
+		
 		String st = "SELECT * FROM quizzes";		
 		boolean nameEntered = false;
-		if(!name.contentEquals("")) {
+		if(!name.equals("")) {
 			st += " WHERE quiz_name = " + name;
 			nameEntered = true;
 		}
-		if(!cat.contentEquals("choose category")) {
+		if(!cat.equals("choose category")) {
 			if(nameEntered) st += " AND subj = " + cat;
 			else st += " WHERE subj = " + cat;
 		}			

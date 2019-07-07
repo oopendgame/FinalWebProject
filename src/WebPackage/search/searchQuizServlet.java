@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBConnection;
+import WebPackage.quiz.QuizInfo;
 import WebPackage.quiz.findQuizInfo;
 
 /**
@@ -48,8 +51,13 @@ public class searchQuizServlet extends HttpServlet {
 		String name = request.getParameter("quiz_name");
 		String cat = request.getParameter("category");
 		findQuizInfo q = new findQuizInfo();
-		q.searchQuiz(name, cat);
+		ArrayList<QuizInfo> arr = q.searchQuiz(name, cat);
+		request.setAttribute("matchingQuizzes", arr);
 		
+		String st = "QuizzesFound.jsp";
+		if(arr.size() == 0) st = "QuizNotFound.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(st); 
+		rd.forward(request, response);
 	}
 
 }
