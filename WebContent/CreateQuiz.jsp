@@ -53,7 +53,7 @@
   							style="overflow-y:scroll"> </textarea> <br>  
   <div class="gap-10"></div>
   
-  Subject: 
+  Category: 
   <select name="subject">
     <option value="history">History</option>
     <option value="geography">Geography</option>
