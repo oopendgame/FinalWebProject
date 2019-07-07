@@ -19,7 +19,7 @@
 	userInfo sender;
 	String user = "";
 	messageInfo msgInf = null;
-    %>
+%>
 <!DOCTYPE html>
 <html> 
 <head>
