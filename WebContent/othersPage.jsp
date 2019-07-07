@@ -128,7 +128,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         
         <% int user1_id = currInfo.getId(); 
            findRequestInfo req = new findRequestInfo();
-           if(!req.requestAlreadySent(user1_id, id)) {
+           if(user1_id != id && !req.requestAlreadySent(user1_id, id)) {
          
         %> 
         <form name = "addFriend" action = "sendRequestServlet" method="get">
