@@ -80,7 +80,7 @@ public class findQuizScoreInfo {
 		return getList(st);
 	}
 	
-	public ArrayList<QuizScoreInfo> getUserMaxScoreInQuiz(int user_id, int quiz_id) {
+	public ArrayList<QuizScoreInfo> getUserScoresInQuiz(int user_id, int quiz_id) {
 		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " and user_id = " + user_id + " ORDER BY score DESC limit 1;";
 		return getList(st);
 	}
@@ -93,6 +93,11 @@ public class findQuizScoreInfo {
 	
 	public ArrayList<QuizScoreInfo> getMaxScoreInQuiz(int quiz_id) {
 		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC limit 5;";
+		return getList(st);
+	}
+	
+	public ArrayList<QuizScoreInfo> getTodaysMaxScoreInQuiz(int quiz_id) {
+		String st = "SELECT * FROM quizScores WHERE (quiz_id = " + quiz_id + " AND start_time >= curdate() - INTERVAL 1 DAY) ORDER BY score DESC limit 5;";
 		return getList(st);
 	}
 

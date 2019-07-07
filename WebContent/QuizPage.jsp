@@ -69,21 +69,10 @@
         			out.print("</td>\n");
         			
         			out.println("</tr>");
-           		}
-         	
-         
-         
-           %>
-                
-                
+           		}         
+           %>             
               </table> 
-
     </div>
-
-
-
-
-
 
 
 
@@ -91,40 +80,38 @@
 
     <div>
             <h4>Top Scores of the Day</h4>
-            <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Time</th> 
-                      <th>Score</th>
-                    </tr>
-                    <tr>
-                      <td>Jill</td>
-                      <td>Smith</td> 
-                      <td>50</td>
-                    </tr>
-                    <tr>
-                      <td>Eve</td>
-                      <td>Jackson</td> 
-                      <td>94</td>
-                    </tr>
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td> 
-                        <td>94</td>
-                    </tr>
-    
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td> 
-                        <td>94</td>
-                    </tr>
-    
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td> 
-                        <td>94</td>
-                    </tr>
-                  </table> 
+            
+            <table border = "2">
+            <tr>
+              <th>Name</th>
+              <th>Time</th> 
+              <th>Score</th>
+            </tr>
+            
+           	<%
+           		arr = addInf.getTodaysMaxScoreInQuiz(id);
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(curQuiz.getUserName());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getDuration());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		}         
+           %>             
+              </table> 
     
         </div>
 
