@@ -48,6 +48,7 @@ public class searchQuizServlet extends HttpServlet {
 		String name = request.getParameter("quiz_name");
 		String cat = request.getParameter("category");
 		findQuizInfo q = new findQuizInfo();
+		q.searchQuiz(name, cat);
 		
 	}
 
