@@ -112,6 +112,7 @@ button {
 				whoTexted = "You: ";
 				user = getter.getUserName();
 				img = getter.getImg();
+				seen = "";
 			}else{
 				img = sender.getImg();
 				user = sender.getUserName();
