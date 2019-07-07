@@ -8,22 +8,19 @@
 #myDIV {
 	display: none;
 }
-
+.friend{
+	width: 183px;
+  height: 40px;
+  overflow-y: auto;
+  border: none;
+}
 .vertical-menu {
   width: 200px;
-  height: 150px;
+  height: 120px;
   overflow-y: auto;
 }
 
-.vertical-menu a {
-  background-color: #eee;
-  color: black;
-  display: block;
-  padding: 12px;
-  text-decoration: none;
-}
-
-.vertical-menu a:hover {
+.friend:hover {
   background-color: #ccc;
 }
 
@@ -42,15 +39,17 @@
 </head>
 <body>
 
-<button class = "button" onclick="myFunction()">Send Challenge</button><p>
+<form action="loginServlet" method="post">
 
-<div class="vertical-menu" id = "myDIV">
-  <a href="#">Friend 1</a>
-  <a href="#">Friend 2</a>
-  <a href="#">Friend 3</a>
-  <a href="#">Friend 4</a>
-  <a href="#">Friend 5</a>
-</div>
+	<button class = "button" onclick="myFunction()">Send Challenge</button><p>
+    
+  	<div class="vertical-menu" id = "myDIV">
+    <input type="submit" value="Friend 1" class = "friend"><br>
+    <input type="submit" value="Friend 2" class = "friend"><br>
+    <input type="submit" value="Friend 3" class = "friend"><br>
+    <input type="submit" value="Friend 4" class = "friend"><br>
+    <input type="submit" value="Friend 5" class = "friend"><br>
+	</div>
 
 <script>
 function myFunction() {
@@ -62,6 +61,7 @@ function myFunction() {
   }
 }
 </script>
+</form>
 
 </body>
 </html>
