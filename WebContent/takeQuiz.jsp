@@ -39,17 +39,16 @@
 </head>
 <body>
 
-<form action="loginServlet" method="post">
-
 	<button class = "button" onclick="myFunction()">Send Challenge</button><p>
     
-  	<div class="vertical-menu" id = "myDIV">
-    <input type="submit" value="Friend 1" class = "friend"><br>
-    <input type="submit" value="Friend 2" class = "friend"><br>
-    <input type="submit" value="Friend 3" class = "friend"><br>
-    <input type="submit" value="Friend 4" class = "friend"><br>
-    <input type="submit" value="Friend 5" class = "friend"><br>
-	</div>
+    <form action="challengeServlet" method="post">
+	  	<div class="vertical-menu" id = "myDIV">
+	    <input type="submit" value="achkh17" class = "friend" name = "friend"><br>
+	    <input type="submit" value="Friend 2" class = "friend" name = "friend"><br>
+	    <input type="submit" value="Friend 3" class = "friend" name = "friend"><br>
+	    <input type="submit" value="Friend 4" class = "friend" name = "friend"><br>
+	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
+		</div>
 
 <script>
 function myFunction() {
