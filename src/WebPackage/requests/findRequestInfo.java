@@ -85,7 +85,7 @@ public class findRequestInfo {
 					+ "FROM friends "
 					+ "WHERE (user2_id = " + id 
 					+ " OR user1_id = " + id
-					+ ") AND friends_status = true;";
+					+ ") AND friends_status = 1;";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(st);	
