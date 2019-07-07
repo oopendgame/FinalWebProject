@@ -234,7 +234,7 @@
          		if(arr.size() == 0) out.println("Nobody has ever written his quiz");
          		else { %>
          		
-         		<table border = "2">
+         		<table border = "2"> 
                  <tr>
                    <th>Date</th>
                    <th>Time</th> 
