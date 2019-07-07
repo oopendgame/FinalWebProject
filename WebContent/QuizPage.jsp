@@ -1,7 +1,8 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page import="WebPackage.quiz.findQuizInfo"%> 
-<%@ page import="WebPackage.quiz.findAdditionalInfo"%> 
+<%@ page import="WebPackage.quizScores.QuizScoreInfo"%> 
+<%@ page import="WebPackage.quizScores.findQuizScoreInfo"%> 
 <%@ page import="WebPackage.quiz.QuizInfo"%> 
+<%@ page import="WebPackage.quiz.findQuizInfo"%> 
 <%@ page import="WebPackage.user.findUserInfo"%> 
 <%@ page import="WebPackage.user.userInfo"%> 
 
@@ -47,14 +48,25 @@
             </tr>
             
            	<%
-         		findAdditionalInfo addInf = new findAdditionalInfo();
-           		ArrayList<QuizInfo> arr = addInf.getMaxScoreInQuiz(id);
+         		findQuizScoreInfo addInf = new findQuizScoreInfo();
+           		ArrayList<QuizScoreInfo> arr = addInf.getMaxScoreInQuiz(id);
            		for(int i = 0; i < arr.size(); i++) {
-           			QuizInfo curQuiz = arr.get(i);
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
            
            			out.println("<tr>");
            			
+           			out.print("<td>");
+        			out.print(curQuiz.getUserName());
+        			out.print("</td>\n");
         			
+        			out.print("<td>");
+        			out.print(curQuiz.getDuration());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print("</td>\n");
         			
         			out.println("</tr>");
            		}

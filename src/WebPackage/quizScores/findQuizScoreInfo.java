@@ -40,6 +40,7 @@ public class findQuizScoreInfo {
 	
 	
 	private ArrayList<QuizScoreInfo> getList(String st) {
+		//System.out.println(st + "\n");
 		ResultSet rs;
 		ArrayList<QuizScoreInfo> arr = new ArrayList<QuizScoreInfo>();
 		try {
