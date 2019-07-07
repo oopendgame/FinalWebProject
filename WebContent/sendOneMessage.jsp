@@ -114,6 +114,11 @@ button {
   width: 33px;
 }
 .messaging { padding: 0 0 50px 0;}
+.form-textbox {
+	height: 300px !important;
+	width: 500px !important;
+	font-size: 14px !important;
+}
 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -147,17 +152,16 @@ button {
 <center><h1> Send message to  <br><%=currUserTo.getUserName()%></h1> </center>
     	
 <div class="container" id="myForm"> 
-	<form name="readForm" action="chatServlet" method="POST">
+	<form name="readForm" action="sendMessageServlet" method="GET">
 			<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
 			<div class="type_msg">
-		        <div class="input_msg_write">
-		        <input type="hidden" id="message" name="message" value="<%=msgInf.getSms()%>"> 
-				<input type="hidden" id="user" name="user" value="<%=user%>"> 
+		        <div class="input_msg_write"> 
+				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>"> 
 				<input type="hidden" id="receiver" name="receiver" value="<%=currUserTo.getId()%>">
-				<input type="hidden" id="messageID" name="messageID" value="<%=msgInf.getId()%>">
-		           <input type="text" class="write_msg" name = "sms" id = "sms" placeholder="Type a message" />
-		           <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-		        	<p id="demo"></p>
+				<textarea name = "sms" id = "sms"  rows="12" cols="90" placeholder="Type a message"  required 
+  							style="overflow-y:scroll"> </textarea> <br> 
+		        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+		        <p id="demo"></p>
 				
 		        </div>
 	    	</div>
