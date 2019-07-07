@@ -14,7 +14,7 @@ import WebPackage.database.DBInfo;
 public class findQuestionInfo {
 	private Connection con;
 	
-	public findQuestionInfo(){
+	public findQuestionInfo() {
 		con = DBConnection.getConnection();
 	}
 	

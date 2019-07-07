@@ -15,9 +15,41 @@ import WebPackage.database.DBInfo;
 public class findQuizInfo {
 	
 	private Connection con;
-	
+	 
 	public findQuizInfo() {
 		con = DBConnection.getConnection();
+	}
+	
+	
+	public ArrayList<QuizInfo> searchQuiz(String name, String cat) {
+		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
+	
+		String st = "SELECT * FROM quizzes";		
+		boolean nameEntered = false;
+		if(!name.contentEquals("")) {
+			st += " WHERE quiz_name = " + name;
+			nameEntered = true;
+		}
+		if(!cat.contentEquals("choose category")) {
+			if(nameEntered) st += " AND subj = " + cat;
+			else st += " WHERE subj = " + cat;
+		}			
+		st += ";";
+		
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement stm = con.prepareStatement(st);
+			ResultSet res = stm.executeQuery();
+			while(res.next()) {
+				QuizInfo cur = getNewQuiz(res);
+				arr.add(cur);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arr;
 	}
 	
 	public ArrayList<QuizInfo> getQuizList() {        

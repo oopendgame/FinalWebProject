@@ -95,7 +95,8 @@ public class findRequestInfo {
 				int user1_id = res.getInt("user1_id");
 				int user2_id = res.getInt("user2_id");
 				Date date = res.getDate("sending_date"); 
-				String name = getUserName(user1_id);			
+				String name = getUserName(user1_id);
+				if(user1_id == id) name = getUserName(user2_id);			
 				requestInfo cur = new requestInfo(req_id, user1_id, user2_id, 1, date, name);
 				req.add(cur);
 			}

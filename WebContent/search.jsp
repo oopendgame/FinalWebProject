@@ -17,10 +17,10 @@ Search User:
 
 <form action = "searchQUizServlet" method = "post"> 
 Search Quiz: 
-<input type = "text" name = "quiz" placeholder = "enter quiz name">
+<input type = "text" name = "quiz_name" placeholder = "enter quiz name">
 
 <select name="category">
-<option value="history" selected>Choose category</option>
+<option value="choose category" selected>Choose category</option>
     <option value="history">History</option>
     <option value="geography">Geography</option>
     <option value="math">Math</option>
