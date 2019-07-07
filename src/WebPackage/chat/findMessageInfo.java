@@ -1,6 +1,9 @@
 package WebPackage.chat;
 
 import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
+import WebPackage.user.findUserInfo;
+import WebPackage.user.userInfo;
 
 import java.sql.Connection;
 import java.sql.*;
@@ -44,6 +47,20 @@ public class findMessageInfo {
 	}
 	//update sms set sms_condition = 'read' where user1_id = 1 and user2_id = 3;
 
+	public int getNumUnseenChats(String userName) {
+		int res = 0;
+	 	findUserInfo fuserInfo = new findUserInfo();
+	    ArrayList<messageInfo> latestMessageInfo = this.getMessageByUsers(userName);
+	    for(int i = 0; i < latestMessageInfo.size(); i++) {
+	    	messageInfo  msgInf = latestMessageInfo.get(i);
+			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
+			if(msgInf.getCondition().equals("sent") && !sender.getUserName().equals(userName)){
+				res++;
+			}
+	    }
+	    return res;
+		
+	}
 	public void setSmsSeen(int senderId, int getterId) {
 		try {
 			stmt.executeUpdate("update sms set sms_condition = 'read' where user1_id = " 
