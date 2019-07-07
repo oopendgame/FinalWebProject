@@ -14,5 +14,7 @@ Search User:
 <input type = "submit" value = "search">
 </form>
 
-</body>
+
+
+</body> 
 </html>
