@@ -26,7 +26,7 @@ body {
 	ArrayList<QuizInfo> arr = (ArrayList<QuizInfo>)request.getAttribute("matchingQuizzes");
 	for(int i = 0; i < arr.size(); i++) {
 		QuizInfo cur = arr.get(i);
-		int id = cur.getQuizId();
+		int id = cur.getQuizId(); 
 		
 %>
 
