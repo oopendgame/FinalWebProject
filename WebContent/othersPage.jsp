@@ -154,7 +154,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </p> 
     </div>
     <div>
-    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Send Message </i></a></p>
+    <p><br><a href="sendOneMessage.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Send Message </i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> Send Challenge </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Created Quizzes</i></a></p>
