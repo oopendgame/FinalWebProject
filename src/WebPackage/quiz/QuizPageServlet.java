@@ -17,7 +17,7 @@ public class QuizPageServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QuizPageServlet() {
+    public QuizPageServlet() { 
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,6 +28,8 @@ public class QuizPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int id = Integer.parseInt(request.getParameter("quiz_id"));
+		
 	}
 
 	/**

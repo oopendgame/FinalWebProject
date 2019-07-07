@@ -33,7 +33,7 @@ body {
 <span style='font-size:20px;'>&#9673;</span>
 <%=cur.getQuizName()%>
 
-<form name = "startForm<%=i%>" action = "WriteQuizServlet" method="get">
+<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
 <input type = "hidden" name = "quiz_id" value = "<%=id%>">
 <input type = "submit" value = "start">
 </form>
