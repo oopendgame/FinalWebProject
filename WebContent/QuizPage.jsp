@@ -1,5 +1,9 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page import="WebPackage.quiz.findQuizInfo"%> 
+<%@ page import="WebPackage.quiz.findAdditionalInfo"%> 
 <%@ page import="WebPackage.quiz.QuizInfo"%> 
+<%@ page import="WebPackage.user.findUserInfo"%> 
+<%@ page import="WebPackage.user.userInfo"%> 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -19,50 +23,47 @@
 
 <body>
 
-    <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
+<h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 
-    <h3>Subject: <% out.println(cur.getSubject()); %> </h3>
-    <h3>Description: <% out.println(cur.getDecription()); %> </h3>
+<h3>Subject: <% out.println(cur.getSubject()); %> </h3>
+<h3>Description: <% out.println(cur.getDecription()); %> </h3>
 
-    <h3>Created By: <% out.println(cur.getAuthorId()); %></h3>
+<h3>Created By: 
+	<% 
+		findUserInfo user = new findUserInfo();
+		userInfo curUser = user.getMyUser(cur.getAuthorId());
+		out.println(curUser.getUserName()); 
+	%></h3>
 
 
 
-    <div>
-        <h4>Top Scores of All Time</h4>
-        <table>
-                <tr>
-                  <th>Name</th>
-                  <th>Time</th> 
-                  <th>Score</th>
-                </tr>
-                <tr>
-                  <td>Jill</td>
-                  <td>Smith</td> 
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>Eve</td>
-                  <td>Jackson</td> 
-                  <td>94</td>
-                </tr>
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
-                </tr>
-
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
-                </tr>
-
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
-                </tr>
+<div>
+    <h4>Top Scores of All Time</h4>
+    <table border = "2">
+            <tr>
+              <th>Name</th>
+              <th>Time</th> 
+              <th>Score</th>
+            </tr>
+            
+           	<%
+         		findAdditionalInfo addInf = new findAdditionalInfo();
+           		ArrayList<QuizInfo> arr = addInf.getMaxScoreInQuiz(id);
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizInfo curQuiz = arr.get(i);
+           
+           			out.println("<tr>");
+           			
+        			
+        			
+        			out.println("</tr>");
+           		}
+         	
+         
+         
+           %>
+                
+                
               </table> 
 
     </div>

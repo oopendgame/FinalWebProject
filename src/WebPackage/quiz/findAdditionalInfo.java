@@ -97,7 +97,7 @@ public class findAdditionalInfo {
 	
 	
 	public ArrayList<QuizInfo> getMaxScoreInQuiz(int quiz_id) {
-		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC limit 1;";
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC limit 5;";
 		return getList(st);
 	}
 
