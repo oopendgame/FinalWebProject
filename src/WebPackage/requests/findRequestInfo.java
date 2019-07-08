@@ -43,7 +43,6 @@ public class findRequestInfo {
 			stm.setInt(2, req.getReceiverID());
 			stm.setInt(3, req.getSatus());
 			stm.setDate(4, req.getSentDate());
-			System.out.println(req.getSenderID() + " " + req.getReceiverID());
 			stm.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -112,8 +111,8 @@ public class findRequestInfo {
 	
 	public boolean areFriends(int user1_id, int user2_id) {
 		String st = "SELECT friends_status FROM friends "
-				+ "WHERE ((user1_id = " + user1_id + "AND user2_id = " + user2_id + ") OR "
-						+ "(user2_id = " + user1_id + "AND user1_id = " + user2_id + ")) AND "
+				+ "WHERE ((user1_id = " + user1_id + " AND user2_id = " + user2_id + ") OR "
+						+ "(user2_id = " + user1_id + " AND user1_id = " + user2_id + ")) AND "
 								+ "friends_status = 1;";
 		try {
 			Statement stmt = con.createStatement();
@@ -140,6 +139,20 @@ public class findRequestInfo {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	
+	public void removeFriend(int user1_id, int user2_id) {
+		String st = "UPDATE friends SET friends_status = -1 "
+				+ "WHERE (user1_id = " + user1_id + " AND user2_id = " + user2_id + ") OR "
+				+ "(user2_id = " + user1_id + " AND user1_id = " + user2_id + ");";
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(st);
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
