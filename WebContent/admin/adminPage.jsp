@@ -113,8 +113,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     	color: #116466; 
     	font-weight: bolder
     }
+    .isAdmin{
+    	font-size: 30px;
+    	font:'Berkshire Swash', Helvetica, sans-serif;
+  		color:red;
+    }
     
 </style>
+<br><br>
+<center><span  class = "isAdmin"> Admin </span></center>
+<br>	
 <body style="background-color:lavender; 
 							padding-top: 50px; padding-right: 80px; 
 							padding-bottom: 50px; padding-left: 80px;">
