@@ -42,6 +42,8 @@
 </head>
 
 <body style="background-color:lavender;">
+<%@include file="header.jsp" %>
+<%@include file="nav.jsp" %>
 <h3 style="font-size:200%; color:#330066; text-align:center;">Log Into Maliamissaitiii</h3>
 
   <form action="loginServlet" method="post" style="text-align:center">
