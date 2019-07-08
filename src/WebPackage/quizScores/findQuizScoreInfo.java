@@ -111,6 +111,10 @@ public class findQuizScoreInfo {
 	public ArrayList<QuizScoreInfo> getFriendsSubmission(int user_id, int quiz_id) {
 		findRequestInfo req = new findRequestInfo();
 		ArrayList<requestInfo> arr = req.getUserFriends(user_id);
+		if(arr.size() == 0) {
+			ArrayList<QuizScoreInfo> q = new ArrayList<QuizScoreInfo>();
+			return q;
+		}
 		String ids = "";
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);

@@ -47,7 +47,7 @@ public class findAnswerInfo {
 	
 	public ArrayList<AnswerInfo> getAnswers(int id) {
 		ArrayList<AnswerInfo> arr = new ArrayList<AnswerInfo>();
-		String st = "SELECT * FROM answers WHERE qestion_id = " + id;
+		String st = "SELECT * FROM answers WHERE question_id = " + id;
 		ResultSet rs;
 		try {
 			Statement stmt = con.createStatement();

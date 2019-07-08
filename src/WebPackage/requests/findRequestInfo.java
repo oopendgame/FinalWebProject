@@ -43,6 +43,7 @@ public class findRequestInfo {
 			stm.setInt(2, req.getReceiverID());
 			stm.setInt(3, req.getSatus());
 			stm.setDate(4, req.getSentDate());
+			System.out.println(req.getSenderID() + " " + req.getReceiverID());
 			stm.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
