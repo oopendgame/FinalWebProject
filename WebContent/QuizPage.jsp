@@ -266,14 +266,19 @@
         			
         			out.println("</tr>");
            		}  }
-           %>             
+           %>              
               </table>
                 
                     </div>
-                    
-	<form name = "startQuiz" action = "writeQuizServlet" method = "get">
-            <input type="submit" name="StartQuiz" value="Start Quiz"/>
-    </form>
+    
+    <form name = "startQuiz" action = "writeQuizServlet" method = "post">
+	<input type = "hidden" name = "quiz_id" value = <%=id%>> 
+<%--	<input type = "hidden" name = "mult" value = "<%=cur.getPageNum()%>">
+	<input type = "hidden" name = "rand" value = "<%=cur.getRandom()%>">
+	<input type = "hidden" name = "imm" value = "<%=cur.getCorrectionType()%>">  --%>
+	<input type = "submit" value = "Start Quiz">
+</form>
 
+ 
 </body>
 </html>
