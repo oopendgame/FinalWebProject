@@ -144,15 +144,16 @@ button {
 <center><h1> Make an Announcement </h1> </center>
     	
 <div class="container" id="myForm"> 
-	<form name="readForm" action="sendMessageServlet" method="GET">
+	<form name="announcementForm" action="../makeAnnouncementServlet" method="GET">
 			<div class="type_msg">
 		        <div class="input_msg_write"> 
-				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>"> 
-				<textarea name = "sms" id = "sms"  rows="12" cols="90" placeholder="Type a message"  required 
-  							style="overflow-y:scroll"> </textarea> <br> 
+				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>">
+				<p> title </p>
+				<textarea name = "title" id = "title" rows="2" cols="90" style="overflow-y:scroll"> </textarea> <br>  
+				<p> announcement </p>
+				<textarea name="announcement" id="announcement" rows="12" cols="90" style="overflow-y:scroll"> </textarea> <br> 
 		        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
 		        <p id="demo"></p>
-				
 		        </div>
 	    	</div>
 	</form>

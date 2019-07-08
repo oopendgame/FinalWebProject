@@ -41,9 +41,15 @@ public class announcements {
 	//INSERT INTO announcement(title, announcement, announce_date, admin_id) VALUES
 	//("title", "announcement", sysdate(), 1);
 	public void makeAnnouncement(int id, String title, String ann) {
+		ResultSet res = null;
+		int userId = -1;
 		try {
+			res = stmt.executeQuery("SELECT * from admins where user_id = " + id + ";");
+			if(res.next()) {
+				userId = res.getInt("admin_id");
+			}
 			stmt.executeUpdate("INSERT INTO announcement(title, announcement, announce_date, admin_id) VALUES ('" 
-		+ title + "', '" + ann + "', sysdate(), " + id + ";");
+		+ title + "', '" + ann + "', sysdate(), " + userId + ");");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

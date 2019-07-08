@@ -2,12 +2,7 @@ Drop DATABASE IF  EXISTS finalProject;
 CREATE DATABASE IF NOT EXISTS finalProject;
 USE finalProject;
 
-CREATE TABLE IF NOT EXISTS admins (
-    admin_id int not null auto_increment,
-    admin_name varchar(50) not null unique,
-    
-    primary key(admin_id)
-);
+
 
 CREATE TABLE IF NOT EXISTS userInfo (
     user_id int not null auto_increment,
@@ -22,7 +17,13 @@ CREATE TABLE IF NOT EXISTS userInfo (
     
     primary key(user_id)
 );
-
+CREATE TABLE IF NOT EXISTS admins (
+    admin_id int not null auto_increment,
+    user_id int,
+    
+    primary key(admin_id),
+    FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
+);
 
 CREATE TABLE IF NOT EXISTS quizzes (
     quiz_id int not null auto_increment,
