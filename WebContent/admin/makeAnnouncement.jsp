@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="WebPackage.chat.findMessageInfo"%>
+<%@ page import="WebPackage.chat.findMessageInfo" import = "WebPackage.admin.announcements"%>
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
 <%@ page import="WebPackage.database.DBInfo" import="WebPackage.chat.messageInfo"%>
@@ -130,20 +130,12 @@ button {
  	findMessageInfo info = new findMessageInfo();
  	findUserInfo fuserInfo = new findUserInfo();
  	
- 	LogInInfo lcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-    int id = lcurrInfo.getSearchId();
-    userInfo currUserTo =  fuserInfo.getMyUser(id);
-    
     LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
-    String chatterName = request.getParameter("user");
-   	ArrayList<messageInfo> latestMessageInfo = info.getMessageByUsers(currUser.getUserName());
-	ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
 	int userId = -1;
 	userInfo getter = null;
 	userInfo sender;
 	String user = "";
-	messageInfo msgInf = new messageInfo(-1, currUser.getId(), currUserTo.getId(), "", "sent", "12-12-12");
 	//public messageInfo(int id, int user1Id, int user2Id, String sms, String condition, String time) {
 
     %>
@@ -153,11 +145,9 @@ button {
     	
 <div class="container" id="myForm"> 
 	<form name="readForm" action="sendMessageServlet" method="GET">
-			<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
 			<div class="type_msg">
 		        <div class="input_msg_write"> 
 				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>"> 
-				<input type="hidden" id="receiver" name="receiver" value="<%=currUserTo.getId()%>">
 				<textarea name = "sms" id = "sms"  rows="12" cols="90" placeholder="Type a message"  required 
   							style="overflow-y:scroll"> </textarea> <br> 
 		        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
