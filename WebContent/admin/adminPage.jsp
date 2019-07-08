@@ -180,16 +180,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="promoteToAdmin.jsp" style=a><i class='fas fa-angle-double-up' style='font-size:30px'>  Promote to Admin </i></a></p>
     <p><a href="websiteStatistics.jsp" style=a><i class='fas fa-info-circle' style='font-size:30px'>  Website Statistics </i></a></p>
     
-    <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
+    <p><a href="../messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
-    <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
-    <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
+    <p><a href="../challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
+    <p><a href="../UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
     <%=info.getNumFriendRequests(currUser.getUserName())%> Friend Requests</i></a></p>
-    <p><a href="UserFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
-    <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
-    <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
-    <p><a href="friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
-    <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
+    <p><a href="../UserFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
+    <p><a href="../yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
+    <p><a href="../UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
+    <p><a href="../friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
+    <p><a href="../CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
     </div>
 </body>
 </html>
