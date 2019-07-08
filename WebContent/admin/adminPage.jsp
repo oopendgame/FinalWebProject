@@ -12,7 +12,7 @@
     int numMsg = infoMsg.getNumUnseenChats(currUser.getUserName());
     %>
     
-    <%@ include file="search.jsp"%>
+    <%@ include file="/search.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
