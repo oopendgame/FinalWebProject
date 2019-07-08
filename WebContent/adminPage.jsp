@@ -175,6 +175,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
     <div>
     <p><br><a href="makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make Announcement </i></a></p>
+    <p><a href="removeUserOrQuiz.jsp" style=a><i class='fas fa-trash-alt' style='font-size:30px'>  Remove User or Quiz </i></a></p>
     <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
