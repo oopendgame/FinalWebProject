@@ -128,6 +128,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
         
         <% int user1_id = currInfo.getId(); 
            findRequestInfo req = new findRequestInfo();
+           if(req.areFriends(user1_id, id)) {
+        	   
+        	   %>
+        	
+    	   	<form name = "removeFriend" action = "removeFriendServlet" method="get">
+        	<input type="hidden" name="user2_id" value=""/>
+            <input type="submit" name="remove Friend" value="Remove Friend"/>
+        	</form> 
+        	   <%
+           }
+           
            if(user1_id != id && !req.requestAlreadySent(user1_id, id)) {
          
         %> 

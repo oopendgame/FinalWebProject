@@ -35,12 +35,12 @@ body {
 
 <form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
 <input type = "hidden" name = "quiz_id" value = "<%=id%>">
-<input type = "submit" value = "start">
+<input type = "submit" value = "view quiz">
 </form>
 	
 <form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
 <input type = "hidden" name = "quiz_id" value = "<%=id%>">
-<input type = "submit" value = "challenge">
+<input type = "submit" value = "challenge friends">
 </form>
 		
 <% } %>
