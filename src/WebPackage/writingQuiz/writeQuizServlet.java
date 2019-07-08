@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,10 +57,14 @@ public class writeQuizServlet extends HttpServlet {
 		if(curQuiz.getRandom()) Collections.shuffle(quest);
 		
 		Date startTime = new Date((new java.util.Date()).getTime());
-		writeQuizInfo cur = new writeQuizInfo(curQuiz, quest, startTime);
-		
+		writeQuizInfo cur = new writeQuizInfo(curQuiz, quest, startTime);		
 		HttpSession session = request.getSession();
 		session.setAttribute("writeQuiz", cur);
+		
+		String st = "WriteQuiz.jsp";
+		if(request.getParameter("mult") == "1") st = "WriteQuizMult.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(st);
+		rd.forward(request, response);
 	}
 
 }
