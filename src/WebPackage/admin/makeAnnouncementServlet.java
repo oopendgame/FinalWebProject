@@ -35,7 +35,7 @@ public class makeAnnouncementServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		int id = Integer.parseInt(request.getParameter("user"));
 		info.makeAnnouncement(id, title, ann);
-		RequestDispatcher rd = request.getRequestDispatcher("AnnouncementMade.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("admin/announcementMade.jsp");
 		rd.forward(request, response);
 	}
 
