@@ -19,6 +19,8 @@
 <title>Challenges</title>
 </head>
 <body  style="background-color:lavender;">
+<%@include file="header.jsp" %>
+<%@include file="nav.jsp" %>
 <br>
 
 <h1 style="font-size:200%; color:#330066; text-align:center;">Challenges</h1>
@@ -37,7 +39,7 @@
 	<div id="myForm">
  		<img src=<%=img%> alt="Avatar" style="width:5%;">
   		<% out.println(whoTexted); %>
-  		<a href=link>New Challenge</a>
+  		<a href=takeQuiz.jsp>New Challenge</a>
 	</div>
 	<hr>
 	

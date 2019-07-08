@@ -143,8 +143,8 @@ public class findUserInfo {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			res = stmt.executeQuery("SELECT count(*) from friends where user1_id = \"" 
-		+ userId + "\" and friends_status = \"1\";");
+			res = stmt.executeQuery("SELECT count(*) from friends where (user1_id = " 
+		+ userId + " or user2_id = "  + userId + ") and friends_status = 1;");
 			if(res.next()) {
 				num = res.getInt("count(*)");
 			}
