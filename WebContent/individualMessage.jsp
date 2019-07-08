@@ -5,7 +5,9 @@
 <%@ page import="WebPackage.user.userInfo"%>
 <%@ page import="WebPackage.database.DBInfo" import="WebPackage.chat.messageInfo"%>
 <%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
-
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
  <% 
  	findMessageInfo info = new findMessageInfo();
  	findUserInfo fuserInfo = new findUserInfo();

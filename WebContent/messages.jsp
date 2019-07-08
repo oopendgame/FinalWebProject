@@ -5,7 +5,9 @@
 <%@ page import="WebPackage.user.userInfo"%>
 <%@ page import="WebPackage.database.DBInfo" import="WebPackage.chat.messageInfo"%>
 <%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
-
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
  <% findMessageInfo info = new findMessageInfo();
  	findUserInfo fuserInfo = new findUserInfo();
     LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
@@ -14,7 +16,9 @@
     %>
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
