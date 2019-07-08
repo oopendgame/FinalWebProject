@@ -38,7 +38,9 @@
 	<% 
 		findUserInfo user = new findUserInfo();
 		userInfo curUser = user.getMyUser(cur.getAuthorId());
+		out.print("<a href = \"searchUserServlet\">");
 		out.println(curUser.getUserName()); 
+		out.print("</a>");
 	%></h3>
 
 
