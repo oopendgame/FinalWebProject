@@ -83,6 +83,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+.isAdmin{
+    	font-size: 30px;
+    	font:'Berkshire Swash', Helvetica, sans-serif;
+  		color:red;
+}
 </style>
 <style>
     a {
@@ -108,7 +113,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <body style="background-color:lavender; 
 							padding-top: 50px; padding-right: 80px; 
 							padding-bottom: 50px; padding-left: 80px;">
-
+<br><br>
+<center><span  class = "isAdmin"> Admin </span></center>
+<br>
 	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
 							padding-bottom: 50px; padding-left: 100px; 
 							swidth:screen.width;border:2px solid #000;"> 

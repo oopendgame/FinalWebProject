@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebPackage.admin.adminInfo;
 import WebPackage.database.DBInfo;
 
 /**
@@ -77,8 +78,13 @@ public class loginServlet extends HttpServlet {
 			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 			log.setUserName(name);
 			log.setId(id);
-			
-            request.getRequestDispatcher("userPage.jsp").forward(request,response);
+			adminInfo adInfo= new adminInfo();
+			if(adInfo.isAdmin(username)) {
+				request.getRequestDispatcher("admin/adminPage.jsp").forward(request,response);
+			}else {
+	            request.getRequestDispatcher("userPage.jsp").forward(request,response);
+
+			}
 		}else
             request.getRequestDispatcher("incorrectPass.jsp").forward(request,response);
 	}
