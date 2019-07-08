@@ -170,7 +170,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </p> 
     </div>
     <div>
-    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
+    <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
+    <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
     <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 

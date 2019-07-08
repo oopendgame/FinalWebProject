@@ -182,7 +182,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </p> 
     </div>
     <div>
-    <p><br><a href="admin/makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make an Announcement </i></a></p>
+    <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
+    <p><a href="admin/makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make an Announcement </i></a></p>
     <p><a href="admin/removeUserOrQuiz.jsp" style=a><i class='fas fa-trash-alt' style='font-size:30px'>  Remove User or Quiz </i></a></p>
     <p><a href="admin/clearQuizHistory.jsp" style=a><i class='fas fa-history' style='font-size:30px'>  Clear Quiz History </i></a></p>
     <p><a href="admin/promoteToAdmin.jsp" style=a><i class='fas fa-angle-double-up' style='font-size:30px'>  Promote to Admin </i></a></p>

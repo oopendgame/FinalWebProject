@@ -66,7 +66,19 @@ public class adminInfo {
 			return false;
 		}
 		
+		public void deleteUser() {
+			
+		}
 	
-
+		public void deleteQuiz() {
+			
+		}
+		
+		public void clearQuizHistory() {
+			
+		}
+		public void promoteToAdmin() {
+			
+		}
 
 }
