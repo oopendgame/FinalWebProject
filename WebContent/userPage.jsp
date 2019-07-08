@@ -12,10 +12,13 @@
     int numMsg = infoMsg.getNumUnseenChats(currUser.getUserName());
     %>
     
-    <%@ include file="search.jsp"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' 
@@ -111,9 +114,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
 </style>
+
 <body style="background-color:lavender; 
 							padding-top: 50px; padding-right: 80px; 
 							padding-bottom: 50px; padding-left: 80px;">
+
 
 	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
 							padding-bottom: 50px; padding-left: 100px;

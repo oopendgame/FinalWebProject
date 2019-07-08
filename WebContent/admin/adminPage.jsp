@@ -12,7 +12,6 @@
     int numMsg = infoMsg.getNumUnseenChats(currUser.getUserName());
     %>
     
-    <%@ include file="/search.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,6 +119,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
 </style>
+<%@include file="../headerLogged.jsp" %>
+<%@include file="../nav.jsp" %>
+<%@ include file="../search.jsp"%>
+
 <br><br>
 <center><span  class = "isAdmin"> Admin </span></center>
 <br>	
