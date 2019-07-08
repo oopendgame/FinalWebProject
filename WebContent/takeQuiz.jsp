@@ -39,6 +39,8 @@
 </head>
 <body>
 
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
 	<button class = "button" onclick="myFunction()">Send Challenge</button><p>
     
     <form action="challengeServlet" method="post">
