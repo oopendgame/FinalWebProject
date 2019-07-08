@@ -46,6 +46,25 @@ public class adminInfo {
 			}
 			return false;
 		}
+		public boolean isAdmin(String username) {
+			ResultSet res = null;
+			int userId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from userInfo where user_name = '" + username + "';");
+				if(res.next()) {
+					userId = res.getInt("user_id");
+				}
+				res = stmt.executeQuery("SELECT * from admins where user_id = " + userId + ";");
+				if(res.next()) {
+					return true;
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
 		
 	
 
