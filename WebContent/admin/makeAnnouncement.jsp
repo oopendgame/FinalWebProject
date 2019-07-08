@@ -9,7 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Announcement</title>
+<%@include file="../headerLogged.jsp" %>
+<%@include file="../nav.jsp" %>
+<%@ include file="../search.jsp"%>
 <style> 
 
 body {
