@@ -131,13 +131,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
            if(req.areFriends(user1_id, id)) {
         	   
         	   %>
-        	
-    <!--   	<form name = "removeFriend" action = "removeFriendServlet" method="get">
-        	<input type="hidden" name="user2" value=""/>
-            <input type="submit" name="remove Friend" value="Remove Friend"/>
-        	</form> -->  
         	   
-        	<button onclick = "<% req.removeFriend(user1_id, id); %>">Remove Friend</button>	
+        	<button onclick = "removeFriend ">Remove Friend</button>	
+        	h.addEventListner("click",removeFriend);
         	<p id="demo"></p>		
 			<script>
 			function removeFriend() {
