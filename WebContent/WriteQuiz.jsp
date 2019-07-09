@@ -32,14 +32,15 @@
 		String type = cur.getType();
 		ArrayList<AnswerInfo> arr = cur.getAnswers();
 		
-		if(!type.equals("Picture Response")) {
+		if(!type.equals("0")) {
 			out.println("Question " + i + ": ");
 			out.println("<br>");
 			out.println(cur.getQuestion());
 			out.println("<br>");	
+			out.println("<br>");
 		}
 		
-		if(type.equals("Multiple Choice")) {
+		if(type.equals("1")) {
 			for(int j = 0; j < arr.size(); j++) {
 				AnswerInfo curAns = arr.get(j);
 				out.println("<input type = \"radio\" "
@@ -47,11 +48,13 @@
 								  + "value = \"" + curAns.getAnswerId() + "\">");
 				out.println(curAns.getAnswer());
 				out.println("<br>");
+				out.println("<br>");
 			}	
 			
-		} else if(type.equals("Fill In The Blank")) {
+		} else if(type.equals("2")) {
 			out.println("Enter answer: <input type = \"text\" " 
 					 						+ "name = \"" + cur.getQuestionId() + "\">");
+			out.println("<br>");
 			out.println("<br>");
 			
 		} else if(type.equals("Picture Response")) {
@@ -60,10 +63,12 @@
 			out.println("Enter answer: <input type = \"text\" " 
 						+ "name = \"" + cur.getQuestionId() + "\">");
 			out.println("<br>");
+			out.println("<br>");
 			
-		} else if(type.equals("Question Response")) {
+		} else if(type.equals("3")) {
 			out.println("Enter answer: <textarea name = " + cur.getQuestionId() + "> "
 								    + "</textarea>");
+			out.println("<br>");
 			out.println("<br>");
 		}
 	}
