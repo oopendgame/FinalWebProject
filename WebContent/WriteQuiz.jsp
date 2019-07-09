@@ -32,15 +32,11 @@
 		String type = cur.getType();
 		ArrayList<AnswerInfo> arr = cur.getAnswers();
 		
-		if(!type.equals("0")) {
-			out.println("Question " + i + ": ");
-			out.println("<br>");
-			out.println(cur.getQuestion());
-			out.println("<br>");	
-			out.println("<br>");
-		}
+		out.println("Question " + i + ":    ");
+		out.println(cur.getQuestion());
+		out.println("<br>");	
 		
-		if(type.equals("1")) {
+		if(type.equals("1")) { //Multiple Choice
 			for(int j = 0; j < arr.size(); j++) {
 				AnswerInfo curAns = arr.get(j);
 				out.println("<input type = \"radio\" "
@@ -48,16 +44,16 @@
 								  + "value = \"" + curAns.getAnswerId() + "\">");
 				out.println(curAns.getAnswer());
 				out.println("<br>");
-				out.println("<br>");
 			}	
+			out.println("<br>");
 			
-		} else if(type.equals("2")) {
+		} else if(type.equals("0")) { //Fill In The Blank
 			out.println("Enter answer: <input type = \"text\" " 
 					 						+ "name = \"" + cur.getQuestionId() + "\">");
 			out.println("<br>");
 			out.println("<br>");
 			
-		} else if(type.equals("Picture Response")) {
+		} else if(type.equals("2")) { //Picture Response
 			out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"alternative_text\">");
 			out.println("<br>");
 			out.println("Enter answer: <input type = \"text\" " 
@@ -65,8 +61,9 @@
 			out.println("<br>");
 			out.println("<br>");
 			
-		} else if(type.equals("3")) {
-			out.println("Enter answer: <textarea name = " + cur.getQuestionId() + "> "
+		} else if(type.equals("3")) { //Question Response
+			out.println("Enter answer : ");
+			out.println("<textarea name = " + cur.getQuestionId() + "> "
 								    + "</textarea>");
 			out.println("<br>");
 			out.println("<br>");

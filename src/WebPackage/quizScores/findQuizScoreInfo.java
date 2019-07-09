@@ -30,8 +30,8 @@ public class findQuizScoreInfo {
 			preparedStatement = con.prepareStatement(st);
 			preparedStatement.setInt(1, quiz_id);
 			preparedStatement.setInt(2, user_id);
-			preparedStatement.setInt(2, score);
-			preparedStatement.setDate(3, start_time);
+			preparedStatement.setInt(3, score);
+			preparedStatement.setDate(4, start_time);
 			preparedStatement.setInt(5, duration);
 			preparedStatement.execute();
 		} catch (SQLException e) {

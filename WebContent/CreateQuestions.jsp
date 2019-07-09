@@ -55,8 +55,8 @@
  
 Choose question type: <br> 
 <select name = "type_1"> 
-<option value="1">Multiple Choice</option>
 <option value="0">Fill In The Blank</option>
+<option value="1">Multiple Choice</option>
 <option value="2">Picture Response</option>
 <option value="3">Question Response</option>
 </select>
