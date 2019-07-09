@@ -1,7 +1,7 @@
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.requests.findRequestInfo"%> 
 <%@ page import="WebPackage.user.userInfo"%>
-<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.database.DBInfo" import = "WebPackage.admin.adminInfo"%>
 <%@ page import="WebPackage.login.LogInInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -110,12 +110,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
     
 </style>
-<body style="background-color:lavender; 
-							padding-top: 50px; padding-right: 80px; 
-							padding-bottom: 50px; padding-left: 80px;">
-<br><br>
-<center><span  class = "isAdmin"> Admin </span></center>
-<br>
+	<%@include file="../headerLogged.jsp" %>
+	<%@include file="../nav.jsp" %>
+	<%@ include file="../search.jsp"%>
+	<body style="background-color:lavender; 
+								padding-top: 50px; padding-right: 80px; 
+								padding-bottom: 50px; padding-left: 80px;">
+	<% adminInfo adInf = new adminInfo();
+	if (adInf.isAdmin(currUser.getId())){%>
+	<br><br>
+	<center><span  class = "isAdmin"> Admin </span></center>
+	<%} %>
+	<br>
 	<div style = "background-color:lightblue; padding-top: 50px; padding-right: 100px; 
 							padding-bottom: 50px; padding-left: 100px; 
 							swidth:screen.width;border:2px solid #000;"> 

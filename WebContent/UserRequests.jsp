@@ -9,6 +9,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <head>
 <meta charset="UTF-8">
 
