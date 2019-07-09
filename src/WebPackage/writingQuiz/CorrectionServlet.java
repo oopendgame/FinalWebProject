@@ -66,10 +66,10 @@ public class CorrectionServlet extends HttpServlet {
 		int userScore = 0;
 		for(int i = 0; i < quest.size(); i++) {
 			QuestionInfo cur = quest.get(i);
-			String type = cur.getType();
+			//String type = cur.getType();
 			String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
 		//	if(!type.equals("Multiple Choice")) {
-				String corrAns = ansInfo.getCorrectAnswer(i);
+				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 				if(userAns.equals(corrAns)) userScore++;
 		//	}	
