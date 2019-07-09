@@ -51,7 +51,10 @@ public class checkPassword {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(passw != null && passw.equals(password)) {
+		
+		hashPass hash = new hashPass(password);
+		String hashed = hash.getHash();
+		if(passw != null && passw.equals(hashed)) {
 			return true;
 		}
 		return false;

@@ -64,7 +64,9 @@ public class newPassServlet extends HttpServlet {
 				stmt = con.createStatement();
 				stmt.executeQuery("USE " + database);
 
-				stmt.executeUpdate("update passwords set pass = '" + newPass + "' where user_id='" + id + "';");
+				hashPass hash = new hashPass(newPass);
+				String hashed = hash.getHash();
+				stmt.executeUpdate("update passwords set pass = '" + hashed + "' where user_id='" + id + "';");
 			} catch (SQLException e) {
 					e.printStackTrace();
 			}catch (ClassNotFoundException e) {

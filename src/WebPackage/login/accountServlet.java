@@ -78,8 +78,10 @@ public class accountServlet extends HttpServlet {
 					id = user.getInt("user_id");
 				}
 				
+				hashPass hash = new hashPass(passw);
+				String hashed = hash.getHash();
 				stmt.executeUpdate("insert into passwords (user_id, pass) "
-						+ "values ('"+id+"', '"+passw+"')");
+						+ "values ('"+id+"', '"+hashed+"')");
 				
 				LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 				log.setUserName(uname);
