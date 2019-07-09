@@ -57,7 +57,7 @@ public class CorrectionServlet extends HttpServlet {
 		Date startTime = curInfo.getStartTime();
 		Date endTime = new Date((new java.util.Date()).getTime());
 		int duration = (int)TimeUnit.MILLISECONDS.toMinutes(startTime.getTime() - endTime.getTime());
-		
+		 
 		QuizInfo quiz = curInfo.getQuiz();
 		int id = quiz.getQuizId();
 		ArrayList<QuestionInfo> quest = curInfo.getQuestions();
