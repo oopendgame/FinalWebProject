@@ -65,13 +65,16 @@ public class CorrectionServlet extends HttpServlet {
 		
 		int userScore = 0;
 		for(int i = 0; i < quest.size(); i++) {
-			QuestionInfo cur = quest.get(i);
+			QuestionInfo cur = quest.get(i); 
 			//String type = cur.getType();
 			String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
 		//	if(!type.equals("Multiple Choice")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
-				if(userAns.equals(corrAns)) userScore++;
+				if(userAns.equals(corrAns)) {
+					userScore++;
+					System.out.println(userAns + 7);
+				}
 		//	}	
 		} 
 		curInfo.setScore(userScore);
@@ -81,7 +84,7 @@ public class CorrectionServlet extends HttpServlet {
 		findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
 		scoreInfo.addUserWrittenQuiz(id, user_id, userScore, startTime, duration);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp"); //need to change to "QuizFinished"
 		rd.forward(request, response);
 	}
 
