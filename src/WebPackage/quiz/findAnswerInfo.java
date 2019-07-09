@@ -65,5 +65,19 @@ public class findAnswerInfo {
 		}		
 		return arr;
 	}
+	
+	public String getCorrectAnswer(int id) {
+		String st = "SELECT answer FROM answers WHERE question_id = " + id + " AND correct_ans = true";
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(st);
+			if(rs.next()) return rs.getString("answer");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
