@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS userInfo (
     
     primary key(user_id)
 );
+
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
     user_id int,

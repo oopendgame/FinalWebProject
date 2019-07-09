@@ -9,6 +9,14 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Writing Quiz</title>
+</head>
+
+<body>
+
 <form action = "CorrectionServlet" method = "post">
 	
 <%
@@ -24,10 +32,12 @@
 		String type = cur.getType();
 		ArrayList<AnswerInfo> arr = cur.getAnswers();
 		
-		out.println("Question " + i + ": ");
-		out.println("<br>");
-		out.println(cur.getQuestion());
-		out.println("<br>");
+		if(!type.equals("Picture Response")) {
+			out.println("Question " + i + ": ");
+			out.println("<br>");
+			out.println(cur.getQuestion());
+			out.println("<br>");	
+		}
 		
 		if(type.equals("Multiple Choice")) {
 			for(int j = 0; j < arr.size(); j++) {
@@ -40,23 +50,29 @@
 			}	
 			
 		} else if(type.equals("Fill In The Blank")) {
+			out.println("Enter answer: <input type = \"text\" " 
+					 						+ "name = \"" + cur.getQuestionId() + "\">");
+			out.println("<br>");
 			
+		} else if(type.equals("Picture Response")) {
+			out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"alternative_text\">");
+			out.println("<br>");
+			out.println("Enter answer: <input type = \"text\" " 
+						+ "name = \"" + cur.getQuestionId() + "\">");
+			out.println("<br>");
+			
+		} else if(type.equals("Question Response")) {
+			out.println("Enter answer: <textarea name = " + cur.getQuestionId() + "> "
+								    + "</textarea>");
+			out.println("<br>");
 		}
 	}
 
-
 %>
+
+<input type = "submit" value = "Submit">
 	
-	</form>
-
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Writing Quiz</title>
-</head>
-
-<body>
-
+</form>
 
 </body>
 </html>
