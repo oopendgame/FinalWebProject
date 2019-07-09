@@ -72,7 +72,7 @@ public class CorrectionServlet extends HttpServlet {
 				String corrAns = ansInfo.getCorrectAnswer(i);
 				if(userAns.equals(corrAns)) userScore++;
 		//	}	
-		}
+		} 
 		curInfo.setScore(userScore);
 		
 		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
