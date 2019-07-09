@@ -1,10 +1,11 @@
 package WebPackage.writingQuiz;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import WebPackage.database.DBInfo;
+import WebPackage.login.LogInInfo;
 import WebPackage.quiz.AnswerInfo;
 import WebPackage.quiz.QuestionInfo;
 import WebPackage.quiz.QuizInfo;
 import WebPackage.quiz.findAnswerInfo;
+import WebPackage.quizScores.findQuizScoreInfo;
 
 /**
  * Servlet implementation class CorrectionServlet
@@ -49,6 +53,11 @@ public class CorrectionServlet extends HttpServlet {
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
+		
+		Date startTime = curInfo.getStartTime();
+		Date endTime = new Date((new java.util.Date()).getTime());
+		int duration = (int)TimeUnit.MILLISECONDS.toMinutes(startTime.getTime() - endTime.getTime());
+		
 		QuizInfo quiz = curInfo.getQuiz();
 		int id = quiz.getQuizId();
 		ArrayList<QuestionInfo> quest = curInfo.getQuestions();
@@ -64,10 +73,15 @@ public class CorrectionServlet extends HttpServlet {
 				if(userAns.equals(corrAns)) userScore++;
 		//	}	
 		}
+		curInfo.setScore(userScore);
 		
-		Date startTime = curInfo.getStartTime();
-		Date endTime = new Date((new java.util.Date()).getTime());
-		long time = TimeUnit.MILLISECONDS.toMinutes(startTime.getTime() - endTime.getTime());
+		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+		int user_id = log.getId();		
+		findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
+		scoreInfo.addUserWrittenQuiz(id, user_id, userScore, startTime, duration);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("QuizResult.jsp");
+		rd.forward(request, response);
 	}
 
 }
