@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 #myDIV {
-	display: none;
+	
 }
 .friend{
 	width: 183px;
@@ -41,7 +41,6 @@
 
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-	<button class = "button" onclick="myFunction()">Send Challenge</button><p>
     
     <form action="challengeServlet" method="post">
 	  	<div class="vertical-menu" id = "myDIV">
@@ -52,16 +51,6 @@
 	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
 		</div>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    
-  } else {
-    x.style.display = "block";
-  }
-}
-</script>
 </form>
 
 </body>
