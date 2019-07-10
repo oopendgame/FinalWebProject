@@ -83,7 +83,7 @@
   <br>
   
   <div class="gap-10"></div>
-  <input type="checkbox" name="pract" value="true">
+  <input type="checkbox" name="pract" value="true"> 
   Practice Mode Option
   <br>
   
