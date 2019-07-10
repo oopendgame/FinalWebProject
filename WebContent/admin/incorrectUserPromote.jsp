@@ -35,12 +35,13 @@
 		
 		
 	</style>
-<body>
-	<body style="text-align:center; background-color:lavender">
+<body style="background-color:lavender">
+	<body style="text-align:center; ">
 	<br><br>
-	<h1 >Promote Following User To Admin </h1>
-	<p style = "color: red"> no such user found </p>
+	
 	<form action="PromoteServlet" method="post" style="text-align:center">
+		<h1 >Promote Following User To Admin </h1>
+		<p style = "color: red"> no such user found </p>
 		<input class = "text_promote" type="text" id="pusername" name="pusername" placeholder="Enter username">
 		<input class = "button_promote" type="submit" value="Promote"><br>
 	</form>
