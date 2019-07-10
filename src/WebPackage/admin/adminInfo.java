@@ -71,8 +71,31 @@ public class adminInfo {
 			
 		}
 	
-		public void deleteQuiz() {
-			
+		public boolean deleteQuiz(String quizName) {
+			ResultSet res = null;
+			int quizId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					quizId = res.getInt("quiz_id");
+				}
+				/* select * from quizScores;
+				delete from popularity where quis_id;*/
+				if(quizId == -1) return false;
+				stmt.executeUpdate("delete from popularity where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
+				res = stmt.executeQuery("SELECT quietion_id from quiestions where quiz_id = " + quizId + ";");
+				while(res.next()) {
+					int quietionId = res.getInt("quietion_id");
+					stmt.executeUpdate("delete from answers where quietion_id = " + quietionId + ";");
+				}
+				stmt.executeUpdate("delete from questions where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizzes where quiz_id = " + quizId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
 		}
 		
 		public boolean clearQuizHistory(String quizName) {
