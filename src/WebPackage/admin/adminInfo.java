@@ -67,7 +67,7 @@ public class adminInfo {
 			return false;
 		}
 		
-		public void deleteUser() {
+		public void deleteUser(String username) {
 			
 		}
 	
@@ -75,7 +75,24 @@ public class adminInfo {
 			
 		}
 		
-		public void clearQuizHistory() {
+		public boolean clearQuizHistory(String quizName) {
+			ResultSet res = null;
+			int quizId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					quizId = res.getInt("quiz_id");
+				}
+				/* select * from quizScores;
+				delete from popularity where quis_id;*/
+				if(quizId == -1) return false;
+				stmt.executeUpdate("delete from popularity where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
 			
 		}
 		
