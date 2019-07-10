@@ -52,7 +52,7 @@ public class CreateQuizServlet extends HttpServlet {
 		ArrayList<AnswerInfo> answers = new ArrayList<AnswerInfo>();
 		
 		String corrAns = request.getParameter("corrAns_" + quest);
-		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id
+		AnswerInfo corr = new AnswerInfo(0, corrAns, true); //need to change id 
 		answers.add(corr);
 		
 		for(int i = 0; i < ans.size(); i++) {
