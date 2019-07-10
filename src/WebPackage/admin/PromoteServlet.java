@@ -1,6 +1,8 @@
 package WebPackage.admin;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +40,16 @@ public class PromoteServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String userName = request.getParameter("pusername");
 		adminInfo adInfo = new adminInfo();
-		adInfo.promoteToAdmin(userName);
+		if(adInfo.promoteToAdmin(userName)) {
+			//warmatebit
+			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			rd.forward(request, response);
+		}else {
+			//warumateblad
+			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectUserPromote.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 }

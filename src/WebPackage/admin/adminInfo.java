@@ -79,7 +79,7 @@ public class adminInfo {
 			
 		}
 		
-		public void promoteToAdmin(String username) {
+		public boolean promoteToAdmin(String username) {
 			ResultSet res = null;
 			int userId = -1;
 			try {
@@ -89,13 +89,13 @@ public class adminInfo {
 				}
 				//INSERT INTO admins (user_id) VALUES
 				//(3);
-				res = stmt.executeQuery("INSERT INTO admins (user_id) VALUES(" + userId + ");");
-				
+				stmt.executeUpdate("INSERT INTO admins (user_id) VALUES(" + userId + ");");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			if(userId == -1) return false;
+			return true;
 		}
 
 }
