@@ -72,8 +72,10 @@ Choose question type: <br>
 <textarea name="corrAns_1" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
 </div>
 
+ <!--  
 Enter Answer:<br>
-<textarea name="quest_1ans" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>
+<textarea type = "hidden" name="quest_1ans" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>  
+-->
 </div>
 
 <input type="button" id="addAns" onClick="addAnswer()" value="Add Answer" />
