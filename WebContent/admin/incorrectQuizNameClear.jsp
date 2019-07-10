@@ -35,13 +35,14 @@
 		
 		
 	</style>
-<body>
-	<body style="background-color:lavender;">
+<body style="background-color:lavender">
+	<body style="text-align:center; ">
 	<br><br>
 	
-	<form action="../PromoteServlet" method="post" style="text-align:center">
-		<h1 style="text-align:center">Promote Following User To Admin </h1>
-		<input class = "text_promote" type="text" id="pusername" name="pusername" placeholder="Enter username">
+	<form action="PromoteServlet" method="post" style="text-align:center">
+		<h1 style="text-align:center"> Clear Quiz History </h1>
+		<p style = "color: red"> no such quiz found </p>
+		<input class = "text_promote" type="text" id="quizName" name="quizName" placeholder="Enter quiz name">
 		<input class = "button_promote" type="submit" value="Promote"><br>
 	</form>
 </body>

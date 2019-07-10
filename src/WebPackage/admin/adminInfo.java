@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import WebPackage.database.DBInfo;
+import WebPackage.user.findUserInfo;
 
 public class adminInfo {
 		private Connection con;
@@ -66,7 +67,7 @@ public class adminInfo {
 			return false;
 		}
 		
-		public void deleteUser() {
+		public void deleteUser(String username) {
 			
 		}
 	
@@ -74,11 +75,45 @@ public class adminInfo {
 			
 		}
 		
-		public void clearQuizHistory() {
+		public boolean clearQuizHistory(String quizName) {
+			ResultSet res = null;
+			int quizId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					quizId = res.getInt("quiz_id");
+				}
+				/* select * from quizScores;
+				delete from popularity where quis_id;*/
+				if(quizId == -1) return false;
+				stmt.executeUpdate("delete from popularity where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
 			
 		}
-		public void promoteToAdmin() {
-			
+		
+		public boolean promoteToAdmin(String username) {
+			ResultSet res = null;
+			int userId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from userInfo where user_name = '" + username + "';");
+				if(res.next()) {
+					userId = res.getInt("user_id");
+				}
+				//INSERT INTO admins (user_id) VALUES
+				//(3);
+				if(userId == -1) return false;
+				stmt.executeUpdate("INSERT INTO admins (user_id) VALUES(" + userId + ");");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(userId == -1) return false;
+			return true;
 		}
 
 }

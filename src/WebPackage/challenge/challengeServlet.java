@@ -65,10 +65,9 @@ public class challengeServlet extends HttpServlet {
 			if(user.next()) {
 				receiverid = user.getInt("user_id");
 			}
-			user = null;
+			
 			stmt.executeUpdate("insert into challenges (user1_id, user2_id, link) "
 					+ "values ('"+curr+"', '"+receiverid+"', '"+1+"')");
-			
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}catch (ClassNotFoundException e) {
@@ -76,7 +75,7 @@ public class challengeServlet extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("takeQuiz.jsp").forward(request,response);
+		request.getRequestDispatcher("ChooseReceivers.jsp").forward(request,response);
 	}
 
 }
