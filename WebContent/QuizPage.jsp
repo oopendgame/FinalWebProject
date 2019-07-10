@@ -77,11 +77,13 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getDuration());
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minutes and " + time % 60 + " seconds");
+        			else out.print(time + " seconds");
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -124,7 +126,9 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getDuration());
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
         			out.print("</td>\n");
         			
         			out.print("<td>");
@@ -168,7 +172,9 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getDuration());
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
         			out.print("</td>\n");
         			
         			out.print("<td>");
@@ -216,7 +222,9 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getDuration());
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
         			out.print("</td>\n");
         			
         			out.print("<td>");
@@ -259,7 +267,9 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getDuration());
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
         			out.print("</td>\n");
         			
         			out.print("<td>");
