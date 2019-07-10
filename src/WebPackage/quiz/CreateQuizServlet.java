@@ -84,7 +84,7 @@ public class CreateQuizServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		 
+		
 		int quiz_id = 0; //need to change 
 		String quiz_name = request.getParameter("quiz_name");
 		int author_id = getUserId();
