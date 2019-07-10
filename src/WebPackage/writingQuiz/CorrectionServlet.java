@@ -72,7 +72,7 @@ public class CorrectionServlet extends HttpServlet {
 			if(!type.equals("1")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
-				if(userAns.equals(corrAns)) {
+				if(userAns.trim().equals(corrAns.trim())) {
 					System.out.println("hereeeee" + 1);
 					userScore++;
 				}
