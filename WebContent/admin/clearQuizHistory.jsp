@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Promotion</title>
+<title>Clear History</title>
 </head>
 
 <%@include file="../headerLogged.jsp" %>
