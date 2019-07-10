@@ -1,3 +1,6 @@
+<%@ page import="WebPackage.admin.adminInfo"%>
+<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.login.LogInInfo"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,12 +63,19 @@ body {
 </style>
 </head>
 <body>
+<%
+	String profile = "userPage.jsp";
+	LogInInfo l = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	String username = l.getUserName();
+	adminInfo adInfo= new adminInfo();
+	if(adInfo.isAdmin(username)) profile = "admin/adminPage.jsp";
+%>
 
 <div id="myDiv">
 <div class="header">
   <a href="home.jsp" class="logo">Logo</a>
   <div class="header-right">
-    <a href="userPage.jsp" class = "c">Profile <i class="fas fa-user"></i></a>
+    <a href=<%=profile%> class = "c">Profile <i class="fas fa-user"></i></a>
     <a href="login.jsp" class = "c">Log out <i class="fa fa-sign-out-alt"></i></a>
   </div>
 </div>
