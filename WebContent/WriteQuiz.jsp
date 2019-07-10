@@ -33,8 +33,8 @@
 		ArrayList<AnswerInfo> arr = cur.getAnswers();
 		
 		out.println("Question " + i + ":    ");
-		out.println(cur.getQuestion());
-		out.println("<br>");	
+		if(!type.equals("2")) out.println(cur.getQuestion());
+		out.println("<br>");
 		
 		if(type.equals("1")) { //Multiple Choice
 			for(int j = 0; j < arr.size(); j++) {
@@ -54,7 +54,7 @@
 			out.println("<br>");
 			
 		} else if(type.equals("2")) { //Picture Response
-			out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"alternative_text\">");
+			out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"Anonymos Question. Just guess the answer and hope it's right\">");
 			out.println("<br>");
 			out.println("Enter answer: <input type = \"text\" " 
 						+ "name = \"" + cur.getQuestionId() + "\">");
