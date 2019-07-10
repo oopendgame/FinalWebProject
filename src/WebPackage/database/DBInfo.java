@@ -2,8 +2,13 @@ package WebPackage.database;
 
 public class DBInfo {
 	public static final String MYSQL_USERNAME = "root";
+<<<<<<< HEAD
 //	public static final String MYSQL_PASSWORD = "sudopllp";
 	public static final String MYSQL_PASSWORD = "Archili_archili";
+=======
+	public static final String MYSQL_PASSWORD = "sudopllp";
+//	public static final String MYSQL_PASSWORD = "Archili_archili";
+>>>>>>> a4090193ee59b1c47fdcfd3fe08ff365f97b72e5
 //	public static final String MYSQL_PASSWORD = "W)jmz~5%fLW?T86C"; //es datovet xolme komentarshi dzebna mezareba xolme W)jmz~5%fLW?T86C
 
 	public static final String MYSQL_DATABASE_SERVER = "localhost";

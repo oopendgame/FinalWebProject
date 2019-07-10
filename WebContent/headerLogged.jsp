@@ -61,6 +61,19 @@ body {
 </head>
 <body>
 
+<% 
+	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	log.setUserName(name);
+	log.setId(id);
+	adminInfo adInfo= new adminInfo();
+	if(adInfo.isAdmin(username)) {
+		request.getRequestDispatcher("admin/adminPage.jsp").forward(request,response);
+	}else {
+        request.getRequestDispatcher("userPage.jsp").forward(request,response);
+
+	}
+    %>
+
 <div id="myDiv">
 <div class="header">
   <a href="home.jsp" class="logo">Logo</a>

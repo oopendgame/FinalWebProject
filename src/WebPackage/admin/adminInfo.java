@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import WebPackage.database.DBInfo;
+import WebPackage.user.findUserInfo;
 
 public class adminInfo {
 		private Connection con;
@@ -77,8 +78,25 @@ public class adminInfo {
 		public void clearQuizHistory() {
 			
 		}
-		public void promoteToAdmin() {
-			
+		
+		public boolean promoteToAdmin(String username) {
+			ResultSet res = null;
+			int userId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from userInfo where user_name = '" + username + "';");
+				if(res.next()) {
+					userId = res.getInt("user_id");
+				}
+				//INSERT INTO admins (user_id) VALUES
+				//(3);
+				if(userId == -1) return false;
+				stmt.executeUpdate("INSERT INTO admins (user_id) VALUES(" + userId + ");");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(userId == -1) return false;
+			return true;
 		}
 
 }
