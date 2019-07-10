@@ -89,6 +89,7 @@ public class adminInfo {
 				}
 				//INSERT INTO admins (user_id) VALUES
 				//(3);
+				if(userId == -1) return false;
 				stmt.executeUpdate("INSERT INTO admins (user_id) VALUES(" + userId + ");");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
