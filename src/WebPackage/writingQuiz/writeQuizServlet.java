@@ -2,6 +2,7 @@ package WebPackage.writingQuiz;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -56,7 +57,8 @@ public class writeQuizServlet extends HttpServlet {
 		ArrayList<QuestionInfo> quest = questInfo.getQuizQuestions(id);
 		if(curQuiz.getRandom()) Collections.shuffle(quest);
 		
-		Date startTime = new Date((new java.util.Date()).getTime());
+		Timestamp startTime = new java.sql.Timestamp(System.currentTimeMillis());
+		
 		writeQuizInfo cur = new writeQuizInfo(curQuiz, quest, startTime);		
 		HttpSession session = request.getSession();
 		session.setAttribute("writeQuiz", cur);

@@ -1,6 +1,7 @@
 package WebPackage.writingQuiz;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import WebPackage.quiz.QuestionInfo;
@@ -9,10 +10,10 @@ import WebPackage.quiz.QuizInfo;
 public class writeQuizInfo {
 	private QuizInfo quiz;
 	private ArrayList<QuestionInfo> quest;
-	private Date startTime;
+	private Timestamp startTime;
 	private int userScore;
 	
-	public writeQuizInfo(QuizInfo quiz, ArrayList<QuestionInfo> quest, Date startTime) {
+	public writeQuizInfo(QuizInfo quiz, ArrayList<QuestionInfo> quest, Timestamp startTime) {
 		this.quiz = quiz;
 		this.quest = quest;
 		this.startTime = startTime;
@@ -26,7 +27,7 @@ public class writeQuizInfo {
 		return quest;
 	}
 	
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 	

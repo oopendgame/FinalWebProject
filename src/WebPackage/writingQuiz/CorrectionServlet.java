@@ -2,6 +2,7 @@ package WebPackage.writingQuiz;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -53,10 +54,11 @@ public class CorrectionServlet extends HttpServlet {
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
+		System.out.println((curInfo != null) + " t\n");
 		
-		Date startTime = curInfo.getStartTime();
-		Date endTime = new Date((new java.util.Date()).getTime());
-		int duration = (int)TimeUnit.MILLISECONDS.toMinutes(startTime.getTime() - endTime.getTime());
+		Timestamp startTime = curInfo.getStartTime();
+		Timestamp endTime = new java.sql.Timestamp(System.currentTimeMillis());
+		int duration = (int)TimeUnit.MILLISECONDS.toSeconds(endTime.getTime() - startTime.getTime());
 		 
 		QuizInfo quiz = curInfo.getQuiz();
 		int id = quiz.getQuizId();
