@@ -146,7 +146,7 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -155,6 +155,55 @@
               </table>
             
 </div>
+
+
+
+<div>
+                <h4>Your Submissions</h4>
+                
+                        
+         	<%
+           		arr = addInf.getUserAttempts(user_id, id);
+         		if(arr.size() == 0) out.println("You have no submissions");
+         		else {
+         	%>
+         	
+         	<table border = "2">
+             <tr>
+               <th>Date</th>
+               <th>Time</th> 
+               <th>Score</th>
+             </tr>
+         	
+         	
+         	<%
+           		for(int i = 0; i < arr.size(); i++) {
+           			QuizScoreInfo curQuiz = arr.get(i);
+           			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(curQuiz.getStartingDate().toString());
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		} }
+           %>             
+              </table> 
+        
+            </div>
+
 
 
  

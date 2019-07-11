@@ -132,7 +132,7 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -178,7 +178,7 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -228,7 +228,7 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -273,7 +273,7 @@
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + ")%");
+        			out.print(curQuiz.getScore() + " (" + perc + "%)");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
