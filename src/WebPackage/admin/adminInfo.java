@@ -67,10 +67,69 @@ public class adminInfo {
 			return false;
 		}
 		
-		public void deleteUser(String username) {
-			
+		public boolean deleteUser(String username) {
+			ResultSet res = null;
+			int userId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from userInfo where user_name = '" + username + "';");
+				if(res.next()) {
+					userId = res.getInt("user_id");
+				}
+				if(userId == -1 || this.isAdmin(username)) return false;
+				this.deleteChallanges(userId);
+				this.deleteFriends(userId);
+				this.deletePass(userId);
+				this.deleteSms(userId);
+				res = stmt.executeQuery("SELECT * from quizzes where author_id = " + userId + ";");
+				while(!res.isClosed() && res.next()) {
+					this.deleteQuiz(res.getString("quiz_name"));
+				}
+				stmt.executeUpdate("delete from userInfo where user_id = " + userId + ";");
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		}
+		private void deletePass(int userId) {
+			try {
+				stmt.executeUpdate("delete from passwords where user_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		private void deleteSms(int userId) {
+			try {
+				stmt.executeUpdate("delete from sms where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		private void deleteChallanges(int userId) {
+			try {
+				stmt.executeUpdate("delete from challenges where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	
+		private void deleteFriends(int userId) {
+			try {
+				stmt.executeUpdate("delete from friends where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+		
 		public boolean deleteQuiz(String quizName) {
 			ResultSet res = null;
 			int quizId = -1;

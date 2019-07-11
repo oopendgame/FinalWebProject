@@ -9,7 +9,8 @@
 <%@include file="../headerLogged.jsp" %>
 <%@include file="../nav.jsp" %>
 <%@ include file="../search.jsp"%>
-<body>
+<body  style="background-color:lavender;">
+<br><br><br>
 
 </body>
 </html>
