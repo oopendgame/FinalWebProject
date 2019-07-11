@@ -117,7 +117,7 @@ public class findQuizScoreInfo {
 		if(arr.size() == 0) {
 			ArrayList<QuizScoreInfo> q = new ArrayList<QuizScoreInfo>();
 			return q;
-		}
+		} 
 		String ids = "";
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);
