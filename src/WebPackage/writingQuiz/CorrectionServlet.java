@@ -70,24 +70,26 @@ public class CorrectionServlet extends HttpServlet {
 			QuestionInfo cur = quest.get(i);
 			String type = cur.getType();
 			String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
+			System.out.println(userAns == null + "2\n");
 			
 			if(!type.equals("1")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
-				//System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
+				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 				if(userAns != null && userAns.trim().equals(corrAns.trim())) {
-					//System.out.println("hereeeee" + 1);
+					System.out.println("hereeeee" + 1);
 					userScore++;
 				}
 				
 			} else if(userAns != null) {
-				//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
+				System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
 				int ansId = Integer.parseInt(userAns);
 				if(ansInfo.isAnswerCorrect(ansId)) {
-					//System.out.println("hereeeee" + 2);
+					System.out.println("hereeeee" + 2);
 					userScore++;
 				}
 			}
 		} 
+		userScore += curInfo.getScore();
 		curInfo.setScore(userScore);
 		
 		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);

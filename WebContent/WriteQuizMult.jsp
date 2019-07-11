@@ -74,8 +74,6 @@
 		out.println("<br>"); 
 		out.println("<br>");
 	}
-	
-	curInfo.increaseQuestionNum();
 %>
 	
 	<input type = "submit" value = "Next Question">	
