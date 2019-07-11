@@ -4,12 +4,14 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import WebPackage.quiz.AnswerInfo;
 import WebPackage.quiz.QuestionInfo;
 import WebPackage.quiz.QuizInfo;
 
 public class writeQuizInfo {
 	private QuizInfo quiz;
 	private ArrayList<QuestionInfo> quest;
+	private ArrayList<String> userAnswers;
 	private Timestamp startTime;
 	private int userScore;
 	private int questionNum;
@@ -19,6 +21,7 @@ public class writeQuizInfo {
 		this.quiz = quiz;
 		this.quest = quest;
 		this.startTime = startTime;
+		userAnswers = new ArrayList<String>();
 	}
 	
 	public void increaseQuestionNum() {
@@ -47,5 +50,13 @@ public class writeQuizInfo {
 	
 	public int getScore() {
 		return userScore;
+	}
+	
+	public void addUserAns(String ans) {
+		userAnswers.add(ans);
+	}
+	
+	public ArrayList<String> getUserAns() {
+		return userAnswers;
 	}
 }

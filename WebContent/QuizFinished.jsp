@@ -7,6 +7,11 @@
 <%@ page import="WebPackage.user.userInfo"%> 
 <%@ page import="WebPackage.login.LogInInfo"%> 
 <%@ page import="WebPackage.database.DBInfo"%> 
+<%@ page import="WebPackage.quiz.QuestionInfo"%>
+<%@ page import="WebPackage.quiz.QuizInfo"%>
+<%@ page import="WebPackage.quiz.findAnswerInfo"%>
+<%@ page import="WebPackage.quiz.AnswerInfo"%>
+<%@ page import="WebPackage.writingQuiz.writeQuizInfo"%>
 
 
 
@@ -20,8 +25,14 @@
 <title>Quiz Result Page</title>
 </head>
 
-<%
-	int id = (int)request.getAttribute("quiz_id");
+<%	
+	HttpSession curSession = request.getSession();
+	writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
+	QuizInfo quiz = curInfo.getQuiz();
+	ArrayList<QuestionInfo> quest = curInfo.getQuestions();
+	findAnswerInfo ans = new findAnswerInfo();
+	int id = quiz.getQuizId();
+	
 	findQuizInfo q = new findQuizInfo();
 	QuizInfo cur = q.getQuiz(id);
 	
@@ -32,40 +43,36 @@
 <body>
 
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
-
-<h3>Subject: <% out.println(cur.getSubject()); %> </h3>
-<h3>Description: <% out.println(cur.getDecription()); %> </h3>
-
-<h3>Created By: 
-	<% 
-		findUserInfo user = new findUserInfo();
-		userInfo curUser = user.getMyUser(cur.getAuthorId());
-		
-		log.setSearchId(cur.getAuthorId());		
-		out.print("<a href = \"othersPage.jsp\">");
-		out.println(curUser.getUserName()); 
-		out.print("</a>");
-	%></h3>
+<h1>Your score: <% out.println(curInfo.getScore()); %> </h1>
+<h1>Taken Time: 
+<% 
+//	long time = curQuiz.getDuration();
+	//if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+	//else out.print(time + " sec");
+%>
+ </h1>
 
 
 
-<div>
-    <h4>Top Scores of All Time</h4>            
-           	<%
+ <div>
+                    <h4>Friends' Submissions</h4>
+                   
+                         
+         	<%
          		findQuizScoreInfo addInf = new findQuizScoreInfo();
-           		ArrayList<QuizScoreInfo> arr = addInf.getMaxScoreInQuiz(id);
-           		if(arr.size() == 0) out.println("Nobody has ever written his quiz");
-           		else {
-           		%>
-           		
-           		<table border = "2">
-            <tr>
-              <th>Name</th>
-              <th>Time</th> 
-              <th>Score</th>
-            </tr>
-           		
-           		<%           		
+       			ArrayList<QuizScoreInfo> arr = addInf.getFriendsSubmission(user_id, id);
+         		if(arr.size() == 0) out.println("You have no submissions");
+         		else {
+         	%>
+         		<table border = "2">
+                 <tr>
+                   <th>Friend's Name</th>
+                   <th>Date</th>
+                   <th>Time</th> 
+                   <th>Score</th>
+                 </tr>
+         	
+         	<%
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
@@ -76,22 +83,26 @@
         			out.print(curQuiz.getUserName());
         			out.print("</td>\n");
         			
-        			out.print("<td>");
-        			long time = curQuiz.getDuration();
-        			if(time / 60 > 0) out.print(time / 60 + " minutes and " + time % 60 + " seconds");
-        			else out.print(time + " seconds");
+           			out.print("<td>");
+        			out.print(curQuiz.getStartingDate().toString());
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print(curQuiz.getScore() + " (" + perc + "%)");
+        			long time = curQuiz.getDuration();
+        			if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+        			else out.print(time + " sec");
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print(curQuiz.getScore() + " (" + perc + ")%");
         			out.print("</td>\n");
         			
         			out.println("</tr>");
-           		}   }
+           		} }
            %>             
-              </table> 
-    </div>
-
+              </table>
+            
+</div>
 
 
  
