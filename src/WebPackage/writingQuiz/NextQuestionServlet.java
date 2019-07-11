@@ -44,7 +44,6 @@ public class NextQuestionServlet extends HttpServlet {
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
 		
 		String st = "WriteQuizMult.jsp";
-		if(curInfo.getQestionNum() == curInfo.getQuestions().size()) st = "CorrectionServlet.java";
 		RequestDispatcher rd = request.getRequestDispatcher(st);
 		rd.forward(request, response);
 	}

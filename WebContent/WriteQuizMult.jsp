@@ -31,7 +31,7 @@
 	String type = cur.getType();
 	ArrayList<AnswerInfo> arr = cur.getAnswers();
 	
-	if(quest.size() != curInfo.getQestionNum()) {
+	if(quest.size() != curInfo.getQestionNum() + 1) {
 %>
 	
 
@@ -123,7 +123,6 @@ out.println("Question " + i + ":    ");
 		out.println("<br>");
 	}
 	
-	curInfo.increaseQuestionNum();
 %>
 	<input type = "submit" value = "Finish">	
 	</form>

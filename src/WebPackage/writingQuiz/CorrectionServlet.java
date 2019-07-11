@@ -54,7 +54,7 @@ public class CorrectionServlet extends HttpServlet {
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
-		System.out.println((curInfo != null) + " t\n");
+		//System.out.println((curInfo != null) + " t\n");
 		
 		Timestamp startTime = curInfo.getStartTime();
 		Timestamp endTime = new java.sql.Timestamp(System.currentTimeMillis());
@@ -74,12 +74,12 @@ public class CorrectionServlet extends HttpServlet {
 			if(!type.equals("1")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 				//System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
-				if(userAns.trim().equals(corrAns.trim())) {
+				if(userAns != null && userAns.trim().equals(corrAns.trim())) {
 					//System.out.println("hereeeee" + 1);
 					userScore++;
 				}
 				
-			} else {
+			} else if(userAns != null) {
 				//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
 				int ansId = Integer.parseInt(userAns);
 				if(ansInfo.isAnswerCorrect(ansId)) {
