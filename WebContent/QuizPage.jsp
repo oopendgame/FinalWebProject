@@ -69,6 +69,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -118,6 +119,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -164,6 +166,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -210,6 +213,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -259,6 +263,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			

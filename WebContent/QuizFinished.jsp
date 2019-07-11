@@ -78,13 +78,14 @@
            			QuestionInfo curQuest = questions.get(i);
            
            			out.println("<tr>");
-           			
+           			 
            			out.print("<td>");
         			out.print(i + 1);
         			out.print("</td>\n");
            			
            			out.print("<td>");
-        			out.print(curQuest.getQuestion());
+        			if(!curQuest.getType().equals("2")) out.print(curQuest.getQuestion());
+        			else out.print("Picture Question");
         			out.print("</td>\n");
         			
            			out.print("<td>");
@@ -128,6 +129,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -180,6 +182,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
