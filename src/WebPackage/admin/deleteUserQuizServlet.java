@@ -49,7 +49,18 @@ public class deleteUserQuizServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String username = request.getParameter("username");
+		adminInfo adInfo = new adminInfo();
+		if(adInfo.deleteUser(username)) {
+			//warmatebit
+			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			rd.forward(request, response);
+		}else {
+			//warumateblad
+			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizUserDelete.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

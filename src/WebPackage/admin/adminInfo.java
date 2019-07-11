@@ -67,7 +67,7 @@ public class adminInfo {
 			return false;
 		}
 		
-		public void deleteUser(String username) {
+		public boolean deleteUser(String username) {
 			
 		}
 	
