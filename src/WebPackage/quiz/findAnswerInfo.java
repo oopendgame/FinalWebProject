@@ -24,6 +24,7 @@ public class findAnswerInfo {
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(st);
 			preparedStatement.setInt(1, id);
+			System.out.println(1 + ans.getAnswer() + "\n");
 			preparedStatement.setString(2, ans.getAnswer());
 			preparedStatement.setBoolean(3, ans.getCorrectAns());
 			preparedStatement.execute();

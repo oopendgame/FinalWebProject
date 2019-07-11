@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
@@ -23,7 +24,7 @@ public class findQuizScoreInfo {
 	}
 	
 	
-	public void addUserWrittenQuiz(int quiz_id, int user_id, int score, Date start_time, int duration) {
+	public void addUserWrittenQuiz(int quiz_id, int user_id, int score, Timestamp start_time, int duration) {
 		String st = "INSERT INTO quizScores (quiz_id, user_id, score, start_time, duration) VALUES(?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement;
 		try {
@@ -31,7 +32,7 @@ public class findQuizScoreInfo {
 			preparedStatement.setInt(1, quiz_id);
 			preparedStatement.setInt(2, user_id);
 			preparedStatement.setInt(3, score);
-			preparedStatement.setDate(4, start_time);
+			preparedStatement.setTimestamp(4, start_time);
 			preparedStatement.setInt(5, duration);
 			preparedStatement.execute();
 		} catch (SQLException e) {

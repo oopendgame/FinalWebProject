@@ -2,6 +2,7 @@ package WebPackage.writingQuiz;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -53,10 +54,11 @@ public class CorrectionServlet extends HttpServlet {
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
+		System.out.println((curInfo != null) + " t\n");
 		
-		Date startTime = curInfo.getStartTime();
-		Date endTime = new Date((new java.util.Date()).getTime());
-		int duration = (int)TimeUnit.MILLISECONDS.toMinutes(startTime.getTime() - endTime.getTime());
+		Timestamp startTime = curInfo.getStartTime();
+		Timestamp endTime = new java.sql.Timestamp(System.currentTimeMillis());
+		int duration = (int)TimeUnit.MILLISECONDS.toSeconds(endTime.getTime() - startTime.getTime());
 		 
 		QuizInfo quiz = curInfo.getQuiz();
 		int id = quiz.getQuizId();
@@ -66,15 +68,25 @@ public class CorrectionServlet extends HttpServlet {
 		int userScore = 0;
 		for(int i = 0; i < quest.size(); i++) {
 			QuestionInfo cur = quest.get(i);
-			//String type = cur.getType();
+			String type = cur.getType();
 			String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
-		//	if(!type.equals("Multiple Choice")) {
+			
+			if(!type.equals("1")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
-				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
-				if(userAns.equals(corrAns)) {
+				//System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
+				if(userAns.trim().equals(corrAns.trim())) {
+					//System.out.println("hereeeee" + 1);
 					userScore++;
 				}
-		//	}	
+				
+			} else {
+				//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
+				int ansId = Integer.parseInt(userAns);
+				if(ansInfo.isAnswerCorrect(ansId)) {
+					//System.out.println("hereeeee" + 2);
+					userScore++;
+				}
+			}
 		} 
 		curInfo.setScore(userScore);
 		

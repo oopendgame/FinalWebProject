@@ -2,15 +2,12 @@ package WebPackage.quiz;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import WebPackage.database.DBConnection;
-import WebPackage.database.DBInfo;
 
 public class findQuizInfo {
 	
@@ -145,7 +142,9 @@ public class findQuizInfo {
 			preparedStatement.setBoolean(3, quiz.getRandom());
 			preparedStatement.setString(4, quiz.getQuizName());
 			preparedStatement.setBoolean(5, quiz.getCorrectionType());
-			preparedStatement.setDate(6, quiz.getCreationDate());
+			//preparedStatement.setDate(6, quiz.getCreationDate());
+			preparedStatement.setTimestamp(6, new java.sql.Timestamp(System.currentTimeMillis()));
+			
 			preparedStatement.setString(7, quiz.getSubject());
 			preparedStatement.setString(8, quiz.getDecription());
 			preparedStatement.setBoolean(9, quiz.getPractiseMode());
