@@ -10,9 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Announcement</title>
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <style> 
 
 body {
@@ -147,7 +147,7 @@ button {
 <center><h1> Make an Announcement </h1> </center>
     	
 <div class="container" id="myForm"> 
-	<form name="announcementForm" action="../makeAnnouncementServlet" method="GET">
+	<form name="announcementForm" action="makeAnnouncementServlet" method="GET">
 			<div class="type_msg">
 		        <div class="input_msg_write"> 
 				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>">

@@ -64,18 +64,19 @@ body {
 </head>
 <body>
 <%
-	String profile = "userPage.jsp";
+	String profile;
 	LogInInfo l = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	String username = l.getUserName();
 	adminInfo adInfo= new adminInfo();
-	if(adInfo.isAdmin(username)) profile = "admin/adminPage.jsp";
+	if(adInfo.isAdmin(username)) profile = "adminPage.jsp";
+	else profile = "userPage.jsp";
 %>
 
 <div id="myDiv">
 <div class="header">
   <a href="home.jsp" class="logo">Logo</a>
   <div class="header-right">
-    <a href=<%=profile%> class = "c">Profile <i class="fas fa-user"></i></a>
+    <a href="<%=profile%>" class = "c">Profile <i class="fas fa-user"></i></a>
     <a href="login.jsp" class = "c">Log out <i class="fa fa-sign-out-alt"></i></a>
   </div>
 </div>

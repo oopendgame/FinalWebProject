@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@page import="WebPackage.challenge.currQuizInfo"%>
 <%@ page import="WebPackage.challenge.findChallenges"%>
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
@@ -28,18 +29,20 @@
 	<%
 		for (int i = 0; i < challInfo.size(); i++) {
 			challengeInfo  cInf = challInfo.get(i);
-			String link = cInf.getLink();
 			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
 			String img = sender.getImg();
-			String user = sender.getUserName();
-			String whoTexted = sender.getUserName() + ": ";
+			String whoSent = sender.getUserName() + ": ";
+			String link = cInf.getLink();
 					
 	%>
 	
 	<div id="myForm">
  		<img src=<%=img%> alt="Avatar" style="width:5%;">
-  		<% out.println(whoTexted); %>
-  		<a href=takeQuiz.jsp>New Challenge</a>
+  		<% out.println(whoSent); %>
+		<form action="QuizPageServlet" method="get">
+			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
+			<input type = "submit" value = "New Challenge">
+		</form>
 	</div>
 	<hr>
 	

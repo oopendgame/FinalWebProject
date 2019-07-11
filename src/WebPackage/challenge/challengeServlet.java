@@ -1,12 +1,8 @@
 package WebPackage.challenge;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
+import WebPackage.quiz.QuizInfo;
+
  
 /**
  * Servlet implementation class challengeServlet
@@ -37,6 +35,11 @@ public class challengeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String quizid = request.getParameter("quiz_id");
+		currQuizInfo currq = new currQuizInfo();
+		currq.setId(quizid);
+		request.setAttribute("currquiz", currq);
+		request.getRequestDispatcher("ChooseReceivers.jsp").forward(request,response);
 		
 	}
 
@@ -44,38 +47,8 @@ public class challengeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("friend");
-		int receiverid = 0;
-		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-		int curr = log.getId();
-		Connection con;
-		Statement stmt;
-		String account = DBInfo.MYSQL_USERNAME;
-		String password = DBInfo.MYSQL_PASSWORD;
-		String server = DBInfo.MYSQL_DATABASE_SERVER;
-		String database = DBInfo.MYSQL_DATABASE_NAME;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection
-					( "jdbc:mysql://" + server, account ,password);
-			stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
-			ResultSet user = null;
-			user = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\";");
-			if(user.next()) {
-				receiverid = user.getInt("user_id");
-			}
-			
-			stmt.executeUpdate("insert into challenges (user1_id, user2_id, link) "
-					+ "values ('"+curr+"', '"+receiverid+"', '"+1+"')");
-		} catch (SQLException e) {
-				e.printStackTrace();
-		}catch (ClassNotFoundException e) {
-				e.printStackTrace();
-		}
+		doGet(request, response);
 		
-		
-		request.getRequestDispatcher("ChooseReceivers.jsp").forward(request,response);
 	}
 
 }

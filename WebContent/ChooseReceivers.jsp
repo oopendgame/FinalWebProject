@@ -1,5 +1,11 @@
+<%@page import="WebPackage.challenge.currQuizInfo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="WebPackage.requests.findRequestInfo"%>
+<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.requests.requestInfo"%>
+<%@ page import="WebPackage.login.LogInInfo"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,26 +60,35 @@
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
 	
-    <form action="challengeServlet" method="post" style="text-align:center">
+
+    <form action="challengeFriendServlet" method="post" style="text-align:center">
     	<h3 style="font-size:200%; color:#330066; text-align:center;"> Choose Friend To Send Challenge </h3>
 	  	<div class="vertical-menu">
-	 	<input type="submit" value="achkh17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchan17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchanfd17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 4" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
-	    <input type="submit" value="achkh17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchan17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchanfd17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 4" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
-	    <input type="submit" value="achkh17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchan17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="nchanfd17" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 4" class = "friend" name = "friend"><br>
-	    <input type="submit" value="Friend 5" class = "friend" name = "friend"><br>
+	  <%
+			findRequestInfo req = new findRequestInfo();
+			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+			int id = log.getId();
+			ArrayList<requestInfo> arr = req.getUserFriends(id);
+			if(arr.isEmpty()) out.print("No Friends");
+			else{
+				currQuizInfo currQuiz = (currQuizInfo)request.getAttribute("currquiz");
+				String quizid = currQuiz.getId();
+				for(int i = 0; i < arr.size(); i++) {
+					requestInfo cur = arr.get(i);
+			%>		
+					<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
+					<input type="submit" value=<%=cur.getUserName()%> class = "friend" name = "friend"><br>
+			<% } } %>
 		</div>
 	</form>
-	<a href =""><i class="fa fa-caret-left" style='font-size:15px; color: #38045B; margin-left: 20%;'> Return to quiz page</i></a>
+	<form action="QuizPageServlet" method="post" style="text-align:center">
+		<%
+		currQuizInfo currQuiz = (currQuizInfo)request.getAttribute("currquiz");
+		String quizid = currQuiz.getId();
+	%>
+		<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
+		<i class="fa fa-caret-left" style='font-size:15px; color: #38045B; margin-left: 20%;'></i>
+		<input type = "submit" value = "Return to quiz page">
+	</form>
 </body>
 </html>

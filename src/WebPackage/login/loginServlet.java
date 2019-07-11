@@ -36,7 +36,7 @@ public class loginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -44,6 +44,8 @@ public class loginServlet extends HttpServlet {
 	 */
 //	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+		
 		checkPassword checker = new checkPassword();
 		String username = request.getParameter("username");
 		String pass = request.getParameter("password");
@@ -80,7 +82,7 @@ public class loginServlet extends HttpServlet {
 			log.setId(id);
 			adminInfo adInfo= new adminInfo();
 			if(adInfo.isAdmin(username)) {
-				request.getRequestDispatcher("admin/adminPage.jsp").forward(request,response);
+				request.getRequestDispatcher("adminPage.jsp").forward(request,response);
 			}else {
 	            request.getRequestDispatcher("userPage.jsp").forward(request,response);
 

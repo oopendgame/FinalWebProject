@@ -7,9 +7,9 @@
 <title>Promotion</title>
 </head>
 
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <style>
 		.text_promote[type=text]{
 		  width: 50%;
@@ -39,7 +39,7 @@
 	<body style="background-color:lavender;">
 	<br><br>
 	
-	<form action="../PromoteServlet" method="post" style="text-align:center">
+	<form action="PromoteServlet" method="post" style="text-align:center">
 		<h1 style="text-align:center">Promote Following User To Admin </h1>
 		<input class = "text_promote" type="text" id="pusername" name="pusername" placeholder="Enter username">
 		<input class = "button_promote" type="submit" value="Promote"><br>
