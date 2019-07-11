@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Promotion</title>
+<title>Clear History</title>
 </head>
 
 <%@include file="../headerLogged.jsp" %>
@@ -39,7 +39,7 @@
 	<body style="text-align:center; ">
 	<br><br>
 	
-	<form action="PromoteServlet" method="post" style="text-align:center">
+	<form action="ClearHistoryServlet" method="post" style="text-align:center">
 		<h1 style="text-align:center"> Clear Quiz History </h1>
 		<p style = "color: red"> no such quiz found </p>
 		<input class = "text_promote" type="text" id="quizName" name="quizName" placeholder="Enter quiz name">
