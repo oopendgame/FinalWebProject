@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@page import="WebPackage.challenge.currQuizInfo"%>
 <%@ page import="WebPackage.challenge.findChallenges"%>
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
@@ -31,13 +32,17 @@
 			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
 			String img = sender.getImg();
 			String whoSent = sender.getUserName() + ": ";
+			String link = cInf.getLink();
 					
 	%>
 	
 	<div id="myForm">
  		<img src=<%=img%> alt="Avatar" style="width:5%;">
   		<% out.println(whoSent); %>
-  		<a href="QuizPage.jsp">New Challenge</a>
+		<form action="QuizPageServlet" method="get">
+			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
+			<input type = "submit" value = "New Challenge">
+		</form>
 	</div>
 	<hr>
 	
