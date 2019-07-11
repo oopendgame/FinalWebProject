@@ -5,7 +5,6 @@
 <%@include file="nav.jsp" %>
 <%@ include file="search.jsp"%>
 
-
 <!DOCTYPE html>
 
 <html>
@@ -13,8 +12,9 @@
 <meta charset="UTF-8">
 <title>Quiz Created</title>
 </head>
-<body>
 
-<p align="center"><i>Quiz Created</i></p>
+<body style="background-color:lavender;">
+<center><h1> Quiz Created </h1></center>
 </body>
+
 </html>

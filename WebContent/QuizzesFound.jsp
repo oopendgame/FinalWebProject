@@ -1,9 +1,13 @@
 <%@ page import="WebPackage.quiz.QuizInfo"%>
 <%@ page import="java.util.ArrayList"%>
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
+
 <!DOCTYPE html>
 <html> 
 
@@ -19,8 +23,8 @@ body {
 <title>Quiz List</title>
 </head>
 
-<body>
-<p> Quizzes Found: </p>
+<body style="background-color:lavender;">
+<center><h1> Quizzes Found </h1></center>
 
 <%
 	ArrayList<QuizInfo> arr = (ArrayList<QuizInfo>)request.getAttribute("matchingQuizzes");

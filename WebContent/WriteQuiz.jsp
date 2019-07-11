@@ -5,6 +5,9 @@
 <%@ page import="WebPackage.quiz.AnswerInfo"%>
 <%@ page import="WebPackage.writingQuiz.writeQuizInfo"%>
 
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
 <title>Writing Quiz</title>
 </head>
 
-<body>
+<body style="background-color:lavender;">
 
 <form action = "CorrectionServlet" method = "post">
 	
