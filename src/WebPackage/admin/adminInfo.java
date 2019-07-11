@@ -82,12 +82,11 @@ public class adminInfo {
 				/* select * from quizScores;
 				delete from popularity where quis_id;*/
 				if(quizId == -1) return false;
-				stmt.executeUpdate("delete from popularity where quiz_id = " + quizId + ";");
-				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
-				res = stmt.executeQuery("SELECT quietion_id from quiestions where quiz_id = " + quizId + ";");
+				this.clearQuizHistory(quizName);
+				res = stmt.executeQuery("SELECT question_id from questions where quiz_id = " + quizId + ";");
 				while(res.next()) {
-					int quietionId = res.getInt("quietion_id");
-					stmt.executeUpdate("delete from answers where quietion_id = " + quietionId + ";");
+					int questionId = res.getInt("question_id");
+					stmt.executeUpdate("delete from answers where question_id = " + questionId + ";");
 				}
 				stmt.executeUpdate("delete from questions where quiz_id = " + quizId + ";");
 				stmt.executeUpdate("delete from quizzes where quiz_id = " + quizId + ";");

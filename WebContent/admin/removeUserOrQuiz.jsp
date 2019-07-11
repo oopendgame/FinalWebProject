@@ -39,13 +39,13 @@
 	<body style="background-color:lavender;">
 	<br><br>
 	
-	<form action="../RemoveUreOrQuizServlet" method="post" style="text-align:center">
+	<form action="../deleteUserQuizServlet" method="post" style="text-align:center">
 		<h1 style="text-align:center"> Delete User  </h1>
 		<input class = "text_search" type="text" id="username" name="username" placeholder="Enter username">
 		<input class = "button_search" type="submit" value="Delete"><br>
 	</form>
 	
-	<form action="../RemoveUreOrQuizServlet" method="get" style="text-align:center">
+	<form action="../deleteUserQuizServlet" method="get" style="text-align:center">
 		<h1 style="text-align:center"> Delete Quiz </h1>
 		<input class = "text_search" type="text" id="quizName" name="quizName" placeholder="Enter quiz name">
 		<input class = "button_search" type="submit" value="Delete"><br>
