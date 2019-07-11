@@ -46,11 +46,63 @@
 <h1>Your score: <% out.println(curInfo.getScore()); %> </h1>
 <h1>Taken Time: 
 <% 
-//	long time = curQuiz.getDuration();
-	//if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
-	//else out.print(time + " sec");
+	findQuizScoreInfo addInf = new findQuizScoreInfo();
+	ArrayList<QuizScoreInfo> q = addInf.getUserAttempts(user_id, id);
+	out.println(q.get(0).getDuration());
 %>
  </h1>
+ 
+ 
+ 
+ <div>
+            <h4>Correct Answers</h4>
+                   
+                         
+         	<%
+       			ArrayList<QuestionInfo> questions = curInfo.getQuestions();
+         		if(questions.size() == 0) out.println("Your friends no submissions");
+         		else {
+         			ArrayList<String> userAns = curInfo.getUserAns();
+         			ArrayList<String> corrAns = 
+         	%>
+         		<table border = "2">
+                 <tr>
+                   <th>Question Num</th>
+                   <th>Question</th>
+                   <th>Your Answer</th> 
+                   <th>Correct Answer</th>
+                 </tr>
+         	
+         	<%
+           		for(int i = 0; i < questions.size(); i++) {
+           			QuestionInfo curQuest = questions.get(i);
+           
+           			out.println("<tr>");
+           			
+           			out.print("<td>");
+        			out.print(i + 1);
+        			out.print("</td>\n");
+           			
+           			out.print("<td>");
+        			out.print(curQuest.getQuestion());
+        			out.print("</td>\n");
+        			
+           			out.print("<td>");
+        			out.print();
+        			out.print("</td>\n");
+        			
+        			out.print("<td>");
+        			out.print();
+        			out.print("</td>\n");
+        			
+        			out.println("</tr>");
+           		} }
+           %>             
+              </table>
+            
+</div>
+
+
 
 
 
@@ -59,9 +111,8 @@
                    
                          
          	<%
-         		findQuizScoreInfo addInf = new findQuizScoreInfo();
-       			ArrayList<QuizScoreInfo> arr = addInf.getFriendsSubmission(user_id, id);
-         		if(arr.size() == 0) out.println("You have no submissions");
+       			arr = addInf.getFriendsSubmission(user_id, id);
+         		if(arr.size() == 0) out.println("Your friends no submissions");
          		else {
          	%>
          		<table border = "2">

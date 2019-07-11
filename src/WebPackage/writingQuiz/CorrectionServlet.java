@@ -88,14 +88,19 @@ public class CorrectionServlet extends HttpServlet {
 					userScore++;
 				}
 			}
+			if(curInfo.getQestionNum() <= i) curInfo.addUserAns(userAns); // < || <=
 		} 
-		userScore += curInfo.getScore();
-		curInfo.setScore(userScore);
+		if(!curInfo.getScoreDone()) {
+			userScore += curInfo.getScore();
+			curInfo.setScore(userScore);
+			curInfo.setScoreDone();
+			curInfo.setDuration(duration);
+		} 
 		
 		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 		int user_id = log.getId();		
 		findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
-		scoreInfo.addUserWrittenQuiz(id, user_id, userScore, startTime, duration);
+		scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");
 		rd.forward(request, response);

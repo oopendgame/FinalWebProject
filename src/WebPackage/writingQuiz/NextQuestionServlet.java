@@ -74,6 +74,7 @@ public class NextQuestionServlet extends HttpServlet {
 				curInfo.setScore(1 + curInfo.getScore());
 			}
 		}
+		curInfo.addUserAns(userAns);
 		curInfo.increaseQuestionNum();
 		
 		String st = "WriteQuizMult.jsp";

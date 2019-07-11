@@ -15,6 +15,8 @@ public class writeQuizInfo {
 	private Timestamp startTime;
 	private int userScore;
 	private int questionNum;
+	private boolean scoreDone;
+	private int duration;
 	
 	public writeQuizInfo(QuizInfo quiz, ArrayList<QuestionInfo> quest, Timestamp startTime) {
 		questionNum = 0;
@@ -22,6 +24,8 @@ public class writeQuizInfo {
 		this.quest = quest;
 		this.startTime = startTime;
 		userAnswers = new ArrayList<String>();
+		scoreDone = false;
+		duration = 0;
 	}
 	
 	public void increaseQuestionNum() {
@@ -58,5 +62,21 @@ public class writeQuizInfo {
 	
 	public ArrayList<String> getUserAns() {
 		return userAnswers;
+	}
+	
+	public void setScoreDone() {
+		scoreDone = true;
+	}
+	
+	public boolean getScoreDone() {
+		return scoreDone;
+	}
+	
+	public int getDuration() {
+		return duration;
+	}
+	
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 }
