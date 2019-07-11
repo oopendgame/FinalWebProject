@@ -68,4 +68,37 @@ public class findChallenges {
 		}
 		return ls;
 	}
+	
+	public void updateChallengeInfo(String username) {
+		ResultSet res = null;
+		int userId = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			stmt.executeUpdate("UPDATE challenges SET seen = true where user2_id =\"" + userId + "\";");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public int OldChallengesNum(String username) {
+		ResultSet res = null;
+		int count = 0;
+		int userId = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT COUNT(*) AS total from challenges where user2_id =\"" + userId + "\" and seen = true;");
+			if(res.next()) count = res.getInt("total");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
