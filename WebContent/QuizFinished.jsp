@@ -13,10 +13,13 @@
 <%@ page import="WebPackage.quiz.AnswerInfo"%>
 <%@ page import="WebPackage.writingQuiz.writeQuizInfo"%>
 
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -40,7 +43,7 @@
 	int user_id = log.getId();
 %>
 
-<body>
+<body style="background-color:lavender;">
 
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 <h1>Your score: <% out.println(curInfo.getScore()); %> </h1>
@@ -48,7 +51,11 @@
 <% 
 	findQuizScoreInfo addInf = new findQuizScoreInfo();
 	ArrayList<QuizScoreInfo> questSc = addInf.getUserAttempts(user_id, id);
-	out.println(questSc.get(0).getDuration());
+	if(questSc.size() != 0) {
+		long time = questSc.get(0).getDuration();
+		if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+		else out.print(time + " sec");	
+	}
 %>
  </h1>
  
@@ -78,13 +85,14 @@
            			QuestionInfo curQuest = questions.get(i);
            
            			out.println("<tr>");
-           			
+           			 
            			out.print("<td>");
         			out.print(i + 1);
         			out.print("</td>\n");
            			
            			out.print("<td>");
-        			out.print(curQuest.getQuestion());
+        			if(!curQuest.getType().equals("2")) out.print(curQuest.getQuestion());
+        			else out.print("Picture Question");
         			out.print("</td>\n");
         			
            			out.print("<td>");
@@ -128,6 +136,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			
@@ -180,6 +189,7 @@
            		for(int i = 0; i < arr.size(); i++) {
            			QuizScoreInfo curQuiz = arr.get(i);
            			double perc = (double)curQuiz.getScore() / cur.getQuestions().size() * 100;
+           			perc = Math.round(perc * 100.0) / 100.0;
            
            			out.println("<tr>");
            			

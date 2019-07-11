@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -9,7 +13,7 @@
 <title>Quiz Not FOund</title>
 </head>
 
-<body>
-<p> Quiz Does not exists</p>
+<body style="background-color:lavender;">
+<center><h1> Quiz Does not exists </h1></center>
 </body>
 </html>

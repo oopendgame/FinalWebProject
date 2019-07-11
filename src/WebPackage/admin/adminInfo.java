@@ -67,6 +67,40 @@ public class adminInfo {
 			return false;
 		}
 		
+		public String getAchievement(int userId) {
+			ResultSet res = null;
+			return "";
+		}
+		
+		public int getNumQuizCreated(int userId) {
+			ResultSet res = null;
+			try {
+				res = stmt.executeQuery("select count(*) from quizzes where author_id = " + userId + ";");
+				if(res.next()) {
+					return res.getInt("count(*)");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return 0;
+		}
+		
+		public int getNumQuizDone(int userId) {
+			ResultSet res = null;
+			try {
+				res = stmt.executeQuery("select count(*) from quizScores where user_id = " + userId + ";");
+				if(res.next()) {
+					return res.getInt("count(*)");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return 0;
+		}
+		
+		
 		public boolean deleteUser(String username) {
 			ResultSet res = null;
 			int userId = -1;

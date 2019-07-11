@@ -65,6 +65,7 @@ public class NextQuestionServlet extends HttpServlet {
 				System.out.println("hereeeeeNext" + 1);
 				curInfo.setScore(1 + curInfo.getScore());
 			}
+			curInfo.addUserAns(userAns);
 			
 		} else if(userAns != null) {
 			System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
@@ -73,8 +74,8 @@ public class NextQuestionServlet extends HttpServlet {
 				System.out.println("hereeeeeNext" + 2);
 				curInfo.setScore(1 + curInfo.getScore());
 			}
+			curInfo.addUserAns(ansInfo.getMultiAnswer(Integer.parseInt(userAns)));
 		}
-		curInfo.addUserAns(userAns);
 		curInfo.increaseQuestionNum();
 		
 		String st = "WriteQuizMult.jsp";
