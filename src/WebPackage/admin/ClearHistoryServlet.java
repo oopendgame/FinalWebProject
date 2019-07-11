@@ -42,11 +42,11 @@ public class ClearHistoryServlet extends HttpServlet {
 		adminInfo adInfo = new adminInfo();
 		if(adInfo.clearQuizHistory(quizName)) {
 			//warmatebit
-			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizNameClear.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("incorrectQuizNameClear.jsp");
 			rd.forward(request, response);
 		}
 	}

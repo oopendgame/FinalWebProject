@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <body  style="background-color:lavender;">
 <br><br><br>
 

@@ -8,9 +8,9 @@
 </head>
 <body>
 <body  style="background-color:lavender;">
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <br>
 <center><h1> Announcement Made Successfully </h1> </center>
 </body>

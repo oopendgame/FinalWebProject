@@ -35,11 +35,11 @@ public class deleteUserQuizServlet extends HttpServlet {
 		adminInfo adInfo = new adminInfo();
 		if(adInfo.deleteQuiz(quizName)) {
 			//warmatebit
-			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizUserDelete.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("incorrectQuizUserDelete.jsp");
 			rd.forward(request, response);
 		}
 	}
@@ -54,11 +54,11 @@ public class deleteUserQuizServlet extends HttpServlet {
 		adminInfo adInfo = new adminInfo();
 		if(adInfo.deleteUser(username)) {
 			//warmatebit
-			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizUserDelete.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("incorrectQuizUserDelete.jsp");
 			rd.forward(request, response);
 		}
 	}

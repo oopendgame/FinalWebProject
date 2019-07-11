@@ -7,9 +7,9 @@
 <title>Delete</title>
 </head>
 
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <style>
 		.text_search[type=text]{
 		  width: 50%;
