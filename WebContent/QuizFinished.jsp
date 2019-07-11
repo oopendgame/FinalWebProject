@@ -48,7 +48,11 @@
 <% 
 	findQuizScoreInfo addInf = new findQuizScoreInfo();
 	ArrayList<QuizScoreInfo> questSc = addInf.getUserAttempts(user_id, id);
-	out.println(questSc.get(0).getDuration());
+	if(questSc.size() != 0) {
+		long time = questSc.get(0).getDuration();
+		if(time / 60 > 0) out.print(time / 60 + " minu and " + time % 60 + " sec");
+		else out.print(time + " sec");	
+	}
 %>
  </h1>
  

@@ -97,7 +97,7 @@ public class findQuizScoreInfo {
 	
 	
 	public ArrayList<QuizScoreInfo> getMaxScoreInQuiz(int quiz_id) {
-		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC limit 5;";
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " ORDER BY score DESC, duration DESC limit 5;";
 		return getList(st);
 	}
 	
@@ -126,7 +126,7 @@ public class findQuizScoreInfo {
 			if(i != arr.size() - 1) ids += ", ";
 		}
 		
-		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " AND user_id in (" + ids + ") ORDER BY score DESC limit 10;";
+		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " AND user_id in (" + ids + ") ORDER BY score, duration DESC DESC limit 10;";
 		return getList(st);
 	}
 	
