@@ -8,7 +8,8 @@
 <%@ page import="WebPackage.login.LogInInfo"%> 
 <%@ page import="WebPackage.database.DBInfo"%> 
 
-
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -29,7 +30,7 @@
 	int user_id = log.getId();
 %>
 
-<body>
+<body style="background-color:lavender;">
 
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 

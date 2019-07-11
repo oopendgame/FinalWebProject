@@ -13,10 +13,13 @@
 <%@ page import="WebPackage.quiz.AnswerInfo"%>
 <%@ page import="WebPackage.writingQuiz.writeQuizInfo"%>
 
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -40,7 +43,7 @@
 	int user_id = log.getId();
 %>
 
-<body>
+<body style="background-color:lavender;">
 
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 <h1>Your score: <% out.println(curInfo.getScore()); %> </h1>

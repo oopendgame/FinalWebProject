@@ -8,6 +8,9 @@
 <%@ page import="WebPackage.quiz.AnswerInfo"%>
 <%@ page import="WebPackage.writingQuiz.writeQuizInfo"%>
 
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +19,7 @@
 <title>Write Quiz</title>
 </head>
 
-<body>
+<body style="background-color:lavender;">
 
 <%
 	HttpSession curSession = request.getSession();
@@ -26,12 +29,16 @@
 	findAnswerInfo ans = new findAnswerInfo();
 	int id = quiz.getQuizId();
 	int i = curInfo.getQestionNum() + 1;
+	if(quest.size() <= 0) { %>
+		<center><h1> No Questions </h1></center>
+	<%	return;
+	}
 	
-	QuestionInfo cur = quest.get(i - 1);
-	String type = cur.getType();
-	ArrayList<AnswerInfo> arr = cur.getAnswers();
-	
-	if(quest.size() != curInfo.getQestionNum() + 1) {
+		QuestionInfo cur = quest.get(i - 1);
+		String type = cur.getType();
+		ArrayList<AnswerInfo> arr = cur.getAnswers();
+		
+		if(quest.size() != curInfo.getQestionNum() + 1) {
 %>
 	
 
