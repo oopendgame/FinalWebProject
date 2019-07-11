@@ -47,8 +47,8 @@
 <h1>Taken Time: 
 <% 
 	findQuizScoreInfo addInf = new findQuizScoreInfo();
-	ArrayList<QuizScoreInfo> q = addInf.getUserAttempts(user_id, id);
-	out.println(q.get(0).getDuration());
+	ArrayList<QuizScoreInfo> questSc = addInf.getUserAttempts(user_id, id);
+	out.println(questSc.get(0).getDuration());
 %>
  </h1>
  
@@ -63,14 +63,14 @@
          		if(questions.size() == 0) out.println("Your friends no submissions");
          		else {
          			ArrayList<String> userAns = curInfo.getUserAns();
-         			ArrayList<String> corrAns = 
+         			ArrayList<String> corrAns = addInf.getCorrectAnswers(questions);
          	%>
          		<table border = "2">
                  <tr>
                    <th>Question Num</th>
                    <th>Question</th>
                    <th>Your Answer</th> 
-                   <th>Correct Answer</th>
+                   <th>Correct Answer</th> 
                  </tr>
          	
          	<%
@@ -88,11 +88,12 @@
         			out.print("</td>\n");
         			
            			out.print("<td>");
-        			out.print();
+        			if(!curQuest.getType().equals("1")) out.print(userAns.get(i));
+        			else out.print(userAns.get(i));
         			out.print("</td>\n");
         			
         			out.print("<td>");
-        			out.print();
+        			out.print(corrAns.get(i));
         			out.print("</td>\n");
         			
         			out.println("</tr>");
@@ -111,7 +112,7 @@
                    
                          
          	<%
-       			arr = addInf.getFriendsSubmission(user_id, id);
+       			ArrayList<QuizScoreInfo> arr = addInf.getFriendsSubmission(user_id, id);
          		if(arr.size() == 0) out.println("Your friends no submissions");
          		else {
          	%>

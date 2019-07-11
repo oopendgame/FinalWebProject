@@ -79,6 +79,7 @@ public class CorrectionServlet extends HttpServlet {
 					//System.out.println("hereeeee" + 1);
 					userScore++;
 				}
+				if(curInfo.getQestionNum() <= i) curInfo.addUserAns(userAns); // < || <=
 				
 			} else if(userAns != null) {
 				//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
@@ -87,20 +88,22 @@ public class CorrectionServlet extends HttpServlet {
 					//System.out.println("hereeeee" + 2);
 					userScore++;
 				}
+				if(curInfo.getQestionNum() <= i) curInfo.addUserAns(ansInfo.getMultiAnswer(Integer.parseInt(userAns))); // < || <=
 			}
-			if(curInfo.getQestionNum() <= i) curInfo.addUserAns(userAns); // < || <=
+			
+			
 		} 
 		if(!curInfo.getScoreDone()) {
 			userScore += curInfo.getScore();
 			curInfo.setScore(userScore);
 			curInfo.setScoreDone();
 			curInfo.setDuration(duration);
+			
+			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+			int user_id = log.getId();		
+			findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
+			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
 		} 
-		
-		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-		int user_id = log.getId();		
-		findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
-		scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");
 		rd.forward(request, response);
