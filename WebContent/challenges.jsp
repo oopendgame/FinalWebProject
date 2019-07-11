@@ -37,7 +37,7 @@
 	<div id="myForm">
  		<img src=<%=img%> alt="Avatar" style="width:5%;">
   		<% out.println(whoSent); %>
-  		<a href=WriteQuiz.jsp>New Challenge</a>
+  		<a href="QuizPage.jsp">New Challenge</a>
 	</div>
 	<hr>
 	
