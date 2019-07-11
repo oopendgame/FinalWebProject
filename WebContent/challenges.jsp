@@ -28,18 +28,16 @@
 	<%
 		for (int i = 0; i < challInfo.size(); i++) {
 			challengeInfo  cInf = challInfo.get(i);
-			String link = cInf.getLink();
 			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
 			String img = sender.getImg();
-			String user = sender.getUserName();
-			String whoTexted = sender.getUserName() + ": ";
+			String whoSent = sender.getUserName() + ": ";
 					
 	%>
 	
 	<div id="myForm">
  		<img src=<%=img%> alt="Avatar" style="width:5%;">
-  		<% out.println(whoTexted); %>
-  		<a href=takeQuiz.jsp>New Challenge</a>
+  		<% out.println(whoSent); %>
+  		<a href=WriteQuiz.jsp>New Challenge</a>
 	</div>
 	<hr>
 	
