@@ -32,10 +32,6 @@ function newQuestion() {
 					 'Enter Correct Answer: <br>'+
 					'<textarea name="corrAns_' + questions + '" rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>'+
 					'</div>'+
-
-					'Enter Answer:<br>'+
-					'<textarea name="quest_' + questions + 'ans"' + answers + 'rows="3" cols="50" style="overflow-y:scroll"> </textarea> <br> <br>'+
-					'</div>'+
 					
 					'<input type="button" id="remove_Question" onClick="removeQuestion(this)" value="Remove Question" /><br>'
 	document.getElementById('Questions').appendChild(cur);
@@ -50,7 +46,6 @@ function addQuestion() {
 
 
 function addAnswer() {
-	answers++;
 	var cur = document.createElement('div');
 	cur.setAttribute('quest', 'ans');
 	cur.innerHTML = 'Enter Answer:<br>'+
@@ -58,6 +53,7 @@ function addAnswer() {
 					'</div>'+
 	 				'<input type="button" id="remove_answer()" onClick="removeAnswer(this)" value="Remove Answer" /><br><br>';
 	document.getElementById('Questions').appendChild(cur);
+	answers++;
 }
 
 

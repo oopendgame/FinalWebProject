@@ -19,7 +19,7 @@
 <title>Challenges</title>
 </head>
 <body  style="background-color:lavender;">
-<%@include file="header.jsp" %>
+<%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
 <br>
 

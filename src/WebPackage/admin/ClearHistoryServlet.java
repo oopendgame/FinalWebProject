@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PromoteServlet
+ * Servlet implementation class ClearHistoryServlet
  */
-@WebServlet("/PromoteServlet")
-public class PromoteServlet extends HttpServlet {
+@WebServlet("/ClearHistoryServlet")
+public class ClearHistoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PromoteServlet() {
+    public ClearHistoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,9 +38,9 @@ public class PromoteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userName = request.getParameter("pusername");
+		String quizName = request.getParameter("quizName");
 		adminInfo adInfo = new adminInfo();
-		if(adInfo.promoteToAdmin(userName)) {
+		if(adInfo.clearQuizHistory(quizName)) {
 			//warmatebit
 			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
 			rd.forward(request, response);
@@ -49,7 +49,6 @@ public class PromoteServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizNameClear.jsp");
 			rd.forward(request, response);
 		}
-		
 	}
 
 }

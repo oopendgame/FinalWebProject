@@ -67,15 +67,113 @@ public class adminInfo {
 			return false;
 		}
 		
-		public void deleteUser() {
-			
+		public boolean deleteUser(String username) {
+			ResultSet res = null;
+			int userId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from userInfo where user_name = '" + username + "';");
+				if(res.next()) {
+					userId = res.getInt("user_id");
+				}
+				if(userId == -1 || this.isAdmin(username)) return false;
+				this.deleteChallanges(userId);
+				this.deleteFriends(userId);
+				this.deletePass(userId);
+				this.deleteSms(userId);
+				res = stmt.executeQuery("SELECT * from quizzes where author_id = " + userId + ";");
+				while(!res.isClosed() && res.next()) {
+					this.deleteQuiz(res.getString("quiz_name"));
+				}
+				stmt.executeUpdate("delete from userInfo where user_id = " + userId + ";");
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		}
+		private void deletePass(int userId) {
+			try {
+				stmt.executeUpdate("delete from passwords where user_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		private void deleteSms(int userId) {
+			try {
+				stmt.executeUpdate("delete from sms where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		private void deleteChallanges(int userId) {
+			try {
+				stmt.executeUpdate("delete from challenges where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	
-		public void deleteQuiz() {
-			
+		private void deleteFriends(int userId) {
+			try {
+				stmt.executeUpdate("delete from friends where user1_id = " + userId + " or user2_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 		
-		public void clearQuizHistory() {
+		
+		public boolean deleteQuiz(String quizName) {
+			ResultSet res = null;
+			int quizId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					quizId = res.getInt("quiz_id");
+				}
+				/* select * from quizScores;
+				delete from popularity where quis_id;*/
+				if(quizId == -1) return false;
+				this.clearQuizHistory(quizName);
+				res = stmt.executeQuery("SELECT question_id from questions where quiz_id = " + quizId + ";");
+				while(!res.isClosed() && res.next()) {
+					int questionId = res.getInt("question_id");
+					stmt.executeUpdate("delete from answers where question_id = " + questionId + ";");
+				}
+				stmt.executeUpdate("delete from questions where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizzes where quiz_id = " + quizId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		}
+		
+		public boolean clearQuizHistory(String quizName) {
+			ResultSet res = null;
+			int quizId = -1;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					quizId = res.getInt("quiz_id");
+				}
+				/* select * from quizScores;
+				delete from popularity where quis_id;*/
+				if(quizId == -1) return false;
+				stmt.executeUpdate("delete from popularity where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
 			
 		}
 		

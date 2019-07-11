@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PromoteServlet
+ * Servlet implementation class deleteUserQuizServlet
  */
-@WebServlet("/PromoteServlet")
-public class PromoteServlet extends HttpServlet {
+@WebServlet("/deleteUserQuizServlet")
+public class deleteUserQuizServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PromoteServlet() {
+    public deleteUserQuizServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,6 +30,18 @@ public class PromoteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String quizName = request.getParameter("quizName");
+		adminInfo adInfo = new adminInfo();
+		if(adInfo.deleteQuiz(quizName)) {
+			//warmatebit
+			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
+			rd.forward(request, response);
+		}else {
+			//warumateblad
+			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizUserDelete.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	/**
@@ -38,18 +50,17 @@ public class PromoteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userName = request.getParameter("pusername");
+		String username = request.getParameter("username");
 		adminInfo adInfo = new adminInfo();
-		if(adInfo.promoteToAdmin(userName)) {
+		if(adInfo.deleteUser(username)) {
 			//warmatebit
 			RequestDispatcher rd = request.getRequestDispatcher("admin/success.jsp");
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizNameClear.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("admin/incorrectQuizUserDelete.jsp");
 			rd.forward(request, response);
 		}
-		
 	}
 
 }
