@@ -1,10 +1,6 @@
 package WebPackage.writingQuiz;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,22 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import WebPackage.quiz.QuestionInfo;
-import WebPackage.quiz.QuizInfo;
-import WebPackage.quiz.findQuestionInfo;
-import WebPackage.quiz.findQuizInfo;
-
 /**
- * Servlet implementation class writeQuizServlet
+ * Servlet implementation class NextQuestionServlet
  */
-@WebServlet("/writeQuizServlet")
-public class writeQuizServlet extends HttpServlet {
+@WebServlet("/NextQuestionServlet")
+public class NextQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public writeQuizServlet() {
+    public NextQuestionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,22 +40,11 @@ public class writeQuizServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		int id = Integer.parseInt(request.getParameter("quiz_id"));
-		findQuizInfo quizInfo = new findQuizInfo();
-		QuizInfo curQuiz = quizInfo.getQuiz(id);
+		HttpSession curSession = request.getSession();
+		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
 		
-		findQuestionInfo questInfo = new findQuestionInfo();
-		ArrayList<QuestionInfo> quest = questInfo.getQuizQuestions(id);
-		if(curQuiz.getRandom()) Collections.shuffle(quest);
-		
-		Timestamp startTime = new java.sql.Timestamp(System.currentTimeMillis());
-		
-		writeQuizInfo cur = new writeQuizInfo(curQuiz, quest, startTime);		
-		HttpSession session = request.getSession();
-		session.setAttribute("writeQuiz", cur);
-		
-		String st = "WriteQuiz.jsp";
-		if(!curQuiz.getPageNum()) st = "WriteQuizMult.jsp";
+		String st = "WriteQuizMult.jsp";
+		if(curInfo.getQestionNum() == curInfo.getQuestions().size()) st = "CorrectionServlet.java";
 		RequestDispatcher rd = request.getRequestDispatcher(st);
 		rd.forward(request, response);
 	}
