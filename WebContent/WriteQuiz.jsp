@@ -65,7 +65,7 @@
 			out.println("Enter answer : ");
 			out.println("<textarea name = " + cur.getQuestionId() + "> "
 								    + "</textarea>");
-			out.println("<br>");
+			out.println("<br>"); 
 			out.println("<br>");
 		}
 	}

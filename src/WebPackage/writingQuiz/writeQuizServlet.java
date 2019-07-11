@@ -64,7 +64,7 @@ public class writeQuizServlet extends HttpServlet {
 		session.setAttribute("writeQuiz", cur);
 		
 		String st = "WriteQuiz.jsp";
-		if(request.getParameter("mult") == "1") st = "WriteQuizMult.jsp";
+		if(!curQuiz.getPageNum()) st = "WriteQuizMult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(st);
 		rd.forward(request, response);
 	}
