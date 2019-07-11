@@ -84,7 +84,7 @@ public class adminInfo {
 				if(quizId == -1) return false;
 				this.clearQuizHistory(quizName);
 				res = stmt.executeQuery("SELECT question_id from questions where quiz_id = " + quizId + ";");
-				while(res.next()) {
+				while(!res.isClosed() && res.next()) {
 					int questionId = res.getInt("question_id");
 					stmt.executeUpdate("delete from answers where question_id = " + questionId + ";");
 				}
