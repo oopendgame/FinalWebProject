@@ -101,4 +101,22 @@ public class findChallenges {
 		}
 		return count;
 	}
+	
+	public int numNewChallenges(String username) {
+		ResultSet res = null;
+		int count = 0;
+		int userId = -1;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + username + "\";");
+			if(res.next()) {
+				userId = res.getInt("user_id");
+			}
+			res = stmt.executeQuery("SELECT COUNT(*) AS total from challenges where user2_id =\"" + userId + "\" and seen = false;");
+			if(res.next()) count = res.getInt("total");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
