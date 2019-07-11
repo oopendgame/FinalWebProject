@@ -12,12 +12,9 @@
 <meta charset="ISO-8859-1">
 <title>Choose Receiver</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' 
-	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
-	crossorigin='anonymous'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <style>
-
+		
 .friend{
   width: 100%;
   height: 40px;
@@ -25,6 +22,11 @@
   border: none;
   text-align: center;
 }
+
+#submitButton {
+  font-family: FontAwesome;
+}
+
 .vertical-menu {
   width: 60%;
   height: 90%;
@@ -81,14 +83,18 @@
 			<% } } %>
 		</div>
 	</form>
-	<form action="QuizPageServlet" method="post" style="text-align:center">
+	
+
+
+	<form action="QuizPageServlet" method="post">
 		<%
 		currQuizInfo currQuiz = (currQuizInfo)request.getAttribute("currquiz");
 		String quizid = currQuiz.getId();
 	%>
 		<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
-		<i class="fa fa-caret-left" style='font-size:15px; color: #38045B; margin-left: 20%;'></i>
-		<input type = "submit" value = "Return to quiz page">
-	</form>
+		<br>
+		<input type = "submit" style="background-color: white; font-size: 17px; border: none; color:#330066; margin-left: 20%; cursor:pointer;"
+			value="&#xf0a8 Return to quiz page" id="submitButton">
+		</form>
 </body>
 </html>

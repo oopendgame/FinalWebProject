@@ -2,16 +2,11 @@ package WebPackage.challenge;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import WebPackage.database.DBInfo;
-import WebPackage.login.LogInInfo;
-import WebPackage.quiz.QuizInfo;
 
  
 /**

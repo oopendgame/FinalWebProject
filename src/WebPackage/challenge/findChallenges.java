@@ -1,11 +1,14 @@
 package WebPackage.challenge;
  
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+
 import WebPackage.database.DBInfo;
 
 public class findChallenges {
@@ -45,14 +48,18 @@ public class findChallenges {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			res = stmt.executeQuery("SELECT * from challenges where user2_id = \"" + userId + "\";");
+			res = stmt.executeQuery("SELECT * from challenges where user2_id = \"" + userId + "\" order by  sending_time desc;");
 			while(res.next()) {
 				 
 				int id = res.getInt("challenge_id");
 				int user1 = res.getInt("user1_Id");
 				int user2 = res.getInt("user2_Id");
 				String link = res.getString("link");
-				challengeInfo currInfo = new challengeInfo(id, user1 , user2 , link);
+				Date date = res.getDate("sending_time");
+				Timestamp timestamp = res.getTimestamp("sending_time");
+				if (timestamp != null)
+				   date = new java.util.Date(timestamp.getTime());
+				challengeInfo currInfo = new challengeInfo(id, user1 , user2 , link, date);
 				ls.add(currInfo);
 			}
 		} catch (SQLException e) {

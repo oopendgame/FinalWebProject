@@ -11,6 +11,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
 
@@ -68,8 +72,10 @@ public class challengeFriendServlet extends HttpServlet {
 			if(user.next()) {
 				receiverid = user.getInt("user_id");
 			}
-			stmt.executeUpdate("insert into challenges (user1_id, user2_id, link) "
-					+ "values ('"+curr+"', '"+receiverid+"', '"+quizid+"')");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date();
+			stmt.executeUpdate("insert into challenges (user1_id, user2_id, link, sending_time) "
+					+ "values ('"+curr+"', '"+receiverid+"', '"+quizid+"', '"+(dateFormat.format(date))+"')");
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}catch (ClassNotFoundException e) {
