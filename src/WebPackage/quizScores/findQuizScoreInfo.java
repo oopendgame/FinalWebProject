@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
+import WebPackage.quiz.QuestionInfo;
 import WebPackage.quiz.QuizInfo;
+import WebPackage.quiz.findAnswerInfo;
 import WebPackage.quiz.findQuizInfo;
 import WebPackage.requests.findRequestInfo;
 import WebPackage.requests.requestInfo;
@@ -126,6 +128,18 @@ public class findQuizScoreInfo {
 		
 		String st = "SELECT * FROM quizScores WHERE quiz_id = " + quiz_id + " AND user_id in (" + ids + ") ORDER BY score DESC limit 10;";
 		return getList(st);
+	}
+	
+	
+	public ArrayList<String> getCorrectAnswers(ArrayList<QuestionInfo> arr) {
+		ArrayList<String> corr = new ArrayList<String>();
+		for(int i = 0; i < arr.size(); i++) {
+			int quest_id = arr.get(i).getQuestionId();
+			findAnswerInfo findAns = new findAnswerInfo();
+			String ans = findAns.getCorrectAnswer(quest_id);
+			corr.add(ans);
+		}		
+		return corr;
 	}
 
 }

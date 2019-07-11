@@ -33,6 +33,18 @@ public class findAnswerInfo {
 		}
 	}
 	
+	public String getMultiAnswer(int id) {
+		String st = "SELECT answer FROM answers where answer_id = " + id;
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(st);
+			if(rs.next()) return rs.getString("answer");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	
 	public boolean isAnswerCorrect(int id) {
 		String st = "SELECT correct_ans FROM answers where answer_id = " + id;

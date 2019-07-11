@@ -70,34 +70,42 @@ public class CorrectionServlet extends HttpServlet {
 			QuestionInfo cur = quest.get(i);
 			String type = cur.getType();
 			String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
-			System.out.println(userAns == null + "2\n");
+			//System.out.println(userAns == null + "2\n");
 			
 			if(!type.equals("1")) {
 				String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 				System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 				if(userAns != null && userAns.trim().equals(corrAns.trim())) {
-					System.out.println("hereeeee" + 1);
+					//System.out.println("hereeeee" + 1);
 					userScore++;
 				}
+				if(curInfo.getQestionNum() <= i) curInfo.addUserAns(userAns); // < || <=
 				
 			} else if(userAns != null) {
-				System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
+				//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
 				int ansId = Integer.parseInt(userAns);
 				if(ansInfo.isAnswerCorrect(ansId)) {
-					System.out.println("hereeeee" + 2);
+					//System.out.println("hereeeee" + 2);
 					userScore++;
 				}
+				if(curInfo.getQestionNum() <= i) curInfo.addUserAns(ansInfo.getMultiAnswer(Integer.parseInt(userAns))); // < || <=
 			}
+			
+			
 		} 
-		userScore += curInfo.getScore();
-		curInfo.setScore(userScore);
+		if(!curInfo.getScoreDone()) {
+			userScore += curInfo.getScore();
+			curInfo.setScore(userScore);
+			curInfo.setScoreDone();
+			curInfo.setDuration(duration);
+			
+			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+			int user_id = log.getId();		
+			findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
+			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
+		} 
 		
-		LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-		int user_id = log.getId();		
-		findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
-		scoreInfo.addUserWrittenQuiz(id, user_id, userScore, startTime, duration);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp"); //need to change to "QuizFinished"
+		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");
 		rd.forward(request, response);
 	}
 

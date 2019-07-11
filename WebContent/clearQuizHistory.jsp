@@ -7,9 +7,9 @@
 <title>Clear History</title>
 </head>
 
-<%@include file="../headerLogged.jsp" %>
-<%@include file="../nav.jsp" %>
-<%@ include file="../search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <style>
 		.text_promote[type=text]{
 		  width: 50%;
@@ -35,13 +35,12 @@
 		
 		
 	</style>
-<body style="background-color:lavender">
-	<body style="text-align:center; ">
+<body>
+	<body style="background-color:lavender;">
 	<br><br>
 	
 	<form action="ClearHistoryServlet" method="post" style="text-align:center">
 		<h1 style="text-align:center"> Clear Quiz History </h1>
-		<p style = "color: red"> no such quiz found </p>
 		<input class = "text_promote" type="text" id="quizName" name="quizName" placeholder="Enter quiz name">
 		<input class = "button_promote" type="submit" value="Promote"><br>
 	</form>

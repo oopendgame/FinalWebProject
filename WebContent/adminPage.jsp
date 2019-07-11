@@ -186,11 +186,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
     <div>
     <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
-    <p><a href="admin/makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make an Announcement </i></a></p>
-    <p><a href="admin/removeUserOrQuiz.jsp" style=a><i class='fas fa-trash-alt' style='font-size:30px'>  Remove User or Quiz </i></a></p>
-    <p><a href="admin/clearQuizHistory.jsp" style=a><i class='fas fa-history' style='font-size:30px'>  Clear Quiz History </i></a></p>
-    <p><a href="admin/promoteToAdmin.jsp" style=a><i class='fas fa-angle-double-up' style='font-size:30px'>  Promote to Admin </i></a></p>
-    <p><a href="admin/websiteStatistics.jsp" style=a><i class='fas fa-info-circle' style='font-size:30px'>  Website Statistics </i></a></p>
+    <p><a href="makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make an Announcement </i></a></p>
+    <p><a href="removeUserOrQuiz.jsp" style=a><i class='fas fa-trash-alt' style='font-size:30px'>  Remove User or Quiz </i></a></p>
+    <p><a href="clearQuizHistory.jsp" style=a><i class='fas fa-history' style='font-size:30px'>  Clear Quiz History </i></a></p>
+    <p><a href="promoteToAdmin.jsp" style=a><i class='fas fa-angle-double-up' style='font-size:30px'>  Promote to Admin </i></a></p>
+    <p><a href="websiteStatistics.jsp" style=a><i class='fas fa-info-circle' style='font-size:30px'>  Website Statistics </i></a></p>
     
     <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>

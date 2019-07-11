@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Success</title>
-<%@include file="/headerLogged.jsp" %>
-<%@include file="/nav.jsp" %>
-<%@ include file="/search.jsp"%>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 </head>
 <body>
 <body  style="background-color:lavender;">

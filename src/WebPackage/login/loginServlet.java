@@ -82,7 +82,7 @@ public class loginServlet extends HttpServlet {
 			log.setId(id);
 			adminInfo adInfo= new adminInfo();
 			if(adInfo.isAdmin(username)) {
-				request.getRequestDispatcher("admin/adminPage.jsp").forward(request,response);
+				request.getRequestDispatcher("adminPage.jsp").forward(request,response);
 			}else {
 	            request.getRequestDispatcher("userPage.jsp").forward(request,response);
 

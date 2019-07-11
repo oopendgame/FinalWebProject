@@ -68,8 +68,12 @@ body {
 	LogInInfo l = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	String username = l.getUserName();
 	adminInfo adInfo= new adminInfo();
+<<<<<<< HEAD
 	if(adInfo.isAdmin(username)) profile = "admin/adminPage.jsp";
 	else profile = "userPage.jsp";
+=======
+	if(adInfo.isAdmin(username)) profile = "adminPage.jsp";
+>>>>>>> 346437e7e930c05f93060ce6dcfaa81a267f7c31
 %>
 
 <div id="myDiv">
