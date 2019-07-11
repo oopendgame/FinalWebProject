@@ -3,6 +3,10 @@
     
     <%@ include file="createQuestionsFunc.jsp"%> 
     
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
+    
     
 <!DOCTYPE html>
 <html>
@@ -40,7 +44,9 @@
 </head>
 
 
-<body  bgcolor="#0AF8D2">
+<body  style="background-color:lavender; 
+							padding-top: 50px; padding-right: 80px; 
+							padding-bottom: 50px; padding-left: 80px;">
 
 <div class="content">
 <h1> <i><font color="blue"> Create New Quiz </font></i></h1>
