@@ -14,12 +14,25 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+div {
+  padding-right: 30px;
+  padding-left: 100px;
+  font-size: 40;
+}
+
+<%@include file="Style.css" %>
+
+</style>
+
 <head>
 <meta charset="UTF-8">
 <title>Write Quiz</title>
 </head>
 
 <body style="background-color:lavender;">
+
+<div>
 
 <%
 	HttpSession curSession = request.getSession();
@@ -44,17 +57,35 @@
 
 <form action = "NextQuestionServlet" method = "post">
 
-<%	
-	out.println("Question " + i + ":    ");
-	if(!type.equals("2")) out.println(cur.getQuestion());
-	out.println("<br>");
+
+<h3 style="font-size:200%; color:#330066; text-align:center;">
+<% 
+out.println("Question " + i + ":    ");
+%>
+</h3>
+
+	<h3>
+	<%		
+		if(!type.equals("2")) {
+		out.println(cur.getQuestion()); 
+		}
+		%> 
+		</h3> <%
+		out.println("<br>");
 	
 	if(type.equals("1")) { //Multiple Choice
 		for(int j = 0; j < arr.size(); j++) {
 			AnswerInfo curAns = arr.get(j);
-			out.println("<input type = \"radio\" "
-							  + "name = \"" + cur.getQuestionId() + "\" "
-							  + "value = \"" + curAns.getAnswerId() + "\">");
+			if(j == 0) {
+				out.println("<input type = \"radio\" "
+						  + "name = \"" + cur.getQuestionId() + "\" "
+						  + "value = \"" + curAns.getAnswerId() + "\" "
+						  + "checked = \"checked\">");
+			} else {
+				out.println("<input type = \"radio\" "
+						  + "name = \"" + cur.getQuestionId() + "\" "
+						  + "value = \"" + curAns.getAnswerId() + "\">");	
+			}
 			out.println(curAns.getAnswer());
 			out.println("<br>");
 		}	
@@ -98,9 +129,16 @@ out.println("Question " + i + ":    ");
 	if(type.equals("1")) { //Multiple Choice
 		for(int j = 0; j < arr.size(); j++) {
 			AnswerInfo curAns = arr.get(j);
-			out.println("<input type = \"radio\" "
-							  + "name = \"" + cur.getQuestionId() + "\" "
-							  + "value = \"" + curAns.getAnswerId() + "\">");
+			if(j == 0) {
+				out.println("<input type = \"radio\" "
+						  + "name = \"" + cur.getQuestionId() + "\" "
+						  + "value = \"" + curAns.getAnswerId() + "\" "
+						  + "checked = \"checked\">");
+			} else {
+				out.println("<input type = \"radio\" "
+						  + "name = \"" + cur.getQuestionId() + "\" "
+						  + "value = \"" + curAns.getAnswerId() + "\">");	
+			}
 			out.println(curAns.getAnswer());
 			out.println("<br>");
 		}	
@@ -133,6 +171,8 @@ out.println("Question " + i + ":    ");
 	</form>
 
 <%  } %>
+
+</div>
 
 </body>
 </html>
