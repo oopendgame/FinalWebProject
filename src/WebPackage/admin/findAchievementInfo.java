@@ -35,7 +35,14 @@ public class findAchievementInfo {
 	public void refreshAchQuizCreate(int userId) {
 		try {
 			if(this.getNumQuizCreated(userId) == 1) {
-				stmt.executeUpdate("INSERT INTO achievements (user_id) VALUES(" + userId + ");");
+				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
+			+ userId + ", 'Amateur Author', sysdate();");
+			}else if (this.getNumQuizCreated(userId) == 5) {
+				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
+						+ userId + ", 'Prolific Author', sysdate();");
+			}else if (this.getNumQuizCreated(userId) == 10) {
+				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
+						+ userId + ", 'Prodigious Author', sysdate();");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +65,7 @@ public class findAchievementInfo {
 		return 0;
 	}
 	
-	public int getNumQuizDone(int userId) {
+	public int getNumQuizTaken(int userId) {
 		ResultSet res = null;
 		try {
 			res = stmt.executeQuery("select count(*) from quizScores where user_id = " + userId + ";");
