@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import WebPackage.database.DBInfo;
 
@@ -31,6 +32,20 @@ public class findAchievementInfo {
 				e.printStackTrace();
 			}
 			
+	}
+	public ArrayList<String> getUserAchievements(int userId){
+		ArrayList<String> list = new ArrayList<String>();
+		ResultSet res = null;
+		try {
+			res = stmt.executeQuery("SELECT achievement FROM achievements where user_id = " + userId + " order by ach_time desc;");
+			while(res.next()) {
+				list.add(res.getString("achievement"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public void refreshAchQuizTaken(int userId, int quizId) {
