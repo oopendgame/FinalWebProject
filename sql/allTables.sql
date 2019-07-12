@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS userInfo (
     gender varchar(10) not null,
     img varchar(500) default "https://wallpaperplay.com/walls/full/e/3/6/138503.jpg",
     
-    primary key(user_id)
+    primary key(user_id) 
 );
 
 CREATE TABLE IF NOT EXISTS achievements (
