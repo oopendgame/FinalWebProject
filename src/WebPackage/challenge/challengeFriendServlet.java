@@ -82,7 +82,7 @@ public class challengeFriendServlet extends HttpServlet {
 				e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("ChooseReceivers.jsp").forward(request,response);
+		request.getRequestDispatcher("ChallengeSent.jsp").forward(request,response);
 	}
 
 }
