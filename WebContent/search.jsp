@@ -4,26 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Seearching</title>
 </head>
-
-<style>
-<%@include file="CreateQuizStyle.css" %>
-</style>
 
 
 <body>
 
 <form action = "searchUserServlet" method = "post"> 
 Search User: 
-<input type = "text" name = "user_name" placeholder = "enter username">
+<input type = "search" name = "user_name" placeholder = "enter username">
 <input type = "submit" value = "searchUser">
 </form>
 
 
 <form action = "searchQuizServlet" method = "post"> 
 Search Quiz: 
-<input type = "text" name = "quiz_name" placeholder = "enter quiz name">
+<input type = "search" name = "quiz_name" placeholder = "enter quiz name"></input>
 
 <select name="category">
 <option value="choose category" selected>Choose category</option>
