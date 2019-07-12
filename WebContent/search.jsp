@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 
+<style>
+<%@include file="CreateQuizStyle.css" %>
+</style>
+
 
 <body>
 
