@@ -9,8 +9,7 @@
     
     <% findUserInfo info = new findUserInfo();
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-    int id = currInfo.getSearchId();
-    userInfo currUser =  info.getMyUser(id);
+    userInfo currUser =  info.getMyUser(currInfo.getUserName());
     findAchievementInfo achInfo = new findAchievementInfo();
     ArrayList<String> list = achInfo.getUserAchievements(currUser.getId()); %>
 <%@include file="headerLogged.jsp" %>
