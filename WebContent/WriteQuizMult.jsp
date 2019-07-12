@@ -51,19 +51,20 @@ div {
 		QuestionInfo cur = quest.get(i - 1);
 		String type = cur.getType();
 		ArrayList<AnswerInfo> arr = cur.getAnswers();
+		%>
 		
+		<h3 style="font-size:200%; color:#330066; text-align:center;">
+		<% 
+		out.println("Question " + i + ":    ");
+		%>
+		</h3>
+		
+		<%
 		if(quest.size() != curInfo.getQestionNum() + 1) {
 %>
 	
 
 <form action = "NextQuestionServlet" method = "post">
-
-
-<h3 style="font-size:200%; color:#330066; text-align:center;">
-<% 
-out.println("Question " + i + ":    ");
-%>
-</h3>
 
 	<h3>
 	<%		
@@ -102,14 +103,17 @@ out.println("Question " + i + ":    ");
 		out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"Anonymos Question. Just guess the answer and hope it's right\">");
 		out.println("<br>");
 		out.println("Enter answer: <input type = \"text\" " 
-					+ "name = \"" + cur.getQuestionId() + "\">");
+				+ "name = \"" + cur.getQuestionId() + "\">");
 		out.println("<br>");
 		out.println("<br>");
 		
 	} else if(type.equals("3")) { //Question Response
 		out.println("Enter answer : ");
-		out.println("<textarea name = " + cur.getQuestionId() + "> "
-							    + "</textarea>");
+		out.println("<br>");
+		out.println("<textarea rows=\"7\" cols=\"60\""
+				+ "name = \"" + cur.getQuestionId() + "\""
+				+ "placeholder=\"Enter Answer\">"
+				+ "</textarea>");
 		out.println("<br>"); 
 		out.println("<br>");
 	}
@@ -122,9 +126,13 @@ out.println("Question " + i + ":    ");
 
 <form action = "CorrectionServlet" method = "post">
 
-<%
-out.println("Question " + i + ":    ");
-	if(!type.equals("2")) out.println(cur.getQuestion());
+<h3>
+<%		
+	if(!type.equals("2")) {
+	out.println(cur.getQuestion()); 
+	}
+	%> 
+	</h3> <%
 	out.println("<br>");
 	
 	if(type.equals("1")) { //Multiple Choice
@@ -161,8 +169,11 @@ out.println("Question " + i + ":    ");
 		
 	} else if(type.equals("3")) { //Question Response
 		out.println("Enter answer : ");
-		out.println("<textarea name = " + cur.getQuestionId() + "> "
-							    + "</textarea>");
+		out.println("<br>");
+		out.println("<textarea rows=\"7\" cols=\"60\""
+				+ "name = \"" + cur.getQuestionId() + "\""
+				+ "placeholder=\"Enter Answer\">"
+				+ "</textarea>");
 		out.println("<br>"); 
 		out.println("<br>");
 	}

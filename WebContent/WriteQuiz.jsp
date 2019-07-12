@@ -102,9 +102,11 @@ out.print(quiz.getQuizName());
 			
 		} else if(type.equals("3")) { //Question Response
 			out.println("Enter answer : ");
-			out.println("<textarea rows = \" 4 \" cols = \" 50 \" "
-								 + "name = \"" + cur.getQuestionId() + "> "
-								 + "</textarea>");
+			out.println("<br>");
+			out.println("<textarea rows=\"7\" cols=\"60\""
+					+ "name = \"" + cur.getQuestionId() + "\""
+					+ "placeholder=\"Enter Answer\">"
+					+ "</textarea>");
 			out.println("<br>"); 
 			out.println("<br>");
 		}
