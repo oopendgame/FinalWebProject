@@ -187,7 +187,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     	<span  class = "new_msg"><%=numChall%> New </span> Challenges </i></a></p>
     <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
     	<span  class = "new_msg"><%=info.getNumFriendRequests(currUser.getUserName())%> New </span> Friend Requests</i></a></p>
-    <p><a href="UserFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
