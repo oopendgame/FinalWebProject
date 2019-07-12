@@ -37,7 +37,8 @@ public class findAchievementInfo {
 		ArrayList<String> list = new ArrayList<String>();
 		ResultSet res = null;
 		try {
-			res = stmt.executeQuery("SELECT achievement FROM achievements where user_id = " + userId + " order by ach_time desc;");
+			res = stmt.executeQuery("SELECT achievement FROM achievements where user_id = " 
+					+ userId + " order by ach_time desc;");
 			while(res.next()) {
 				list.add(res.getString("achievement"));
 			}
