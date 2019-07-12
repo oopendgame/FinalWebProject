@@ -1,6 +1,6 @@
 <%@ page import="WebPackage.user.findUserInfo"%>
 <%@ page import="WebPackage.user.userInfo"%>
-<%@ page import="WebPackage.database.DBInfo"%>
+<%@ page import="WebPackage.database.DBInfo" import="WebPackage.challenge.findChallenges"%>
 <%@ page import="WebPackage.login.LogInInfo" import="WebPackage.chat.findMessageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,6 +10,8 @@
     LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  info.getMyUser(currInfo.getUserName());
     int numMsg = infoMsg.getNumUnseenChats(currUser.getUserName());
+    findChallenges chal = new findChallenges(); 
+    int numChall = chal.numNewChallenges(currUser.getUserName());
     %>
     
     
@@ -180,9 +182,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
     <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
-    <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'>  Challenges </i></a></p>
+    <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> 
+    	<span  class = "new_msg"><%=numChall%> New </span> Challenges </i></a></p>
     <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
-    <%=info.getNumFriendRequests(currUser.getUserName())%> Friend Requests</i></a></p>
+    	<%=info.getNumFriendRequests(currUser.getUserName())%> Friend Requests</i></a></p>
     <p><a href="UserFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
