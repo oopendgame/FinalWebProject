@@ -11,6 +11,13 @@
 <%@include file="nav.jsp" %>
 <%@ include file="search.jsp"%>
 <style>
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
+}
 		.text_search[type=text]{
 		  width: 50%;
 		  padding: 12px 15px;
