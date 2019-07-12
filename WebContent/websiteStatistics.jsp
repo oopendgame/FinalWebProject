@@ -66,9 +66,6 @@
 .dark-blue {
     background-color: #34495E;
 }
-.blue {
-    background-color: #2980B9;
-}
 .red {
     background-color: #E74C3C;
 
@@ -76,25 +73,26 @@
 .text-faded {
     color: rgba(255, 255, 255, 0.7);
 }
-.col-lg-2{width:16.66666667%}
-.col-sm-6{width:50%}
+.col-lg-2{width:35%}
+.col-sm-6{width:35%}
 .container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 </style>
 <body  style="background-color:lavender;">
 
 
 <center>
-
+<br><br><br>
 <div class="container">
     <div class="col-lg-2 col-sm-6">
       <div class="circle-tile ">
         <div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div>
         <div class="circle-tile-content dark-blue">
-          <div class="circle-tile-description text-faded"> Users</div>
+          <div class="circle-tile-description text-faded"> Users </div>
           <div class="circle-tile-number text-faded "><%=adInfo.getNumWebUsers()%></div>
         </div>
       </div>
     </div>
+<br><br>
      
     <div class="col-lg-2 col-sm-6">
       <div class="circle-tile ">
@@ -106,6 +104,7 @@
       </div>
     </div> 
   </div> 
+<br><br>
 
 </body>
 </body>
