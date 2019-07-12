@@ -105,7 +105,11 @@ public class CorrectionServlet extends HttpServlet {
 			findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
 			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
 			findAchievementInfo achInfo = new findAchievementInfo();
+<<<<<<< HEAD
 			achInfo.refreshAchQuizCreate(user_id);
+=======
+			achInfo.refreshAchQuizTaken(user_id, id);
+>>>>>>> 4a77e0f309ea4475c2b5be7e01ae478e352b0bb3
 		} 
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");
