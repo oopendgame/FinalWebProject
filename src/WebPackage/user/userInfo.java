@@ -12,7 +12,7 @@ public class userInfo {
 	private String myRank;
 	
 	public userInfo(int id, String userName, String name, String lastName, String img, 
-			String email, String birthday, String gender, String rank) {
+			String email, String birthday, String gender) {
 		myId = id;
 		myUserName = userName;
 		myName = name;
@@ -21,7 +21,6 @@ public class userInfo {
 		myEmail = email;
 		myBirthday = birthday;
 		myGender = gender;
-		myRank = rank;
 	}
 	public int getId() {
 		return myId;
