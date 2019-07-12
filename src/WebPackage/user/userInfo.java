@@ -22,6 +22,10 @@ public class userInfo {
 		myBirthday = birthday;
 		myGender = gender;
 		myRank = rank;
+		findAchievementInfo f = new findAchievementInfo();
+		f.refreshAchQuizCreate(3);
+		f.refreshAchQuizTaken(3, 1);
+
 	}
 	public int getId() {
 		return myId;

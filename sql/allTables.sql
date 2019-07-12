@@ -18,6 +18,16 @@ CREATE TABLE IF NOT EXISTS userInfo (
     primary key(user_id)
 );
 
+CREATE TABLE IF NOT EXISTS achievements (
+	ach_id int not null auto_increment,
+    user_id int not null,
+    achievement varchar(50) not null,
+    ach_time datetime,
+    
+    primary key (ach_id),
+    FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
+);
+
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
     user_id int,
