@@ -176,13 +176,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
       </div>
   </div>
     </div>
+    <br>
 	<h2 style="font-size:28px; color: black">  <%=currUser.getUserName()%> </h2>
     <p style="font-size:25px; color: #1f2833; font-weight: bolder"> 
+    <br>
     		Full Name: <%=currUser.getName()%>  <%=currUser.getLastName()%><br><br>
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
     		Gender: <%=currUser.getGender()%><br><br>
-   			Rank : <%=currUser.getRank() %> <br><br>
    			Friend of <%=info.getNumFriends(currUser.getUserName())%> users
     </p> 
     </div>

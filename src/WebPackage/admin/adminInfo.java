@@ -67,8 +67,37 @@ public class adminInfo {
 			return false;
 		}
 		
+		public int getNumWebUsers() {
+			ResultSet res = null;
+			int num = 0;
+			try {
+				res = stmt.executeQuery("SELECT count(*) from userInfo;");
+				if(res.next()) {
+					num = res.getInt("count(*)");
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return num;
+		}
 		
-		
+		public int getNumWebQuizzes() {
+			ResultSet res = null;
+			int num = 0;
+			try {
+				res = stmt.executeQuery("SELECT count(*) from quizzes;");
+				if(res.next()) {
+					num = res.getInt("count(*)");
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return num;
+		}
 		
 		public boolean deleteUser(String username) {
 			ResultSet res = null;
