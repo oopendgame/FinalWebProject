@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Seearching</title>
+<title>Searching...</title>
 
 </head>
 
@@ -16,16 +16,16 @@
     float: none;
   }
   .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
+    float: right;
     text-align: left;
     width: 100%;
     margin: 0;
     padding: 14px;
   }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
+
+	.header-right {
+	  float: right;
+	}
 }
 
 
@@ -33,7 +33,6 @@
 
 
 <body>
-
 <form action = "searchUserServlet" method = "post"> 
 
 <input type="text" name = "user_name" placeholder="Search user...">
@@ -62,6 +61,5 @@
 
 <button type="submit"><i class="fa fa-search"></i></button>
 </form>
-
 </body> 
 </html>
