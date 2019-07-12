@@ -20,6 +20,12 @@
 
 <body style="background-color:lavender;">
 
+<h3 style="font-size:200%; color:#330066; text-align:center;">
+<%
+
+%>
+</h3>
+
 <form action = "CorrectionServlet" method = "post">
 	
 <%
