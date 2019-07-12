@@ -32,17 +32,35 @@ public class findAchievementInfo {
 			}
 			
 	}
+	
+	public void refreshAchQuizTaken(int userId, int quizId) {
+		try {
+			if(this.getNumQuizTaken(userId) == 10) {
+				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
+						+ userId + ", 'Quiz Machine', sysdate());");
+			}
+			if(this.gotHighestScore(userId, quizId)) {
+				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
+						+ userId + ", 'I am the Greatest', sysdate());");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void refreshAchQuizCreate(int userId) {
 		try {
 			if(this.getNumQuizCreated(userId) == 1) {
 				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
-			+ userId + ", 'Amateur Author', sysdate();");
+			+ userId + ", 'Amateur Author', sysdate();)");
 			}else if (this.getNumQuizCreated(userId) == 5) {
 				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
-						+ userId + ", 'Prolific Author', sysdate();");
+						+ userId + ", 'Prolific Author', sysdate());");
 			}else if (this.getNumQuizCreated(userId) == 10) {
 				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
-						+ userId + ", 'Prodigious Author', sysdate();");
+						+ userId + ", 'Prodigious Author', sysdate());");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -77,6 +95,20 @@ public class findAchievementInfo {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+	//select * from quizScores order by score desc;
+	public boolean gotHighestScore(int userId, int quizId) {
+		ResultSet res = null;
+		try {
+			res = stmt.executeQuery("select * from quizScores where quiz_id = " + quizId + " order by score desc;");
+			if(res.next()) {
+				 if(res.getInt("user_id") == userId) return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
