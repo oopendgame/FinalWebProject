@@ -27,10 +27,10 @@
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	int id = log.getId();
 	ArrayList<requestInfo> arr = req.getUserRequests(id);
-	if(arr.size() == 0) out.println("No requests");
+	if(arr.size() == 0) out.println("<center><h1>No requests</h1></center>");
 	else {
 %>
-		<p> <center>YOUR REQUESTS</center></p>
+		<p> <center><h1>YOUR REQUESTS</h1></center></p>
 <%
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);

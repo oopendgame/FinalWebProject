@@ -29,10 +29,10 @@
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	int id = log.getId();
 	ArrayList<requestInfo> arr = req.getUserFriends(id);
-	if(arr.size() == 0) out.println("No friends");
+	if(arr.size() == 0) out.println("<center><h1>You have no friends</h1></center>");
 	else { 
 %>
-	<p> <center>YOUR FRIENDS</center></p>
+	<p> <center><h1>YOUR FRIENDS</h1></center></p>
 <%
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);

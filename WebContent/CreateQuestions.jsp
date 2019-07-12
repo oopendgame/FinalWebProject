@@ -50,7 +50,7 @@
  
  
  <div id = "Questions"> 
- <div style="text-align:center;border:1px solid red"> Question1 </div> 
+ <div style="text-align:center;border:1px solid blue"> Question1 </div> 
  <div id = "QuestionNum_1">
  
 Choose question type: <br> 

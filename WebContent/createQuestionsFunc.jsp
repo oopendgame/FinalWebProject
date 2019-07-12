@@ -11,7 +11,7 @@ function newQuestion() {
 	var cur = document.createElement('div');
 	cur.setAttribute('quest', 'ans');
 	cur.innerHTML = '<div class="gap-10"></div><br>'+
-					 '<div style="text-align:center;border:1px solid red"> Question ' + questions + '</div>'+
+					 '<div style="text-align:center;border:1px solid blue"> Question ' + questions + '</div>'+
 					 
 					 '<div id = "QuestionNum_' + questions + '">'+					 
 					'Choose question type: <br>'+ 

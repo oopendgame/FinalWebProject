@@ -25,10 +25,10 @@
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	int id = log.getId();
 	ArrayList<QuizInfo> arr = req.getUserCreatedQuizzes(id);
-	if(arr.size() == 0) out.println("You haven't created any quizzes");
+	if(arr.size() == 0) out.println("<center><h1>You have not created any quizzes</h1></center>");
 	else { 
 %>
-	<p> <center>YOUR QUIZZES</center></p>
+	<p> <center><h1>YOUR QUIZZES</h1></center></p>
 <% 
 		for(int i = 0; i < arr.size(); i++) {
 			QuizInfo cur = arr.get(i);
