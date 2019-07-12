@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
-import WebPackage.writingQuiz.findAchievementInfo;
+import WebPackage.user.findAchievementInfo;
 
  
 /**
@@ -101,8 +101,8 @@ public class CreateQuizServlet extends HttpServlet {
 		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, pract, questions);
 		findQuizInfo newQuiz = new findQuizInfo();
 		newQuiz.addQuiz(quiz, author_id);		
-	//	findAchievementInfo achInfo = new findAchievementInfo();
-	//	achInfo.refreshAchQuizTaken(author_id, quiz_id);
+		findAchievementInfo achInfo = new findAchievementInfo();
+		achInfo.refreshAchQuizCreate(author_id);
 		request.getRequestDispatcher("QuizDone.jsp").forward(request, response);
 	}
 }

@@ -21,6 +21,7 @@ import WebPackage.quiz.QuestionInfo;
 import WebPackage.quiz.QuizInfo;
 import WebPackage.quiz.findAnswerInfo;
 import WebPackage.quizScores.findQuizScoreInfo;
+import WebPackage.user.findAchievementInfo;
 
 /**
  * Servlet implementation class CorrectionServlet
@@ -103,8 +104,8 @@ public class CorrectionServlet extends HttpServlet {
 			int user_id = log.getId();		
 			findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
 			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
-		//	findAchievementInfo achInfo = new findAchievementInfo();
-		//	achInfo.refreshAchQuizTaken(user_id);
+			findAchievementInfo achInfo = new findAchievementInfo();
+			achInfo.refreshAchQuizTaken(user_id, id);
 		} 
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");

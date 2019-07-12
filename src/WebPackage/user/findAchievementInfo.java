@@ -70,7 +70,7 @@ public class findAchievementInfo {
 		try {
 			if(this.getNumQuizCreated(userId) == 1) {
 				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
-			+ userId + ", 'Amateur Author', sysdate();)");
+			+ userId + ", 'Amateur Author', sysdate());");
 			}else if (this.getNumQuizCreated(userId) == 5) {
 				stmt.executeUpdate("INSERT INTO achievements (user_id, achievement, ach_time) VALUES(" 
 						+ userId + ", 'Prolific Author', sysdate());");
