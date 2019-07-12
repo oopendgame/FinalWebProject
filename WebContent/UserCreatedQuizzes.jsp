@@ -24,7 +24,7 @@
 
 <style>
 div {
-  padding-right: 100px;
+  padding-right: 30px;
   padding-left: 100px;
   font-size: 40;
 }
@@ -50,7 +50,6 @@ div {
 		 <i class='fas fa-sticky-note' style='font-size:24px'></i>
 		 <% out.println(cur.getQuizName()); %> 
 		 </h3>
-		 <br>
 			<% } } %>
 </div>
 
