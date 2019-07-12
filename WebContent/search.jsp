@@ -5,21 +5,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Seearching</title>
+
 </head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+
+</style>
 
 
 <body>
 
 <form action = "searchUserServlet" method = "post"> 
-Search User: 
-<input type = "search" name = "user_name" placeholder = "enter username">
-<input type = "submit" value = "searchUser">
+
+<input type="text" name = "user_name" placeholder="Search user...">
+<button type="submit"><i class="fa fa-search"></i></button>
+      
 </form>
 
 
 <form action = "searchQuizServlet" method = "post"> 
-Search Quiz: 
-<input type = "search" name = "quiz_name" placeholder = "enter quiz name"></input>
+
+<input type="text" name = "quiz_name" placeholder="Search quiz...">
 
 <select name="category">
 <option value="choose category" selected>Choose category</option>
@@ -35,7 +60,7 @@ Search Quiz:
     <option value="other">Other</option>
 </select>
 
-<input type = "submit" value = "searchQuiz">
+<button type="submit"><i class="fa fa-search"></i></button>
 </form>
 
 </body> 
