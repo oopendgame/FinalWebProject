@@ -45,7 +45,7 @@
 </head>
 
 <body  bgcolor="#0AF8D2">
-<h1> <i><font color="blue"> Create New Questions </font></i></h1>
+<h3 style="font-size:200%; color:#330066; text-align:center;">Create Questions</h3>
  <div class="gap-10"></div>
  
  

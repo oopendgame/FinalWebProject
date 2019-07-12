@@ -12,54 +12,8 @@
 
 <head>
 
-<style>
-	.gap-10 {
-		width:100%;
-		height:10px;
-	}
-	
-	.content {
-	  max-width: 500px;
-	  margin: auto;
-	}
-	
-	.button {   	  
-	    width: 120px;
-	    text-align: center;
-	    margin:0 auto;
-	    border-radius: 10px;
-	    border: none;
-	    padding: 10px 20px;
-	    color: #31E436;
-	    background-color: #313FE4;
-	}
-	
-	
-	input[type=bla] {
-		  width: 50%;
-		  padding: 12px 15px;
-		  margin: 8px 0;
-		  display: inline-block;
-		  border-radius: 4px;
-		  box-sizing: border-box;
-		}
-
-		input[type=Crsubmit] {
-		  width: 50%;
-		  background-color: indigo;
-		  color: white;
-		  padding: 14px 20px;
-		  margin: 8px 0;
-		  border: none;
-		  border-radius: 4px;
-		  cursor: pointer;
-		  font-size: 16px;
-		  text-align: center;
-		}
-		
-		input[type=Crsubmit]:hover {
-		  background-color: #38045B;
-		}
+<style>		
+		<%@ include file="Style.css"%>
 	
 </style>
 		
@@ -75,17 +29,16 @@
 							padding-bottom: 50px; padding-left: 80px;">
 
 <div class="content">
-<h1> <i><font color="blue"> Create New Quiz </font></i></h1>
+<h3 style="font-size:200%; color:#330066; text-align:center;">Create New Quiz</h3>
 
 <form action="CreateQuizServlet" method="post"> 
-  Quiz Name: <input type="text" name="quiz_name"> <br>
+<input type="text" name="quiz_name" placeholder= "Quiz Name"> <br>
   
   <div class="gap-10"></div>
-  Description: <textarea name="description" rows="3" cols="50" placeholder="Enter Text Here" required 
-  							style="overflow-y:scroll"> </textarea> <br>  
+  <textarea rows="4" cols="50" placeholder="Enter Description here..." name="description"></textarea> <br>  
   <div class="gap-10"></div>
   
-  Category: 
+  Choose Category:
   <select name="subject">
     <option value="history">History</option>
     <option value="geography">Geography</option>
@@ -112,11 +65,6 @@
   <div class="gap-10"></div>
   <input type="checkbox" name="corr" value="imm">
   Immediate Correction
-  <br>
-  
-  <div class="gap-10"></div>
-  <input type="checkbox" name="pract" value="true"> 
-  Practice Mode Option
   <br>
   
   
