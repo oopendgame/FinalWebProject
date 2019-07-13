@@ -75,7 +75,7 @@ th {
 
 
 h2 {
-	color: darkviolet;
+	color: midnightblue;
 	font-style: bold;
 }
 
