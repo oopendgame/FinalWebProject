@@ -64,7 +64,7 @@ div {
 %>
 	
 
-<form action = "NextQuestionServlet" method = "post">
+<form id = "form" action = "NextQuestionServlet" method = "post">
 
 	<h3>
 	<%		
@@ -185,9 +185,9 @@ div {
 	
 %>
 
-	<% if(quiz.getCorrectionType()) { %>
+ 	<% if(quiz.getCorrectionType()) { %>
 		<input type = "submit" value = "Check Your Answer" name = "Check">	
-	<%	}  %>
+	<%	}  %> 
 	
 	<input type = "submit" value = "Finish" name = "Finish">	
 	
