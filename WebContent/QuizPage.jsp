@@ -19,6 +19,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Quiz Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <style>
@@ -51,6 +55,36 @@ p.c {
   font-style: oblique;
 }
 
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: darkmagenta;
+  color: white;
+}
+
+
+h2 {
+	color: darkviolet;
+	font-style: bold;
+}
+
+
+h1 {
+	color: darkmagenta;
+	font-style: bold;
+}
+
 </style>
 
 
@@ -69,10 +103,16 @@ p.c {
 
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 
-<h2>Subject: <% out.println(cur.getSubject()); %> </h2>
-<h2>Description: <% out.println(cur.getDecription()); %> </h2>
+<h2>
+<i class="material-icons" style="font-size:36px">school</i>
+Subject: <% out.println(cur.getSubject()); %> </h2>
+<h2>
+<i class="material-icons" style="font-size:36px">description</i>
+Description: <% out.println(cur.getDecription()); %> </h2>
 
-<h2>Created By: 
+<h2>
+<i class="material-icons" style="font-size:36px">person</i>
+Created By: 
 	<% 
 		findUserInfo user = new findUserInfo();
 		userInfo curUser = user.getMyUser(cur.getAuthorId());
