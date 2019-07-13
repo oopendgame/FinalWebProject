@@ -81,7 +81,8 @@ public class homepageInfo {
 			statement = con.createStatement();
 			ResultSet res = statement.executeQuery(st);
 			while(res.next()) {
-				arr.add(fquiz.getNewQuiz(res));
+				int id = res.getInt("quiz_id");
+				arr.add(fquiz.getQuiz(id));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -117,11 +118,12 @@ public class homepageInfo {
 		findQuizInfo fquiz = new findQuizInfo();
 		Statement statement;
 		try {
-			String st = "SELECT * FROM quizzes WHERE author_id = " + id + " order by creation_date desc;";
+			String st = "SELECT * FROM quizzes WHERE author_id = '" + id + "' order by creation_date desc;";
 			statement = con.createStatement();
 			ResultSet res = statement.executeQuery(st);
 			while(res.next()) {
-				arr.add(fquiz.getNewQuiz(res));
+				int qid = res.getInt("quiz_id");
+				arr.add(fquiz.getQuiz(qid));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

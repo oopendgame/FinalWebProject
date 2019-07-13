@@ -136,16 +136,19 @@ if(annarr.size() == 0){
   
   
 		 <%
-		 	int miiin = 3;
-			ArrayList<QuizInfo> poparr = hpage.getQuizzesByPopularity();
-			if(poparr.size() < 3) miiin = poparr.size();
-			for(int i = 0; i < miiin; i++) {
-				QuizInfo cur = poparr.get(i);
-				int quizid = cur.getQuizId(); 
-				
-		%>
-			<h3 style = "margin-left: 40%;">
-			<span style='font-size:20px;'>&#9673;</span>
+		 	ArrayList<QuizInfo> poparr = hpage.getQuizzesByPopularity();
+		 	if(poparr.size() == 0) {%>
+			<h3 style="font-size:100%; color:#330066; text-align:center;">No Announcements</h3>
+			<%}else{
+			 	int miiin = 3;
+				if(poparr.size() < 3) miiin = poparr.size();
+				for(int i = 0; i < miiin; i++) {
+					QuizInfo cur = poparr.get(i);
+					int quizid = cur.getQuizId(); 
+					
+			%>
+				<h3 style = "margin-left: 40%;">
+				<span style='font-size:20px;'>&#9673;</span>
 		<%=cur.getQuizName()%>
 		
 		<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
@@ -159,7 +162,7 @@ if(annarr.size() == 0){
 		</form>
 		
 		</h3>		
-		<% } %>
+		<% } }%>
   	
   	
   	<a href="popularQuizzes.jsp"> more </a><hr>
@@ -177,7 +180,37 @@ if(annarr.size() == 0){
   
   	<p style="font-size:130%; color:#330066;"> Your Created Quizzes: </p>
   
-  	<a href="UserCreatedQuizzes.jsp"> more </a><hr>
+  	
+  	<% int myid = currInfo.getId();
+	ArrayList<QuizInfo> myarr = hpage.getMyQuizzes(myid);
+	if(myarr.size() == 0) {%>
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No Challenges</h3>
+	<%} for(int i = 0; i < myarr.size(); i++) {
+	QuizInfo cur = myarr.get(i);
+	int myqid = cur.getQuizId(); 
+	
+		
+	%>
+	<h3 style = "margin-left: 40%;">
+	<span style='font-size:20px;'>&#9673;</span>
+	<%=cur.getQuizName()%>
+	
+	<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=myqid%>">
+	<input type = "submit" value = "view quiz">
+	</form>
+		
+	<form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=myqid%>">
+	<input type = "submit" value = "challenge friends">
+	</form>
+	
+	</h3>		
+	<% } %>
+
+  	
+  	
+  	<a href="quizzesByMe.jsp"> more </a><hr>
   
   	<p style="font-size:130%; color:#330066;"> Friends' Activities: </p>
   

@@ -16,17 +16,20 @@
 <%@include file="nav.jsp" %>
 <br>
 
-<h1 style="font-size:200%; color:#330066; text-align:center;">Popular Quizzes</h1>
+<h1 style="font-size:200%; color:#330066; text-align:center;">My Created Quizzes</h1>
 <br>
 
 <%
 	homepageInfo hpage = new homepageInfo();
-	ArrayList<QuizInfo> arr = hpage.getQuizzesByPopularity();
-	if(arr.size() == 0){%> 
-	<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
-	<%}for(int i = 0; i < arr.size(); i++) {
-		QuizInfo cur = arr.get(i);
-		int id = cur.getQuizId(); 
+	LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	int myid = currInfo.getId();
+	ArrayList<QuizInfo> myarr = hpage.getMyQuizzes(myid);
+	if(myarr.size() == 0) {%>
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
+	<%} for(int i = 0; i < myarr.size(); i++) {
+	QuizInfo cur = myarr.get(i);
+	int myqid = cur.getQuizId(); 
+	
 		
 %>
 <h3 style = "margin-left: 40%;">
@@ -34,19 +37,17 @@
 <%=cur.getQuizName()%>
 
 <form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
-<input type = "hidden" name = "quiz_id" value = "<%=id%>">
+<input type = "hidden" name = "quiz_id" value = "<%=myqid%>">
 <input type = "submit" value = "view quiz">
 </form>
 	
 <form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
-<input type = "hidden" name = "quiz_id" value = "<%=id%>">
+<input type = "hidden" name = "quiz_id" value = "<%=myqid%>">
 <input type = "submit" value = "challenge friends">
 </form>
 
 </h3>		
 <% } %>
-
-</div>
 
 </body>
 </html>
