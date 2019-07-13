@@ -176,12 +176,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
     		Gender: <%=currUser.getGender()%><br><br>
-    		<a href="UserFriends.jsp"><i class='fas fa-smile-beam' style='font-size:25px'> Friend of <%=info.getNumFriends(currUser.getUserName())%> users </i></a><br><br>
+    		<a href="UserFriends.jsp"><i class='fas fas fa-users' style='font-size:25px'> Friend of <%=info.getNumFriends(currUser.getUserName())%> users </i></a><br><br>
     </p> 
     </div>
     <div>
-    <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
-    <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
+    <p><br><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> 
     	<span  class = "new_msg"><%=numChall%> New </span> Challenges </i></a></p>
@@ -190,6 +189,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
+    <p><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
+   
     </div>
 </body>
 </html>
