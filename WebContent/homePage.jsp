@@ -1,16 +1,17 @@
-<%@ page import="WebPackage.user.userInfo" import = "WebPackage.user.findAchievementInfo"%>
-<%@ page import="WebPackage.database.DBInfo" import = "WebPackage.admin.adminInfo"%>
-<%@ page import="WebPackage.login.LogInInfo"%>
-<%@ page import="WebPackage.user.findUserInfo"%>
-<%@ page import="WebPackage.requests.findRequestInfo" import="java.util.ArrayList"%> 
-<%@ page import="WebPackage.challenge.findChallenges"%>
-<%@ page import="WebPackage.requests.requestInfo"%>
-<%@ page import="WebPackage.challenge.challengeInfo"%>
-<%@ page import="WebPackage.chat.messageInfo"%>
-<%@ page import="WebPackage.chat.findMessageInfo"%>
+<%@page import="WebPackage.user.userInfo" import = "WebPackage.user.findAchievementInfo"%>
+<%@page import="WebPackage.database.DBInfo" import = "WebPackage.admin.adminInfo"%>
+<%@page import="WebPackage.login.LogInInfo"%>
+<%@page import="WebPackage.user.findUserInfo"%>
+<%@page import="WebPackage.requests.findRequestInfo" import="java.util.ArrayList"%> 
+<%@page import="WebPackage.challenge.findChallenges"%>
+<%@page import="WebPackage.requests.requestInfo"%>
+<%@page import="WebPackage.challenge.challengeInfo"%>
+<%@page import="WebPackage.chat.messageInfo"%>
+<%@page import="WebPackage.chat.findMessageInfo"%>
 <%@page import="WebPackage.homepage.announcement"%>
 <%@page import="WebPackage.homepage.homepageInfo"%>
 <%@page import="java.util.Date"%>
+<%@page import="WebPackage.quiz.QuizInfo"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
@@ -69,7 +70,7 @@
 </style>
 
 <body style="background-color:lavender;">
-<%@include file="header.jsp" %>
+<%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
 
 <div id="content">
@@ -77,23 +78,27 @@
 	<h1 style="font-size:200%; color:#330066; text-align:center;">Home Page</h1><br>
   <div id="left">
   
+  
+  
   	<p style="font-size:130%; color:#330066;"> New Announcements: </p>
   	
-  	
   	<%
-if(arr.size() == 0){
+if(annarr.size() == 0){
 	%>
 	<h3 style="font-size:100%; color:#330066; text-align:center;">No Announcements</h3>
 	<%
 } else{
-		int min = 3;
-		if (annarr.size() < 3) min = arr.size();
+		
+	int min = 3;
+		if (annarr.size() < 3) min = annarr.size();
 		for (int i = 0; i < min; i++) {
+			
 			announcement ann = annarr.get(i);
 			int admin = ann.getAdmin();
 			String announc = ann.getAnn();
 			String titel = ann.getTitel();
 			Date date = ann.getDate();
+			
 			hpage.userIdbyAdmin(admin);
 			int userid = hpage.userIdbyAdmin(admin);
 			userInfo adm = info.getMyUser(userid);
@@ -108,20 +113,59 @@ if(arr.size() == 0){
 			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 			log.setSearchId(userid);
 			adminInfo ad = new adminInfo();
-			if(!log.getUserName().equals(user)) { %> <a href = "othersPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
-			<% }else if(ad.isAdmin(user)) {%> <a href = "adminPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
-			<% }else {%> <a href = "userPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
+		
+			if(!log.getUserName().equals(user)) { %> 
+			<a href = "othersPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
+			<% }else if(ad.isAdmin(user)) {%> 
+			<a href = "adminPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
+			<% }else {%> 
+			<a href = "userPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
+	
 			<%} %>
 	<p style="text-align:right"><%=dateFormat.format(date)%></p>
 	</div>
+	
 	<%} } %>
   	
-  	
   	<a href="announcements.jsp"> more </a><hr>
+  	
+  	
+  	
   
   	<p style="font-size:130%; color:#330066;"> Popular Quizzes: </p>
   
-  	<a href="topQuizzes.jsp"> more </a><hr>
+  
+		 <%
+		 	int miiin = 3;
+			ArrayList<QuizInfo> poparr = hpage.getQuizzesByPopularity();
+			if(poparr.size() < 3) miiin = poparr.size();
+			for(int i = 0; i < miiin; i++) {
+				QuizInfo cur = poparr.get(i);
+				int quizid = cur.getQuizId(); 
+				
+		%>
+			<h3 style = "margin-left: 40%;">
+			<span style='font-size:20px;'>&#9673;</span>
+		<%=cur.getQuizName()%>
+		
+		<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
+		<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
+		<input type = "submit" value = "view quiz">
+		</form>
+			
+		<form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
+		<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
+		<input type = "submit" value = "challenge friends">
+		</form>
+		
+		</h3>		
+		<% } %>
+  	
+  	
+  	<a href="popularQuizzes.jsp"> more </a><hr>
+  	
+  	
+  	
   
   	<p style="font-size:130%; color:#330066;"> Recently Created Quizzes: </p>
   
@@ -141,9 +185,15 @@ if(arr.size() == 0){
   
   </div>
   
+  
+  
+  
+  
   <div id="right">
   
   	<%@ include file="search.jsp"%><hr>
+  	
+  	
   	
   	<p style="font-size:130%; color:#330066;"> Your Achievements: </p>
 	<% 	if(list.size() == 0) {
@@ -151,14 +201,17 @@ if(arr.size() == 0){
 	
 	<% }else{
 
-		int min = list.size();
-			if(list.size() > 3) min = 3;
-			for(int i = 0; i < min; i++){
+		int m = list.size();
+			if(list.size() > 3) m = 3;
+			for(int i = 0; i < m; i++){
 			String str = list.get(i);%>
 	    	<p style="font-size:15px; margin-left:10%">&#9679; <%=str%></p>
 	<% }} %>
 
   	<a href="yourAchievements.jsp"> See all </a><hr>
+  	
+  	
+  	
   	
   	<p style="font-size:130%; color:#330066;"> Friend Requests: </p>
 
@@ -168,11 +221,11 @@ if(arr.size() == 0){
 	<% }else { %>
 		
 		<h2 style="font-size:20px; color:red; text-align:center;"><%=arr.size()%> New</h2>
-		<% int min = 3;
+		<% int mini = 3;
 		
-		if(arr.size() < min) min = arr.size();
+		if(arr.size() < mini) mini = arr.size();
 		
-		for(int i = 0; i < min; i++) {
+		for(int i = 0; i < mini; i++) {
 			requestInfo cur = arr.get(i);
 %>		<div>
 		
@@ -182,6 +235,9 @@ if(arr.size() == 0){
 		<%} } %>
 
   	<a href="UserRequests.jsp"> See all </a><hr>
+  	
+  	
+  	
   	
   	<p style="font-size:130%; color:#330066;"> New Challenges: </p>
   	
@@ -198,10 +254,10 @@ if(arr.size() == 0){
 			<p style="font-size:15px; text-align:center">No new challenges</p>
 		<%}
 		
-		int min = countNew;
-		if(countNew > 3) min = 3;
+		int mi = countNew;
+		if(countNew > 3) mi = 3;
 		
-		for (int i = 0; i < min; i++) {
+		for (int i = 0; i < mi; i++) {
 			
 			challengeInfo  cInf = challInfo.get(i);
 			userInfo sender = info.getMyUser(cInf.getUser1Id());
@@ -219,6 +275,9 @@ if(arr.size() == 0){
 	<% } }%>
   	<a href="challenges.jsp"> See all </a><hr>
   	
+  	
+  	
+  	
   	<p style="font-size:130%; color:#330066;"> New Messages: </p>
   		
   		<% if(numMsg == 0){%>
@@ -230,10 +289,10 @@ if(arr.size() == 0){
   			<h2 style="font-size:20px; color:red; text-align:center;"><%=numMsg%> New</h2>
   			<%
   			
-  			int min = 3;
-  			if(latestMessageInfo.size() < 3) min = latestMessageInfo.size();
+  			int minim = 3;
+  			if(latestMessageInfo.size() < 3) minim = latestMessageInfo.size();
   			
-		for (int i = 0; i < min; i++) {
+		for (int i = 0; i < minim; i++) {
 			
 			messageInfo  msgInf = latestMessageInfo.get(i);
 			userInfo getter = info.getMyUser(msgInf.getUser2Id());
