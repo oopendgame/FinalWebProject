@@ -64,7 +64,7 @@ div {
 %>
 	
 
-<form action = "NextQuestionServlet" method = "post">
+<form id = "form" action = "NextQuestionServlet" method = "post">
 
 	<h3>
 	<%		
@@ -120,6 +120,7 @@ div {
 %>
 	
 	<input type = "submit" value = "Next Question">	
+	
 </form>
 
 <% } else { %>
@@ -179,12 +180,15 @@ div {
 	}
 	
 %>
+	
 	<input type = "submit" value = "Finish">	
+	
 	</form>
 
 <%  } %>
 
 </div>
+
 
 </body>
 </html>
