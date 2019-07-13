@@ -104,6 +104,7 @@ public class CorrectionServlet extends HttpServlet {
 			int user_id = log.getId();		
 			findQuizScoreInfo scoreInfo = new findQuizScoreInfo();
 			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
+			
 			findAchievementInfo achInfo = new findAchievementInfo();
 			achInfo.refreshAchQuizCreate(user_id);
 		} 

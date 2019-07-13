@@ -3,7 +3,6 @@
     
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-<%@ include file="search.jsp"%>
 
 <!DOCTYPE html>
 
@@ -13,8 +12,20 @@
 <title>Quiz Created</title>
 </head>
 
-<body style="background-color:lavender;">
-<center><h1> Quiz Created </h1></center>
-</body>
+<style>
+div {
+  padding-right: 30px;
+  padding-left: 100px;
+  font-size: 40;
+}
+</style>
 
+<body style="background-color:lavender;">
+
+<div>
+<%@ include file="search.jsp"%>
+<center><h1> Quiz Created </h1></center>
+</div>
+
+</body>
 </html>

@@ -25,9 +25,81 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <title>Quiz Result Page</title>
 </head>
 
+
+<style>
+div {
+  padding-right: 30px;
+  padding-left: 100px;
+  font-size: 40;
+}
+
+
+h2 {
+	font-size:25px; 
+	font-weight: bolder
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: indigo;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+p.c {
+  font-style: oblique;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: darkmagenta;
+  color: white;
+}
+
+
+h2 {
+	color: midnightblue;
+	font-style: bold;
+}
+
+
+h1 {
+	color: midnightblue;
+	font-style: bold;
+}
+
+h3 {
+	color:purple;
+}
+
+</style>
+
+<div>
 <%	
 	HttpSession curSession = request.getSession();
 	writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
@@ -45,9 +117,19 @@
 
 <body style="background-color:lavender;">
 
-<h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
-<h1>Your score: <% out.println(curInfo.getScore()); %> </h1>
-<h1>Taken Time: 
+<h1>
+<i class="material-icons" style="font-size:36px">school</i>
+Quiz Name: <% out.println(cur.getQuizName()); %> 
+</h1>
+
+<h1>
+<i class="fa fa-trophy" style="font-size:24px"></i>
+Your score: <% out.println(curInfo.getScore()); %> 
+</h1>
+
+<h1>
+<i class="material-icons" style="font-size:36px">access_time</i>
+Taken Time: 
 <% 
 	findQuizScoreInfo addInf = new findQuizScoreInfo();
 	ArrayList<QuizScoreInfo> questSc = addInf.getUserAttempts(user_id, id);
@@ -58,16 +140,17 @@
 	}
 %>
  </h1>
- 
+ </div>
+ <br><br>
  
  
  <div>
-            <h4>Correct Answers</h4>
+            <h3>Correct Answers</h3>
                    
                          
          	<%
        			ArrayList<QuestionInfo> questions = curInfo.getQuestions();
-         		if(questions.size() == 0) out.println("Your friends no submissions");
+         		if(questions.size() == 0) out.println("<p class=\"c\">There are no quetions </p>");
          		else {
          			ArrayList<String> userAns = curInfo.getUserAns();
          			ArrayList<String> corrAns = addInf.getCorrectAnswers(questions);
@@ -110,18 +193,18 @@
               </table>
             
 </div>
-
+ <br><br>
 
 
 
 
  <div>
-                    <h4>Friends' Submissions</h4>
+                    <h3>Friends' Submissions</h3>
                    
                          
          	<%
        			ArrayList<QuizScoreInfo> arr = addInf.getFriendsSubmission(user_id, id);
-         		if(arr.size() == 0) out.println("Your friends no submissions");
+         		if(arr.size() == 0) out.println("<p class=\"c\">Your friends have no submissions</p>");
          		else {
          	%>
          		<table border = "2">
@@ -164,16 +247,16 @@
               </table>
             
 </div>
-
+ <br><br>
 
 
 <div>
-                <h4>Your Submissions</h4>
+                <h3>Your Submissions</h3>
                 
                         
          	<%
            		arr = addInf.getUserAttempts(user_id, id);
-         		if(arr.size() == 0) out.println("You have no submissions");
+         		if(arr.size() == 0) out.println("<p class=\"c\">You have no submissions</p>");
          		else {
          	%>
          	
@@ -214,9 +297,9 @@
         
             </div>
 
+ <br><br>
 
-
- 
+<div>
 </body>
 </html>
 

@@ -19,8 +19,76 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Quiz Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
+<style>
+div {
+  padding-right: 30px;
+  padding-left: 100px;
+  font-size: 40;
+}
+
+
+h2 {
+	font-size:25px; 
+	font-weight: bolder
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: indigo;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+p.c {
+  font-style: oblique;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: darkmagenta;
+  color: white;
+}
+
+
+h2 {
+	color: midnightblue;
+	font-style: bold;
+}
+
+
+h1 {
+	color: darkmagenta;
+	font-style: bold;
+}
+
+</style>
+
+
+<div>
 <%
 	int id = (int)request.getAttribute("quiz_id");
 	findQuizInfo q = new findQuizInfo();
@@ -32,12 +100,19 @@
 
 <body style="background-color:lavender;">
 
+
 <h1>Quiz Name: <% out.println(cur.getQuizName()); %> </h1>
 
-<h3>Subject: <% out.println(cur.getSubject()); %> </h3>
-<h3>Description: <% out.println(cur.getDecription()); %> </h3>
+<h2>
+<i class="material-icons" style="font-size:36px">school</i>
+Subject: <% out.println(cur.getSubject()); %> </h2>
+<h2>
+<i class="material-icons" style="font-size:36px">description</i>
+Description: <% out.println(cur.getDecription()); %> </h2>
 
-<h3>Created By: 
+<h2>
+<i class="material-icons" style="font-size:36px">person</i>
+Created By: 
 	<% 
 		findUserInfo user = new findUserInfo();
 		userInfo curUser = user.getMyUser(cur.getAuthorId());
@@ -46,16 +121,16 @@
 		out.print("<a href = \"othersPage.jsp\">");
 		out.println(curUser.getUserName()); 
 		out.print("</a>");
-	%></h3>
-
-
+	%></h2>
+</div>
+<br>
 
 <div>
-    <h4>Top Scores of All Time</h4>            
+    <h3 style= "color:purple">Top Scores of All Time</h3>            
            	<%
          		findQuizScoreInfo addInf = new findQuizScoreInfo();
            		ArrayList<QuizScoreInfo> arr = addInf.getMaxScoreInQuiz(id);
-           		if(arr.size() == 0) out.println("Nobody has ever written his quiz");
+           		if(arr.size() == 0) out.println("<p class=\"c\">Nobody has ever written this quiz</p>");
            		else {
            		%>
            		
@@ -93,18 +168,18 @@
            %>             
               </table> 
     </div>
-
+	<br><br>
 
 
 
 
     <div>
-            <h4>Top Scores of the Day</h4>
+            <h3 style= "color:purple">Top Scores of the Day</h3>
 
             
            	<%
            		arr = addInf.getTodaysMaxScoreInQuiz(id);
-           	if(arr.size() == 0) out.println("Nobody has ever written his quiz");
+           	if(arr.size() == 0) out.println("<p class=\"c\">Nobody has written his quiz today</p>");
            	else {
            	%>
            	
@@ -144,14 +219,16 @@
               </table> 
     
         </div>
+        <br><br>
+        
 
         <div>
-                <h4>Your Submissions</h4>
+                <h3 style= "color:purple">Your Submissions</h3>
                 
                         
          	<%
            		arr = addInf.getUserAttempts(user_id, id);
-         		if(arr.size() == 0) out.println("You have no submissions");
+         		if(arr.size() == 0) out.println("<p class=\"c\">You have no submisssions</p>");
          		else {
          	%>
          	
@@ -191,15 +268,16 @@
               </table> 
         
             </div>
-
+			<br><br>
+			
 
             <div>
-                    <h4>Friends' Submissions</h4>
+                    <h3 style= "color:purple">Friends' Submissions</h3>
                    
                          
          	<%
            		arr = addInf.getFriendsSubmission(user_id, id);
-         		if(arr.size() == 0) out.println("You have no submissions");
+         		if(arr.size() == 0) out.println("<p class=\"c\">Your friends have no submissions</p>");
          		else {
          	%>
          		<table border = "2">
@@ -242,15 +320,15 @@
               </table>
             
                 </div>
-
+				<br><br>
 
 
                 <div>
-                        <h4>Last Submissions</h4>
+                        <h3 style= "color:purple">Last Submissions</h3>
                         
          	<%
            		arr = addInf.getLastSubmissions(id);
-         		if(arr.size() == 0) out.println("Nobody has ever written his quiz");
+         		if(arr.size() == 0) out.println("<p class=\"c\">Nobody has ever written this quiz</p>");
          		else { %>
          		
          		<table border = "2"> 
@@ -287,7 +365,7 @@
            %>              
               </table>
                 
-                    </div>
+                    <br><br>
     
     <form name = "startQuiz" action = "writeQuizServlet" method = "post">
 	<input type = "hidden" name = "quiz_id" value = <%=id%>> 
@@ -297,6 +375,6 @@
 	<input type = "submit" value = "Start Quiz">
 </form>
 
- 
+</div> 
 </body>
 </html>
