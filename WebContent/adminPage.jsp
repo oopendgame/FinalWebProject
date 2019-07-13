@@ -183,18 +183,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
     		Gender: <%=currUser.getGender()%><br><br>
-    		<a href="UserFriends.jsp"><i class='fas fa-smile-beam' style='font-size:25px'> Friend of <%=info.getNumFriends(currUser.getUserName())%> users </i></a><br><br>
+    		<a href="UserFriends.jsp"><i class='fas fas fa-users' style='font-size:25px'> Friend of <%=info.getNumFriends(currUser.getUserName())%> users </i></a><br><br>
     		
     </p> 
     </div>
     <div>
-    <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
+    <div style="float: right; padding-right: 80px">
+    <br>
+    <center><h2  class = "new_msg">Admin Options</h2></center>
     <p><a href="makeAnnouncement.jsp" style=a><i class='fas fa-exclamation-triangle' style='font-size:30px'>  Make an Announcement </i></a></p>
     <p><a href="removeUserOrQuiz.jsp" style=a><i class='fas fa-trash-alt' style='font-size:30px'>  Remove User or Quiz </i></a></p>
     <p><a href="clearQuizHistory.jsp" style=a><i class='fas fa-history' style='font-size:30px'>  Clear Quiz History </i></a></p>
     <p><a href="promoteToAdmin.jsp" style=a><i class='fas fa-angle-double-up' style='font-size:30px'>  Promote to Admin </i></a></p>
     <p><a href="websiteStatistics.jsp" style=a><i class='fas fa-info-circle' style='font-size:30px'>  Website Statistics </i></a></p>
-    
+    </div><div style="float: left; padding-left: 80px">
+    <p><br><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
     <p><a href="messages.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> 
     	Messages  <span  class = "new_msg"><%=numMsg%> New </span></i></a></p>
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> 
@@ -204,6 +207,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
+    </div>
     </div>
 </body>
 </html>
