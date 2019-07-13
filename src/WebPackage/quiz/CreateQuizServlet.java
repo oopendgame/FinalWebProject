@@ -95,10 +95,9 @@ public class CreateQuizServlet extends HttpServlet {
 		boolean pageNum = request.getParameter("pageNum") != null && request.getParameter("pageNum").equals("one");
 		boolean rand = request.getParameter("rand") != null && request.getParameter("rand").equals("true");
 		boolean corr = request.getParameter("corr") != null && request.getParameter("corr").equals("imm");
-		boolean pract = request.getParameter("pract") != null && request.getParameter("pract").equals("true");
 		ArrayList<QuestionInfo> questions = getQuestions(request);
 		
-		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, pract, questions);
+		QuizInfo quiz = new QuizInfo(quiz_id, author_id, pageNum, rand, quiz_name, corr, crDate, subj, desc, questions);
 		findQuizInfo newQuiz = new findQuizInfo();
 		newQuiz.addQuiz(quiz, author_id);		
 		
