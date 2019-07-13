@@ -16,6 +16,9 @@
 <!DOCTYPE html>
 <html>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
 div {
   padding-right: 30px;
@@ -23,6 +26,20 @@ div {
   font-size: 40;
 }
 
+h2 {
+	color: midnightblue;
+	font-style: bold;
+}
+
+h1 {
+	color: green;
+	font-style: italic;
+}
+
+h3 {
+	color: red;
+	font-style: italic;
+}
 
 <%@include file="Style.css" %>
 
@@ -73,17 +90,53 @@ div {
 
 <form id = "form" action = "ImmCheckServlet" method = "post">
 
-	<h3>
+	<h2>
+	<i class='fas fa-question-circle' style='font-size:24px'></i>
 	<%		
+		
 		if(!type.equals("2")) out.println(cur.getQuestion()); 
 		else out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"Anonymos Question. Just guess the answer and hope it's right\">");
-		out.println("<br>");
-		out.println("Your Answer: " + userAns.get(i - 1) + "<br>");
-		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br>");
-		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) out.println("Great! You are correct!<br>");
-		else out.println("Soory, you are incorrect :(<br>");
+		out.println("<br><br>");
+		
+		%>
+		<i class="material-icons" style="font-size:36px">question_answer</i>
+		<%
+		out.println("Your Answer: " + userAns.get(i - 1) + "<br><br>");
+		
+		%>
+		<i class='fas fa-check' style='font-size:36px'></i>
+		<%
+		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br><br>");
+		%>
+		
+		</h2>
+		<center>
+		
+		<%
+		
+		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) {
+			%>
+			<h1>
+			<i class='far fa-grin-beam' style='font-size:24px'></i>
+			<%			
+			out.println("Great! You are correct!<br><br>");
+			%>
+			</h1>
+			<%
+		}
+		else {
+			%>
+			<h3>
+			<i class='fas fa-sad-cry' style='font-size:24px'></i>
+			<%			
+			out.println("Sorry, You are incorrect :(<br><br>");
+			%>
+			</h3>
+			<%
+		}
 	%>
-	</h3>
+	</center>
+	
 	
 	<input type = "submit" value = "Next Question">	
 	
@@ -93,18 +146,52 @@ div {
 
 <form action = "CorrectionServlet" method = "post">
 
-<h3>
+<h2>
+	<i class='fas fa-question-circle' style='font-size:24px'></i>
 	<%		
+		
 		if(!type.equals("2")) out.println(cur.getQuestion()); 
 		else out.println("<img src = \"" + cur.getQuestion() + "\" alt = \"Anonymos Question. Just guess the answer and hope it's right\">");
-		out.println("<br>");
-		out.println("<br>");
-		out.println("Your Answer: " + userAns.get(i - 1) + "<br>");
-		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br>");
-		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) out.println("Great! You are correct!<br>");
-		else out.println("Soory, you are incorrect :(<br>");
+		out.println("<br><br>");
+		
+		%>
+		<i class="material-icons" style="font-size:36px">question_answer</i>
+		<%
+		out.println("Your Answer: " + userAns.get(i - 1) + "<br><br>");
+		
+		%>
+		<i class='fas fa-check' style='font-size:36px'></i>
+		<%
+		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br><br>");
+		%>
+		
+		</h2>
+		<center>
+		
+		<%
+		
+		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) {
+			%>
+			<h1>
+			<i class='far fa-grin-beam' style='font-size:24px'></i>
+			<%			
+			out.println("Great! You are correct!<br><br>");
+			%>
+			</h1>
+			<%
+		}
+		else {
+			%>
+			<h3>
+			<i class='fas fa-sad-cry' style='font-size:24px'></i>
+			<%			
+			out.println("Sorry, You are incorrect :(<br><br>");
+			%>
+			</h3>
+			<%
+		}
 	%>
-	</h3>
+	</center>
 	
 	<input type = "submit" value = "Finish">	
 	
