@@ -10,10 +10,8 @@
 <!DOCTYPE html>
 <html>
 
-
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-<%@ include file="search.jsp"%>
 
 
 <head>
@@ -40,11 +38,19 @@ div {
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 	int id = log.getId();
 	ArrayList<requestInfo> arr = req.getUserRequests(id);
+	%>
+	
+	<div>
+	<%@ include file="search.jsp"%>
+	
+	<%	
 	if(arr.size() == 0) out.println("<center><h1>No requests</h1></center>");
 	else {
 %>
 		<p> <center><h1>YOUR REQUESTS</h1></center></p>
-		<div>
+		
+		
+		
 <%
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);
