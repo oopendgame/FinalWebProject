@@ -19,31 +19,17 @@ public class QuestionInfo {
 		return question_id;
 	}
 
-	public void setQuestionId(int id) {
-		question_id = id;
-	} 
-	
 	public String getType() {
 		return question_type;
 	}
 
-	public void setType(String type) {
-		question_type = type;
-	}
 	
 	public String getQuestion() {
 		return question;
-	}
-
-	public void setQuestion(String quest) {
-		question = quest;
 	}
 	
 	public ArrayList<AnswerInfo> getAnswers() {
 		return ans;
 	}
 
-	public void setAnswers(ArrayList<AnswerInfo> answers) {
-		ans = answers;
-	}
 }

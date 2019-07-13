@@ -14,26 +14,15 @@ public class AnswerInfo {
 	public int getAnswerId() {
 		return answer_id;
 	}
-	
-	public void setAnswerId(int id) {
-		answer_id = id;
-	}
 
 
 	public String getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String ans) {
-		answer = ans;
-	}
 	
 	public boolean getCorrectAns(){
 		return correct_ans;
-	}
-	
-	public void setCorrectAns(boolean corr){
-		correct_ans = corr;
 	}
 	
 	
