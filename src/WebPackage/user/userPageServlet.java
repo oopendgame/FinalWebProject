@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebPackage.admin.adminInfo;
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
 
@@ -37,8 +38,12 @@ public class userPageServlet extends HttpServlet {
 		LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 		String name = currInfo.getUserName();
 		us.insertUrl(name, newUrl);
-		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
-		dis.forward(request, response);
+		adminInfo adInfo= new adminInfo();
+		if(adInfo.isAdmin(name)) {
+			request.getRequestDispatcher("adminPage.jsp").forward(request,response);
+		}else {
+            request.getRequestDispatcher("userPage.jsp").forward(request,response);
+		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -52,8 +57,12 @@ public class userPageServlet extends HttpServlet {
 		LogInInfo currInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
 		String name = currInfo.getUserName();
 		us.insertUrl(name, newUrl);
-		RequestDispatcher dis = request.getRequestDispatcher("userPage.jsp");
-		dis.forward(request, response);
+		adminInfo adInfo= new adminInfo();
+		if(adInfo.isAdmin(name)) {
+			request.getRequestDispatcher("adminPage.jsp").forward(request,response);
+		}else {
+            request.getRequestDispatcher("userPage.jsp").forward(request,response);
+		}
 	}
 
 }

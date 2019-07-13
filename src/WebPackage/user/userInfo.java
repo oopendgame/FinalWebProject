@@ -9,7 +9,6 @@ public class userInfo {
 	private String myEmail;
 	private String myBirthday;
 	private String myGender;
-	private String myRank;
 	
 	public userInfo(int id, String userName, String name, String lastName, String img, 
 			String email, String birthday, String gender) {
@@ -46,9 +45,7 @@ public class userInfo {
 	public String getGender() {
 		return myGender;
 	}
-	public String getRank() {
-		return myRank;
-	}
+	
 	
 	
 

@@ -77,7 +77,7 @@ body {
   <a href="home.jsp" class="logo">Logo</a>
   <div class="header-right">
     <a href="<%=profile%>" class = "c">Profile <i class="fas fa-user"></i></a>
-    <a href="login.jsp" class = "c">Log out <i class="fa fa-sign-out-alt"></i></a>
+    <a href="login.jsp" class = "c">Log out <i class="fas fa-sign-out-alt"></i></a>
   </div>
 </div>
 </div>
