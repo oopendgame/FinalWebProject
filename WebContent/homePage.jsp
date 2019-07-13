@@ -171,12 +171,79 @@ if(annarr.size() == 0){
   	
   
   	<p style="font-size:130%; color:#330066;"> Recently Created Quizzes: </p>
+  	
+  	
+  	
+  	<% ArrayList<QuizInfo> narr = hpage.getQuizzesByDate();
+	if(narr.size() == 0) {%>
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
+	<%} 
+	int nmi = 3;
+	if(narr.size() < 3) nmi = narr.size();
+	for(int i = 0; i < nmi; i++) {
+	QuizInfo cur = narr.get(i);
+	int nqid = cur.getQuizId(); 
+	
+		
+	%>
+	<h3 style = "margin-left: 40%;">
+	<span style='font-size:20px;'>&#9673;</span>
+	<%=cur.getQuizName()%>
+	
+	<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=nqid%>">
+	<input type = "submit" value = "view quiz">
+	</form>
+		
+	<form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=nqid%>">
+	<input type = "submit" value = "challenge friends">
+	</form>
+	
+	</h3>		
+<% } %>
+  	
   
-  	<a href="lastCreatedQuizzes.jsp"> more </a><hr>
+  	<a href="newestQuizzes.jsp"> more </a><hr>
   
   	<p style="font-size:130%; color:#330066;"> Recently Taken Quizzes: </p>
+  	
+  	
+  	<%
+	int usid = currInfo.getId();
+	ArrayList<QuizInfo> tarr = hpage.getTakenQuizzes(usid);
+	
+	if(tarr.size() == 0) {%>
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
+	<%} 
+	int tmin = 3;
+	if(tmin > tarr.size()) tmin = tarr.size();
+	for(int i = 0; i < tarr.size(); i++) {
+	QuizInfo cur = tarr.get(i);
+	int tqid = cur.getQuizId(); 
+	
+		
+	%>
+	<h3 style = "margin-left: 40%;">
+	<span style='font-size:20px;'>&#9673;</span>
+	<%=cur.getQuizName()%>
+	
+	<form name = "startForm<%=i%>" action = "QuizPageServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=tqid%>">
+	<input type = "submit" value = "view quiz">
+	</form>
+		
+	<form name = "challengeForm<%=i%>" action = "challengeServlet" method="get">
+	<input type = "hidden" name = "quiz_id" value = "<%=tqid%>">
+	<input type = "submit" value = "challenge friends">
+	</form>
+	
+	</h3>		
+	<% } %>
+  	
+  	
   
-  	<a href="lastTakenQuizzes.jsp"> more </a><hr>
+  	<a href="myTakenQuizzes.jsp"> more </a><hr>
   
   	<p style="font-size:130%; color:#330066;"> Your Created Quizzes: </p>
   
@@ -184,8 +251,11 @@ if(annarr.size() == 0){
   	<% int myid = currInfo.getId();
 	ArrayList<QuizInfo> myarr = hpage.getMyQuizzes(myid);
 	if(myarr.size() == 0) {%>
-		<h3 style="font-size:100%; color:#330066; text-align:center;">No Challenges</h3>
-	<%} for(int i = 0; i < myarr.size(); i++) {
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No quizzes</h3>
+	<%} 
+	int mym = 3;
+	if(myarr.size() < 3) mym = myarr.size();
+	for(int i = 0; i < mym; i++) {
 	QuizInfo cur = myarr.get(i);
 	int myqid = cur.getQuizId(); 
 	

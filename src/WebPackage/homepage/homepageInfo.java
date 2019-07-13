@@ -132,6 +132,28 @@ public class homepageInfo {
 		return arr;
 	}
 	
+	
+	public ArrayList<QuizInfo> getTakenQuizzes(int id) {        
+		ArrayList<QuizInfo> arr = new ArrayList<QuizInfo>();
+		findQuizInfo fquiz = new findQuizInfo();
+		Statement statement;
+		try {
+			String st = "SELECT * FROM quizScores WHERE user_id = '" + id + "' order by start_time desc;";
+			statement = con.createStatement();
+			ResultSet res = statement.executeQuery(st);
+			while(res.next()) {
+				int qid = res.getInt("quiz_id");
+				arr.add(fquiz.getQuiz(qid));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	
+	
+	
 	public int userIdbyAdmin(int id) {
 		
 		int s = 0;
