@@ -46,13 +46,13 @@ public class NextQuestionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		response.setContentType("text/html");
+	/*	response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
         PrintWriter output = response.getWriter();  
-        output.println("Hello");
+        output.println("Hello");  */
 		
-		String next = request.getParameter("Next");       //  AREA submit button
-	    String check = request.getParameter("Check");
+		String next = request.getParameter("NextQuestion");      
+	    boolean imm = (next != null);
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
@@ -71,7 +71,7 @@ public class NextQuestionServlet extends HttpServlet {
 			System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 			if(userAns != null && userAns.trim().equals(corrAns.trim())) {
 				System.out.println("hereeeeeNext" + 1);
-				curInfo.setScore(1 + curInfo.getScore());
+				if(imm) curInfo.setScore(1 + curInfo.getScore());
 			}
 			curInfo.addUserAns(userAns);
 			
@@ -87,6 +87,7 @@ public class NextQuestionServlet extends HttpServlet {
 		curInfo.increaseQuestionNum();
 		
 		String st = "WriteQuizMult.jsp";
+		if(quiz.getCorrectionType() && next == null) st = "checkAnswer.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(st);
 		rd.forward(request, response);
 	}
