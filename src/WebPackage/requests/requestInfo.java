@@ -23,10 +23,6 @@ public class requestInfo {
 		return userName;
 	}
 	
-	public void setUserName(String name) {
-		userName = name;
-	}
-	
 	public int getRequestId() {
 		return req_id;
 	}
@@ -35,16 +31,8 @@ public class requestInfo {
 		return user1;
 	}
 	
-	public void setSenderID(int id) {
-		user1 = id;
-	}
-	
 	public int getReceiverID() {
 		return user2;
-	}
-	
-	public void setReceiverID(int id) {
-		user2 = id;
 	}
 	
 	public int getSatus() {
@@ -57,9 +45,5 @@ public class requestInfo {
 	
 	public Date getSentDate() {
 		return sent_date;
-	}
-	
-	public void setDate(Date date) {
-		sent_date = date;
 	}
 }
