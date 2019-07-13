@@ -58,25 +58,39 @@ public class NextQuestionServlet extends HttpServlet {
 		String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
 		System.out.println(userAns == null + "8\n");
 		
+		String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
+		boolean corr = false;
+		
 		if(!type.equals("1")) {
-			String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
 			System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 			if(userAns != null && userAns.trim().equals(corrAns.trim())) {
 				System.out.println("hereeeeeNext" + 1);
 				curInfo.setScore(1 + curInfo.getScore());
+				corr = true;
 			}
 			curInfo.addUserAns(userAns);
 			
 		} else if(userAns != null) {
 			System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
+			corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
+			
 			int ansId = Integer.parseInt(userAns);
 			if(ansInfo.isAnswerCorrect(ansId)) {
 				System.out.println("hereeeeeNext" + 2);
 				curInfo.setScore(1 + curInfo.getScore());
+				corr = true;
 			}
 			curInfo.addUserAns(ansInfo.getMultiAnswer(Integer.parseInt(userAns)));
 		}
 		curInfo.increaseQuestionNum();
+		
+		if(quiz.getCorrectionType()) {
+			if(corr) {
+				response.getWriter().println("Good Job! Your answers correct!");
+			} else {
+				response.getWriter().println("Sorry, you are incorrect. Correct answer was: " + corrAns);
+			}
+		}
 		
 		String st = "WriteQuizMult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(st);
