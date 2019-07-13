@@ -45,10 +45,11 @@ public class NextQuestionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();  
-        out.println("<b>HELLO</b>");
+        PrintWriter output = response.getWriter();  
+        output.println("Hello");
 		
 		String next = request.getParameter("Next");       //  AREA submit button
 	    String check = request.getParameter("Check");
