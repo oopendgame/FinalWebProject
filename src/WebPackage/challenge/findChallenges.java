@@ -48,7 +48,7 @@ public class findChallenges {
 			if(res.next()) {
 				userId = res.getInt("user_id");
 			}
-			res = stmt.executeQuery("SELECT * from challenges where user2_id = \"" + userId + "\" order by  sending_time desc;");
+			res = stmt.executeQuery("SELECT * from challenges where user2_id = \"" + userId + "\" order by sending_time desc;");
 			while(res.next()) {
 				 
 				int id = res.getInt("challenge_id");
