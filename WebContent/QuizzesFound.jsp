@@ -6,7 +6,6 @@
     
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-<%@ include file="search.jsp"%>
 
 <!DOCTYPE html>
 <html> 
@@ -30,9 +29,11 @@ div {
 </head>
 
 <body style="background-color:lavender;">
-<center><h1> Quizzes Found </h1></center>
 
 <div>
+<%@ include file="search.jsp"%>
+<center><h1> Quizzes Found </h1></center>
+
 
 <%
 	ArrayList<QuizInfo> arr = (ArrayList<QuizInfo>)request.getAttribute("matchingQuizzes");
