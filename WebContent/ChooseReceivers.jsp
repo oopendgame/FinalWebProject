@@ -58,7 +58,7 @@
  
 </style>
 </head>
-<body>
+<body style="background-color:lavender;">
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
 	
@@ -93,7 +93,7 @@
 	%>
 		<input type = "hidden" name = "quiz_id" value = "<%=quizid%>">
 		<br>
-		<input type = "submit" style="background-color: white; font-size: 17px; border: none; color:#330066; margin-left: 20%; cursor:pointer;"
+		<input type = "submit" style="background-color: lavender; font-size: 17px; border: none; color:#330066; margin-left: 20%; cursor:pointer;"
 			value="&#xf0a8 Return to quiz page" id="submitButton">
 		</form>
 </body>

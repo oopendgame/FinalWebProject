@@ -64,7 +64,7 @@ body {
 
 <div id="DIV">
 <div class="topnav">
-	<a class="b" href="home.jsp"><i class="fa fa-home"></i> Home</a>
+	<a class="b" href="homePage.jsp"><i class="fa fa-home"></i> Home</a>
     <a href="quizzes.jsp" class= "b"><i class="fas fa-question-circle"></i> Quizzes</a>
     <a href="rating.jsp" class = "b"><i class="fas fa-trophy"></i> Rating</a>
     <a href="about.jsp" class = "b"><i class="fas fa-exclamation-circle"></i> About</a>
