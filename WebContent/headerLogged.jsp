@@ -1,6 +1,6 @@
 <%@ page import="WebPackage.admin.adminInfo"%>
 <%@ page import="WebPackage.database.DBInfo"%>
-<%@ page import="WebPackage.login.LogInInfo"%>
+<%@ page import="WebPackage.login.LogInInfo"%> 
 <!DOCTYPE html>
 <html>
 <head>
