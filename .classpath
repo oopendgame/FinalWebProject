@@ -14,5 +14,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/nino/Documents/freeuni/semester 4/oop hw/Project/FinalWebProject/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
