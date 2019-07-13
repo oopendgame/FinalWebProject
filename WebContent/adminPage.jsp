@@ -94,8 +94,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   font:'Berkshire Swash', Helvetica, sans-serif;
   color:red;
 }
-</style>
-<style>
+
     a {
      text-decoration: none;
      font-size:30px

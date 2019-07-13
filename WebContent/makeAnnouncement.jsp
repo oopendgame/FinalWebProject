@@ -15,10 +15,12 @@
 <%@ include file="search.jsp"%>
 <style> 
 
-body {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 0 20px;
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
 }
 
 .container {
@@ -143,23 +145,26 @@ button {
 
     %>
 <body  style="background-color:lavender;">
-<br>
-<center><h1> Make an Announcement </h1> </center>
-    	
-<div class="container" id="myForm"> 
-	<form name="announcementForm" action="makeAnnouncementServlet" method="GET">
-			<div class="type_msg">
-		        <div class="input_msg_write"> 
-				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>">
-				<p> title </p>
-				<textarea name = "title" id = "title" rows="2" cols="90" style="overflow-y:scroll"> </textarea> <br>  
-				<p> announcement </p>
-				<textarea name="announcement" id="announcement" rows="12" cols="90" style="overflow-y:scroll"> </textarea> <br> 
-		        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-		        <p id="demo"></p>
-		        </div>
-	    	</div>
-	</form>
+<div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
+
+	<br>
+	<center><h1> Make an Announcement </h1> </center>
+	    	
+	<div class="container" id="myForm"> 
+		<form name="announcementForm" action="makeAnnouncementServlet" method="GET">
+				<div class="type_msg">
+			        <div class="input_msg_write"> 
+					<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>">
+					<p> title </p>
+					<textarea name = "title" id = "title" rows="2" cols="90" style="overflow-y:scroll"> </textarea> <br>  
+					<p> announcement </p>
+					<textarea name="announcement" id="announcement" rows="12" cols="90" style="overflow-y:scroll"> </textarea> <br> 
+			        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+			        <p id="demo"></p>
+			        </div>
+		    	</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>

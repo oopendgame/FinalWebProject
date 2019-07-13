@@ -11,7 +11,13 @@
 <%@include file="nav.jsp" %>
 <%@ include file="search.jsp"%>
 <style>
-
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
+}
 .circle-tile {
     margin-bottom: 15px;
     text-align: center;

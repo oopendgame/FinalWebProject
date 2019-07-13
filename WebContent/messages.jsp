@@ -21,12 +21,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 0 20px;
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
 }
-
 .container {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
@@ -125,7 +126,7 @@ button {
 			
 			
 	%>
-	
+<div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
 <span class = "oleo"><% out.println(user); %></span>  <span  class = "new_msg"><% out.println(seen); %> </span>	<div class="container" id="myForm">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
@@ -144,6 +145,7 @@ button {
 		</div>
 	</form>
 	<hr>
+</div>
 	
 	<%
 		}
