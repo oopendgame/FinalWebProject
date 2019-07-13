@@ -119,7 +119,7 @@ div {
 	}
 %>
 	
-	<input type = "submit" value = "Next Question" name = "Next">	
+	<input type = "submit" value = "Next Question">	
 	
 </form>
 
@@ -181,7 +181,7 @@ div {
 	
 %>
 	
-	<input type = "submit" value = "Finish" name = "Finish">	
+	<input type = "submit" value = "Finish">	
 	
 	</form>
 
