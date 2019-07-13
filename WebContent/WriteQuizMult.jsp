@@ -118,8 +118,13 @@ div {
 		out.println("<br>");
 	}
 %>
+
+	<% if(quiz.getCorrectionType()) { %>
+		<input type = "submit" value = "Check Your Answer" name = "Check">	
+	<%	}  %>
 	
-	<input type = "submit" value = "Next Question">	
+	<input type = "submit" value = "Next Question" name = "Next">	
+	
 </form>
 
 <% } else { %>
@@ -179,7 +184,13 @@ div {
 	}
 	
 %>
-	<input type = "submit" value = "Finish">	
+
+	<% if(quiz.getCorrectionType()) { %>
+		<input type = "submit" value = "Check Your Answer" name = "Check">	
+	<%	}  %>
+	
+	<input type = "submit" value = "Finish" name = "Finish">	
+	
 	</form>
 
 <%  } %>

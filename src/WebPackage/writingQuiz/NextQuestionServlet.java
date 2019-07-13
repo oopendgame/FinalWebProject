@@ -1,6 +1,7 @@
 package WebPackage.writingQuiz;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -43,7 +44,14 @@ public class NextQuestionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();  
+        out.println("<b>HELLO</b>");
+		
+		String next = request.getParameter("Next");       //  AREA submit button
+	    String check = request.getParameter("Check");
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
@@ -56,7 +64,6 @@ public class NextQuestionServlet extends HttpServlet {
 		QuestionInfo cur = quest.get(i);
 		String type = cur.getType();
 		String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));
-		System.out.println(userAns == null + "8\n");
 		
 		if(!type.equals("1")) {
 			String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());

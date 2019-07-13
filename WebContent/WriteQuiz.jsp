@@ -116,7 +116,7 @@ out.print(quiz.getQuizName());
 %>
 
 <center>
-<input type = "submit" value = "finish Quiz">	
+<input type = "submit" value = "finish Quiz" name = "Finish">	
 </center>
 </form>
 </div>
