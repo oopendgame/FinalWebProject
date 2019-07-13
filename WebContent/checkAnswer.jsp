@@ -80,7 +80,7 @@ div {
 		out.println("<br>");
 		out.println("Your Answer: " + userAns.get(i - 1) + "<br>");
 		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br>");
-		if(userAns.get(i - 1).equals(corrAns.get(i - 1))) out.println("Great! You are correct!<br>");
+		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) out.println("Great! You are correct!<br>");
 		else out.println("Soory, you are incorrect :(<br>");
 	%>
 	</h3>
@@ -101,7 +101,7 @@ div {
 		out.println("<br>");
 		out.println("Your Answer: " + userAns.get(i - 1) + "<br>");
 		out.println("Correct Answer: " + corrAns.get(i - 1) + "<br>");
-		if(userAns.get(i - 1).equals(corrAns.get(i - 1))) out.println("Great! You are correct!<br>");
+		if(userAns.get(i - 1).trim().equals(corrAns.get(i - 1).trim())) out.println("Great! You are correct!<br>");
 		else out.println("Soory, you are incorrect :(<br>");
 	%>
 	</h3>

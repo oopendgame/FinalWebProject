@@ -49,7 +49,7 @@ public class ImmCheckServlet extends HttpServlet {
 		ArrayList<QuestionInfo> quest = curInfo.getQuestions();
 		findAnswerInfo ansInfo = new findAnswerInfo();
 		
-		int i = curInfo.getQestionNum();
+		int i = curInfo.getQestionNum(); 
 		QuestionInfo cur = quest.get(i);
 		String type = cur.getType();
 		String userAns = request.getParameter(Integer.toString(cur.getQuestionId()));

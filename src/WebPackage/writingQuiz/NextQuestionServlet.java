@@ -49,10 +49,10 @@ public class NextQuestionServlet extends HttpServlet {
 	/*	response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
         PrintWriter output = response.getWriter();  
-        output.println("Hello");  */
+        output.println("Hello");  
 		
 		String next = request.getParameter("NextQuestion");      
-	    String check = request.getParameter("FinishQuiz");
+	    String check = request.getParameter("FinishQuiz"); */
 		
 		HttpSession curSession = request.getSession();
 		writeQuizInfo curInfo = (writeQuizInfo)curSession.getAttribute("writeQuiz");
