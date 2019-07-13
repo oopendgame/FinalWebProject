@@ -35,7 +35,7 @@
 <input type="text" name="quiz_name" placeholder= "Quiz Name"> <br>
   
   <div class="gap-10"></div>
-  <textarea rows="4" cols="50" placeholder="Enter Description here..." name="description"></textarea> <br>  
+  <textarea rows="6" cols="50" placeholder="Enter Description here..." name="description"></textarea> <br>  
   <div class="gap-10"></div>
   
   Choose Category:

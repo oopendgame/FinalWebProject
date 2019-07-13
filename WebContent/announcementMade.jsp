@@ -7,6 +7,15 @@
 <title>Done</title>
 </head>
 <body>
+<style>
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
+}
+</style>
 <body  style="background-color:lavender;">
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>

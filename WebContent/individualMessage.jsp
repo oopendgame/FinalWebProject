@@ -30,10 +30,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-body {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 0 20px;
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
 }
 
 .container {
@@ -138,6 +140,8 @@ button {
 <title><%=chatterName%> Chat</title>
 <body  style="background-color:lavender;">
 <br>
+<div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
+
 <center><h1> Your Chat With <br><%=chatterName%></h1> </center>
 <p id="demo"></p>
 <body onLoad="window.scroll(0, document.body.scrollHeight)">
@@ -212,7 +216,6 @@ button {
     </div>
 	</form>
      <p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
-
-
+</div>
 </body>
 </html>

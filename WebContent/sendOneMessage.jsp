@@ -12,11 +12,15 @@
 <title>Insert title here</title>
 <style> 
 
-body {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 0 20px;
+
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
 }
+
 
 .container {
   border: 2px solid #dedede;
@@ -148,24 +152,27 @@ button {
 
     %>
 <body  style="background-color:lavender;">
+<div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
+
 <br>
 <center><h1> Send message to  <br><%=currUserTo.getUserName()%></h1> </center>
     	
-<div class="container" id="myForm"> 
-	<form name="readForm" action="sendMessageServlet" method="GET">
-			<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
-			<div class="type_msg">
-		        <div class="input_msg_write"> 
-				<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>"> 
-				<input type="hidden" id="receiver" name="receiver" value="<%=currUserTo.getId()%>">
-				<textarea name = "sms" id = "sms"  rows="12" cols="90" placeholder="Type a message"  required 
-  							style="overflow-y:scroll"> </textarea> <br> 
-		        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-		        <p id="demo"></p>
-				
-		        </div>
-	    	</div>
-	</form>
+	<div class="container" id="myForm"> 
+		<form name="readForm" action="sendMessageServlet" method="GET">
+				<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
+				<div class="type_msg">
+			        <div class="input_msg_write"> 
+					<input type="hidden" id="user" name="user" value="<%=currUser.getId()%>"> 
+					<input type="hidden" id="receiver" name="receiver" value="<%=currUserTo.getId()%>">
+					<textarea name = "sms" id = "sms"  rows="12" cols="90" placeholder="Type a message"  required 
+	  							style="overflow-y:scroll"> </textarea> <br> 
+			        <button class="msg_send_btn" type="submit" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+			        <p id="demo"></p>
+					
+			        </div>
+		    	</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>

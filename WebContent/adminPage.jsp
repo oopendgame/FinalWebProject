@@ -94,8 +94,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   font:'Berkshire Swash', Helvetica, sans-serif;
   color:red;
 }
-</style>
-<style>
+
     a {
      text-decoration: none;
      font-size:30px
@@ -184,7 +183,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     		Email: <%=currUser.getEmail()%><br><br>
    			Birthday: <%=currUser.getBirthday()%><br><br>
     		Gender: <%=currUser.getGender()%><br><br>
-   			Friend of <%=info.getNumFriends(currUser.getUserName())%> users
+    		<a href="UserFriends.jsp"><i class='fas fa-smile-beam' style='font-size:25px'> Friend of <%=info.getNumFriends(currUser.getUserName())%> users </i></a><br><br>
+    		
     </p> 
     </div>
     <div>
@@ -200,11 +200,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="challenges.jsp" style=a><i class='fas fa-gamepad' style='font-size:30px'> 
     	<span  class = "new_msg"><%=numChall%> New </span> Challenges </i></a></p>
     <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
-    <%=info.getNumFriendRequests(currUser.getUserName())%> Friend Requests</i></a></p>
-    <p><a href="UserFriends.jsp" style=a><i class='fas fa-smile-beam' style='font-size:30px'> Your Friends </i></a></p>
+    	<span  class = "new_msg"><%=info.getNumFriendRequests(currUser.getUserName())%> New </span> Friend Requests</i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
-    <p><a href="friendsActivities.jsp" style=a><i class='fas fa-running' style='font-size:30px'> Friends' Activities</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
     </div>
 </body>

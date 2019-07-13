@@ -8,6 +8,15 @@
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
 <%@ include file="search.jsp"%>
+<style>
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
+}
+</style>
 </head>
 <body>
 <body  style="background-color:lavender;">

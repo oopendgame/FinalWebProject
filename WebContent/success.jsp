@@ -9,6 +9,15 @@
 <%@include file="nav.jsp" %>
 <%@ include file="search.jsp"%>
 </head>
+<style>
+body{
+	background-color:lavender; 
+	padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px;
+}
+</style>
 <body>
 <body  style="background-color:lavender;">
 <br>
