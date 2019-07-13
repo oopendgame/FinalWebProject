@@ -39,7 +39,7 @@ if(challInfo.size() == 0){
 } else{
 		if(challInfo.size()-countOld != 0){
 		%>
-		<h2 style="font-size:160%; color:#cc0000; text-align:center;">New</h2>
+		<h2 style="font-size:160%; color:red; text-align:center;">New</h2>
 		<%
 		}
 		for (int i = 0; i < challInfo.size()-countOld; i++) {
