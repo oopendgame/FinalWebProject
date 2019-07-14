@@ -51,7 +51,7 @@ INSERT INTO admins(user_id) VALUES
 
 CREATE TABLE IF NOT EXISTS quizzes (
     quiz_id int not null auto_increment,
-    author_id int not null,
+    author_id int not null, 
     page_num boolean default 1,
     random boolean default 0,
     quiz_name varchar(100) not null,

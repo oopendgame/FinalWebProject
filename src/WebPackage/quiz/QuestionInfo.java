@@ -1,6 +1,7 @@
 package WebPackage.quiz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class QuestionInfo {
 	private int question_id;
@@ -29,6 +30,7 @@ public class QuestionInfo {
 	}
 	
 	public ArrayList<AnswerInfo> getAnswers() {
+		if(question_type.equals("1")) Collections.shuffle(ans);
 		return ans;
 	}
 

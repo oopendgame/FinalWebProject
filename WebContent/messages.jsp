@@ -133,7 +133,7 @@ button {
 <span class = "oleo"><% out.println(user); %></span>  <span  class = "new_msg"><% out.println(seen); %> </span>	<div class="container" id="myForm">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
-  		<p>  <% out.println(sms); %> </p>
+  		<p>  <%= sms %> </p>
   
   	<span class="time-right"><%=time%></span>
 	</div>

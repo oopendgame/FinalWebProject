@@ -50,10 +50,18 @@ public class rejectRequstServletTest {
 
         rejectRequestServlet cr = new rejectRequestServlet();
         
-        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
+        when(request.getRequestDispatcher("friendRemoved.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -86,9 +94,17 @@ public class rejectRequstServletTest {
 
         rejectRequestServlet cr = new rejectRequestServlet();
         
-        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
+        when(request.getRequestDispatcher("friendRemoved.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
