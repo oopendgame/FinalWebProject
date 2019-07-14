@@ -130,7 +130,13 @@ button {
 			
 	%>
 <div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
-<span class = "oleo"><% out.println(user); %></span>  <span  class = "new_msg"><% out.println(seen); %> </span>	<div class="container" id="myForm">
+<form action = "searchUserServlet" method = "Post">
+	<input type = "hidden" name = "user_name" value = <%=user%>>
+	<input type = "submit" class = "oleo" value = "<%=user%>">
+	<span  class = "new_msg"><% out.println(seen); %> </span>
+</form>
+
+<div class="container" id="myForm">
   		<img src=<%=img%> alt="Avatar" style="width:100%;">
   		<p class = "oleo" ><% out.println(whoTexted); %> </p>
   		<p>  <%= sms %> </p>
