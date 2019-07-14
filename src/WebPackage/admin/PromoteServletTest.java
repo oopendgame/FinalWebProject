@@ -22,12 +22,12 @@ class PromoteServletTest {
 	
 	
 	@Test
-	void testWrongEmpty() throws IOException, ServletException {
+	void testWrong1() throws IOException, ServletException {
 		//System.out.println("first");
 
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
-	    when(request.getParameter("pusername")).thenReturn("nchan17");
+	    when(request.getParameter("pusername")).thenReturn("nchan17"); 
 
 	    //adminInfo adInfo = mock(adminInfo.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -37,7 +37,7 @@ class PromoteServletTest {
 	    //System.out.println(adInfo.promoteToAdmin("nchan17"));
 	    if(info.isUser("nchan17")) {
 	    	when(request.getRequestDispatcher("success.jsp")).thenReturn(dispatcher);
-	    }else when(request.getRequestDispatcher("incorrectQuizNameClear.jsp")).thenReturn(dispatcher);
+	    }else when(request.getRequestDispatcher("incorrectUserPromote.jsp")).thenReturn(dispatcher);
 	    PromoteServlet serv = new PromoteServlet();
 	    serv.doPost(request, response);
 		verify(dispatcher).forward(request,response);
@@ -47,7 +47,7 @@ class PromoteServletTest {
 	
 	
 	@Test
-	void testWrong() throws IOException, ServletException {
+	void testWrong2() throws IOException, ServletException {
 		//System.out.println("second");
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
@@ -60,7 +60,7 @@ class PromoteServletTest {
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
 	    if(info.isUser("randName")) {
 	    	when(request.getRequestDispatcher("success.jsp")).thenReturn(dispatcher);
-	    }else when(request.getRequestDispatcher("incorrectQuizNameClear.jsp")).thenReturn(dispatcher);
+	    }else when(request.getRequestDispatcher("incorrectUserPromote.jsp")).thenReturn(dispatcher);
         new PromoteServlet().doPost(request, response);
 
 		verify(dispatcher).forward(request,response);

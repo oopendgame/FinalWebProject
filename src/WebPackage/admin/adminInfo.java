@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
 import WebPackage.user.findUserInfo;
 
@@ -17,20 +18,20 @@ public class adminInfo {
 		static String  server = DBInfo.MYSQL_DATABASE_SERVER;
 		static String database = DBInfo.MYSQL_DATABASE_NAME ; // replace with your db
 		public adminInfo(){
-				try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					con = DriverManager.getConnection
-								( "jdbc:mysql://" + server, account ,password);
-					stmt = con.createStatement();
-					stmt.executeQuery("USE " + database);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			con = DBConnection.getConnection();
+
+			try {
+				stmt = con.createStatement();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				stmt.executeQuery("USE " + database);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 		}
 		public boolean isAdmin(int userId) {
@@ -66,7 +67,19 @@ public class adminInfo {
 			}
 			return false;
 		}
-		
+		public boolean isQuiz(String quizName) {
+			ResultSet res = null;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					return true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
 		public int getNumWebUsers() {
 			ResultSet res = null;
 			int num = 0;

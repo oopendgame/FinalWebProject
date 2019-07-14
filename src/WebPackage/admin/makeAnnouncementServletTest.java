@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 class makeAnnouncementServletTest {
 
 	@Test
-	void testAnnouncement() throws ServletException, IOException {
+	void testGet1() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -33,7 +33,7 @@ class makeAnnouncementServletTest {
 		verify(dispatcher).forward(request,response); 
 	}
 	@Test
-	void testAnnouncementEmpty() throws ServletException, IOException {
+	void testGet2() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    announcements info = mock(announcements.class);
@@ -41,12 +41,45 @@ class makeAnnouncementServletTest {
 	    
 	    when(request.getParameter("announcement")).thenReturn("");
 	    when(request.getParameter("title")).thenReturn("");
-	    when(request.getParameter("user")).thenReturn("7");
+	    when(request.getParameter("user")).thenReturn("3");
 	    when(request.getRequestDispatcher("announcementMade.jsp")).thenReturn(dispatcher);
 
 	    makeAnnouncementServlet ann = new makeAnnouncementServlet();
 	    ann.doGet(request, response);
-	    verify(info, atLeast(1)).makeAnnouncement(7, "", "");
-		//verify(dispatcher).forward(request,response);
+	    //verify(info, atLeast(1)).makeAnnouncement(3, "", "");
+		verify(dispatcher).forward(request,response);
+	}
+	
+	@Test
+	void testPost1() throws ServletException, IOException {
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+	    HttpServletResponse response = mock(HttpServletResponse.class);
+	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+	    
+	    when(request.getParameter("announcement")).thenReturn("randAnnouncement");
+	    when(request.getParameter("title")).thenReturn("randTitle");
+	    when(request.getParameter("user")).thenReturn("1");
+	    when(request.getRequestDispatcher("announcementMade.jsp")).thenReturn(dispatcher);
+
+	    makeAnnouncementServlet ann = new makeAnnouncementServlet();
+	    
+	    ann.doPost(request, response);
+		verify(dispatcher).forward(request,response); 
+	}
+	@Test
+	void testPost2() throws ServletException, IOException {
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+	    HttpServletResponse response = mock(HttpServletResponse.class);
+	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+	    
+	    when(request.getParameter("announcement")).thenReturn("");
+	    when(request.getParameter("title")).thenReturn("");
+	    when(request.getParameter("user")).thenReturn("3");
+	    when(request.getRequestDispatcher("announcementMade.jsp")).thenReturn(dispatcher);
+
+	    makeAnnouncementServlet ann = new makeAnnouncementServlet();
+	    ann.doPost(request, response);
+	    //verify(info, atLeast(1)).makeAnnouncement(3, "", "");
+		verify(dispatcher).forward(request,response);
 	}
 }

@@ -44,7 +44,7 @@ public class userPageServlet extends HttpServlet {
 		}else {
             request.getRequestDispatcher("userPage.jsp").forward(request,response);
 		}
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

@@ -28,6 +28,7 @@ div {
   padding-left: 100px;
   font-size: 40;
 }
+
 </style>
 
 <body  style="background-color:lavender;">

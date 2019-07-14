@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
 
 public class findAchievementInfo {
@@ -17,20 +18,20 @@ public class findAchievementInfo {
 	static String  server = DBInfo.MYSQL_DATABASE_SERVER;
 	static String database = DBInfo.MYSQL_DATABASE_NAME ; // replace with your db
 	public findAchievementInfo(){
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection
-							( "jdbc:mysql://" + server, account ,password);
-				stmt = con.createStatement();
-				stmt.executeQuery("USE " + database);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		con = DBConnection.getConnection();
+
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.executeQuery("USE " + database);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 	}
 	public ArrayList<String> getUserAchievements(int userId){
