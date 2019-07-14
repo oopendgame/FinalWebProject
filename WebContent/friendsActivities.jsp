@@ -20,6 +20,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Friends' Activities</title>
+
+
 </head>
 
 <body  style="background-color:lavender;">
@@ -99,9 +101,10 @@
 				</form>
 				<%} %>
 				<br><br><hr>
-			<% } }  }%>
-
-</div>
+			<% } } %>
+			
+			</div>
+	<% }%>
 
 </body>
 </html>
