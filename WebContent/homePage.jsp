@@ -8,7 +8,7 @@
 <%@page import="WebPackage.challenge.challengeInfo"%>
 <%@page import="WebPackage.chat.messageInfo"%>
 <%@page import="WebPackage.chat.findMessageInfo"%>
-<%@page import="WebPackage.homepage.announcement"%>
+<%@page import="WebPackage.homepage.announcement"%> 
 <%@page import="WebPackage.homepage.homepageInfo"%>
 <%@page import="java.util.Date"%>
 <%@page import="WebPackage.quiz.QuizInfo"%>

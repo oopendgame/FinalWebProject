@@ -15,10 +15,3 @@ CREATE TABLE IF NOT EXISTS quizScores (
     FOREIGN KEY (user_id) REFERENCES userInfo(user_id),
     FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
 );
-
-
-
-
-INSERT INTO quizScores(quiz_id, user_id, score, start_time, duration) VALUES
-    (1, 1, 15, sysdate(), 10),
-    (2, 2, 50, sysdate(), 40);

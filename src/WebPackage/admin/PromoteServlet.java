@@ -37,7 +37,7 @@ public class PromoteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String userName = request.getParameter("pusername");
 		adminInfo adInfo = new adminInfo();
 		if(adInfo.promoteToAdmin(userName)) {
@@ -46,7 +46,7 @@ public class PromoteServlet extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("incorrectQuizNameClear.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("incorrectUserPromote.jsp");
 			rd.forward(request, response);
 		}
 		

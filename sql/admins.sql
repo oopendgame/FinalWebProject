@@ -5,14 +5,14 @@ DROP TABLE IF EXISTS admins;
 
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
-    admin_name varchar(50) not null unique,
+    user_id int,
     
-    primary key(admin_id)
+    primary key(admin_id),
+    FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
 );
 
 
-
-
-INSERT INTO admins (admin_name) VALUES
-("anamaria"),
-("nino");
+INSERT INTO admins(user_id) VALUES
+(1),
+(2),
+(3);o");

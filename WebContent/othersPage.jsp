@@ -182,6 +182,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div>
     <p><br><a href="sendOneMessage.jsp" style=a><i class='fas fa-envelope-open-text' style='font-size:30px'> Send Message </i></a></p>
     <p><a href="userAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Achievements</i></a></p>
+    
+    <% 
+    LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+    log.serQuizCreatorId(log.getSearchId());
+    %>
+    
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Created Quizzes</i></a></p>
     </div>
 </body>

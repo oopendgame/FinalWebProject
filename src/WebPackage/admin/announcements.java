@@ -48,7 +48,7 @@ public class announcements {
 			if(res.next()) {
 				userId = res.getInt("admin_id");
 			}
-			stmt.executeUpdate("INSERT INTO announcement(title, announcement, announce_date, admin_id) VALUES ('" 
+			stmt.executeUpdate("INSERT INTO announcements(title, announcement, announce_date, admin_id) VALUES ('" 
 		+ title + "', '" + ann + "', sysdate(), " + userId + ");");
 			
 		} catch (SQLException e) {

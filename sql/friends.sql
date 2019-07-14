@@ -7,17 +7,11 @@ CREATE TABLE IF NOT EXISTS friends (
 	friends_id int not null auto_increment,
     user1_id integer not null,
     user2_id integer not null,
-    friends_satus varchar(15) default "requested",
+    friends_status integer default 0, -- 0-request send, 1-friends, -1 rejected
+    sending_date DateTime,
     
     primary key(friends_id),
     FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
     FOREIGN KEY (user2_id) REFERENCES userInfo(user_id)
 );
-
-
-
-
-INSERT INTO friends(user1_id, user2_id, friends_satus) VALUES
-(1, 2, "requested"),
-(2, 2, "friends");
     

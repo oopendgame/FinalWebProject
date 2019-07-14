@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
 
-public class findQuestionInfo {
+public class findQuestionInfo implements QuestInfo{
 	private Connection con;
 	
 	public findQuestionInfo() {

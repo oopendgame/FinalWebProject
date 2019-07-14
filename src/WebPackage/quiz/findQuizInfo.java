@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import WebPackage.database.DBConnection;
 
-public class findQuizInfo {
+public class findQuizInfo implements QuizInfoInt{
 	
 	private Connection con;
 	 
@@ -131,9 +131,8 @@ public class findQuizInfo {
 										+ "correction_type, "
 										+ "creation_date, "
 										+ "subj, "
-										+ "description,"
-										+ "practice_mode)"
-										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+										+ "description)"
+										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(st, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, author_id);

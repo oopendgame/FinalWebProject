@@ -187,6 +187,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <p><a href="UserRequests.jsp" style=a><i class='fas fa-user-friends' style='font-size:30px'> 
     	<span  class = "new_msg"><%=info.getNumFriendRequests(currUser.getUserName())%> New </span> Friend Requests</i></a></p>
     <p><a href="yourAchievements.jsp" style=a><i class='fas fa-trophy' style='font-size:30px'> Your Achievements</i></a></p>
+    
+    <% 
+    LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+    log.serQuizCreatorId(log.getId());
+    %>
+    
     <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
     <p><a href="changePass.jsp" style=a><i class='fas fa-exchange-alt' style='font-size:30px'>  Change Password </i></a></p>
