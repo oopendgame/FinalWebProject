@@ -55,21 +55,30 @@
 
   <form action="newPassServlet" method="post" style="text-align:center">
     
-    <input type="password" id="pass" name="opassword" placeholder="Old Password" required><br>
+    <input type="password" id="opass" name="opassword" placeholder="Old Password" required><br>
     <input type="checkbox" onclick="myFunction()">Show Password<br><br>
     
-    <input type="password" id="pass" name="npassword" placeholder="New Password" required><br>
-    <input type="checkbox" onclick="myFunction()">Show Password<br><br>
+    <input type="password" id="npass" name="npassword" placeholder="New Password" required><br>
+    <input type="checkbox" onclick="myFunction2()">Show Password<br><br>
 
 	<script>
 	function myFunction() {
-	  var x = document.getElementById("pass");
+	  var x = document.getElementById("opass");
 	  if (x.type === "password") {
 	    x.type = "text";
 	  } else {
 	    x.type = "password";
 	  }
 	}
+	
+	function myFunction2() {
+		  var x = document.getElementById("npass");
+		  if (x.type === "password") {
+		    x.type = "text";
+		  } else {
+		    x.type = "password";
+		  }
+		}
 	</script>
 	
     <input type="submit" value="Save Changes"><br>
