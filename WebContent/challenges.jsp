@@ -52,37 +52,7 @@ if(challInfo.size() == 0){
 			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
 			String img = sender.getImg();
 			String whoSent = sender.getUserName();
-			String link = cInf.getLink();
-			Date date = cInf.getDate();
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	%>
-	
-	<div>
- 		<img src=<%=img%> alt="Avatar" style="width:5%; margin-left: 1%;">
-		<form action="QuizPageServlet" method="get">
-		
-			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
-		 	<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">
-		 	<%=dateFormat.format(date)%> <%= whoSent%> sent you a</h3>
-			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
-
-			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="Challenge">
-		</form>
-	</div>
-	<hr>
-	<% 
-		 }
-
-		if(countOld != 0){
-			%>
-			<h4 style="font-size:160%; color:black; text-align:center;">Older Challenges</h4>
-		<%
-		}
-		for (int i = 0; i < countOld; i++) {
-			challengeInfo  cInf = challInfo.get(i);
-			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
-			String img = sender.getImg();
-			String whoSent = sender.getUserName();
+			int senderid = sender.getId();
 			String link = cInf.getLink();
 			Date date = cInf.getDate();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -112,10 +82,80 @@ if(challInfo.size() == 0){
 			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
 			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="Challenge">
 		</form>
+		
+		<% 
+			findChallenges fchal = new findChallenges();
+			int score = fchal.usersBestScore(senderid, Integer.parseInt(link));
+			System.out.println(senderid);
+			System.out.println(link);
+			System.out.println(score);
+			if(score == -1) {
+		%>
+		<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=whoSent%> never wrote that quiz</h3>
+		<%}else{ %>
+		<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=whoSent+"\'s"%> 
+		highest score is  <%=" " + score %></h3>
+		<%} %>
+	</div>
+	<hr>
+	<% 
+		 }
+
+		if(countOld != 0){
+			%>
+			<h4 style="font-size:160%; color:black; text-align:center;">Older Challenges</h4>
+		<%
+		}
+		for (int i = 0; i < countOld; i++) {
+			challengeInfo  cInf = challInfo.get(i);
+			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
+			String img = sender.getImg();
+			String whoSent = sender.getUserName();
+			int senderid = sender.getId();
+			String link = cInf.getLink();
+			Date date = cInf.getDate();
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	%>
+	
+	<div>
+	<br>
+ 		<img src=<%=img%> alt="Avatar" style="width:5%; margin-left: 1%; border-radius: 50%;">
+				 
+ 		<form action="searchUserServlet" method="post">
+			
+				<input type = "hidden" name = "user_name" value = "<%=whoSent%>">
+				
+				<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">
+				<%=dateFormat.format(date)%></h3>
+				
+				<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=" "+whoSent%>">
+				<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">sent you a</h3>
+					
+		</form>
+		
+		<form action="QuizPageServlet" method="get">
+		
+			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
+		
+			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
+			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="Challenge">
+		</form>
+		
+		<% 
+			findChallenges fchal = new findChallenges();
+			int score = fchal.usersBestScore(senderid, Integer.parseInt(link));
+			if(score == -1) {
+		%>
+		<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=whoSent%> never wrote that quiz</h3>
+		<%}else{ %>
+		<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=whoSent+"\'s"%> 
+		highest score is  <%=" " + score %></h3>
+		<%} %>
 	</div>
 	<hr>
 	<%
-		}  }
+		} } 
 	%>
 	
 
