@@ -45,7 +45,6 @@ CREATE TABLE IF NOT EXISTS quizzes (
     creation_date datetime,
     subj varchar(100) not null,
     description varchar(500),
-    practice_mode boolean default 0,
     
     primary key(quiz_id),
 	FOREIGN KEY (author_id) REFERENCES userInfo(user_id)

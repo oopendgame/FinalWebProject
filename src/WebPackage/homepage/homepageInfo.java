@@ -50,7 +50,7 @@ public class homepageInfo {
 		ArrayList<announcement> ls = new ArrayList<announcement>();
 		ResultSet res = null;
 		try {
-			res = stmt.executeQuery("SELECT * from announcement order by announce_date desc;");
+			res = stmt.executeQuery("SELECT * from announcements order by announce_date desc;");
 			while(res.next()) {
 				 
 				int id = res.getInt("ann_id");
