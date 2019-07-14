@@ -21,17 +21,17 @@ public class findUserInfo {
 	 
 	public findUserInfo(){
 		
+		con = DBConnection.getConnection();
+
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection
-						( "jdbc:mysql://" + server, account ,password);
 			stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		catch (ClassNotFoundException e) {
+		try {
+			stmt.executeQuery("USE " + database);
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
