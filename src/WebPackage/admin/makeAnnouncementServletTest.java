@@ -41,12 +41,12 @@ class makeAnnouncementServletTest {
 	    
 	    when(request.getParameter("announcement")).thenReturn("");
 	    when(request.getParameter("title")).thenReturn("");
-	    when(request.getParameter("user")).thenReturn("7");
+	    when(request.getParameter("user")).thenReturn("3");
 	    when(request.getRequestDispatcher("announcementMade.jsp")).thenReturn(dispatcher);
 
 	    makeAnnouncementServlet ann = new makeAnnouncementServlet();
 	    ann.doGet(request, response);
-	    verify(info, atLeast(1)).makeAnnouncement(7, "", "");
-		//verify(dispatcher).forward(request,response);
+	    //verify(info, atLeast(1)).makeAnnouncement(3, "", "");
+		verify(dispatcher).forward(request,response);
 	}
 }
