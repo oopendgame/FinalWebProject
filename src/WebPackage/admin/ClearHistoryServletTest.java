@@ -26,11 +26,11 @@ class ClearHistoryServletTest {
 
 	    //adminInfo adInfo = mock(adminInfo.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
-	    findUserInfo info = new findUserInfo();
+	    adminInfo info = new adminInfo();
 	    
 	    //when(adInfo.promoteToAdmin("nchan17")).thenCallRealMethod();
 	    //System.out.println(adInfo.promoteToAdmin("nchan17"));
-	    if(info.isUser("nchan17")) {
+	    if(info.isQuiz("randQuiz")) {
 	    	when(request.getRequestDispatcher("success.jsp")).thenReturn(dispatcher);
 	    }else when(request.getRequestDispatcher("incorrectQuizNameClear.jsp")).thenReturn(dispatcher);
 	    ClearHistoryServlet serv = new ClearHistoryServlet();

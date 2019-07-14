@@ -67,7 +67,19 @@ public class adminInfo {
 			}
 			return false;
 		}
-		
+		public boolean isQuiz(String quizName) {
+			ResultSet res = null;
+			try {
+				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
+				if(res.next()) {
+					return true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
 		public int getNumWebUsers() {
 			ResultSet res = null;
 			int num = 0;
