@@ -28,16 +28,6 @@ public class CreateQuizServletTest {
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);	
 	    
-	    final ServletContext context = mock(ServletContext .class);
-	    when(request.getServletContext()).thenReturn(context);	
-	    
-	    LogInInfo log = mock(LogInInfo.class);
-	    log.setId(1);
-	    //context = request.getServletContext();
-    	context.setAttribute(DBInfo.Attribute_Name, log);
-	    
-	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);
-	    
 	    when(request.getParameter("quiz_name")).thenReturn("quizName");
 	    when(request.getParameter("description")).thenReturn("desc");
 	    when(request.getParameter("subject")).thenReturn("subj");
@@ -45,6 +35,14 @@ public class CreateQuizServletTest {
 	    when(request.getParameter("rand")).thenReturn("0");
 	    when(request.getParameter("corr")).thenReturn("0");
 	    
+	    final ServletContext context = mock(ServletContext .class);
+	    when(request.getServletContext()).thenReturn(context);	
+
+	    
+	    LogInInfo log = new LogInInfo();
+	    log.setId(2);
+	    
+	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
 	    when(request.getRequestDispatcher("QuizDone.jsp")).thenReturn(dispatcher);
 
 	    CreateQuizServlet cr = new CreateQuizServlet() {
