@@ -31,7 +31,7 @@ public class acceptRequestServletTest {
 	    when(request.getParameter("description")).thenReturn("3");
 	    
 	    findRequestInfo findReq = new findRequestInfo();
-		findReq.addFriend(1, 2);
+		findReq.addFriend(1, 3);
 	    
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);

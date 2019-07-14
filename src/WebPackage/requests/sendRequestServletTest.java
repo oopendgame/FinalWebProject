@@ -7,6 +7,10 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -16,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.junit.jupiter.api.Test;
 
+import WebPackage.database.DBConnection;
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
 
@@ -33,6 +38,16 @@ public class sendRequestServletTest {
 	    LogInInfo log = new LogInInfo();
 	    log.setId(2);
 	    log.setSearchId(1);
+	    
+	    Connection con = DBConnection.getConnection();
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.executeQuery("TRUNCATE friends;");
+			nameStm.executeQuery("INSERT INTO friends();");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
 	    when(request.getRequestDispatcher("othersPage.jsp")).thenReturn(dispatcher);
