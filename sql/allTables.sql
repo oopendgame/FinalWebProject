@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS achievements (
     FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
 );
 
+
 CREATE TABLE IF NOT EXISTS admins (
     admin_id int not null auto_increment,
     user_id int,
@@ -40,6 +41,13 @@ CREATE TABLE IF NOT EXISTS admins (
     primary key(admin_id),
     FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
 );
+
+
+INSERT INTO admins(user_id) VALUES
+(1),
+(2),
+(3);
+
 
 CREATE TABLE IF NOT EXISTS quizzes (
     quiz_id int not null auto_increment,
@@ -59,7 +67,7 @@ CREATE TABLE IF NOT EXISTS quizzes (
 CREATE TABLE IF NOT EXISTS announcements (
 	ann_id int not null auto_increment,
     title varchar(250),
-    announcements varchar(500) not null,
+    announcement varchar(2000) not null,
     announce_date datetime,
     admin_id int not null,
     
@@ -130,17 +138,6 @@ INSERT INTO passwords(user_id, pass) VALUES
 (1, '40bd001563085fc35165329ea1ff5c5ecbdbbeef'), 
 (2, '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
 (3, '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
-
-
-
-CREATE TABLE IF NOT EXISTS popularity (
-	pop_id int not null auto_increment,
-    quiz_id integer not null unique,
-    user_num integer default 0,
-    
-    primary key(pop_id),
-    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
-);
 
 
 CREATE TABLE IF NOT EXISTS quizScores (
