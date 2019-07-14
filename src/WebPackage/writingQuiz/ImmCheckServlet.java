@@ -56,18 +56,18 @@ public class ImmCheckServlet extends HttpServlet {
 		
 		if(!type.equals("1")) {
 			String corrAns = ansInfo.getCorrectAnswer(cur.getQuestionId());
-			System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
+			//System.out.println(cur.getQuestionId() + " " + userAns + " " + corrAns + "\n");
 			if(userAns != null && userAns.trim().equals(corrAns.trim())) {
-				System.out.println("hereeeeeNext" + 1);
+				//System.out.println("hereeeeeNext" + 1);
 				//curInfo.setScore(1 + curInfo.getScore());
 			}
 			//curInfo.addUserAns(userAns);
 			
 		} else if(userAns != null) {
-			System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
+			//System.out.println(ansInfo.getCorrectAnswer(cur.getQuestionId()));
 			int ansId = Integer.parseInt(userAns);
 			if(ansInfo.isAnswerCorrect(ansId)) {
-				System.out.println("hereeeeeNext" + 2);
+				//System.out.println("hereeeeeNext" + 2);
 				//curInfo.setScore(1 + curInfo.getScore());
 			}
 			//curInfo.addUserAns(ansInfo.getMultiAnswer(Integer.parseInt(userAns)));

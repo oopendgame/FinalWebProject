@@ -9,7 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Send Note</title>
+<title>Announcement</title>
+<%@include file="headerLogged.jsp" %>
+<%@include file="nav.jsp" %>
+<%@ include file="search.jsp"%>
 <style> 
 
 
@@ -152,13 +156,17 @@ button {
 
     %>
 <body  style="background-color:lavender;">
-<div style = " margin: 0 auto; max-width: 800px; padding: 0 20px;">
+
+<div style = " margin: 0 auto; padding-top: 50px; 
+	padding-right: 80px; 
+	padding-bottom: 50px; 
+	padding-left: 80px; max-width: 800px; padding: 0 20px;">
 
 <br>
 <center><h1> Send message to  <br><%=currUserTo.getUserName()%></h1> </center>
     	
 	<div class="container" id="myForm"> 
-		<form name="readForm" action="sendMessageServlet" method="GET">
+		<form name="readForm" action="sendMessageServlet" method="Post">
 				<input type="hidden" id="user" name="userId" value="<%=userId%>"> 
 				<div class="type_msg">
 			        <div class="input_msg_write"> 

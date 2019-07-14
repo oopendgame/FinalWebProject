@@ -171,6 +171,7 @@ public class findMessageInfo {
 			e.printStackTrace();
 		}
 		return "";
+		
 	}
 	
 	
@@ -188,19 +189,22 @@ public class findMessageInfo {
 			//SELECT * from sms where user2_id = 3 or user1_id = 3 order by  sent_time desc;
 			res = stmt.executeQuery("SELECT * from sms where user1_id = \"" + userId + "\" or user2_id = \"" + userId 
 					+ "\" order by  sent_time desc;");
+			boolean selfTalk = false;
 			while(res.next()) {
-				int user1Id = res.getInt("user1_id");
-				if(!st.contains(user1Id)) {
+				int user1 = res.getInt("user1_Id");
+				int user2 = res.getInt("user2_Id");
+				boolean bothMe = false;
+				if(user1 == user2) bothMe = true;
+				if(!st.contains(user1) && !st.contains(user2) && !(bothMe && selfTalk)) {
 					int id = res.getInt("sms_id");
-					int user1 = res.getInt("user1_Id");
-					int user2 = res.getInt("user2_Id");
 					String sms = res.getString("sms");
 					String condition = res.getString("sms_condition");
 					String time = res.getString("sent_time");
 					messageInfo currInfo = new messageInfo(id, user1 , user2 , sms, condition, time);
 					ls.add(currInfo);
-					st.add(user1);
-					st.add(user2);
+					if(user1 == userId &&  user2 == userId) selfTalk = true;
+					else if(user1 == userId) st.add(user2);
+					else st.add(user1);
 				}
 				
 			}
