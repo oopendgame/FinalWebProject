@@ -42,8 +42,7 @@ public class sendRequestServletTest {
 	    Connection con = DBConnection.getConnection();
 		try {
 			Statement nameStm = con.createStatement();
-			nameStm.executeQuery("TRUNCATE friends;");
-			nameStm.executeQuery("INSERT INTO friends();");
+			nameStm.execute("TRUNCATE friends;");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
