@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import com.mysql.cj.util.StringUtils;
 
 import WebPackage.challenge.challengeInfo;
 import WebPackage.database.DBInfo;
@@ -15,6 +19,10 @@ import WebPackage.quiz.QuestionInfo;
 import WebPackage.quiz.QuizInfo;
 import WebPackage.quiz.findQuestionInfo;
 import WebPackage.quiz.findQuizInfo;
+import WebPackage.requests.findRequestInfo;
+import WebPackage.requests.requestInfo;
+import WebPackage.user.findUserInfo;
+import WebPackage.user.userInfo;
 
 public class homepageInfo {
 	
@@ -144,6 +152,61 @@ public class homepageInfo {
 			while(res.next()) {
 				int qid = res.getInt("quiz_id");
 				arr.add(fquiz.getQuiz(qid));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	
+	public ArrayList<Activity> getFriendsActivities(int id) {        
+		
+		ArrayList<Activity> arr = new ArrayList<Activity>();
+		
+		findQuizInfo fquiz = new findQuizInfo();
+		findRequestInfo req = new findRequestInfo();
+		findUserInfo u = new findUserInfo();
+		ArrayList<requestInfo> friendArr = req.getUserFriends(id);
+		
+		List<String> strList = new ArrayList<String>();
+		
+		for(int i = 0; i < friendArr.size(); i++) {
+			int friend_id = u.getMyUser(friendArr.get(i).getUserName()).getId();
+			strList.add(Integer.toString(friend_id));
+		}
+
+		Statement statement;
+		try {
+			String st = "SELECT user_id as userId, achievement as actId, ach_time as acttime, 'achiev' as activity " 
+					+ "FROM achievements " 
+					+ "WHERE user_id in ("+String.join(", ", strList)+") " 
+					+ "union all "
+					+ "SELECT author_id as userId, quiz_id as actId, creation_date as acttime, 'creation' as activity "
+					+ "FROM quizzes "
+					+ "WHERE author_id in ("+String.join(", ", strList)+") "
+					+ "union all "
+					+ "SELECT user_id as userId, quiz_id as actId, start_time as acttime, 'taking' as activity " 
+					+ "FROM quizScores " 
+					+ "WHERE user_id in ("+String.join(", ", strList)+") " 
+					+ "order by acttime desc limit 100; ";
+		
+			statement = con.createStatement();
+			ResultSet res = statement.executeQuery(st);
+			
+			while(res.next()) {
+				
+				int userId = res.getInt("userId");
+				String activity = res.getString("activity");
+				Date date = res.getDate("acttime");
+				Timestamp timestamp = res.getTimestamp("acttime");
+				String actid = res.getString("actId");
+				if (timestamp != null)
+				   date = new java.util.Date(timestamp.getTime());
+				
+				Activity act = new Activity(userId, activity, actid, date); 
+				arr.add(act);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

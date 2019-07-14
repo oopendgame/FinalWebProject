@@ -271,6 +271,8 @@ if(annarr.size() == 0){
   	<a href="quizzesByMe.jsp"> more </a><hr>
   
   	<p style="font-size:130%; color:#330066;"> Friends' Activities: </p>
+  	
+  	<%@include file="friendsActivities.jsp" %>
   
   	<a href="friendsActivities.jsp"> more </a><hr>
   
