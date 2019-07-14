@@ -32,9 +32,9 @@ public class CreateQuizServletTest {
 	    when(request.getServletContext()).thenReturn(context);	
 	    
 	    LogInInfo log = mock(LogInInfo.class);
-	    //log.setId(5);
+	    log.setId(1);
 	    //context = request.getServletContext();
-    	//context.setAttribute(DBInfo.Attribute_Name, log);
+    	context.setAttribute(DBInfo.Attribute_Name, log);
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);
 	    
