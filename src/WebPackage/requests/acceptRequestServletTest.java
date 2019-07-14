@@ -35,8 +35,9 @@ public class acceptRequestServletTest {
 	    when(request.getParameter("user2_id")).thenReturn("2");
 	    
 	    Connection con = DBConnection.getConnection();
+	    Statement nameStm;
 		try {
-			Statement nameStm = con.createStatement();
+			nameStm = con.createStatement();
 			nameStm.execute("TRUNCATE friends;");
 			nameStm.execute("INSERT INTO friends(user1_id, user2_id, friends_status, sending_date) VALUES (1, 2, 0, sysdate()), (1, 3, 0, sysdate());");
 		} catch (SQLException e) {
@@ -57,6 +58,14 @@ public class acceptRequestServletTest {
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -93,6 +102,14 @@ public class acceptRequestServletTest {
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -63,6 +63,14 @@ public class sendRequestServletTest {
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -79,6 +87,15 @@ public class sendRequestServletTest {
 	    log.setId(1);
 	    log.setSearchId(3);
 	    
+	    Connection con = DBConnection.getConnection();
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
 	    when(request.getRequestDispatcher("othersPage.jsp")).thenReturn(dispatcher);
 	    
@@ -94,6 +111,14 @@ public class sendRequestServletTest {
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
+		
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

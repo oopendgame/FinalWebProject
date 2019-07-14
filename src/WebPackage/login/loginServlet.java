@@ -69,6 +69,7 @@ public class loginServlet extends HttpServlet {
 				if(user.next()) {
 					id = user.getInt("user_id");
 					name = user.getString("user_name");
+					
 				}
 			} catch (SQLException e) {
 					e.printStackTrace();
@@ -80,7 +81,7 @@ public class loginServlet extends HttpServlet {
 			log.setUserName(name);
 			log.setId(id);
 			adminInfo adInfo= new adminInfo();
-			if(adInfo.isAdmin(username)) {
+			if(adInfo.isAdmin(name)) {
 				request.getRequestDispatcher("adminPage.jsp").forward(request,response);
 			}else {
 	            request.getRequestDispatcher("userPage.jsp").forward(request,response);

@@ -50,15 +50,18 @@ if(arr.size() == 0){
 	<div>
 		 <h3 style="font-size:120%; color:#330066; text-align:center;"><%=titel%></h3>
 		<p style = "margin-left: 2%"><%=announc %></p>
-		<%
-			LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-			log.setSearchId(userid);
-			adminInfo ad = new adminInfo();
-			if(!log.getUserName().equals(user)) { %> <a href = "othersPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
-			<% }else if(ad.isAdmin(user)) {%> <a href = "adminPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
-			<% }else {%> <a href = "userPage.jsp" style="margin-left: 1%; float:right"><%=user%></a> 
-			<%} %>
-	<p style="text-align:right"><%=dateFormat.format(date)%></p>
+		<form action="searchUserServlet" method="post">
+			
+			<input type = "hidden" name = "user_name" value = "<%=user%>">
+			<p style="font-size: 70%; display:inline-block; margin-left: 1%;
+			 float:right"><%=(dateFormat.format(date) + "   ")%></p>
+			
+			<input type = "submit" style="background-color: lavender;margin-left: 1%; float:right;
+			 font-size: 110%; display:inline-block;
+			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=user%>">
+	
+		</form>
+		<br><br><br>
 	</div>
 	<hr>
 	<%} } %>
