@@ -27,7 +27,7 @@ class PromoteServletTest {
 
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
-	    when(request.getParameter("pusername")).thenReturn("nchan17");
+	    when(request.getParameter("pusername")).thenReturn("nchan17"); 
 
 	    //adminInfo adInfo = mock(adminInfo.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
