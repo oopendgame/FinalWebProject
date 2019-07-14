@@ -105,7 +105,7 @@ public class homepageInfo {
 		findQuizInfo fquiz = new findQuizInfo();
 		Statement statement;
 		try {
-			String st = "SELECT * FROM quizScores GROUP BY quiz_id order by count(*) desc;";
+			String st = "SELECT quiz_id FROM quizScores GROUP BY quiz_id order by count(*) desc;";
 			statement = con.createStatement();
 			ResultSet res = statement.executeQuery(st);
 			while(res.next()) {
