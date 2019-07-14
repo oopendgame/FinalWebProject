@@ -37,7 +37,7 @@ class PromoteServletTest {
 	    //System.out.println(adInfo.promoteToAdmin("nchan17"));
 	    if(info.isUser("nchan17")) {
 	    	when(request.getRequestDispatcher("success.jsp")).thenReturn(dispatcher);
-	    }else when(request.getRequestDispatcher("incorrectQuizNameClear.jsp")).thenReturn(dispatcher);
+	    }else when(request.getRequestDispatcher("incorrectUserPromote.jsp")).thenReturn(dispatcher);
 	    PromoteServlet serv = new PromoteServlet();
 	    serv.doPost(request, response);
 		verify(dispatcher).forward(request,response);
