@@ -66,8 +66,8 @@ body {
 <div class="topnav">
 	<a class="b" href="homePage.jsp"><i class="fa fa-home"></i> Home</a>
     <a href="allQuizzes.jsp" class= "b"><i class="fas fa-question-circle"></i> Quizzes</a>
-    <a href="rating.jsp" class = "b"><i class="fas fa-trophy"></i> Rating</a>
-    <a href="about.jsp" class = "b"><i class="fas fa-exclamation-circle"></i> About</a>
+    <a href="rating.jsp" class = "b"><i class="fas fa-trophy"></i> Achievements</a>
+    <a href="aboutUs.jsp" class = "b"><i class="fas fa-exclamation-circle"></i> About</a>
   </div>
 </div>
 <br>
