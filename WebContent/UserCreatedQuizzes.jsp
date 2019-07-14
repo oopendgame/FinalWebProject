@@ -37,7 +37,7 @@ div {
 <%
 	findAdditionalInfo req = new findAdditionalInfo();
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-	int id = log.getId();
+	int id = log.getQuizCreatorId();
 	ArrayList<QuizInfo> arr = req.getUserCreatedQuizzes(id);
 	if(arr.size() == 0) out.println("<center><h1>You have not created any quizzes</h1></center>");
 	else { 
