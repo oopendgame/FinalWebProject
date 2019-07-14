@@ -108,6 +108,7 @@ button {
 			String whoTexted = "";
 			String user = "";
 			String seen = "";
+			int uId = -1;
 			userInfo getter = fuserInfo.getMyUser(msgInf.getUser2Id());
 			userInfo sender = fuserInfo.getMyUser(msgInf.getUser1Id());
 			if(msgInf.getCondition().equals("sent")){
@@ -116,10 +117,12 @@ button {
 			if(sender.getUserName().equals(currUser.getUserName())){
 				whoTexted = "You: ";
 				user = getter.getUserName();
+				uId = getter.getId();
 				img = getter.getImg();
 				seen = "";
 			}else{
 				img = sender.getImg();
+				uId = sender.getId();
 				user = sender.getUserName();
 				whoTexted = sender.getUserName() + ": ";
 			}

@@ -21,6 +21,10 @@
 	userInfo sender;
 	String user = "";
 	messageInfo msgInf = null;
+	
+	int uId = fuserInfo.getMyUser(chatterName).getId();
+	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
+	log.setSearchId(uId);
 %>
 <!DOCTYPE html>
 <html> 
@@ -145,6 +149,8 @@ button {
 <center><h1> Your Chat With <br><%=chatterName%></h1> </center>
 <p id="demo"></p>
 <body onLoad="window.scroll(0, document.body.scrollHeight)">
+<div>
+	</div>
 	<%
 	
 		for (int i = allChat.size() - 1; i >= 0; i--) {
@@ -162,7 +168,13 @@ button {
 				user = getter.getUserName();
 				img = getter.getImg();
 	%>
-	<p class = "oleo" align="right"><% out.println("You"); %> </p>
+	<%if(adInfo.isAdmin(currUser.getUserName())) {%> 
+		<p class = "oleo" align="right"><a href = "adminPage.jsp" style="margin-right: 1%; float:right">You</a> </p>
+		<% }else {%> 
+		<p class = "oleo" align="right"><a href = "userPage.jsp" style="margin-right: 1%; float:right">You</a> </p>
+	
+	<%} %>
+	<br>
 	<div class="container darker" align="right">
 	  <img src=<%=sender.getImg()%> alt="Avatar" class="right" style="width:100%;">
 	  <p>  <% out.println(sms); %> </p>	  
@@ -178,7 +190,11 @@ button {
 			
 			
 	%>
-  	<p class = "oleo"><% out.println(sender.getUserName()); %> </p>
+		 
+		 
+		
+  	<p class = "oleo"><a href = "othersPage.jsp" style="margin-left: 1%; float:left"><%=user%></a> </p>
+  	<br>
 	<div class="container">
 		<img src=<%=sender.getImg()%> alt="Avatar"  style="width:100%;">
 	  	 <p>  <% out.println(sms); %> </p>	  

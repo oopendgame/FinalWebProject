@@ -46,7 +46,7 @@ public class PromoteServlet extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			//warumateblad
-			RequestDispatcher rd = request.getRequestDispatcher("incorrectQuizNameClear.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("incorrectUserPromote.jsp");
 			rd.forward(request, response);
 		}
 		
