@@ -35,7 +35,7 @@ public class chatServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		findMessageInfo info = new findMessageInfo();
 	 	findUserInfo fuserInfo = new findUserInfo();
 	    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
@@ -46,8 +46,6 @@ public class chatServlet extends HttpServlet {
 		ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
 		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
 		rd.forward(request, response);
-
-
 	}
 
 	/**
@@ -55,7 +53,7 @@ public class chatServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		findMessageInfo info = new findMessageInfo();
 	 	findUserInfo fuserInfo = new findUserInfo();
 	    LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
