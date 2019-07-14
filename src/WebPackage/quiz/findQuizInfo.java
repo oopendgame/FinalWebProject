@@ -131,9 +131,8 @@ public class findQuizInfo implements QuizInfoInt{
 										+ "correction_type, "
 										+ "creation_date, "
 										+ "subj, "
-										+ "description,"
-										+ "practice_mode)"
-										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+										+ "description)"
+										+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(st, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, author_id);

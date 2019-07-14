@@ -12,10 +12,3 @@ CREATE TABLE IF NOT EXISTS questions (
     primary key(question_id),
     FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
 );
-
-
-
-
-INSERT INTO questions(quiz_id, question_type, question) VALUES
-(1, "fillBlank", "dkfnskjgbskgbskgns"),
-(2, "fillBlank", "nsfkjnsgkjs");

@@ -43,7 +43,7 @@ public class sendRequestServlet extends HttpServlet {
 		
 		findRequestInfo findReq = new findRequestInfo();
 		findReq.addRequest(req);
-		RequestDispatcher rd = request.getRequestDispatcher("sendRequest.jsp"); //need to change
+		RequestDispatcher rd = request.getRequestDispatcher("othersPage.jsp"); //need to change
 		rd.forward(request, response);
 	}
 
