@@ -167,3 +167,13 @@ CREATE TABLE IF NOT EXISTS sms (
     FOREIGN KEY (user1_id) REFERENCES userInfo(user_id),
     FOREIGN KEY (user2_id) REFERENCES userInfo(user_id)
 );
+
+
+CREATE TABLE IF NOT EXISTS popularity (
+	pop_id int not null auto_increment,
+    quiz_id integer not null unique,
+    user_num integer default 0,
+    
+    primary key(pop_id),
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
+);
