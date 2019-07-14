@@ -12,12 +12,15 @@
 <%@ page import="WebPackage.login.LogInInfo" import="java.util.ArrayList" %>
 
 <% findChallenges info = new findChallenges();
- 	findUserInfo fuserInfo = new findUserInfo();
+ 	
+	findUserInfo fuserInfo = new findUserInfo();
     LogInInfo fcurrInfo = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
     userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
     ArrayList<challengeInfo> challInfo = info.getChallenges(currUser.getUserName());
     int countOld = info.OldChallengesNum(currUser.getUserName());
+  
     info.updateChallengeInfo(currUser.getUserName());%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +45,9 @@ if(challInfo.size() == 0){
 		<h2 style="font-size:160%; color:red; text-align:center;">New</h2>
 		<%
 		}
+	
 		for (int i = 0; i < challInfo.size()-countOld; i++) {
+	
 			challengeInfo  cInf = challInfo.get(i);
 			userInfo sender = fuserInfo.getMyUser(cInf.getUser1Id());
 			String img = sender.getImg();
@@ -55,9 +60,12 @@ if(challInfo.size() == 0){
 	<div>
  		<img src=<%=img%> alt="Avatar" style="width:5%; margin-left: 1%;">
 		<form action="QuizPageServlet" method="get">
+		
 			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
-		 	<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=dateFormat.format(date)%> <%= whoSent%> sent you a</h3>
+		 	<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">
+		 	<%=dateFormat.format(date)%> <%= whoSent%> sent you a</h3>
 			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
+
 			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="Challenge">
 		</form>
 	</div>

@@ -18,7 +18,7 @@ import WebPackage.quiz.findQuizInfo;
 import WebPackage.requests.findRequestInfo;
 import WebPackage.requests.requestInfo;
 
-public class findQuizScoreInfo {	
+public class findQuizScoreInfo implements QuizScores {	
 	private Connection con;
 	
 	public findQuizScoreInfo() {

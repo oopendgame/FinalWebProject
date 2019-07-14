@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import WebPackage.database.DBConnection;
 
-public class findQuizInfo {
+public class findQuizInfo implements QuizInfoInt{
 	
 	private Connection con;
 	 
@@ -83,9 +83,8 @@ public class findQuizInfo {
 				Date creation_date = res.getDate("creation_date");
 				String subj = res.getString("subj");
 				String description = res.getString("description");
-				boolean practice_mode = res.getBoolean("practice_mode");
 				ArrayList<QuestionInfo> arr = new findQuestionInfo().getQuizQuestions(quiz_id);
-				quiz = new QuizInfo(quiz_id, author_id, page_num, rand, name, correction_type, creation_date, subj, description, practice_mode, arr);
+				quiz = new QuizInfo(quiz_id, author_id, page_num, rand, name, correction_type, creation_date, subj, description, arr);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -147,7 +146,6 @@ public class findQuizInfo {
 			
 			preparedStatement.setString(7, quiz.getSubject());
 			preparedStatement.setString(8, quiz.getDecription());
-			preparedStatement.setBoolean(9, quiz.getPractiseMode());
 			
 			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();

@@ -9,7 +9,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-<%@ include file="search.jsp"%>
 <!DOCTYPE html>
 <html>
 
@@ -32,16 +31,19 @@ div {
 
 <body  style="background-color:lavender;">
 <br><br><br>
+
+<div>
+<%@ include file="search.jsp"%>
 <%
 	findAdditionalInfo req = new findAdditionalInfo();
 	LogInInfo log = (LogInInfo) getServletContext().getAttribute(DBInfo.Attribute_Name);
-	int id = log.getId();
+	int id = log.getQuizCreatorId();
 	ArrayList<QuizInfo> arr = req.getUserCreatedQuizzes(id);
 	if(arr.size() == 0) out.println("<center><h1>You have not created any quizzes</h1></center>");
 	else { 
 %>
 	<p> <center><h1>YOUR QUIZZES</h1></center></p>
-	<div>
+	
 <% 
 		for(int i = 0; i < arr.size(); i++) {
 			QuizInfo cur = arr.get(i);

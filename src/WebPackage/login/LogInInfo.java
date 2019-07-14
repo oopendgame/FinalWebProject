@@ -4,6 +4,7 @@ public class LogInInfo {
 	private int id;
 	private String userName;
 	private int search_id;
+	private int cr_quiz_id;
 	
 	public LogInInfo() {
 		
@@ -31,6 +32,14 @@ public class LogInInfo {
 	
 	public int getSearchId() {
 		return search_id;
+	}
+	
+	public void serQuizCreatorId(int cr_id) {
+		cr_quiz_id = cr_id;
+	}
+	
+	public int getQuizCreatorId() {
+		return cr_quiz_id;
 	}
 
 }
