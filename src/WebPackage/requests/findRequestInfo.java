@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import WebPackage.database.DBConnection;
 
-public class findRequestInfo {
+public class findRequestInfo implements reqInfo{
 
 	private Connection con;
 	

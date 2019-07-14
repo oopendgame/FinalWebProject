@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import WebPackage.database.DBConnection;
 
-public class findQuizInfo {
+public class findQuizInfo implements QuizInfoInt{
 	
 	private Connection con;
 	 
