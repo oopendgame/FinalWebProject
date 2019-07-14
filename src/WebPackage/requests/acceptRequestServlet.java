@@ -40,7 +40,7 @@ public class acceptRequestServlet extends HttpServlet {
 		
 		findRequestInfo findReq = new findRequestInfo();
 		findReq.addFriend(user1, user2);
-		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp"); //need to change
+		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp"); 
 		rd.forward(request, response);
 	}
 
