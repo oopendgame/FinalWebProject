@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 
 import WebPackage.database.DBConnection;
-import WebPackage.database.DBInfo;
-import WebPackage.login.LogInInfo;
 
-public class acceptRequestServletTest {
-	
+public class rejectRequstServletTest {
+
 	@Test
 	void test1() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
@@ -45,13 +42,13 @@ public class acceptRequestServletTest {
 		}
 	    
 	   /* findRequestInfo findReq = new findRequestInfo();
-		findReq.addFriend(1, 2); */
+		findReq.removeFriend(1, 2); */
 	    
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 
-        acceptRequestServlet cr = new acceptRequestServlet();
+        rejectRequestServlet cr = new rejectRequestServlet();
         
         when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
 	    
@@ -81,18 +78,17 @@ public class acceptRequestServletTest {
 		}
 	    
 	   /* findRequestInfo findReq = new findRequestInfo();
-		findReq.addFriend(1, 3); */
+		findReq.removeFriend(1, 3); */
 	    
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 
-        acceptRequestServlet cr = new acceptRequestServlet();
+        rejectRequestServlet cr = new rejectRequestServlet();
         
         when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
 	}
-
 }
