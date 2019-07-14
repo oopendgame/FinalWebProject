@@ -37,6 +37,19 @@ public class findUserInfo {
 		}
 		
 	}
+	public boolean isUser(String userName) {
+		ResultSet res = null;
+		try {
+			res = stmt.executeQuery("SELECT * from userInfo where user_name = \"" + userName + "\";");
+			if(res.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public userInfo getMyUser(String userName) {
 		//userName = "nchan17";

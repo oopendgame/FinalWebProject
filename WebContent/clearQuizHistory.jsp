@@ -49,7 +49,7 @@ body{
 	<form action="ClearHistoryServlet" method="post" style="text-align:center">
 		<h1 style="text-align:center"> Clear Quiz History </h1>
 		<input class = "text_promote" type="text" id="quizName" name="quizName" placeholder="Enter quiz name">
-		<input class = "button_promote" type="submit" value="Promote"><br>
+		<input class = "button_promote" type="submit" value="Clear"><br>
 	</form>
 </body>
 </html>
