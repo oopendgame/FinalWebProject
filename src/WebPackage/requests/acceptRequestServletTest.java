@@ -53,7 +53,7 @@ public class acceptRequestServletTest {
 
         acceptRequestServlet cr = new acceptRequestServlet();
         
-        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
+        when(request.getRequestDispatcher("friendAdded.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
@@ -89,7 +89,7 @@ public class acceptRequestServletTest {
 
         acceptRequestServlet cr = new acceptRequestServlet();
         
-        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
+        when(request.getRequestDispatcher("friendAdded.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 

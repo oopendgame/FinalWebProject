@@ -37,7 +37,7 @@ public class rejectRequestServlet extends HttpServlet {
 		findRequestInfo findReq = new findRequestInfo();
 		findReq.rejectRequest(user1, user2);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("requestDone.jsp"); //need to change
+		RequestDispatcher rd = request.getRequestDispatcher("friendRemoved.jsp"); //need to change
 		rd.forward(request, response);
 	}
 
