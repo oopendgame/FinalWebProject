@@ -137,7 +137,7 @@ if(annarr.size() == 0){
 		 <%
 		 	ArrayList<QuizInfo> poparr = hpage.getQuizzesByPopularity();
 		 	if(poparr.size() == 0) {%>
-			<h3 style="font-size:100%; color:#330066; text-align:center;">No Announcements</h3>
+			<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
 			<%}else{
 			 	int miiin = 3;
 				if(poparr.size() < 3) miiin = poparr.size();
@@ -250,7 +250,7 @@ if(annarr.size() == 0){
   	<% int myid = currInfo.getId();
 	ArrayList<QuizInfo> myarr = hpage.getMyQuizzes(myid);
 	if(myarr.size() == 0) {%>
-		<h3 style="font-size:100%; color:#330066; text-align:center;">No quizzes</h3>
+		<h3 style="font-size:100%; color:#330066; text-align:center;">No Quizzes</h3>
 	<%} 
 	int mym = 3;
 	if(myarr.size() < 3) mym = myarr.size();

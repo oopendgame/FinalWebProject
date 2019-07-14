@@ -43,8 +43,10 @@
 <title>Try Again</title>
 </head>
 <body style="background-color:lavender;">
+
 <%@include file="header.jsp" %>
-<%@include file="nav.jsp" %>
+<%@include file="navLoggedout.jsp" %>
+
 <h3 style="font-size:200%; color:#330066; text-align:center;">Log Into Maliamissaitiii</h3>
 <h3 style="font-size:100%; color:#cc0000; text-align:center;">Incorrect Username or Password</h3>
 

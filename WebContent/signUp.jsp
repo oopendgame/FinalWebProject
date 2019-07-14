@@ -63,7 +63,7 @@ input[type=submit]:hover {
 </head>
 <body style="background-color:lavender;">
 <%@include file="header.jsp" %>
-<%@include file="nav.jsp" %>
+<%@include file="navLoggedout.jsp" %>
 <h3 style="font-size:200%; color:#330066; text-align:center">Create New Account</h3>
 
   <form action="accountServlet" method="post" style="text-align:center">

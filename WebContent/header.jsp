@@ -65,7 +65,7 @@ body {
 
 <div id="myDIV">
 <div class="header">
-  <a href="homePage.jsp" class="logo">Logo</a>
+  <a href="#" class="logo">Logo</a>
   <div class="header-right">
     <a href="signUp.jsp" class = "a">Sign Up</a>
     <a href="login.jsp" class = "a">Login <i class="fas fa-sign-in-alt"></i></a>
