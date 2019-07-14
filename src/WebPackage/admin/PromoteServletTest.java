@@ -22,7 +22,7 @@ class PromoteServletTest {
 	
 	
 	@Test
-	void testWrongEmpty() throws IOException, ServletException {
+	void testWrong1() throws IOException, ServletException {
 		//System.out.println("first");
 
 		HttpServletRequest request = mock(HttpServletRequest.class);       
@@ -47,7 +47,7 @@ class PromoteServletTest {
 	
 	
 	@Test
-	void testWrong() throws IOException, ServletException {
+	void testWrong2() throws IOException, ServletException {
 		//System.out.println("second");
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
