@@ -30,6 +30,7 @@ public class QuizPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		request.setAttribute("quiz_id", Integer.parseInt(request.getParameter("quiz_id")));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizPage.jsp");

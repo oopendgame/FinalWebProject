@@ -20,19 +20,23 @@ import WebPackage.login.LogInInfo;
 
 public class CreateQuizServletTest {
 	
+	
+	//not working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	@Test
 	void test1() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);	
 	    
-	    ServletContext context = mock(ServletContext .class);
-	    when(request.getServletContext()).thenReturn(context);	    
+	    final ServletContext context = mock(ServletContext .class);
+	    when(request.getServletContext()).thenReturn(context);	
 	    
 	    LogInInfo log = mock(LogInInfo.class);
 	    //log.setId(5);
 	    //context = request.getServletContext();
-    	context.setAttribute(DBInfo.Attribute_Name, log);
+    	//context.setAttribute(DBInfo.Attribute_Name, log);
+	    
+	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);
 	    
 	    when(request.getParameter("quiz_name")).thenReturn("quizName");
 	    when(request.getParameter("description")).thenReturn("desc");
@@ -43,7 +47,11 @@ public class CreateQuizServletTest {
 	    
 	    when(request.getRequestDispatcher("QuizDone.jsp")).thenReturn(dispatcher);
 
-	    CreateQuizServlet cr = new CreateQuizServlet();
+	    CreateQuizServlet cr = new CreateQuizServlet() {
+	    	public ServletContext getServletContext() {
+                return context;
+            }
+        };
 	    
 	    cr.doPost(request, response);
 		verify(dispatcher).forward(request,response); 
