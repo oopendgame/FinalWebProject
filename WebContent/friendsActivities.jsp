@@ -58,12 +58,9 @@
 			<%} %>
 			<br><br>
 			
-			<% if(!log.getUserName().equals(user)) { %> 
-			<a href = "yourAchievements.jsp" style="float:center; font-size:20px">Achievements</a> 
-			<% }else {%> 
 			<a href = "userAchievements.jsp" style="float:center; font-size:20px">Achievements</a> 
-	
-			<%} %>
+			<a href = "UserCreatedQuizzes.jsp" style="float:center; font-size:20px">Created quizzes</a> 
+			<a href = "myTakenQuizzes.jsp" style="float:center; font-size:20px">Taken quizzes</a> 
 			<br><br><hr>
 			<% } } %>
 
