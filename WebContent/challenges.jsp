@@ -89,10 +89,26 @@ if(challInfo.size() == 0){
 	%>
 	
 	<div>
- 		<img src=<%=img%> alt="Avatar" style="width:5%; margin-left: 1%;">
+	<br>
+ 		<img src=<%=img%> alt="Avatar" style="width:5%; margin-left: 1%; border-radius: 50%;">
+				 
+ 		<form action="searchUserServlet" method="post">
+			
+				<input type = "hidden" name = "user_name" value = "<%=whoSent%>">
+				
+				<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">
+				<%=dateFormat.format(date)%></h3>
+				
+				<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=" "+whoSent%>">
+				<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;">sent you a</h3>
+					
+		</form>
+		
 		<form action="QuizPageServlet" method="get">
+		
 			<input type = "hidden" name = "quiz_id" value = "<%=link%>">
-		 	<h3 style="font-size:120%; color:#330066;margin-left: 1%; display:inline-block;"><%=dateFormat.format(date)%> <%= whoSent%> sent you a</h3>
+		
 			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
 			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="Challenge">
 		</form>

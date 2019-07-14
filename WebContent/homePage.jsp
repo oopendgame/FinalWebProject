@@ -109,7 +109,18 @@ if(annarr.size() == 0){
 	<div>
 		 <h3 style="font-size:120%; color:#330066; text-align:center; margin-top:8%"><%=titel%></h3>
 		<p style = "margin-left: 2%"><%=announc %></p>
-		<p style="margin-left: 1%; float:right"><%=user%> <%=dateFormat.format(date)%></p> 
+		<form action="searchUserServlet" method="post">
+			
+			<input type = "hidden" name = "user_name" value = "<%=user%>">
+			<p style="font-size: 70%; display:inline-block; margin-left: 1%;
+			 float:right"><%=(dateFormat.format(date) + "   ")%></p>
+			
+			<input type = "submit" style="background-color: lavender;margin-left: 1%; float:right;
+			 font-size: 110%; display:inline-block;
+			 border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=user%>">
+	
+		</form>
+		
 		<br><br><br>
 	</div>
 	
@@ -322,8 +333,17 @@ if(annarr.size() == 0){
 			requestInfo cur = arr.get(i);
 %>		<div>
 		
-		<i class='fas fa-user-friends' style="font-size:13px; margin-left:10%;"> </i>
-		<p style="font-size:15px; margin-left:1%; display:inline-block;"><%=cur.getUserName() %> sent you friend request</p> 
+
+		<form action="searchUserServlet" method="post">
+			
+				<input type = "hidden" name = "user_name" value = "<%=cur.getUserName()%>">
+			
+				<i class='fas fa-user-friends' style="font-size:13px; margin-left:10%;"> </i>
+				<input type = "submit" style="background-color: lavender; font-size: 15px; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=cur.getUserName()%>">
+				<p style="font-size:15px; display:inline-block;">sent you a friend request</p>
+					
+		</form> 
 		</div>
 		<%} } %>
 
@@ -360,9 +380,18 @@ if(annarr.size() == 0){
 	%>
 	
 	<div>
- 		<img src=<%=img%> alt="Avatar" style="width:10%; margin-left: 10%; display:inline-block;">
-		 	<p style="font-size:15px; margin-left: 1%; display:inline-block;"> 
-		 	<%= whoSent%> sent you a challenge</p>
+ 		
+ 		<form action="searchUserServlet" method="post">
+			
+				<input type = "hidden" name = "user_name" value = "<%=whoSent%>">
+				<img src=<%=img%> alt="Avatar" style="width:10%; margin-left: 8%; display:inline-block; border-radius: 50%;">
+			
+				<input type = "submit" style="background-color: lavender; font-size: 15px; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=whoSent%>">
+				<p style="font-size:15px; display:inline-block;"> sent you a challenge</p>
+					
+		</form>
+		 
 	</div>
 	<br>
 	<% } }%>
@@ -393,9 +422,19 @@ if(annarr.size() == 0){
 			if(msgInf.getCondition().equals("sent") && getter.getUserName().equals(currUser.getUserName())){ %>
 			
 			<div>
-	 		<img src=<%=sender.getImg()%> alt="Avatar" style="width:10%; margin-left: 10%; display:inline-block;">
-			 	<p style="font-size:15px; margin-left: 1%; display:inline-block;"> 
-			 	<%=sender.getUserName()%> sent you a message</p>
+ 		
+ 		<form action="searchUserServlet" method="post">
+			
+				<input type = "hidden" name = "user_name" value = "<%=sender.getUserName()%>">
+				<img src=<%=sender.getImg()%> alt="Avatar" style="width:10%; margin-left: 8%; display:inline-block; 
+				border-radius: 50%;">
+				
+				
+				<input type = "submit" style="background-color: lavender; font-size: 15px; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=sender.getUserName()%>">
+				<p style="font-size:15px; display:inline-block;"> sent you a message</p>
+					
+		</form>
 			</div>
 			<br>
 			
