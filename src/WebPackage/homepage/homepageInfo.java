@@ -97,7 +97,7 @@ public class homepageInfo {
 		findQuizInfo fquiz = new findQuizInfo();
 		Statement statement;
 		try {
-			String st = "SELECT * FROM popularity order by user_num desc;";
+			String st = "SELECT * FROM quizScores GROUP BY quiz_id order by count(*) desc;";
 			statement = con.createStatement();
 			ResultSet res = statement.executeQuery(st);
 			while(res.next()) {
