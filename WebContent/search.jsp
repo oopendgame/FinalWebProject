@@ -26,12 +26,16 @@
 }
 
 </style>
-
+ 
 
 <body>
 <form action = "searchUserServlet" method = "post"> 
 
-<input type="searchText" name = "user_name" placeholder="Search user...">
+<input style = " padding: 2px 5px;
+		  margin: 8px 0; 
+		  display: inline-block;
+		  border-radius: 4px;
+		  box-sizing: border-box;" type="searchText" name = "user_name" placeholder="Search user...">
 <button type="searchSubmit"><i class="fa fa-search"></i></button>
       
 </form>
@@ -39,7 +43,12 @@
 
 <form action = "searchQuizServlet" method = "post"> 
 
-<input type="searchText" name = "quiz_name" placeholder="Search quiz...">
+<input style = "
+		  padding: 2px 5px;
+		  margin: 8px 0;
+		  display: inline-block;
+		  border-radius: 4px;
+		  box-sizing: border-box;" type="searchText" name = "quiz_name" placeholder="Search quiz...">
 
 <select name="category">
 <option value="choose category" selected>Choose category</option>
