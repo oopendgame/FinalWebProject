@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -19,6 +20,8 @@ import org.junit.jupiter.api.Test;
 import WebPackage.database.DBInfo;
 import WebPackage.login.LogInInfo;
 import WebPackage.quiz.CreateQuizServlet;
+import WebPackage.quiz.QuizInfo;
+import WebPackage.quiz.findQuizInfo;
 
 public class searchQuizServletTest {
 	
@@ -41,9 +44,14 @@ public class searchQuizServletTest {
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
+        
+        String st = "QuizzesFound.jsp";
+        findQuizInfo find = new findQuizInfo();
+        ArrayList<QuizInfo> arr = find.searchQuiz("newQuiz", "Math");
+        if(arr.size() == 0) st = "QuizNotFound.jsp";
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("QuizzesFound.jsp")).thenReturn(dispatcher);
+	    when(request.getRequestDispatcher(st)).thenReturn(dispatcher);
 
 	    searchQuizServlet cr = new searchQuizServlet() {
 	    	public ServletContext getServletContext() {
@@ -75,9 +83,14 @@ public class searchQuizServletTest {
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
+        
+        String st = "QuizzesFound.jsp";
+        findQuizInfo find = new findQuizInfo();
+        ArrayList<QuizInfo> arr = find.searchQuiz("newQuiz", "kjnkjbnktgnktjn");
+        if(arr.size() == 0) st = "QuizNotFound.jsp";
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("QuizNotFound.jsp")).thenReturn(dispatcher);
+	    when(request.getRequestDispatcher(st)).thenReturn(dispatcher);
 
 	    searchQuizServlet cr = new searchQuizServlet() {
 	    	public ServletContext getServletContext() {
@@ -109,9 +122,14 @@ public class searchQuizServletTest {
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
+        
+        String st = "QuizzesFound.jsp";
+        findQuizInfo find = new findQuizInfo();
+        ArrayList<QuizInfo> arr = find.searchQuiz("newQuiz", "choose category");
+        if(arr.size() == 0) st = "QuizNotFound.jsp";
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("QuizzesFound.jsp")).thenReturn(dispatcher);
+	    when(request.getRequestDispatcher(st)).thenReturn(dispatcher);
 
 	    searchQuizServlet cr = new searchQuizServlet() {
 	    	public ServletContext getServletContext() {
@@ -143,9 +161,14 @@ public class searchQuizServletTest {
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
+        
+        String st = "QuizzesFound.jsp";
+        findQuizInfo find = new findQuizInfo();
+        ArrayList<QuizInfo> arr = find.searchQuiz("", "choose category");
+        if(arr.size() == 0) st = "QuizNotFound.jsp";
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("QuizNotFound.jsp")).thenReturn(dispatcher);
+	    when(request.getRequestDispatcher(st)).thenReturn(dispatcher);
 
 	    searchQuizServlet cr = new searchQuizServlet() {
 	    	public ServletContext getServletContext() {
@@ -177,9 +200,14 @@ public class searchQuizServletTest {
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
+        
+        String st = "QuizzesFound.jsp";
+        findQuizInfo find = new findQuizInfo();
+        ArrayList<QuizInfo> arr = find.searchQuiz("", "Math");
+        if(arr.size() == 0) st = "QuizNotFound.jsp";
 	    
 	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("QuizzesFound.jsp")).thenReturn(dispatcher);
+	    when(request.getRequestDispatcher(st)).thenReturn(dispatcher);
 
 	    searchQuizServlet cr = new searchQuizServlet() {
 	    	public ServletContext getServletContext() {
