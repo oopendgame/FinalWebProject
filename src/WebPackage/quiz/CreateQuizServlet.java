@@ -102,7 +102,6 @@ public class CreateQuizServlet extends HttpServlet {
 		newQuiz.addQuiz(quiz, author_id);		
 		
 		findAchievementInfo achInfo = new findAchievementInfo();
-		achInfo.refreshAchQuizTaken(author_id, quiz_id);
 		achInfo.refreshAchQuizCreate(author_id);
 		
 		request.getRequestDispatcher("QuizDone.jsp").forward(request, response);

@@ -60,7 +60,7 @@ class PromoteServletTest {
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
 	    if(info.isUser("randName")) {
 	    	when(request.getRequestDispatcher("success.jsp")).thenReturn(dispatcher);
-	    }else when(request.getRequestDispatcher("incorrectQuizNameClear.jsp")).thenReturn(dispatcher);
+	    }else when(request.getRequestDispatcher("incorrectUserPromote.jsp")).thenReturn(dispatcher);
         new PromoteServlet().doPost(request, response);
 
 		verify(dispatcher).forward(request,response);

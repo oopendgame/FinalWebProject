@@ -106,7 +106,7 @@ public class CorrectionServlet extends HttpServlet {
 			scoreInfo.addUserWrittenQuiz(id, user_id, curInfo.getScore(), startTime, curInfo.getDuration());
 			
 			findAchievementInfo achInfo = new findAchievementInfo();
-			achInfo.refreshAchQuizCreate(user_id);
+			achInfo.refreshAchQuizTaken(user_id, id);
 		} 
 		
 		RequestDispatcher rd = request.getRequestDispatcher("QuizFinished.jsp");
