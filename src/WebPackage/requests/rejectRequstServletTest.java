@@ -8,12 +8,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,49 +19,43 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 
 import WebPackage.database.DBConnection;
-import WebPackage.database.DBInfo;
-import WebPackage.login.LogInInfo;
 
-public class sendRequestServletTest {
-	
+public class rejectRequstServletTest {
+
 	@Test
 	void test1() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);	
-
-	    final ServletContext context = mock(ServletContext .class);
-	    when(request.getServletContext()).thenReturn(context);	
 	    
-	    LogInInfo log = new LogInInfo();
-	    log.setId(2);
-	    log.setSearchId(1);
+	    when(request.getParameter("user1_id")).thenReturn("1");
+	    when(request.getParameter("user2_id")).thenReturn("2");
 	    
 	    Connection con = DBConnection.getConnection();
 		try {
 			Statement nameStm = con.createStatement();
 			nameStm.execute("TRUNCATE friends;");
+			nameStm.execute("INSERT INTO friends(user1_id, user2_id, friends_status, sending_date) VALUES (1, 2, 0, sysdate()), (1, 3, 0, sysdate());");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
-	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("othersPage.jsp")).thenReturn(dispatcher);
+	   /* findRequestInfo findReq = new findRequestInfo();
+		findReq.removeFriend(1, 2); */
 	    
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 
-	    sendRequestServlet cr = new sendRequestServlet() {
-	    	public ServletContext getServletContext() {
-                return context;
-            }
-        };
+        rejectRequestServlet cr = new rejectRequestServlet();
+        
+        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
 	}
+	
 	
 	
 	@Test
@@ -71,29 +63,32 @@ public class sendRequestServletTest {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);	
-
-	    final ServletContext context = mock(ServletContext .class);
-	    when(request.getServletContext()).thenReturn(context);	
 	    
-	    LogInInfo log = new LogInInfo();
-	    log.setId(1);
-	    log.setSearchId(3);
+	    when(request.getParameter("user1_id")).thenReturn("1");
+	    when(request.getParameter("user2_id")).thenReturn("3");
 	    
-	    when(context.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
-	    when(request.getRequestDispatcher("othersPage.jsp")).thenReturn(dispatcher);
+	    Connection con = DBConnection.getConnection();
+		try {
+			Statement nameStm = con.createStatement();
+			nameStm.execute("TRUNCATE friends;");
+			nameStm.execute("INSERT INTO friends(user1_id, user2_id, friends_status, sending_date) VALUES (1, 2, 0, sysdate()), (1, 3, 0, sysdate());");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	   /* findRequestInfo findReq = new findRequestInfo();
+		findReq.removeFriend(1, 3); */
 	    
 	    StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 
-	    sendRequestServlet cr = new sendRequestServlet() {
-	    	public ServletContext getServletContext() {
-                return context;
-            }
-        };
+        rejectRequestServlet cr = new rejectRequestServlet();
+        
+        when(request.getRequestDispatcher("requestDone.jsp")).thenReturn(dispatcher);
 	    
 	    cr.doGet(request, response);
 		verify(dispatcher).forward(request,response); 
 	}
-
 }
