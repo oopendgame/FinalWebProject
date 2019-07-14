@@ -25,39 +25,94 @@ import WebPackage.user.userInfo;
 class chatServletTest {
 
 	@Test
-	void test() throws ServletException, IOException {
+	void test1() throws ServletException, IOException {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
 	    HttpServletResponse response = mock(HttpServletResponse.class);
 	    when(request.getParameter("pusername")).thenReturn("randName");
-		findMessageInfo info = mock(findMessageInfo.class);
-	 	findUserInfo fuserInfo = mock(findUserInfo.class);
-	    LogInInfo fcurrInfo = mock(LogInInfo.class);
+	    LogInInfo log = new LogInInfo();
+	    log.setUserName("nchan17");
+	    
 	    when(request.getParameter("messageID")).thenReturn("1");
 	    when(request.getParameter("userId")).thenReturn("3");
-	    when(request.getParameter("user")).thenReturn("2");
+	    when(request.getParameter("user")).thenReturn("achkh17");
 	    when(request.getParameter("sms")).thenReturn("randMessage");
 	    
+	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+	    when(request.getRequestDispatcher("individualMessage.jsp")).thenReturn(dispatcher);
+	    
         final ServletContext sContext = mock(ServletContext.class);
-	    chatServlet chat = new chatServlet() {
+	    when(request.getServletContext()).thenReturn(sContext);	
+	    chatServlet chat = new chatServlet(){
             public ServletContext getServletContext() {
                 return sContext;
             }
         };
-	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
-	    when(request.getRequestDispatcher("individualMessage.jsp")).thenReturn(dispatcher);
-
+        when(sContext.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
+	    when(request.getRequestDispatcher("QuizDone.jsp")).thenReturn(dispatcher);
 	    chat.doGet(request, response);
 		verify(dispatcher).forward(request,response);
-		
-//	    userInfo currUser =  fuserInfo.getMyUser(fcurrInfo.getUserName());
-//	    int messageID = Integer.parseInt(request.getParameter("messageID"));
-//		int userId = Integer.parseInt(request.getParameter("userId"));
-//		String chatterName = request.getParameter("user");
-//		String sms = request.getParameter("sms");
-//		info.putSms(currUser.getId(), userId, sms);
-//		ArrayList<messageInfo> allChat = info.getAllMessages(currUser.getUserName(), chatterName);
-//		RequestDispatcher rd = request.getRequestDispatcher("individualMessage.jsp");
-//		rd.forward(request, response);
+
+	}
+
+	
+	@Test
+	void test2() throws ServletException, IOException {
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+	    HttpServletResponse response = mock(HttpServletResponse.class);
+	    when(request.getParameter("pusername")).thenReturn("otherName");
+	    LogInInfo log = new LogInInfo();
+	    log.setUserName("nchan17");
+	    
+	    when(request.getParameter("messageID")).thenReturn("2");
+	    when(request.getParameter("userId")).thenReturn("1");
+	    when(request.getParameter("user")).thenReturn("nchan17");
+	    when(request.getParameter("sms")).thenReturn("hi!");
+	    
+	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+	    when(request.getRequestDispatcher("individualMessage.jsp")).thenReturn(dispatcher);
+	    
+        final ServletContext sContext = mock(ServletContext.class);
+	    when(request.getServletContext()).thenReturn(sContext);	
+	    chatServlet chat = new chatServlet(){
+            public ServletContext getServletContext() {
+                return sContext;
+            }
+        };
+        when(sContext.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
+	    when(request.getRequestDispatcher("QuizDone.jsp")).thenReturn(dispatcher);
+	    chat.doGet(request, response);
+		verify(dispatcher).forward(request,response);
+
+	}
+	
+	@Test
+	void test3() throws ServletException, IOException {
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+	    HttpServletResponse response = mock(HttpServletResponse.class);
+	    when(request.getParameter("pusername")).thenReturn("otherName");
+	    LogInInfo log = new LogInInfo();
+	    log.setUserName("achkh17");
+	    
+	    when(request.getParameter("messageID")).thenReturn("1");
+	    when(request.getParameter("userId")).thenReturn("1");
+	    when(request.getParameter("user")).thenReturn("achkh17");
+	    when(request.getParameter("sms")).thenReturn("it's me");
+	    
+	    RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+	    when(request.getRequestDispatcher("individualMessage.jsp")).thenReturn(dispatcher);
+	    
+        final ServletContext sContext = mock(ServletContext.class);
+	    when(request.getServletContext()).thenReturn(sContext);	
+	    chatServlet chat = new chatServlet(){
+            public ServletContext getServletContext() {
+                return sContext;
+            }
+        };
+        when(sContext.getAttribute(DBInfo.Attribute_Name)).thenReturn(log);	    
+	    when(request.getRequestDispatcher("QuizDone.jsp")).thenReturn(dispatcher);
+	    chat.doGet(request, response);
+		verify(dispatcher).forward(request,response);
+
 	}
 
 }
