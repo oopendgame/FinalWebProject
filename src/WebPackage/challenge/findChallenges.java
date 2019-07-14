@@ -119,4 +119,21 @@ public class findChallenges {
 		}
 		return count;
 	}
+	
+	public int usersBestScore(int userId, int quizId) {
+		
+		ResultSet res = null;
+		int score = -1;
+		try {
+			res = stmt.executeQuery("SELECT score from quizScores where user_id = \"" + userId + "\" "
+					+ "and quiz_id = \"" + quizId + "\" order by score desc;");
+			if(res.next()) {
+				score = res.getInt("score");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return score;
+	}
 }
