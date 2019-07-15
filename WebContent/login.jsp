@@ -44,7 +44,7 @@
 
 <body style="background-color:lavender;">
 <%@include file="header.jsp" %>
-<h3 style="font-size:200%; color:#330066; text-align:center;">Log Into Maliamissaitiii</h3>
+<h3 style="font-size:200%; color:#330066; text-align:center;">Log Into Endgame</h3>
 
   <form action="loginServlet" method="post" style="text-align:center">
     <input type="text" id="uname" name="username"
@@ -65,7 +65,7 @@
 	</script>
 	
     <input type="submit" value="Login"><br>
-    <a href="signUp.jsp">Sing Up For Maliamissaitiii</a>
+    <a href="signUp.jsp">Sing Up For Endgame</a>
   </form>
 </body>
 </html>
