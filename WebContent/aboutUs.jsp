@@ -9,13 +9,6 @@
 
 <style>
 
-img {
-  border-radius: 50%;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:20%;
-  display:block;
-}
 
 * {
   box-sizing: border-box;
@@ -55,7 +48,11 @@ quizzes that other people can take.</h3>
 <div class="row">
   <div class="column">
     
-    <img src="https://scontent.ftbs5-1.fna.fbcdn.net/v/t1.0-9/51785982_2118103464931868_3119
+    <img style = "border-radius: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:20%;
+  display:block;" src="https://scontent.ftbs5-1.fna.fbcdn.net/v/t1.0-9/51785982_2118103464931868_3119
 	750972641902592_n.jpg?_nc_cat=107&_nc_oc=AQlnG3fnULQVzT_JVePHDQwXhnNOpBlcO1Goio3BBvhxU-Hz
 	7us-13z5WoB3_hBgGs4&_nc_ht=scontent.ftbs5-1.fna&oh=b8e922a5e12232712068fdd9474c7633&oe=5DACCD36"
 	alt="achkh17" width="100" height="100">
@@ -66,7 +63,11 @@ quizzes that other people can take.</h3>
   </div>
   <div class="column">
   
-	<img src="https://scontent.ftbs5-1.fna.fbcdn.net/v/t1.0-9/19424401_784494171675882
+	<img style = "border-radius: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:20%;
+  display:block;" src="https://scontent.ftbs5-1.fna.fbcdn.net/v/t1.0-9/19424401_784494171675882
 	_8786767691181003760_n.jpg?_nc_cat=107&_nc_oc=AQnkUI2LvOnOZzh5a_wZL8BQBIuXBY6p
 	_FdwcjBr8kjmixh3hNd4wkio7DnN7akkQ4g&_nc_ht=scontent.ftbs5-1.fna&oh=
 	6c82b0e7027ed0eb5380f1104cb46038&oe=5DAEEB25" alt="nchan17" width="100" height="100">
@@ -77,7 +78,11 @@ quizzes that other people can take.</h3>
   </div>
   <div class="column">
     
-	<img src="https://scontent.ftbs5-2.fna.fbcdn.net/v/t1.0-9/19366221_1510029115708562_3940055
+	<img style = "border-radius: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:20%;
+  display:block;" src="https://scontent.ftbs5-2.fna.fbcdn.net/v/t1.0-9/19366221_1510029115708562_3940055
 	48772054778_n.jpg?_nc_cat=109&_nc_oc=AQm-UefM97v5g__4duxbjH0kyxCg9Ruy1flwMsoKdlOLULISzuphsK9Oc
 	NMBV8i5tbg&_nc_ht=scontent.ftbs5-2.fna&oh=f4c3279c4d1b77dd8da62879f61f0e52&oe=5DC1170D"
 	alt="machkh17" width="100" height="100">
