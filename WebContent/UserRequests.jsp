@@ -56,8 +56,14 @@ div {
 			requestInfo cur = arr.get(i);
 %>		
 		<h3>
+		 <form action = "searchUserServlet" method = "Post">
 		 <i class='fas fa-user-friends' style='font-size:24px'> </i>
-		 <% out.println(cur.getUserName() + " sent you friend request"); %> 
+			<input type = "hidden" name = "user_name" value = <%=cur.getUserName()%>>
+			<input type = "submit" style="background-color: lavender; font-size: 120%; display:inline-block;
+				border: none; color:#0000EE; cursor:pointer; text-decoration: underline;" value="<%=cur.getUserName()%>">
+			sent you friend request
+			
+		</form>
 		
 					<form name = "acceptForm" action = "acceptRequestServlet" method="get">
 					<input type = "hidden" id = "friends_id" name = "friends_id"
