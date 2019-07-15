@@ -47,6 +47,8 @@ body {
 
 .header-right {
   float: right;
+  margin-top: 5%;
+  
 }
 
 @media screen and (max-width: 500px) {
@@ -54,10 +56,6 @@ body {
     float: none;
     display: block;
     text-align: left;
-  }
-  
-  .header-right {
-    float: none;
   }
 }
 </style>
@@ -74,7 +72,7 @@ body {
 
 <div id="myDiv">
 <div class="header">
-  <a href="homePage.jsp" class="logo">Logo</a>
+	<img src="logo.png" alt="Logo" width="200">
   <div class="header-right">
     <a href="<%=profile%>" class = "c">Profile <i class="fas fa-user"></i></a>
     <a href="login.jsp" class = "c">Log out <i class="fas fa-sign-out-alt"></i></a>

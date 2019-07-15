@@ -13,6 +13,9 @@
 
 body { 
   margin: 0;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 1%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -69,7 +72,7 @@ body {
 
 <div id="myDIV">
 <div class="header">
-  <a href="#" class="logo">Logo</a>
+	<img src="logo.png" alt="Logo" width="200" >
   <div class="header-right">
     <a href="signUp.jsp" class = "a">Sign Up</a>
     <a href="login.jsp" class = "a">Login <i class="fas fa-sign-in-alt"></i></a>
