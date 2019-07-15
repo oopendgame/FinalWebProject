@@ -211,7 +211,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     log.serQuizCreatorId(log.getId());
     %>
     
-    <p><a href="UserCreatedQuizzes.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
+    <p><a href="quizzesByMe.jsp" style=a><i class='fas fa-address-card' style='font-size:30px'> Your Created Quizzes</i></a></p>
     <p><a href="CreateQuiz.jsp" style="text-decoration: none"><i class='fas fa-question-circle' style='font-size:30px'> Create Quiz</i></a></p>
     </div>
     </div>
