@@ -73,7 +73,7 @@ public class adminInfo {
 				res = stmt.executeQuery("SELECT * from quizzes where quiz_name = '" + quizName + "';");
 				if(res.next()) {
 					return true;
-				}
+				} 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -125,6 +125,11 @@ public class adminInfo {
 				this.deleteFriends(userId);
 				this.deletePass(userId);
 				this.deleteSms(userId);
+				this.deleteAchievements(userId);
+				stmt.executeUpdate("delete from quizScores where user_id = " + userId + ";");
+				//stmt.executeUpdate("delete from quizzes where author_id = " + userId + ";");
+ 
+				this.deleteAchievements(userId);
 				res = stmt.executeQuery("SELECT * from quizzes where author_id = " + userId + ";");
 				while(!res.isClosed() && res.next()) {
 					this.deleteQuiz(res.getString("quiz_name"));
@@ -137,6 +142,14 @@ public class adminInfo {
 				e.printStackTrace();
 			}
 			return true;
+		}
+		private void deleteAchievements(int userId) {
+			try {
+				stmt.executeUpdate("delete from achievements where user_id = " + userId + ";");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		private void deletePass(int userId) {
 			try {
@@ -187,12 +200,14 @@ public class adminInfo {
 				delete from popularity where quis_id;*/
 				if(quizId == -1) return false;
 				this.clearQuizHistory(quizName);
+				
 				res = stmt.executeQuery("SELECT question_id from questions where quiz_id = " + quizId + ";");
+				stmt.executeUpdate("delete from quizScores where quiz_id = " + quizId + ";");
 				while(!res.isClosed() && res.next()) {
 					int questionId = res.getInt("question_id");
 					stmt.executeUpdate("delete from answers where question_id = " + questionId + ";");
+					stmt.executeUpdate("delete from questions where question_id = " + questionId + ";");
 				}
-				stmt.executeUpdate("delete from questions where quiz_id = " + quizId + ";");
 				stmt.executeUpdate("delete from quizzes where quiz_id = " + quizId + ";");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
