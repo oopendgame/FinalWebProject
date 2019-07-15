@@ -10,7 +10,7 @@
     
 <%@include file="headerLogged.jsp" %>
 <%@include file="nav.jsp" %>
-<%@ include file="search.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -42,8 +42,11 @@ div {
 	if(arr.size() == 0) out.println("<center><h1>You have no friends</h1></center>");
 	else { 
 %>
+
+<div>
+<%@ include file="search.jsp"%>
 	<p> <center><h1>YOUR FRIENDS</h1></center></p>
-	<div>
+	
 <%
 		for(int i = 0; i < arr.size(); i++) {
 			requestInfo cur = arr.get(i);
